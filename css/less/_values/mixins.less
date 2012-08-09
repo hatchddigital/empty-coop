@@ -1,0 +1,207 @@
+//================
+//Mixins
+//==================
+
+//Change box model
+.box-sizing (@sizing: border-box) {
+	box-sizing:@sizing;
+	-moz-box-sizing:@sizing;
+	-webkit-box-sizing:@sizing;
+}
+
+//Make an element square
+.setsquare(@size) {
+	width:@size;
+	height:@size;
+}
+
+//Set background size
+//(ff3.6 still needs prefix)
+.background-size(@size){
+	background-size:@size;
+	-moz-background-size:@size;
+}
+
+//Change border radius
+//(Android browser and ff3.6 still need prefix)
+.border-radius (@radius: 0.5em) {
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+//Rotate, scale and translate
+.rotate (@angle) {
+	-moz-transform:rotate(@angle);
+	-webkit-transform:rotate(@angle);
+	-o-transform:rotate(@angle);
+    -ms-transform:rotate(@angle);
+	transform:rotate(@angle);
+}
+.scale (@amount) {
+	-moz-transform:scale(@amount);
+	-webkit-transform:scale(@amount);
+	-o-transform:scale(@amount);
+    -ms-transform: scale(@amount);
+	transform:scale(@amount);
+}
+.translate (@transx, @transy) {
+     transform: translate(@transx,@transy);
+    -ms-transform: translate(@transx,@transy);
+    -webkit-transform: translate(@transx,@transy);
+    -o-transform: translate(@transx,@transy);
+    -moz-transform: translate(@transx,@transy);
+}
+
+//Set a transition on an element
+.transition (@properties: all, @duration:.2s, @ease:ease-in-out) {
+	-webkit-transition: @properties @duration @ease;
+	-moz-transition: @properties @duration @ease;
+	-o-transition: @properties @duration @ease;
+	-ms-transition: @properties @duration @ease;
+	transition: @properties @duration @ease;
+}
+
+//Set animation on an element (needs @animate set first)
+.animate (@name, @duration: 500ms, @count: infinite, @direction: alternate) {
+	-moz-animation-name: @name;
+	-moz-animation-duration: @duration;
+	-moz-animation-iteration-count: @count;
+	-moz-animation-direction: @direction;
+	-webkit-animation-name: @name;
+	-webkit-animation-duration: @duration;
+	-webkit-animation-iteration-count: @count;
+	-webkit-animation-direction: @direction;
+	animation-name: @name;
+	animation-duration: @duration;
+	animation-iteration-count: @count;
+	animation-direction: @direction;
+}
+
+
+//Change opacity
+.opacity(@opacity: 100) {
+  opacity: @opacity / 100;
+   filter: ~"alpha(opacity=@{opacity})";
+}
+
+//Set CSS3 column properties
+.column-count (@count) {
+	-moz-column-count: @count;
+	-webkit-column-count: @count;
+	-o-column-count: @count;
+	column-count: @count;
+}
+.column-gap (@amount: 2%) {
+	-moz-column-gap: @amount;
+	-webkit-column-gap: @amount;
+	-o-column-gap: @amount;
+	column-gap: @amount;
+}
+
+//Make CSS triangles
+#csstriangle{
+	.top(@width:5px,@color:#000){
+		width:0;
+		height:0;
+		border:@width solid @color;
+		border-top-color:transparent;
+		border-right-color:transparent;
+		border-left-color:transparent;
+	}
+	.right(@width:5px,@color:#000){
+		width:0;
+		height:0;
+		border:@width solid @color;
+		border-top-color:transparent;
+		border-right-color:transparent;
+		border-bottom-color:transparent;
+	}
+	.bottom(@width:5px,@color:#000){
+		width:0;
+		height:0;
+		border:@width solid @color;
+		border-bottom-color:transparent;
+		border-right-color:transparent;
+		border-left-color:transparent;
+	}
+	.left(@width:5px,@color:#000){
+		width:0;
+		height:0;
+		border:@width solid @color;
+		border-top-color:transparent;
+		border-left-color:transparent;
+		border-bottom-color:transparent;
+	}
+}
+
+//Set CSS gradients
+#gradient {
+  .horizontal(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+    background-repeat: repeat-x;
+  }
+  .vertical(@startColor: #555, @endColor: #333) {
+    background-color: mix(@startColor, @endColor, 60%);
+    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(top, @startColor, @endColor); // The standard
+    background-repeat: repeat-x;
+  }
+  .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(@deg, @startColor, @endColor); // IE10
+    background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(@deg, @startColor, @endColor); // The standard
+  }
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+    background-color: mix(@midColor, @endColor, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+    background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
+    background-image: -ms-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-repeat: no-repeat;
+  }
+  .radial(@innerColor: #555, @outerColor: #333) {
+	    background-color: @outerColor;
+	    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+	    background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+	    background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+	    background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
+	    background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+	    background-repeat: no-repeat;
+ }
+}
+
+//Reference icon unicode characters
+#sc-hatchd {
+	.palatte(){
+		content:"\f021";
+	}
+	.egg(){
+		content:"\f022";
+	}
+	.runningman(){
+		content:"\f023";
+	}
+	.coffeecup(){
+		content:"\f024";
+	}
+	.puzzlepiece(){
+		content:"\f025";
+	}
+}
