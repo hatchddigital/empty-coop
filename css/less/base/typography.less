@@ -2,13 +2,13 @@
 Typography
 ==================*/
 
-/*Set base font-family/line-height and declare the px size of an em unit*/
+//Set base font-family/line-height and declare the px size of an em unit
 	body{
-		font:14px/1.3em sans-serif;
+		font:(@text-base)/1.3em sans-serif;
 		color:@col-base;
 	}
 
-/*Block elements*/
+//Block elements
 	p{
 		margin:0 0 1em 0;
 		line-height:1.3em;
@@ -76,8 +76,8 @@ Typography
 		margin:2em 0 2em 0;
 		.box-sizing;
 	}
-/*Inline elements*/
-	/*Superscript/subscript*/
+//Inline elements
+	//Superscript/subscript
 		//Prevents `sub` and `sup` affecting `line-height` in all browsers.
 		//gist.github.com/413930
 		sup,sub{
@@ -93,7 +93,7 @@ Typography
 		    bottom: -0.25em;
 		}
 
-	/*For marking up content relevency/edits and highlighting content*/
+	//For marking up content relevency/edits and highlighting content
 		ins{background-color:@col-highlight;}
 		del{text-decoration:line-through;}
 		s{
@@ -105,7 +105,7 @@ Typography
 			color:inherit;
 			font-weight:normal;
 		}
-	/*Inline quotes / small print*/
+	//Inline quotes / small print
 		q{
 			font-style:italic;
 			color:inherit;
@@ -115,7 +115,7 @@ Typography
 			font-weight:normal;
 			font-style:normal;
 		}
-	/*phrase tags*/
+	//phrase tags
 		strong,b{font-weight:bold;}
 		em,i{font-style:italic;}
 		dfn,abbr{
@@ -130,7 +130,7 @@ Typography
 			font-style:italic;
 			font-weight:bold;
 		}
-	/*pseudo classes*/
+	//pseudo classes
 		::selection{
 			color:@white;
 			background:@col-link;
