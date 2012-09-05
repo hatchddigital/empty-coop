@@ -15,6 +15,11 @@
 	height:@size;
 }
 
+//Set font-size in em
+.font-size(@size) {
+	font-size:(@size/@text-base) + 0em;
+}
+
 //Set background size
 //(ff3.6 still needs prefix)
 .background-size(@size){
@@ -185,23 +190,4 @@
 	    background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
 	    background-repeat: no-repeat;
  }
-}
-
-//Reference icon unicode characters
-#sc-hatchd {
-	.palatte(){
-		content:"\f021";
-	}
-	.egg(){
-		content:"\f022";
-	}
-	.runningman(){
-		content:"\f023";
-	}
-	.coffeecup(){
-		content:"\f024";
-	}
-	.puzzlepiece(){
-		content:"\f025";
-	}
 }
