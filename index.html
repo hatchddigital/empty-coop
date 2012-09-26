@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7 no-js" lang="en-au"><![endif]-->
-<!--[if IE 7]><html class="lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
-<!--[if IE 8]><html class="lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en-au"><!--<![endif]-->
-
+<!--[if lt IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="en-au"><![endif]-->
+<!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
+<!--[if IE 8]><html class="lt-ie10 lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
+<!--[if IE 9]><!--><html class="lt-ie10 no-js" id="ie9" lang="en-au"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en-au"><!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width,user-scalable=no, scale=1, maximum-scale=1.0" />
+
 		<title>Title</title>
-		<meta name="" />
-		<!--[if lt IE 9]>
-			<script src="scripts/modernizer.js"></script>
-		<![endif]-->
-		<link rel="stylesheet" href="css/styles.css" />
-	    <!-- Modernizr -->
-	    <script type="text/javascript" src="scripts/modernizr.js"></script>
+
+        <-- Important early load external scripts -->
+        <link rel="stylesheet" href="css/styles.css" />
+        <script type="text/javascript" src="scripts/modernizr.js"></script>
+
+        <!-- Icons for browsers + mobile devices, bookmarsk, etc. -->
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+        <!-- Meta configuration for Search Engines and Facebook -->
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="images/facebook.png" />
+        <meta property="og:site_name" content="" />
+        <meta property="og:description" content=""/>
+        <!-- If moderation is required & available -->
+        <!-- <meta property="fb:admins" content="USER_ID" /> -->
+
 	</head>
 
 	<body>
 
-		<!-- Content here -->
 
-	    <!-- jQuery library, up the top because of deform, may move -->
-	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-	    <script>window.jQuery || document.write('<script src="scripts/jquery-1.8.0-min.js"><\/script>')</script>
+
+	    <!-- JavaScript libraries and UX based code -->
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="scripts/jquery.1.8.1-min.js"><\/script>')</script>
+        <script src="/scripts/app.js"></script>
 
 	</body>
 
