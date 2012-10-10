@@ -1,23 +1,32 @@
-/*================
-Utilities
-==================*/
+//================
+//Reusable utilities
+//==================
 
-/*Hide a text element but ensure it is still readable via assistive technology*/
+//===
+//Hide a text element but ensure it is still readable via assistive technology
+//===
 	.visual-hide{
 		text-indent:-90000px;
 		height:0;
 		position:absolute;
+		overflow:hidden;
 	}
-/*Completely hide an element*/
+//===
+//Completely hide an element
+//===
 	.hide{
 		display:none;
 	}
-/* Universal clear */
+//===
+//Set an element to clear the element above it
+//===
 	.clear{
 		clear:both;
 		display:block;
 	}
-/* Enhanced Universal Clearfix hack */
+//===
+//Clearfix
+//===
 	.clearfix:after{
 		visibility:hidden;
 		display:block;
@@ -26,13 +35,21 @@ Utilities
 		clear:both;
 		height:0;
 	}
-	.clearfix{display:inline-block;}
+	.clearfix{
+		display:inline-block;
+	}
 	/* Start commented backslash hack \*/
-		* html .clearfix{height:1%;}
-		.clearfix{display:block;}
+		* html .clearfix{
+			height:1%;
+		}
+		.clearfix{
+			display:block;
+		}
 	/* Close commented backslash hack */
 
-/*Set text to be replaced by an image*/
+//===
+//Set text to be replaced by an image
+//===
 .replaced{
 	display:block;
 	text-indent:-900000px;
