@@ -1,0 +1,25 @@
+//======
+//Base list styles
+//======
+
+	ul,ol,dl{
+		margin:0 0 1em 2em;
+		padding:0;
+	}
+		ul li,ol li{margin:0 0 0.25em 0;}
+		ul{list-style:disc outside;}
+			ul ul{margin:0.25em 0 0.5em 1em;}
+		ol{
+			list-style:decimal outside;
+		}
+			ol ol{
+				margin:0.25em 0 0.5em 1.5em;
+				list-style-type:lower-roman;
+			}
+		dl{margin-left:0;}
+			dt{
+				font-weight:bold;
+				margin:0 0 0.5em 0;
+				padding:1em 0 0 0;
+			}
+			dd{margin:0 0 0.5em 0;}

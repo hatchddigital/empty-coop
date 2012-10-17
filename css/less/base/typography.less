@@ -5,7 +5,7 @@
 //Set base font-family/line-height and declare the px size of an em unit
 	body{
 		font-size:(@text-base) + 0px;
-		line-height:1.6em;
+		line-height:@lineheight-base;
 		font-family:sans-serif;
 		color:@col-base;
 	}
@@ -13,70 +13,11 @@
 //Block elements
 	p{
 		margin:0 0 1em 0;
-		line-height:1.3em;
-	}
-	hgroup{position:relative;}
-	h1,h2,h3,h4,h5,h6{
-		font-size:1em;
-		line-height:1.3em;
-		font-weight:normal;
-		margin:2em 0 1em 0;
-		position:relative;
-		clear:both;
-	}
-		hgroup{
-			margin:0 0 1em 0;
-			h1,
-			h2,
-			h3,
-			{margin:0;}
-		}
-	ul,ol,dl{
-		margin:0 0 1em 2em;
-		padding:0;
-	}
-		ul li,ol li{margin:0 0 0.25em 0;}
-		ul{list-style:disc outside;}
-			ul ul{margin:0.25em 0 0.5em 1em;}
-		ol{
-			list-style:decimal outside;
-		}
-			ol ol{
-				margin:0.25em 0 0.5em 1.5em;
-				list-style-type:lower-roman;
-			}
-		dl{margin-left:0;}
-			dt{
-				font-weight:bold;
-				margin:0 0 0.5em 0;
-				padding:1em 0 0 0;
-			}
-			dd{margin:0 0 0.5em 0;}
-	blockquote{
-		margin:0 0 2em 0;
-		padding:1em 0 0 0;
-	}
-		blockquote > p{
-			color:@col-base;
-			padding:0 1em;
-			font-size:1.6em;
-		}
-		blockquote footer{
-			display:block;
-			margin:0.5em 0 0 0;
-			padding:0 0 0 1em 0;
-		}
-	hr{
+	
+}	hr{
 		border-top:1px dotted @col-recessive;
 		padding:1em 0;
 		margin:2em 0 0 0;
-	}
-	pre{
-		white-space:pre;
-		width:100%;
-		overflow:auto;
-		margin:2em 0 2em 0;
-		.box-sizing;
 	}
 //Inline elements
 	//Superscript/subscript
@@ -96,8 +37,12 @@
 		}
 
 	//For marking up content relevency/edits and highlighting content
-		ins{background-color:@col-highlight;}
-		del{text-decoration:line-through;}
+		ins{
+			background-color:@col-highlight;
+		}
+		del{
+			text-decoration:line-through;
+		}
 		s{
 			color:@col-recessive;
 			text-decoration:line-through;
@@ -108,11 +53,6 @@
 			font-weight:normal;
 		}
 	//Inline quotes / small print
-		q{
-			font-style:italic;
-			color:inherit;
-		}
-		cite{font-style:italic;}
 		small{
 			font-weight:normal;
 			font-style:normal;
@@ -123,21 +63,4 @@
 		dfn,abbr{
 			font-style:inherit;
 			position:relative;
-		}
-		code,samp,kbd{
-			display:inline-block;
-			padding:0 0.5em;
-		}
-		var{
-			font-style:italic;
-			font-weight:bold;
-		}
-	//pseudo classes
-		::selection{
-			color:@white;
-			background:@col-link;
-		}
-		::-moz-selection{
-			color:@white;
-			background:@col-link;
 		}
