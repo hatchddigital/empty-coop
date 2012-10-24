@@ -6,10 +6,15 @@
 //Set base font-family/line-height and declare the px size of an em unit
 //===
 	body{
-		font-size:(@text-base) + 0px;
+		font-size:100/16 * @text-base + 0%;
 		line-height:@lineheight-base;
 		font-family:sans-serif;
 		color:@col-base;
+	}
+
+	p,
+	li{
+		.font-size(16);
 	}
 
 //===
@@ -19,9 +24,11 @@
 		margin:0 0 1em 0;
 	}
 	hr{
-		border-top:1px dotted @col-recessive;
-		padding:1em 0;
-		margin:2em 0 0 0;
+		height:0;
+		margin:0 0 1em 0;
+		padding:0;
+		border:none;
+		border-top:1px solid @col-recessive;
 	}
 //===
 //Inline elements
