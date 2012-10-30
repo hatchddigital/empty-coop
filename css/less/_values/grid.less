@@ -2,39 +2,21 @@
 //Grid mixin
 //==================
 
-//Set default context
+//Set default context (column number in design)
 @context:12;
-@gutter:2%;
+
+//Gutter percetage is:
+//20 / 960 = 2/08
+
+//Set gutter width based on context
+@gutter: 100 / @context * 0.208 + 0%;
 
 //Set mixin
-
-.grid(@target,@context:@context,@gutter:@gutter){
-	@gutter:100 / @context * @target / 100 * 2%;
+.grid(@target,@context:@context){
+	width:100 / @context * @target + 0%;
+}
+.guttergrid(@target,@context:@context){
 	width:100 / @context * @target + 0% - @gutter;
-	padding-right:@gutter;
+	margin-right:@gutter/2;
+	margin-left:@gutter/2;
 }
-
-body{
-}
-[class*="grid"]{
-	height:100px;
-	float:left;
-	background:#666;
-
-	&:nth-child(odd){
-		background:#ccc;
-	}
-}
-.col12{
-	width:800px;
-	float:none;
-	margin:0 auto;
-	background:red !important;
-}
-	.col6{
-		.grid(6);
-	}
-		.col3in6{
-			.grid(3,6);
-		}
-
