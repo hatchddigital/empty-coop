@@ -1,0 +1,40 @@
+//================
+//Grid mixin
+//==================
+
+//Set default context
+@context:12;
+@gutter:2%;
+
+//Set mixin
+
+.grid(@target,@context:@context,@gutter:@gutter){
+	@gutter:100 / @context * @target / 100 * 2%;
+	width:100 / @context * @target + 0% - @gutter;
+	padding-right:@gutter;
+}
+
+body{
+}
+[class*="grid"]{
+	height:100px;
+	float:left;
+	background:#666;
+
+	&:nth-child(odd){
+		background:#ccc;
+	}
+}
+.col12{
+	width:800px;
+	float:none;
+	margin:0 auto;
+	background:red !important;
+}
+	.col6{
+		.grid(6);
+	}
+		.col3in6{
+			.grid(3,6);
+		}
+
