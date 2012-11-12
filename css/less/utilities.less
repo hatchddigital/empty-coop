@@ -4,11 +4,11 @@
 
 //===
 //Hide a text element but ensure it is still readable via assistive technology
+//New method: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
 //===
 	.visual-hide{
-		text-indent:-90000px;
-		height:0;
-		position:absolute;
+		text-indent:100%;
+		white-space:nowrap;
 		overflow:hidden;
 	}
 //===
