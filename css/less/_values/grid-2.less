@@ -23,7 +23,7 @@ max-width - gutter * context - 1 / context * target
 
 .grid( @target, @context:@context ){
 
-	@context-width: @max-width - @gutter * (@context - 1);
+	@context-width: @max-width - @gutter * (@context/@target - 1);
 
 	width:round(@context-width / @context * @target) + 0px;
 	margin-right:@gutter + 0px;
@@ -49,12 +49,13 @@ div{
 	margin-right:0;
 }
 .content-main{
-	.grid(7);
+	.grid(2);
 	float:left;
 	background:fade(pink,50%);
 }
 .content-sec{
-	.grid(3);
+	.grid(8);
 	float:left;
+	margin-right:0;
 	background:fade(green,50%);
 }
