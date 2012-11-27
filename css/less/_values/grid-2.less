@@ -1,0 +1,60 @@
+//================
+//Grid mixin
+//==================
+
+/*
+
+gutter:
+
+gutter / context * 100
+
+
+grid unit:
+
+max-width - gutter * context - 1 / context * target
+
+960 - 10 * 12 - 1 / 12 * 1 = 1 grid unit
+
+*/
+
+@max-width:1000;
+@context:10;
+@gutter:10;
+
+.grid( @target, @context:@context ){
+
+	@context-width: @max-width - @gutter * (@context - 1);
+
+	width:round(@context-width / @context * @target) + 0px;
+	margin-right:@gutter + 0px;
+}
+
+div{
+	background:transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
+}
+
+//Test
+
+.grid-container{
+	width:1000px;
+	margin:0 auto 20px auto;
+}
+
+.content-pri{
+	.grid(1);
+	float:left;
+	background:fade(#999,50%);
+}
+.last{
+	margin-right:0;
+}
+.content-main{
+	.grid(7);
+	float:left;
+	background:fade(pink,50%);
+}
+.content-sec{
+	.grid(3);
+	float:left;
+	background:fade(green,50%);
+}
