@@ -4,67 +4,41 @@ Version 3.0
 Author: Hatchd
 Created: 02.08.2012
 ==================*/
-/*
-
---Calculate fluid gutter--
-
-target gutter in px / context-width in px * 100
-
-*/
-/*
-
---Calculate column
-
-
-
-*/
 div {
+  min-height: 400px;
   background: transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
+  text-align: center;
+}
+div p {
+  padding: 10px 0;
 }
 .grid-container {
-  max-width: 1000px;
   width: 100%;
+  margin-right: 1%;
+  max-width: 1000px;
   margin: 0 auto 20px auto;
 }
-.content-pri {
-  width: 9.1%;
-  margin-right: 1%;
+.grid-container div {
   float: left;
-  background: rgba(153, 153, 153, 0.5);
 }
-.last {
+[class*="grid"].last {
   margin-right: 0;
 }
-.content-main {
+.grid-half {
   width: 49.5%;
   margin-right: 1%;
-  float: left;
+  background: rgba(255, 0, 0, 0.5);
+}
+.grid-half:nth-child(odd) {
+  background: rgba(0, 0, 255, 0.5);
+}
+.grid-half .grid-3 {
+  width: 59.1919191919192%;
+  margin-right: 2.202020202020203%;
   background: rgba(255, 192, 203, 0.5);
 }
-.content-main-sub {
-  width: 39.8%;
-  margin-right: 2%;
-  float: left;
-  background: rgba(0, 0, 255, 0.5);
-}
-.content-main-subright {
-  width: 60.2%;
-  margin-right: 2%;
-  float: left;
-  background: rgba(255, 0, 0, 0.5);
-  margin-right: 0;
-}
-.content-main-subright-inner {
-  width: 67.88888888888889%;
-  margin-right: 3.3333333333333335%;
-  float: left;
-  background: rgba(0, 0, 255, 0.5);
-}
-.content-sec {
-  width: 49.5%;
-  margin-right: 1%;
-  float: left;
-  margin-right: 0;
+.grid-half .grid-2 {
+  width: 38.78787878787879%;
   background: rgba(0, 128, 0, 0.5);
 }
 /*
