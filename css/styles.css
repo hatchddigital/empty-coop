@@ -5,6 +5,69 @@ Author: Hatchd
 Created: 02.08.2012
 ==================*/
 /*
+
+--Calculate fluid gutter--
+
+target gutter in px / context-width in px * 100
+
+*/
+/*
+
+--Calculate column
+
+
+
+*/
+div {
+  background: transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
+}
+.grid-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto 20px auto;
+}
+.content-pri {
+  width: 9.1%;
+  margin-right: 1%;
+  float: left;
+  background: rgba(153, 153, 153, 0.5);
+}
+.last {
+  margin-right: 0;
+}
+.content-main {
+  width: 49.5%;
+  margin-right: 1%;
+  float: left;
+  background: rgba(255, 192, 203, 0.5);
+}
+.content-main-sub {
+  width: 39.8%;
+  margin-right: 2%;
+  float: left;
+  background: rgba(0, 0, 255, 0.5);
+}
+.content-main-subright {
+  width: 60.2%;
+  margin-right: 2%;
+  float: left;
+  background: rgba(255, 0, 0, 0.5);
+  margin-right: 0;
+}
+.content-main-subright-inner {
+  width: 67.88888888888889%;
+  margin-right: 3.3333333333333335%;
+  float: left;
+  background: rgba(0, 0, 255, 0.5);
+}
+.content-sec {
+  width: 49.5%;
+  margin-right: 1%;
+  float: left;
+  margin-right: 0;
+  background: rgba(0, 128, 0, 0.5);
+}
+/*
 normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css
 */
 article,

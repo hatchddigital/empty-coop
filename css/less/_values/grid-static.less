@@ -1,5 +1,5 @@
 //================
-//Grid mixin
+//A static grid mixin
 //==================
 
 /*
@@ -18,10 +18,10 @@ max-width - gutter * context - 1 / context * target
 */
 
 @max-width:1000;
-@context:10;
+@default-context:10;
 @gutter:10;
 
-.grid( @target, @context:@context ){
+.grid( @target, @context:@default-context ){
 
 	@context-width: @max-width - @gutter * (@context/@target - 1);
 
@@ -54,7 +54,7 @@ div{
 	background:fade(pink,50%);
 }
 	.content-main-sub{
-		.grid(3);
+		.grid(2);
 		float:left;
 		background:fade(blue,50%);
 	}
