@@ -3,98 +3,65 @@
 //==================
 
 @max-width:1000;
-@context:10;
-@gutter:10;
+@overall-cols:4;
+@px-gutter:10;
+@gutter: @px-gutter / @max-width * 100;
 
-/*
+#grid{
 
---Calculate fluid gutter--
+	.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
 
-target gutter in px / context-width in px * 100
+		@context-width: 100 - (@row-cols/@desired-cols - @gutter);
 
-*/
-
-/*
-
---Calculate column
-
-
-
-*/
-
-@fluid-gutter: @gutter / @max-width * 100;
-
-.grid( @target, @context:@context ){
-
-	@context-width: 100 - (@context/@target - @fluid-gutter);
-
-	width:@context-width / @context * @target + 0%;
-	margin-right:@fluid-gutter + 0%;
-}
-.subgrid( @target, @context:@context ){
-
-	//Grab the context width in %
-	@context-outer-width:100/10*@context;
-
-	//Grab the context width in px
-	@context-outer-width-ab:round(@max-width/100*@context-outer-width);
-
-	@outer-width: 100 / @context * @target ;
-
-	@absolute-width: round(@context-outer-width-ab / 100 * @outer-width);
-
-	@innergutter: 10 / @context-outer-width-ab * 100;
-
-	@new-context-width: 100 - (@context/@target - @innergutter);
-
-	width:@new-context-width / @context * @target + 0%;
-	margin-right:@innergutter + 0%;
-}
-
-div{
-	background:transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
-}
-
-//Test
-
-.grid-container{
-	max-width:1000px;
-	width:100%;
-	margin:0 auto 20px auto;
-}
-
-.content-pri{
-	.grid(1);
-	float:left;
-	background:fade(#999,50%);
-}
-.last{
-	margin-right:0;
-}
-.content-main{
-	.grid(5);
-	float:left;
-	background:fade(pink,50%);
-}
-	.content-main-sub{
-		.subgrid(2,5);
-		float:left;
-		background:fade(blue,50%);
+		width:@context-width / @row-cols * @desired-cols + 0%;
+		margin-right:@gutter + 0%;
 	}
-	.content-main-subright{
-		.subgrid(3,5);
+
+	.dist(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+		@col:(100/@row-cols * @desired-cols) - (@gutter * 2);
+
+		width:@col + 0%;
+		margin-right:@gutter + 0%;
+		margin-left:@gutter + 0%;
+
+	}
+
+	.nude(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+		@col:100/@row-cols * @desired-cols;
+
+		width:@col + 0%;
+
+	}
+}
+
+#site-wrapper{
+	max-width:@max-width + 0px;
+	#grid > .nude();
+	margin:0 auto;
+	min-height:400px;
+	background:transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-4col-20pxgutter.png') repeat top left;
+}
+	#pc-pri{
+		#grid > .dist(2);
 		float:left;
 		background:fade(red,50%);
-		margin-right:0;
 	}
-		.content-main-subright-inner{
-			.subgrid(2,3);
-			float:left;
-			background:fade(blue,50%);
+		.gallery{
+			list-style:none;
+			margin:0;
+			padding:0;
+
+			li{
+				#grid > .dist(1,2);
+				height:100px;
+				background:fade(pink,50%);
+				float:left;
+			}
 		}
-.content-sec{
-	.grid(5);
-	float:left;
-	margin-right:0;
-	background:fade(green,50%);
-}
+	#pc-sec{
+		#grid > .dist(2);
+		float:left;
+		background:fade(green,50%);
+	}
