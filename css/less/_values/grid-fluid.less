@@ -4,16 +4,16 @@
 
 @max-width:1000;
 @overall-cols:4;
-@px-gutter:10;
-@gutter: @px-gutter / @max-width * 100;
+@gutter:2;
 
 #grid{
 
 	.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
 
-		@context-width: 100 - (@row-cols/@desired-cols - @gutter);
+		@width:(100/@row-cols * @desired-cols);
+		@gutterno:@gutter * (@desired-cols - 1);
 
-		width:@context-width / @row-cols * @desired-cols + 0%;
+		width:@width - @gutterno + 0%;
 		margin-right:@gutter + 0%;
 	}
 
@@ -44,7 +44,7 @@
 	background:transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-4col-20pxgutter.png') repeat top left;
 }
 	#pc-pri{
-		#grid > .dist(2);
+		#grid > .run(1);
 		float:left;
 		background:fade(red,50%);
 	}
@@ -61,7 +61,8 @@
 			}
 		}
 	#pc-sec{
-		#grid > .dist(2);
+		#grid > .run(3);
+		margin-right:0;
 		float:left;
 		background:fade(green,50%);
 	}
