@@ -18,36 +18,6 @@ max-width - gutter * context - 1 / context * target
 960 - 10 * 12 - 1 / 12 * 1 = 1 grid unit
 
 */
-#page-container {
-  width: 1000px;
-  margin: 0 auto;
-  background: transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
-}
-#pc-primary {
-  float: left;
-  width: 596px;
-  margin-right: 10px;
-}
-#pc-secondary {
-  float: left;
-  width: 394px;
-}
-.img-gallery {
-  list-style: none;
-  margin: 0;
-}
-.img-gallery li {
-  display: block;
-  float: left;
-  width: 192px;
-  margin-right: 10px;
-}
-.img-gallery li:nth-child(3n+3) {
-  margin-right: 0;
-}
-.img-gallery img {
-  width: 100%;
-}
 /*
 normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css
 */
