@@ -56,18 +56,21 @@ We don't work on a fixed canvas, so our rules shouldn't point to a specific loca
  - An orange button reserved for the main call to action on a page should *not* be called: **btn-orange**; it should be called something like: **btn-maincta.**
  - The side column of a blog page should *not* be called: **page-sidebar**; it should be called something like: **page-complimentry.**
 
- ### Rule 3: When creating a modular component, it should be styled element-agnostic
+### Rule 3: When creating a modular component, it should be styled element-agnostic
 
- Self-contained modules can be used in many different situations, and so should be as flexible as possible; tying styles to elements is not as flexible as tying them to unique class names. Let's take a simple blog post listing as an example:
+Self-contained modules can be used in many different situations, and so should be as flexible as possible; tying styles to elements is not as flexible as tying them to unique class names. Let's take a simple blog post listing as an example:
 
+HTML:
 
- 	<article class="post-listing">
- 		<h1>Post title</h1>
- 		<figure>
- 			<img src="featured-image" />
- 		</figure>
- 		<p>Post content</p>
- 	</article>
+	<article class="post-listing">
+		<h1>Post title</h1>
+		<figure>
+			<img src="featured-image" />
+		</figure>
+		<p>Post content</p>
+	</article>
+
+LESS:
 
 	article.post-listing{
 
@@ -88,6 +91,8 @@ The problem with this is, if a different element is used, or a h2 swapped out fo
 
 A better way to style:
 
+HTML:
+
  	<article class="post-listing">
  		<h1 class="pl-title">Post title</h1>
  		<figure class="pl-featuredimg">
@@ -95,6 +100,8 @@ A better way to style:
  		</figure>
  		<p>Post content</p>
  	</article>
+
+LESS:
 
  	.post-listing{
  		...
