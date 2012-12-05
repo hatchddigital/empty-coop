@@ -49,6 +49,9 @@ Better:
 
 ### Rule 2: Name things after function, not look
 
+We don't work on a fixed canvas, so our rules shouldn't point to a specific location on the design, nor should they be named by their appearence. Some examples:
 
+ - An orange button reserved for the main call to action on a page should *not* be called: **btn-orange**; it should be called something like: **btn-maincta.**
+ - The side column of a blog page should *not* be called: **page-sidebar**; it should be called something like: **page-complimentry.**
 
 
