@@ -8,7 +8,7 @@ Please note: Many examples use LESS, as that is the pre-processor Empty-coop use
 
 Everyone writes different, so enforcing sameness in a complete sense is a pointless endevour. However, there are some golden rules we should all follow, to ensure we can pick each other's work up, and to ensure our styles remain effecient:
 
-### Rule 1: Avoid overqualification and lots of descendence
+### Rule 1: Avoid overqualification and lots of descendent selectors
 
 When writing a CSS rule, it should be made as specific as it needs to be, for that rule to stick. A rule shouldn't be over-qualified for the sake of it. Let's say for example, we're targeting the *h1* inside this element:
 
@@ -29,7 +29,7 @@ But it would be better to write:
 	#page-header h1{ ... }
 *(specifity: 100+1)*
 
-The top rule has a large amount of specifity and plenty of descendance, which is unneccesary. The user agent has to work harder to apply the rule, and as a CSS author the rule is stronger, so hard to override. It can be tempting in LESS to end up with lots of descendence, as LESS has a convenient nesting function. As tempting as this is, it should be avoided. For example:
+The top rule has a large amount of specifity, which is unneccesary. The user agent has to work harder to apply the rule, and as a CSS author the rule is stronger, so hard to override. It can be tempting in LESS to end up with lots of descendence, as LESS has a convenient nesting function. As tempting as this is, it should be avoided. For example:
 
 Bad:
 
@@ -60,7 +60,7 @@ We don't work on a fixed canvas, so our rules shouldn't point to a specific loca
 
 Self-contained modules can be used in many different situations, and so should be as flexible as possible; tying styles to elements is not as flexible as tying them to unique class names. Let's take a simple blog post listing as an example:
 
-HTML:
+#### HTML:
 
 	<article class="post-listing">
 		<h1>Post title</h1>
@@ -70,7 +70,7 @@ HTML:
 		<p>Post content</p>
 	</article>
 
-LESS:
+#### LESS:
 
 	article.post-listing{
 
@@ -89,9 +89,9 @@ LESS:
 
 The problem with this is, if a different element is used, or a h2 swapped out for an h1, then the styles will no longer work. Also, Each rule uses 1 level of descendence.
 
-A better way to style:
+#### A better way to style:
 
-HTML:
+##### HTML:
 
  	<article class="post-listing">
  		<h1 class="pl-title">Post title</h1>
@@ -101,7 +101,7 @@ HTML:
  		<p>Post content</p>
  	</article>
 
-LESS:
+##### LESS:
 
  	.post-listing{
  		...
