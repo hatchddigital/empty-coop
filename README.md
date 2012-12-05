@@ -4,11 +4,9 @@ A starting point for our projects at Hatchd. Rather than an extensive boilerplat
 
 ## Style-rules of the roost
 
-### Some golden CSS rules
-
 Everyone writes different, so enforcing sameness in a complete sense is a pointless endevour. However, there are some golden rules we should all follow, to ensure we can pick each other's work up, and to ensure our styles remain effecient:
 
-#### Rule 1: Avoid overqualification and lots of descendence
+### Rule 1: Avoid overqualification and lots of descendence
 
 When writing a CSS rule, it should be made as specific as it needs to be, for that rule to stick. A rule shouldn't be over-qualified for the sake of it. Let's say for example, we're targeting the *h1* inside this element:
 
@@ -49,6 +47,8 @@ Better:
 		...
 	}
 
-#### Rule 2: Name things after function, not look
+### Rule 2: Name things after function, not look
+
+
 
 
