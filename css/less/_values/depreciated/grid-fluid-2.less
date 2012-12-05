@@ -1,0 +1,131 @@
+//================
+//A fluid grid mixin
+//==================
+
+@default-pixel-context:1000;
+@default-column-count:10;
+@default-pixel-gutter:10;
+
+
+div{
+	min-height:400px;
+	background:transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
+	text-align:center;
+
+	p{
+		padding:10px 0;
+	}
+}
+
+.grid( @desired-column-count, @row-column-count:@default-column-count ) when ( @row-column-count = @default-column-count ){
+
+	//1. Grab percentage width based on context
+	@fluid-width: 100 / @row-column-count * @desired-column-count;
+
+	//2. Convert this to px
+	@px-width: round(@default-pixel-context / 100 * @fluid-width);
+
+	//3. Calculate gutter size
+	@fluid-gutter: @default-pixel-gutter / @default-pixel-context * 100;
+
+	//4. Calculate a new width, taking the gutters into account
+	@context-width:100 - (@row-column-count / @desired-column-count - @fluid-gutter);
+
+	//5. Calculate a final width
+	@final-width: @context-width / @row-column-count * @desired-column-count + 0% ;
+
+	//6. Set CSS properties
+	width: @final-width;
+	margin-right:@fluid-gutter + 0%;
+
+}
+
+.grid( @desired-column-count, @row-column-count){
+
+	//1. Grab percentage width based on context
+	@fluid-width: 100 / @row-column-count * @desired-column-count;
+
+	//2. Convert this to px
+	@px-width: round(@default-pixel-context / 100 * @fluid-width);
+
+	//3. Calculate gutter size
+	@fluid-gutter: @default-pixel-gutter / 490 * 100;
+
+	//4. Calculate a new width, taking the gutters into account
+	@context-width:100 - (@row-column-count / @desired-column-count - @fluid-gutter);
+
+	//5. Calculate a final width
+	@final-width: @context-width / @row-column-count * @desired-column-count + 0% ;
+
+	//6. Set CSS properties
+	width: @final-width;
+	margin-right:@fluid-gutter + 0%;
+
+}
+
+.gridnew ( @desired-column-count, @row-column-count:@default-column-count ) {
+
+	//1. Calculate gutter size
+	@fluid-gutter: @default-pixel-gutter / @default-pixel-context * 100;
+
+	//2. Grab width without gutters
+	@context-width: 100 - ( @fluid-gutter * @row-column-count - 1 );
+
+	//3. Calculate final width
+	@final-width: (@context-width / @row-column-count * @desired-column-count) + (@fluid-gutter * @desired-column-count - 1);
+
+	width: @final-width + 0%;
+	margin-right:@fluid-gutter + 0%;
+}
+
+.gridnewnest ( @desired-column-count, @row-column-count:@default-column-count ) {
+
+	//1. Calculate gutter size
+	@fluid-gutter: @default-pixel-gutter / 490 * 100;
+
+	//2. Grab width without gutters
+	@context-width: 100 - ( @fluid-gutter * @row-column-count - 1 );
+
+	//3. Calculate final width
+	@final-width: (@context-width / @row-column-count * @desired-column-count) + (@fluid-gutter * @desired-column-count - 1);
+
+	width: @final-width + 0%;
+	margin-right:@fluid-gutter + 0%;
+}
+
+
+
+//Test
+
+.grid-container{
+	.grid(10);
+	max-width:@default-pixel-context + 0px;
+	margin:0 auto 20px auto;
+
+	div{
+		float:left;
+	}
+}
+
+	[class*="grid"].last{
+		margin-right:0;
+	}
+
+	.grid-half{
+		//.grid(5);
+		.gridnew(5);
+		background:fade(red,50%);
+
+		&:nth-child(odd){
+			background:fade(blue,50%);
+		}
+		.grid-3{
+			width:59.1919191919192%; //293 / 495 * 100
+			margin-right:2.202020202020203%;
+			background:fade(pink,50%);
+		}
+		.grid-2{
+			width:38.78787878787879%;
+			background:fade(green,50%);
+		}
+	}
