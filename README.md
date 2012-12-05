@@ -2,6 +2,8 @@
 
 A starting point for our projects at Hatchd. Rather than an extensive boilerplate, this is simply meant as a springboard, with a set of base typographic styles and an initial folder structure to ensure all our builds remain consistent.
 
+Please note: Many examples use LESS, as that is the pre-processor Empty-coop uses.
+
 ## Style-rules of the roost
 
 Everyone writes different, so enforcing sameness in a complete sense is a pointless endevour. However, there are some golden rules we should all follow, to ensure we can pick each other's work up, and to ensure our styles remain effecient:
@@ -54,4 +56,55 @@ We don't work on a fixed canvas, so our rules shouldn't point to a specific loca
  - An orange button reserved for the main call to action on a page should *not* be called: **btn-orange**; it should be called something like: **btn-maincta.**
  - The side column of a blog page should *not* be called: **page-sidebar**; it should be called something like: **page-complimentry.**
 
+ ### Rule 3: When creating a modular component, it should be styled element-agnostic
+
+ Self-contained modules can be used in many different situations, and so should be as flexible as possible; tying styles to elements is not as flexible as tying them to unique class names. Let's take a simple blog post listing as an example:
+
+
+ 	<article class="post-listing">
+ 		<h1>Post title</h1>
+ 		<figure>
+ 			<img src="featured-image" />
+ 		</figure>
+ 		<p>Post content</p>
+ 	</article>
+
+	article.post-listing{
+
+		...
+
+		h1{
+			...
+		}
+		figure{
+			...
+		}
+		img{
+			...
+		}
+	}
+
+The problem with this is, if a different element is used, or a h2 swapped out for an h1, then the styles will no longer work. Also, Each rule uses 1 level of descendence.
+
+A better way to style:
+
+ 	<article class="post-listing">
+ 		<h1 class="pl-title">Post title</h1>
+ 		<figure class="pl-featuredimg">
+ 			<img src="featured-image" />
+ 		</figure>
+ 		<p>Post content</p>
+ 	</article>
+
+ 	.post-listing{
+ 		...
+ 	}
+ 		.pl-title{
+ 			...
+ 		}
+ 		.pl-featuredimg{
+ 			...
+ 		}
+
+Ah, much better! Less descendence and more flexibility. Also, using a naming convention where the parent module name is abbreviated and prefixed before each child element, gives the rules clarity and ensures they won't get mixed up with other rules.
 
