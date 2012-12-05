@@ -2,7 +2,7 @@
 
 A starting point for our projects at Hatchd. Rather than an extensive boilerplate, this is simply meant as a springboard, with a set of base typographic styles and an initial folder structure to ensure all our builds remain consistent.
 
-## Styleguide
+## Style-rules of the roost
 
 ### Some golden CSS rules
 
@@ -22,12 +22,12 @@ When writing a CSS rule, it should be made as specific as it needs to be, for th
 You could write:
 
 	header#page-header hgroup h1{ ... }
-	*(specifity: 1+100+1+1)*
+*(specifity: 1+100+1+1)*
 
 But it would be better to write:
 
 	#page-header h1{ ... }
-	*(specifity: 100+1)*
+*(specifity: 100+1)*
 
 The top rule has a large amount of specifity and plenty of descendance, which is unneccesary. The user agent has to work harder to apply the rule, and as a CSS author the rule is stronger, so hard to override. It can be tempting in LESS to end up with lots of descendence, as LESS has a convenient nesting function. As tempting as this is, it should be avoided. For example:
 
@@ -48,3 +48,7 @@ Better:
 	#page-header h1{
 		...
 	}
+
+#### Rule 2: Name things after function, not look
+
+
