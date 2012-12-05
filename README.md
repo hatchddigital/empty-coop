@@ -91,7 +91,7 @@ A better way to style:
  	<article class="post-listing">
  		<h1 class="pl-title">Post title</h1>
  		<figure class="pl-featuredimg">
- 			<img src="featured-image" />
+ 			...
  		</figure>
  		<p>Post content</p>
  	</article>
