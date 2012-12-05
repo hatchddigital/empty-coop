@@ -115,3 +115,6 @@ The problem with this is, if a different element is used, or a h2 swapped out fo
 
 Ah, much better! Less descendence and more flexibility. Also, using a naming convention where the parent module name is abbreviated and prefixed before each child element, gives the rules clarity and ensures they won't get mixed up with other rules.
 
+### Rule 4: When using Javascript libraries, don't use their classes as style hooks
+
+If using one of the *hatchling* Javascript modules, or something similar, don't use a class specific to that module for styling, unless the classes that module use change. Instead, create your own classes, relevent to the site you're building.
