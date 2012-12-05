@@ -18,55 +18,60 @@ max-width - gutter * context - 1 / context * target
 */
 
 @max-width:1000;
-@default-context:10;
+@overall-cols:10;
 @gutter:10;
 
-.grid( @target, @context:@default-context ){
+#grid{
 
-	@context-width: @max-width - @gutter * (@context/@target - 1);
 
-	width:round(@context-width / @context * @target) + 0px;
-	margin-right:@gutter + 0px;
+	//===
+		//Run classes - set the columns with gutters, and float them
+	//===
+		.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+			@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
+
+			float:left;
+			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+			margin-right:@gutter + 0px;
+		}
+		.run-last(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+			@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
+
+			float:left;
+			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+
+		}
+
 }
 
-div{
+#page-container{
+	width:1000px;
+	margin:0 auto;
 	background:transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
 }
-
-//Test
-
-.grid-container{
-	width:1000px;
-	margin:0 auto 20px auto;
-}
-
-.content-pri{
-	.grid(1);
-	float:left;
-	background:fade(#999,50%);
-}
-.last{
-	margin-right:0;
-}
-.content-main{
-	.grid(5);
-	float:left;
-	background:fade(pink,50%);
-}
-	.content-main-sub{
-		.grid(2);
-		float:left;
-		background:fade(blue,50%);
+	#pc-primary{
+		#grid > .run(6);
 	}
-	.content-main-subright{
-		.grid(2);
-		float:left;
-		background:fade(red,50%);
-		margin-right:0;
+	#pc-secondary{
+		#grid > .run-last(4);
 	}
-.content-sec{
-	.grid(5);
-	float:left;
-	margin-right:0;
-	background:fade(green,50%);
-}
+
+	.img-gallery{
+		list-style:none;
+		margin:0;
+
+		li{
+			display:block;
+			#grid > .run(2);
+
+			&:nth-child(3n+3){
+				margin-right:0;
+			}
+
+		}
+		img{
+			width:100%;
+		}
+	}

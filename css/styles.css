@@ -4,38 +4,49 @@ Version 3.0
 Author: Hatchd
 Created: 02.08.2012
 ==================*/
-#site-wrapper {
-  max-width: 1000px;
-  width: 100%;
+/*
+
+gutter:
+
+gutter / context * 100
+
+
+grid unit:
+
+max-width - gutter * context - 1 / context * target
+
+960 - 10 * 12 - 1 / 12 * 1 = 1 grid unit
+
+*/
+#page-container {
+  width: 1000px;
   margin: 0 auto;
-  min-height: 400px;
-  background: transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-4col-20pxgutter.png') repeat top left;
+  background: transparent url('/Empty-coop/images/_grid-helpers/gridhelper-1000px-10col-10pxgutter.gif') repeat top left;
 }
-#pc-pri {
-  width: 25%;
-  margin-right: 2%;
+#pc-primary {
   float: left;
-  background: rgba(255, 0, 0, 0.5);
+  width: 596px;
+  margin-right: 10px;
 }
-.gallery {
+#pc-secondary {
+  float: left;
+  width: 394px;
+}
+.img-gallery {
   list-style: none;
   margin: 0;
-  padding: 0;
 }
-.gallery li {
-  width: 46%;
-  margin-right: 2%;
-  margin-left: 2%;
-  height: 100px;
-  background: rgba(255, 192, 203, 0.5);
+.img-gallery li {
+  display: block;
   float: left;
+  width: 192px;
+  margin-right: 10px;
 }
-#pc-sec {
-  width: 71%;
-  margin-right: 2%;
+.img-gallery li:nth-child(3n+3) {
   margin-right: 0;
-  float: left;
-  background: rgba(0, 128, 0, 0.5);
+}
+.img-gallery img {
+  width: 100%;
 }
 /*
 normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css
