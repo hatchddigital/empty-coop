@@ -31,7 +31,7 @@ But it would be better to write:
 
 The top rule has a large amount of specifity and plenty of descendance, which is unneccesary. The user agent has to work harder to apply the rule, and as a CSS author the rule is stronger, so hard to override. It can be tempting in LESS to end up with lots of descendence, as LESS has a convenient nesting function. As tempting as this is, it should be avoided. For example:
 
-	Bad:
+Bad:
 
 	#page-header{
 
@@ -43,7 +43,7 @@ The top rule has a large amount of specifity and plenty of descendance, which is
 		}
 	}
 
-	Better:
+Better:
 
 	#page-header h1{
 		...
