@@ -46,17 +46,30 @@
 
                 <style>
                         .view-styleguide{
-                                width:700px;
+                                width:850px;
                                 margin:0 auto;
                                 padding:20px 0;
                         }
                         .styleguide-section{
                                 margin:0 0 1em 0;
-                                border-bottom:1px solid #ccc;
+                                padding:20px 40px 30px 40px;
                         }
                                 .sgs-header{
-                                        margin:0 0 0.75em 0;
-                                        font-size:3em;
+                                        margin:0 -40px 2em -40px;
+                                        padding:1em 20px;
+                                        border-top:1px solid #EF4136;
+                                        border-bottom:1px solid #EF4136;
+                                        box-shadow:
+                                                inset 0 3px 0 0 #fff,
+                                                inset 0 -1px 0 0 #fff
+                                        ;
+                                        background:#EF4136;
+                                        color:#fff;
+                                        font-size:1.5em;
+                                        font-weight:bold;
+                                        font-style:italic;
+                                        font-family:Georgia,serif;
+                                        text-align:center;
                                 }
                 </style>
 
@@ -65,7 +78,7 @@
 	<body class="view-styleguide">
 
                 <div class="styleguide-section">
-                        <h1 class="sgs-header">Empty Coop Styleguide</h1>
+                        <h1 class="sgs-header">- Empty Coop Styleguide -</h1>
                         <p>A quick reference containing colours and basic HTML tags, to help ensure all base styles for a site are accounted for</p>
                 </div>
                 <div class="styleguide-section">
@@ -84,7 +97,8 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sapien neque, fringilla ac lacinia ac, sodales sed urna. Sed consectetur tortor id velit dictum et volutpat justo egestas. Suspendisse egestas nulla et odio rutrum rhoncus.</p>
                 </div>
                 <div class="styleguide-section">
-                        <h1 class="sgs-header">A &lt;dl&gt;, &lt;ol&gt; and &lt;ul&gt; make the perfect boiled egg</h1>
+                        <h1 class="sgs-header">Lists</h1>
+                        <h1>Making the perfect boiled egg</h1>
                         <h2>You'll need</h2>
                         <dl>
                                 <dt>For the eggs</dt>
@@ -113,8 +127,8 @@
 
                 </div>
                 <div class="styleguide-section">
-                        <h1 class="sgs-header">Some prize chickens</h1>
-                        <p>Yes, chickens should be celebrated. Here are some beauties:</p>
+                        <h1 class="sgs-header">Images</h1>
+                        <p>Chickens should be celebrated. Here are some beauties:</p>
                         <figure>
                                 <img src="http://2.bp.blogspot.com/_6T2kVa7G_6g/TTBoUv7JHPI/AAAAAAAACE0/ZK31n1vYRJU/s1600/ChickenBlog2a.jpg" width="300"/>
                                 <figcaption>Feathers Mcee: Empty Coop prize winner, 2012</figcaption>
@@ -124,7 +138,7 @@
                         <p>Nice, arent they!</p>
                 </div>
                 <div class="styleguide-section">
-                        <h1 class="sgs-header">Chickens, muses to the rich and famous since year nought</h1>
+                        <h1 class="sgs-header">Quotes</h1>
                         <p>There have been many things said about the humble chicken, by those young and old, famous and anonymous. Here's a choice phrase from one half of Brandgalina:</p>
                         <blockquote>
                                 <p>Shoving feathers up your butt does not make you a chicken</p>
@@ -142,7 +156,8 @@
                         <p>Also, to quote Marty from <em>Back to the Future:</em> <q>Nobody calls me Chicken Needles, Nobody!</q> &ndash; <cite>(Marty Mcfly, from Back to the Future II).</cite></p>
                 </div>
                 <div class="styleguide-section">
-                        <h1 class="sgs-header">Which is better, the chicken or the egg?</h1>
+                        <h1 class="sgs-header">Tables</h1>
+                        <h1>Which is better, the chicken or the egg?</h1>
                         <table>
                                 <thead>
                                         <tr>
@@ -177,6 +192,21 @@
                                 </tbody>
                         </table>
                 </div>
+                <div class="styleguide-section">
+                        <h1 class="sgs-header">Code</h1>
+                        <p>To work out what came first, we'll need to get the math guns out. We'll try some inline and pre code:</p>
+                        <p><code>if(chicken == 1){egg == 0}else{egg == 1}</code></p>
+                        <p>Code in pre tags:</p>
+                        <pre>
+if(chicken == 1){
+        egg == 0
+}else{
+        egg == 1
+}
+                        </pre>
+
+                </div>
+
 
                 <!-- JavaScript libraries and UX based code -->
                 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

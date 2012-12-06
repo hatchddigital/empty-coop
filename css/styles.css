@@ -290,7 +290,7 @@
     white-space: pre;
     width: 100%;
     overflow: auto;
-    margin: 2em 0 2em 0;
+    margin: 0 0 1em 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -384,6 +384,7 @@
   }
   table {
     width: 100%;
+    margin: 0 0 1em 0;
     border: 1px solid #000000;
   }
   table,
