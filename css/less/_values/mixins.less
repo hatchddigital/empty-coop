@@ -187,6 +187,42 @@
             border-left-color:transparent;
             border-bottom-color:transparent;
         }
+        .top-right(@width:5px,@color:#000){
+            content:" ";
+            display:block;
+            width:0;
+            height:0;
+            border:@width/2 solid @color;
+            border-bottom-color:transparent;
+            border-left-color:transparent;
+        }
+        .top-left(@width:5px,@color:#000){
+            content:" ";
+            display:block;
+            width:0;
+            height:0;
+            border:@width/2 solid @color;
+            border-bottom-color:transparent;
+            border-right-color:transparent;
+        }
+        .bottom-right(@width:5px,@color:#000){
+            content:" ";
+            display:block;
+            width:0;
+            height:0;
+            border:@width/2 solid @color;
+            border-top-color:transparent;
+            border-left-color:transparent;
+        }
+        .bottom-left(@width:5px,@color:#000){
+            content:" ";
+            display:block;
+            width:0;
+            height:0;
+            border:@width/2 solid @color;
+            border-top-color:transparent;
+            border-right-color:transparent;
+        }
     }
 
 //===
