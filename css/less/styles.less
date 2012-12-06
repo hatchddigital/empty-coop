@@ -1,6 +1,6 @@
 /*================
 Styles for screen and print
-Version 3.0
+Version 4.0
 Author: Hatchd
 Created: 02.08.2012
 ==================*/
@@ -9,89 +9,119 @@ Created: 02.08.2012
 	//set master LESS values (variables and mixins)
 	//(establish reusable variables (single values) and mixins  (rulesets) that can be used within any CSS declaration
 //===
-@import '_values/swatches.less';
-@import '_values/units.less';
-@import '_values/mixins.less';
-@import '_values/grid-static.less';
+
+	@import '_values/swatches.less';
+	@import '_values/units.less';
+	@import '_values/mixins.less';
+	@import '_values/grid-static.less';
 
 //===
-	//establish any resource using an @rule
-	//(set rules for any CSS resource requiring an @ prefix, such as @animate rules or @font-face fonts)
+	//set styles for screen
 //===
-//@import 'resources/webfonts.less';
+@media screen{
+
+	//===
+		//establish any resource using an @rule
+		//(set rules for any CSS resource requiring an @ prefix, such as @animate rules or @font-face fonts)
+	//===
+
+		//@import 'resources/webfonts.less';
+
+	//===
+		//create a clean state
+		//(ensure we level any browser differences, so we can build any subsequent declarations on level ground)
+	//===
+
+		@import 'normalize.less';
+
+	//===
+		//set base rules that can apply site-wide
+		//(these should apply to naked elements, no class needed)
+	//===
+
+		@import 'base/typography.less';
+		@import 'base/headings.less';
+		@import 'base/lists.less';
+		@import 'base/quotes.less';
+		@import 'base/code.less';
+		@import 'base/links.less';
+		@import 'base/formelements.less';
+		@import 'base/images.less';
+		@import 'base/tables.less';
+
+	//===
+		//set reusable utilities
+		//(non-presentational classes, used to achieve functional things like clearing floats, visually hiding elements etc...)
+	//===
+
+		@import 'utilities.less';
+
+	//===
+		//define modular components
+		//(reusable components, called with a class (or classes) that can exist anywhere in the site)
+	//===
+
+		@import 'components/component.less';
+
+	//===
+		//set master layout
+		//(the scaffolding of the site, defined through elements that occur only once per page, defined via an aria role or ID)
+	//===
+
+		@import 'layout/layout-master.less';
+
+	//===
+		//set unique template layout(s)
+		//(overrides to master layout or new rules, unique to a specific template or set of templates. These definitions should be set from a unique HTML or body class)
+	//===
+
+		//...
+
+	//===
+		//set vendor-specific rules
+		//(adjust or scale-back site elements, depending on a specific browser, or a CSS property that may not be supported by every browser)
+	//===
+
+		//ie8 and below
+		.lt-ie9{
+			@import 'vendor_specific/vendorsp-ie8.less';
+		}
+		//ie7 and below
+		.lt-ie8{
+			@import 'vendor_specific/vendorsp-ie7.less';
+		}
+		//ie6
+		//.lt-ie7{@import 'less/vendorsp-ie6.less';}
+
+		//property-specific
+			//@import 'vendor_specific/vendorsp-byproperty.less';
+}
 
 //===
-	//create a clean state
-	//(ensure we level any browser differences, so we can build any subsequent declarations on level ground)
-//===
-@import 'normalize.less';
-
-//===
-	//set base rules that can apply site-wide
-	//(these should apply to naked elements, no class needed)
-//===
-@import 'base/typography.less';
-@import 'base/headings.less';
-@import 'base/lists.less';
-@import 'base/quotes.less';
-@import 'base/code.less';
-@import 'base/links.less';
-@import 'base/formelements.less';
-@import 'base/images.less';
-@import 'base/tables.less';
-
-//===
-	//set reusable utilities
-	//(non-presentational classes, used to achieve functional things like clearing floats, visually hiding elements etc...)
-//===
-@import 'utilities.less';
-
-//===
-	//define modular components
-	//(reusable components, called with a class (or classes) that can exist anywhere in the site)
-//===
-//...
-
-//===
-	//set master layout
-	//(the scaffolding of the site, defined through elements that occur only once per page, defined via an aria role or ID)
-//===
-@import 'layout/layout-master.less';
-
-//===
-	//set unique template layout(s)
-	//(overrides to master layout or new rules, unique to a specific template or set of templates. These definitions should be set from a unique HTML or body class)
-//===
-//...
-
-//===
-	//set responsive rules
+	//set responsive rules (also for screen)
 	//(make changes to layout, modular components or base rules, based on screen dimension or pixel density.
 	//Note:As they use complex media queries, these declarations will not register in ie8 and below)
 //===
-//...
+
+	//===
+		//Breakpoint 1
+	//===
+	@media screen and(max-width:1200px){
+		@import 'responsive/breakpt-1.less';
+	}
+
+	//===
+		//Breakpoint 2
+	//===
+	@media screen and(max-width:800px){
+		//@import 'responsive/breakpt-2.less';
+	}
+
 
 //===
-	//set vendor-specific rules
-	//(adjust or scale-back site elements, depending on a specific browser, or a CSS property that may not be supported by every browser)
+	//set styles for print
+	//(when any page from the site is printed, set rules to ensure only the useful bits are included, and that units  of measurement are transposed from pixels to physical ones - like mm, and points)
 //===
-//ie8 and below
-.lt-ie9{
-	@import 'vendor_specific/vendorsp-ie8.less';
-}
-//ie7 and below
-.lt-ie8{
-	@import 'vendor_specific/vendorsp-ie7.less';
-}
-//ie6
-//.lt-ie7{@import 'less/vendorsp-ie6.less';}
-
-//property-specific
-	//@import 'vendor_specific/vendorsp-byproperty.less';
-
-//set print appearance
-//(when any page from the site is printed, set rules to ensure only the useful bits are included, and that units  of measurement are transposed from pixels to physical ones - like mm, and points)
-
 @media print{
 	//..
 }

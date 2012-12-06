@@ -1,47 +1,41 @@
-//================
-//A static grid mixin
-//==================
+//======
+	//Static grid mixin
+//======
 
-/*
-
-gutter:
-
-gutter / context * 100
-
-
-grid unit:
-
-max-width - gutter * context - 1 / context * target
-
-960 - 10 * 12 - 1 / 12 * 1 = 1 grid unit
-
-*/
-
-@max-width:1000;
-@overall-cols:10;
-@gutter:10;
-
-#grid{
+//===
+	//Config
+//===
+	@max-width:1000;
+	@overall-cols:10;
+	@gutter:10;
 
 
-	//===
-		//Run classes - set the columns with gutters, and float them
-	//===
-		.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+//===
+	//Mixin
+//===
+	#grid{
 
-			@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
+		//===
+			//Run classes - set the columns with gutters, and float them
+		//===
+			.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
 
-			float:left;
-			width:round(@context-width / @row-cols * @desired-cols) + 0px;
-			margin-right:@gutter + 0px;
-		}
-		.run-last(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+				@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
 
-			@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
+				float:left;
+				width:round(@context-width / @row-cols * @desired-cols) + 0px;
+				margin-right:@gutter + 0px;
+			}
+		//===
+			//For the last column in a row, remove the gutter
+		//===
+			.run-last(@desired-cols:@overall-cols, @row-cols:@overall-cols){
 
-			float:left;
-			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+				@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
 
-		}
+				float:left;
+				width:round(@context-width / @row-cols * @desired-cols) + 0px;
 
-}
+			}
+
+	}

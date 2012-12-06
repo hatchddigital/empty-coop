@@ -1,26 +1,33 @@
 //======
-//quotes
+	//Quotes
 //======
 
-	blockquote{
-		margin:0 0 2em 0;
-		padding:1em 0 0 0;
+	//===
+		//Blockquotes
+	//===
+		blockquote{
+			margin:0 0 2em 0;
+			padding:1em 0 0 0;
 
-		p{
-			padding:0 1em;
-			font-size:1.6em;
+			p{
+				padding:0 1em;
+				font-size:1.6em;
 
-			&:first-child:before,chr
-			&:last-child:after{
-				content:'"';
+				&:first-child:before,
+				&:last-child:after{
+					content:'"';
+				}
 			}
+
 		}
 
-	}
-
-		
+	//===
+		//Inline quotes
+	//===
 		q{
 			font-style:italic;
 			color:inherit;
 		}
-		cite{font-style:italic;}
+		cite{
+			font-style:italic;
+		}
