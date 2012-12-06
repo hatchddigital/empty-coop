@@ -331,40 +331,66 @@
     margin: 0 0 1em 0;
   }
   fieldset {
-    margin: 0 0 2.5em 0;
+    margin: 0;
+    padding: 0;
+    border: none;
   }
   legend {
-    margin: 0 0 0.25em 0;
-    font-size: 1.14em;
-    padding: 0 0 1em 0;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    font-size: 1;
   }
   label {
-    display: block;
+    display: inline-block;
     margin: 0 0 0.25em 0;
   }
+  input,
+  textarea,
+  select {
+    display: block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+    border: 1px solid #cccccc;
+    color: #000000;
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: inline-block;
+    width: auto;
+    float: left;
+    margin: 0.25em 0.5em 0 0;
+  }
+  textarea {
+    min-height: 200px;
+  }
   button {
+    padding: 0.5em;
     cursor: pointer;
   }
-  form ol {
+  form ul {
     margin: 0;
+    padding: 0;
     list-style: none;
   }
   form li {
     position: relative;
+    margin: 0;
   }
-  input,
-  textarea {
-    display: block;
-    width: auto;
-    margin: 0 0 1em 0;
-    padding: 0.5em 15px;
-    font-size: 1em;
-    line-height: 1.3em;
-    width: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    color: #000000;
+  form li input,
+  form li select,
+  form li textarea {
+    margin-bottom: 1.5em;
+  }
+  form li input[type="checkbox"],
+  form li input[type="radio"] {
+    margin-bottom: 0.5em;
+  }
+  form .buttons {
+    padding-top: 1.5em;
   }
   figure {
     display: inline-block;
