@@ -1,0 +1,41 @@
+//======
+	//Static grid mixin
+//======
+
+//===
+	//Config
+//===
+	@max-width:1000;
+	@overall-cols:10;
+	@gutter:10;
+
+
+//===
+	//Mixin
+//===
+	#grid{
+
+		//===
+			//Run classes - set the columns with gutters, and float them
+		//===
+			.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+				@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
+
+				float:left;
+				width:round(@context-width / @row-cols * @desired-cols) + 0px;
+				margin-right:@gutter + 0px;
+			}
+		//===
+			//For the last column in a row, remove the gutter
+		//===
+			.run-last(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+				@context-width: @max-width - @gutter * (@row-cols/@desired-cols - 1);
+
+				float:left;
+				width:round(@context-width / @row-cols * @desired-cols) + 0px;
+
+			}
+
+	}

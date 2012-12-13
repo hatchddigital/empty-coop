@@ -1,0 +1,81 @@
+//======
+	//Form elements
+//======
+
+	//===
+		//Set global constants
+	//===
+		form{
+			position:relative;
+			margin:0 0 1em 0;
+		}
+			fieldset{
+				margin:0;
+				padding:0;
+				border:none;
+			}
+			legend{
+				margin:0 0 0.5em 0;
+				padding:0;
+				font-size:1;
+			}
+			label{
+				display:inline-block;
+				margin:0 0 0.25em 0;
+			}
+			input,
+			textarea,
+			select{
+				display:block;
+				.box-sizing;
+				width:100%;
+				margin:0;
+				padding:10px 15px;
+				border:1px solid @col-recessive;
+				color:@col-base;
+			}
+			input[type="checkbox"],
+			input[type="radio"]{
+				display:inline-block;
+				width:auto;
+				float:left;
+				border:none;
+				margin:0.25em 0.5em 0 0;
+			}
+			textarea{
+				min-height:200px;
+			}
+			button{
+				padding:0.5em;
+				cursor:pointer;
+			}
+
+	//===
+		//Set styles for full forms
+		//(sets of inputs/labels should always be encased in an ordered list for example)
+	//===
+		form ul{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		form li{
+			position:relative;
+			margin:0;
+
+			input,
+			select,
+			textarea{
+				margin-bottom:1.5em;
+			}
+			input[type="checkbox"],
+			input[type="radio"]{
+				margin-bottom:0.5em;
+			}
+
+		}
+		form .buttons{
+			padding-top:1.5em;
+		}
+
+

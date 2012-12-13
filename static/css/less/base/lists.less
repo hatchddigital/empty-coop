@@ -1,0 +1,52 @@
+//======
+	//Base list styles
+//======
+
+	//===
+		//Globals
+	//===
+		ul,ol,dl{
+			margin:0 0 1em 2em;
+			padding:0;
+		}
+			li{
+				margin:0 0 0.25em 0;
+			}
+
+	//===
+		//Unordered lists
+	//===
+		ul{
+			list-style:disc outside;
+
+			ul{
+				margin:0.25em 0 0.5em 1em;
+			}
+		}
+
+	//===
+		//Ordered lsits
+	//===
+		ol{
+			list-style:decimal outside;
+
+			ol{
+				margin:0.25em 0 0.5em 1.5em;
+				list-style-type:lower-roman;
+			}
+		}
+
+	//===
+		//Definition lists
+	//===
+		dl{
+			margin-left:0;
+		}
+			dt{
+				font-weight:bold;
+				margin:0 0 0.5em 0;
+				padding:1em 0 0 0;
+			}
+			dd{
+				margin:0 0 0.5em 0;
+			}
