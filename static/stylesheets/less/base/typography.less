@@ -1,0 +1,85 @@
+//======
+	//Base typographic styles
+//======
+
+//===
+//Set base font size/line-height and declare the px size of an em unit
+//===
+	body{
+		font-size:100/16 * @text-base + 0%;
+		line-height:@lineheight-base;
+		font-family:sans-serif;
+		color:@col-base;
+	}
+
+	p,
+	li
+	dt,
+	dd{
+		.font-size(16);
+		line-height:@lineheight-base;
+	}
+
+//===
+//Block elements
+//===
+	p{
+		margin:0 0 1em 0;
+	}
+	hr{
+		height:0;
+		margin:0 0 1em 0;
+		padding:0;
+		border:none;
+		border-top:1px solid @col-recessive;
+	}
+//===
+//Inline elements
+//===
+	//Superscript/subscript
+		//Prevents `sub` and `sup` affecting `line-height` in all browsers - src: gist.github.com/413930
+		sup,sub{
+		    font-size: 75%;
+		    line-height: 0;
+		    position: relative;
+		    vertical-align: baseline;
+		}
+		sup {
+		    top: -0.5em;
+		}
+		sub {
+		    bottom: -0.25em;
+		}
+
+	//For marking up content relevency/edits and highlighting content
+		ins{
+			background-color:@col-highlight;
+		}
+		del{
+			text-decoration:line-through;
+		}
+		s{
+			color:@col-recessive;
+			text-decoration:line-through;
+		}
+		mark{
+			background-color:@col-highlight;
+			color:inherit;
+			font-weight:normal;
+		}
+	//Small print
+		small{
+			font-weight:normal;
+			font-style:normal;
+		}
+	//Phrase tags
+		strong,b{
+			font-weight:bold;
+		}
+		em,i{
+			font-style:italic;
+		}
+		dfn,abbr{
+			font-style:inherit;
+			position:relative;
+		}

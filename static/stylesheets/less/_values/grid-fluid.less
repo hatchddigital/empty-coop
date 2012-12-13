@@ -1,0 +1,37 @@
+//================
+//A fluid grid mixin
+//==================
+
+@max-width:1000;
+@overall-cols:4;
+@gutter:2;
+
+#grid{
+
+	.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+		@width:(100/@row-cols * @desired-cols);
+		@gutterno:@gutter * (@desired-cols - 1);
+
+		width:@width - @gutterno + 0%;
+		margin-right:@gutter + 0%;
+	}
+
+	.dist(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+		@col:(100/@row-cols * @desired-cols) - (@gutter * 2);
+
+		width:@col + 0%;
+		margin-right:@gutter + 0%;
+		margin-left:@gutter + 0%;
+
+	}
+
+	.nude(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+
+		@col:100/@row-cols * @desired-cols;
+
+		width:@col + 0%;
+
+	}
+}

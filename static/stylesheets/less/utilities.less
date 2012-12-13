@@ -1,0 +1,62 @@
+//======
+	//Reusable utilities
+//======
+
+//===
+	//Hide a text element but ensure it is still readable via assistive technology
+	//New method: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+//===
+	.visual-hide{
+		text-indent:100%;
+		white-space:nowrap;
+		overflow:hidden;
+	}
+//===
+//Completely hide an element
+//===
+	.hide{
+		display:none;
+	}
+
+//===
+//Set an element to clear the element above it
+//===
+	.clear{
+		clear:both;
+		display:block;
+	}
+
+//===
+//Clearfix
+//===
+	.clearfix:after{
+		visibility:hidden;
+		display:block;
+		font-size:0;
+		content:" ";
+		clear:both;
+		height:0;
+	}
+	.clearfix{
+		display:inline-block;
+	}
+	/* Start commented backslash hack \*/
+		* html .clearfix{
+			height:1%;
+		}
+		.clearfix{
+			display:block;
+		}
+	/* Close commented backslash hack */
+
+//===
+//Set text to be replaced by an image
+//===
+	.replaced{
+		display:block;
+		text-indent:-900000px;
+		overflow:hidden;
+		background-color:transparent;
+		background-repeat:no-repeat;
+		background-position:top left;
+	}

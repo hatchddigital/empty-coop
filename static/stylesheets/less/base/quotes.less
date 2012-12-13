@@ -1,0 +1,42 @@
+//======
+	//Quotes
+//======
+
+	//===
+		//Blockquotes
+	//===
+		blockquote{
+			margin:0 0 1em 3em;
+
+			> p{
+				font-size:1.4em;
+				margin-bottom:0.60em;
+
+				&:first-child:before{
+					content:'\201C';
+				}
+				&:first-child:after{
+					content:'\201D';
+				}
+			}
+			footer p{
+				margin:-0.5em 0 0 0;
+				font-size:0.85em;
+				font-style:italic;
+
+				&:before{
+					content:"- ";
+				}
+			}
+		}
+
+	//===
+		//Inline quotes
+	//===
+		q{
+			font-style:italic;
+			color:inherit;
+		}
+		cite{
+			font-style:italic;
+		}

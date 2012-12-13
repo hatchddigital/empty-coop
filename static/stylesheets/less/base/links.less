@@ -1,0 +1,32 @@
+//======
+	//Links
+//======
+
+//===
+	//Anchor link styles
+//===
+	a,
+	a:link,
+	a:visited{
+		color:@col-link;
+		text-decoration:underline;
+	}
+	a:hover{
+	    color:@col-link-hover;
+	}
+	a:active{
+	    color:@col-link;
+	    text-decoration:underline;
+	}
+
+//===
+	//Text selection styles
+//===
+	::selection{
+		color:@white;
+		background:@col-link;
+	}
+	::-moz-selection{
+		color:@white;
+		background:@col-link;
+	}
