@@ -2,25 +2,51 @@
 //A fluid grid mixin
 //==================
 
+/*
+
+    max-width ..... = mwth
+    default-context = dctx
+    context ....... = ctx
+    column  ....... = col
+    gutter  ....... = gtr
+
+    width = 100 / ctx * col
+    gutterno = gtr * (col -1)
+
+    240 is what percent of 400?
+    240 ÷ 400 =.60 = 60%
+
+*/
+
 @max-width:1000;
-@overall-cols:4;
+@overall-cols:12;
 @gutter:2;
+
+@mwth : 1000;
+@dctx : 12;
+@gtr  : 2;
+
+@gtr-n1 : @gtr + 1;
+@gtr-n2 : @gtr + 2;
 
 #grid{
 
-	.run(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+    .run( @col:@dctx, @ctx:@dctx, @gtr:@gtr ){
 
-		@width:(100/@row-cols * @desired-cols);
-		@gutterno:@gutter * (@desired-cols - 1);
+        @gtrno:@gtr * (@ctx - 1);
+        @width:100 - @gtrno;
 
-		width:@width - @gutterno + 0%;
-		margin-right:@gutter + 0%;
-	}
+        float:left;
+        width:(@width / @ctx) * @col + (@gtr * @col - @gtr)  + 0%;
+        margin-right:@gtr + 0%;
+
+    }
 
 	.dist(@desired-cols:@overall-cols, @row-cols:@overall-cols){
 
 		@col:(100/@row-cols * @desired-cols) - (@gutter * 2);
 
+        float:left;
 		width:@col + 0%;
 		margin-right:@gutter + 0%;
 		margin-left:@gutter + 0%;
@@ -35,3 +61,34 @@
 
 	}
 }
+
+.grid-container{
+    max-width:1000px;
+    width:90%;
+    margin:50px auto;
+
+    div{
+        height:600px;
+    }
+}
+    .leftcol{
+        #grid > .run(4);
+    }
+    .rightcol{
+        #grid > .run(8);
+        margin-right:0;
+    }
+        .rcol-left{
+            #grid > .run(7,10,@gtr-n1);
+        }
+            .block1{
+                #grid > .run(2,7,@gtr-n2);
+            }
+            .block2{
+                #grid > .run(5,7,@gtr-n2);
+                margin-right:0;
+            }
+        .rcol-right{
+            #grid > .run(3,10,@gtr-n1);
+            margin-right:0;
+        }
