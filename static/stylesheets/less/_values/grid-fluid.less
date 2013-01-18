@@ -4,13 +4,13 @@
 
 /*
 
-    max-width ..... = mwth
-    default-context = dctx
-    context ....... = ctx
-    column  ....... = col
-    gutter  ....... = gtr
+    max-width ..... = mwth  (max pixel width of container)
+    default-context = d-col (default number of columns)
+    context ....... = c-col (if nesting, column count of container)
+    column  ....... = t-col (target column count)
+    gutter  ....... = gtr   (gutter)
 
-    width = 100 / ctx * col
+    width = 100 / d-col * t-col
     gutterno = gtr * (col -1)
 
     240 is what percent of 400?
@@ -18,48 +18,47 @@
 
 */
 
-@max-width:1000;
-@overall-cols:12;
-@gutter:2;
+//Set defaults
+@mwth  : 1000;
+@d-col : 12;
+@gtr   : 2;
 
-@mwth : 1000;
-@dctx : 12;
-@gtr  : 2;
-
-@gtr-n1 : @gtr + 1;
-@gtr-n2 : @gtr + 2;
+//Increase grid width for nested columns
+@gn1  : @gtr + 1;
+@gn2  : @gtr + 2;
+@gn3  : @gtr + 3;
 
 #grid{
 
-    .run( @col:@dctx, @ctx:@dctx, @gtr:@gtr ){
+    .run( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
 
-        @gtrno:@gtr * (@ctx - 1);
+        @gtrno:@gtr * (@c-col - 1);
         @width:100 - @gtrno;
 
         float:left;
-        width:(@width / @ctx) * @col + (@gtr * @col - @gtr)  + 0%;
+        width:(@width / @c-col) * @t-col + (@gtr * @t-col - @gtr)  + 0%;
         margin-right:@gtr + 0%;
 
     }
 
-	.dist(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+	.dist( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
 
-		@col:(100/@row-cols * @desired-cols) - (@gutter * 2);
+		@col:(100/@c-col * @t-col) - (@gtr * 2);
 
         float:left;
 		width:@col + 0%;
-		margin-right:@gutter + 0%;
-		margin-left:@gutter + 0%;
+		margin-right:@gtr + 0%;
+		margin-left:@gtr + 0%;
 
 	}
 
-	.nude(@desired-cols:@overall-cols, @row-cols:@overall-cols){
+    .nude( @t-col:@d-col, @c-col:@d-col){
 
-		@col:100/@row-cols * @desired-cols;
+        @col:(100/@c-col * @t-col);
 
-		width:@col + 0%;
+        width:@col + 0%;
 
-	}
+    }
 }
 
 .grid-container{
@@ -79,16 +78,29 @@
         margin-right:0;
     }
         .rcol-left{
-            #grid > .run(7,10,@gtr-n1);
+            #grid > .run(7,10,@gn1);
         }
             .block1{
-                #grid > .run(2,7,@gtr-n2);
+                #grid > .run(2,7,@gn2);
             }
             .block2{
-                #grid > .run(5,7,@gtr-n2);
+                #grid > .run(5,7,@gn2);
                 margin-right:0;
             }
         .rcol-right{
-            #grid > .run(3,10,@gtr-n1);
+            #grid > .run(3,10,@gn1);
             margin-right:0;
+        }
+
+        ul{
+            margin:0 !important;
+            padding:0 !important;
+            list-style:none;
+
+            li{
+                display:block;
+                height:40px;
+                #grid > .dist(6);
+                background:@col-recessive;
+            }
         }
