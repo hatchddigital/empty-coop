@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="en-au"><![endif]-->
+<!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
+<!--[if IE 8]><html class="lt-ie10 lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
+<!--[if IE 9]><html class="lt-ie10 no-js" id="ie9" lang="en-au"><![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en-au"> <!--<![endif]-->
+
+    <head>
+
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                <meta name="viewport" content="width=device-width,user-scalable=no, scale=1, maximum-scale=1.0" />
+
+                <title>Styleguide: Empty Coop</title>
+
+
+                <!-- Development style call -->
+                <!--
+                <link rel="stylesheet/less" type="text/css" href="../../stylesheets/less/styles.less" />
+                <script type="text/javascript" src="../scripts/less.js"></script>
+                -->
+
+                <!-- Production style call -->
+                <link rel="stylesheet" href="../../stylesheets/styles.css" />
+
+                <!-- Important early load external scripts -->
+                <script src="../scripts/modernizer.js"></script>
+
+                <!-- Icons for browsers + mobile devices, bookmarsk, etc. -->
+                <link rel="shortcut icon" href="/favicon.ico" />
+                <link rel="apple-touch-icon-precomposed" href="../../images/apple-touch-icon-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../images/apple-touch-icon-72x72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../images/apple-touch-icon-114x114-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../images/apple-touch-icon-144x144-precomposed.png">
+
+                <!-- Meta configuration for Search Engines and Facebook -->
+                <meta name="description" content="">
+                <meta name="keywords" content="">
+
+                <meta property="og:title" content="" />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="" />
+                <meta property="og:image" content="images/facebook.png" />
+                <meta property="og:site_name" content="" />
+                <meta property="og:description" content=""/>
+                <!-- If moderation is required & available -->
+                <!-- <meta property="fb:admins" content="USER_ID" /> -->
+
+    </head>
+
+    <body class="view-styleguide t-chickenwire-fluid">
+
+        <h1>Chickenwire: fluid version</h1>
+
+        <h2>Nude column width test</h2>
+        <p>
+            <code>
+                #grid > .nude( [column count] );
+            </code>
+        </p>
+        <div class="cw-fluid-waterfall-1col">1</div>
+        <div class="cw-fluid-waterfall-2col">2</div>
+        <div class="cw-fluid-waterfall-3col">3</div>
+        <div class="cw-fluid-waterfall-4col">4</div>
+        <div class="cw-fluid-waterfall-5col">5</div>
+        <div class="cw-fluid-waterfall-6col">6</div>
+        <div class="cw-fluid-waterfall-7col">7</div>
+        <div class="cw-fluid-waterfall-8col">8</div>
+        <div class="cw-fluid-waterfall-9col">9</div>
+        <div class="cw-fluid-waterfall-10col">10</div>
+        <div class="cw-fluid-waterfall-11col">11</div>
+        <div class="cw-fluid-waterfall-12col">12</div>
+
+        <h2>Run column width test</h2>
+        <p>
+            <code>
+                #grid > .run( [column count] , [parent column count] , gutter nest value [ @gn1,@gn2,@gn3] );
+            </code>
+        </p>
+        <div class="cw-runparent-3333 clearfix">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="cw-runparent-282 clearfix">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h3>Nesting run columns</h3>
+        <div class="cw-runparentnested-84 clearfix">
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div></div>
+        </div>
+
+        <h2>Distributed column width test</h2>
+        <p>
+            <code>
+                #grid > .dist( [column count] , [parent column count] , gutter nest value [ @gn1,@gn2,@gn3] );
+            </code>
+        </p>
+
+        <div class="cw-distparent-3333 clearfix">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+
+        <!-- JavaScript libraries and UX based code -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="scripts/jquery.1.8.3-min.js"><\/script>')</script>
+        <script src="../../scripts/app.js"></script>
+
+    </body>
+
+</html>

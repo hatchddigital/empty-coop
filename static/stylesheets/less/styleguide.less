@@ -1,0 +1,130 @@
+///======
+    //Styleguide
+//======
+
+//===
+    //Base rules
+//===
+    .view-styleguide{
+        width:95%;
+        max-width:850px;
+        margin:0 auto;
+        padding:20px 0;
+    }
+        .styleguide-section{
+            margin:0 0 1em 0;
+            padding:20px 40px 30px 40px;
+        }
+        .sgs-header{
+            margin:0 -40px 2em -40px;
+            padding:1em 20px;
+            border-top:1px solid #EF4136;
+            border-bottom:1px solid #EF4136;
+            box-shadow:
+                inset 0 3px 0 0 #fff,
+                inset 0 -1px 0 0 #fff
+            ;
+            background:#EF4136;
+            color:#fff;
+            font-size:1.5em;
+            font-weight:bold;
+            font-style:italic;
+            font-family:Georgia,serif;
+            text-align:center;
+        }
+
+//===
+    //Chickenwire fluid rules
+//===
+    .t-chickenwire-fluid{
+
+        max-width:2000px;
+
+
+        //Waterfall example
+        [class*="cw-fluid-waterfall"]{
+            margin-bottom:1em;
+            padding:10px 0;
+            background:@col-recessive;
+        }
+
+            .cw-fluid-waterfall-1col{#grid > .nude(1);}
+            .cw-fluid-waterfall-2col{#grid > .nude(2);}
+            .cw-fluid-waterfall-3col{#grid > .nude(3);}
+            .cw-fluid-waterfall-4col{#grid > .nude(4);}
+            .cw-fluid-waterfall-5col{#grid > .nude(5);}
+            .cw-fluid-waterfall-6col{#grid > .nude(6);}
+            .cw-fluid-waterfall-7col{#grid > .nude(7);}
+            .cw-fluid-waterfall-8col{#grid > .nude(8);}
+            .cw-fluid-waterfall-9col{#grid > .nude(9);}
+            .cw-fluid-waterfall-10col{#grid > .nude(10);}
+            .cw-fluid-waterfall-11col{#grid > .nude(11);}
+            .cw-fluid-waterfall-12col{#grid > .nude(12);}
+
+
+        //Run grid example
+        [class*="cw-runparent"]{
+            margin-bottom:1em;
+
+            div{
+                min-height:200px;
+                background:@col-recessive;
+            }
+        }
+            .cw-runparent-3333{
+                div{
+                    #grid > .run(3);
+
+                    &:last-child{
+                        margin-right:0;
+                    }
+                }
+            }
+            .cw-runparent-282{
+                div:nth-child(1){#grid > .run(2);}
+                div:nth-child(2){#grid > .run(8);}
+                div:nth-child(3){#grid > .run(2);}
+                div:last-child{
+                    margin-right:0;
+                }
+            }
+
+        //Run grid with nesting example
+        [class*="cw-runparentnested"]{
+            div div{
+                background:darken(@col-recessive,10%);
+            }
+        }
+
+            .cw-runparentnested-84{
+                > div:nth-child(1){#grid > .run(8);}
+                > div:nth-child(2){
+                    #grid > .run(4);
+                }
+                    div div:nth-child(1){#grid > .run(3,4,@gn1);}
+                    div div:nth-child(2){#grid > .run(1,4,@gn1);}
+
+                div:last-child,
+                div div:last-child{
+                    margin-right:0;
+                }
+            }
+
+        //Distributed grid example
+        [class*="cw-distparent"]{
+            margin-bottom:1em;
+
+            div{
+                min-height:200px;
+                margin-bottom:1em;
+                background:@col-recessive;
+            }
+        }
+            .cw-distparent-3333{
+                div{
+                    #grid > .dist(3);
+                }
+            }
+
+    }
+

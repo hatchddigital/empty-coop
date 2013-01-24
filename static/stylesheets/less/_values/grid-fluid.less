@@ -1,6 +1,7 @@
-//================
-//A fluid grid mixin
-//==================
+//=================
+//Chickenwire: A free-range grid mixin
+//Fluid version
+//=================
 
 /*
 
@@ -18,18 +19,29 @@
 
 */
 
-//Set defaults
-@mwth  : 1000;
-@d-col : 12;
-@gtr   : 2;
+//===
+    //Set defaults
+//===
+@mwth  : 1000; //Max-width
+@d-col : 12; //Default number of columns
+@gtr   : 2; //Gutter size (in percent)
 
-//Increase grid width for nested columns
-@gn1  : @gtr + 1;
-@gn2  : @gtr + 2;
-@gn3  : @gtr + 3;
+//===
+    //Increase grid width for nested columns
+//===
+@gn1  : @gtr + 1; //When nested 1 level deep
+@gn2  : @gtr + 2; //When nested 2 levels deep
+@gn3  : @gtr + 3; //When nested 3 levels deep
 
+//===
+    //Set grid mixin
+//===
 #grid{
 
+    //===
+        //To create a grid unit with a gutter on the right-hand side only.
+        //The last unit in a row will need the right margin set to "0"
+    //===
     .run( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
 
         @gtrno:@gtr * (@c-col - 1);
@@ -41,17 +53,25 @@
 
     }
 
+    //===
+        //To create a grid unit with half-width gutters at both sides.
+        //Useful for laying out thumbnail galleries and similar, where
+        //is is more difficult to shave off the last gutter in a row.
+    //===
 	.dist( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
 
-		@col:(100/@c-col * @t-col) - (@gtr * 2);
+		@col:(100/@c-col * @t-col) - @gtr;
 
         float:left;
 		width:@col + 0%;
-		margin-right:@gtr + 0%;
-		margin-left:@gtr + 0%;
+		margin-right:@gtr/2 + 0%;
+		margin-left:@gtr/2 + 0%;
 
 	}
 
+    //===
+        //To create a nude grid unit with no gutters. Useful for containers.
+    //===
     .nude( @t-col:@d-col, @c-col:@d-col){
 
         @col:(100/@c-col * @t-col);
@@ -60,47 +80,3 @@
 
     }
 }
-
-.grid-container{
-    max-width:1000px;
-    width:90%;
-    margin:50px auto;
-
-    div{
-        height:600px;
-    }
-}
-    .leftcol{
-        #grid > .run(4);
-    }
-    .rightcol{
-        #grid > .run(8);
-        margin-right:0;
-    }
-        .rcol-left{
-            #grid > .run(7,10,@gn1);
-        }
-            .block1{
-                #grid > .run(2,7,@gn2);
-            }
-            .block2{
-                #grid > .run(5,7,@gn2);
-                margin-right:0;
-            }
-        .rcol-right{
-            #grid > .run(3,10,@gn1);
-            margin-right:0;
-        }
-
-        ul{
-            margin:0 !important;
-            padding:0 !important;
-            list-style:none;
-
-            li{
-                display:block;
-                height:40px;
-                #grid > .dist(6);
-                background:@col-recessive;
-            }
-        }
