@@ -52,6 +52,19 @@
         margin-right:@gtr + 0%;
 
     }
+    //===
+        //For the last column in a row, remove the gutter
+    //===
+    .run-last( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
+
+        @gtrno:@gtr * (@c-col - 1);
+        @width:100 - @gtrno;
+
+        float:left;
+        width:(@width / @c-col) * @t-col + (@gtr * @t-col - @gtr)  + 0%;
+
+    }
+
 
     //===
         //To create a grid unit with half-width gutters at both sides.
