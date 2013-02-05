@@ -1,0 +1,95 @@
+//=================
+//Chickenwire: A free-range grid mixin
+//Fluid version
+//=================
+
+/*
+
+    max-width ..... = mwth  (max pixel width of container)
+    default-context = d-col (default number of columns)
+    context ....... = c-col (if nesting, column count of container)
+    column  ....... = t-col (target column count)
+    gutter  ....... = gtr   (gutter)
+
+    width = 100 / d-col * t-col
+    gutterno = gtr * (col -1)
+
+    240 is what percent of 400?
+    240 ÷ 400 =.60 = 60%
+
+*/
+
+//===
+    //Set defaults
+//===
+@mwth  : 1000; //Max-width
+@d-col : 12; //Default number of columns
+@gtr   : 2; //Gutter size (in percent)
+
+//===
+    //Increase grid width for nested columns
+//===
+@gn1  : @gtr + 1; //When nested 1 level deep
+@gn2  : @gtr + 2; //When nested 2 levels deep
+@gn3  : @gtr + 3; //When nested 3 levels deep
+
+//===
+    //Set grid mixin
+//===
+#grid{
+
+    //===
+        //To create a grid unit with a gutter on the right-hand side only.
+        //The last unit in a row will need the right margin set to "0"
+    //===
+    .run( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
+
+        @gtrno:@gtr * (@c-col - 1);
+        @width:100 - @gtrno;
+
+        float:left;
+        width:(@width / @c-col) * @t-col + (@gtr * @t-col - @gtr)  + 0%;
+        margin-right:@gtr + 0%;
+
+    }
+    //===
+        //For the last column in a row, remove the gutter
+    //===
+    .run-last( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
+
+        @gtrno:@gtr * (@c-col - 1);
+        @width:100 - @gtrno;
+
+        float:left;
+        width:(@width / @c-col) * @t-col + (@gtr * @t-col - @gtr)  + 0%;
+
+    }
+
+
+    //===
+        //To create a grid unit with half-width gutters at both sides.
+        //Useful for laying out thumbnail galleries and similar, where
+        //is is more difficult to shave off the last gutter in a row.
+    //===
+	.dist( @t-col:@d-col, @c-col:@d-col, @gtr:@gtr ){
+
+		@col:(100/@c-col * @t-col) - @gtr;
+
+        float:left;
+		width:@col + 0%;
+		margin-right:@gtr/2 + 0%;
+		margin-left:@gtr/2 + 0%;
+
+	}
+
+    //===
+        //To create a nude grid unit with no gutters. Useful for containers.
+    //===
+    .nude( @t-col:@d-col, @c-col:@d-col){
+
+        @col:(100/@c-col * @t-col);
+
+        width:@col + 0%;
+
+    }
+}
