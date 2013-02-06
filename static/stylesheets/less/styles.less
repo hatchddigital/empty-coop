@@ -100,6 +100,7 @@
 
 		//ie8 and below
 		.lt-ie9{
+                                    @import 'responsive/breakpt-standard.less';
 			@import 'vendor_specific/vendorsp-ie8.less';
 		}
 		//ie7 and below
@@ -120,17 +121,17 @@
 //===
 
 	//===
-		//Breakpoint 1
+		//Standard layout
 	//===
 	@media screen and(max-width:1200px){
-		@import 'responsive/breakpt-1.less';
+		@import 'responsive/breakpt-standard.less';
 	}
 
 	//===
-		//Breakpoint 2
+		//Mobile layout
 	//===
-	@media screen and(max-width:800px){
-		//@import 'responsive/breakpt-2.less';
+	@media screen and(max-width:600px){
+		@import 'responsive/breakpt-mobile.less';
 	}
 
 
