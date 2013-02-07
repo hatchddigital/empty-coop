@@ -100,7 +100,7 @@
 
 		//ie8 and below
 		.lt-ie9{
-                                    @import 'responsive/breakpt-standard.less';
+            @import 'responsive/breakpt-standard.less';
 			@import 'vendor_specific/vendorsp-ie8.less';
 		}
 		//ie7 and below
@@ -122,6 +122,8 @@
 
 	//===
 		//Standard layout
+        //This layout is the middle ground, with rules true to large-form factor screens.
+        //These rules are also used to create a fixed layout for browsers that don't understand media queries.
 	//===
 	@media screen and(max-width:1200px){
 		@import 'responsive/breakpt-standard.less';
@@ -134,6 +136,10 @@
 		@import 'responsive/breakpt-mobile.less';
 	}
 
+    //===
+        //Minor adjustments to layout
+    //===
+    @import 'responsive/breakpt-mobile.less';
 
 //===
 	//set styles for print
