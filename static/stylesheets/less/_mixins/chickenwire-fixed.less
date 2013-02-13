@@ -1,6 +1,6 @@
 //=================
 //Chickenwire: A free-range grid mixin
-//Static version
+//Fixed version
 //=================
 
 /*
@@ -28,7 +28,8 @@
 	#grid{
 
 		//===
-			//Run classes - set the columns with gutters, and float them
+            //To create a grid unit with a gutter on the right-hand side only.
+            //The last unit in a row will need the right margin set to "0"
 		//===
 			.run(@desired-cols:@d-col, @row-cols:@d-col){
 
@@ -39,7 +40,7 @@
 				margin-right:@gtr + 0px;
 			}
 		//===
-			//For the last column in a row, remove the gutter
+            //For the last column in a row, remove the gutter
 		//===
 			.run-last(@desired-cols:@d-col, @row-cols:@d-col){
 

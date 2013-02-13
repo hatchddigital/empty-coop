@@ -1,21 +1,38 @@
-//======
-	//A sample component
-	//(Add what the component does here)
+/*
+# A sample component
+(Add what the component does here)
 
-	//===Note:
-	//If the component has a singular name (like "post") subclasses should be prefixed with the whole name.
-	//If it has a multi-word name, subclasses shoudl be prefixed with an abbreviation of that name
-//======
+** Note **
+If the component has a singular name (like "post") subclasses should be prefixed with the whole name.
+If it has a multi-word name, subclasses shoudl be prefixed with an abbreviation of that name
+*/
+
+/*
+## Post
+    <article class="post">
+        <h1 class="post-heading">Post heading</h1>
+        <p>Post content</p>
+        <footer class="post-meta">
+            <p>Post meta</p>
+        </footer>
+    </article>
+*/
 
 .post{
-
+    padding:20px;
+    .border-radius(10px);
+    background:@col-recessive;
 }
 
 	.post-heading{
-
+        margin:0 0 0.5em 0;
+        padding:0 0 0.5em 0;
+        border-bottom:1px solid @black;
+        font-size:1.5em;
 	}
-	.post-meta{
-
+	.post-meta p{
+        margin-bottom:0;
+        font-size:0.85em;
 	}
 	.post-img{
 

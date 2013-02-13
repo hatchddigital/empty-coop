@@ -1,63 +1,80 @@
-//======
-    //Helpers
-    //(LESS mixins to make common css tasks that little bit easier)
-//======
+/**
+ * Predefined mixins
+ *
+ * A set of LESS mixins to make common css tasks that little bit easier
+ *
+ */
 
-//===
-    //Change box model
-//===
-.box-sizing (@sizing: border-box) {
-    box-sizing:@sizing;
-    -moz-box-sizing:@sizing;
-    -webkit-box-sizing:@sizing;
-}
+/**
+* Change box model
+*
+* Set the box model for a block-level element
+*
+* @param sizing: [border-box|content-box]
+*
+*/
+    .box-sizing (@sizing: border-box) {
+        box-sizing:@sizing;
+        -moz-box-sizing:@sizing;
+        -webkit-box-sizing:@sizing;
+    }
 
-//===
-    //Make an element square
-//===
+/**
+ * Make an element square
+ *
+ * Automagically set the same width/height for a block-level element
+ *
+ * @param size: size in chosen unit
+ */
     .setsquare(@size) {
         width:@size;
         height:@size;
     }
 
-//===
-    //Quickly set width and height
-//===
+/**
+ * Set width and height
+ *
+ * Automagically set the width/height for a block-level element
+ *
+ * @param width: width in chosen unit
+ * @param height: height in chosen unit
+ */
     .setsize(@width,@height) {
         width:@width;
         height:@height;
     }
 
-//===
-    //Set font-size in em
-    //src: http://en.wikinoticia.com/Technology/general-technology/107595-less-mixin-to-automatically-convert-the-qpixelsq-to-qemsq
-//===
-    .font-size( @target: @text-base) {
-        font-size: (@target / @text-base) + 0em;
-    }
-
-//===
-    //Set background size
-    //(ff3.6 still needs prefix)
-//===
+/**
+ * Set background size
+ *
+ * Set the background-size for an element, as FF3.6 still needs -moz- prefix
+ *
+ * @param size: width in chosen unit, height in chosen unit
+ */
     .background-size(@size){
         background-size:@size;
         -moz-background-size:@size;
     }
 
-//===
-    //Change border radius
-    //(Older android browsers and ff3.6 still need prefix)
-//===
+/**
+ * Set border-radius
+ *
+ * Set the border radius for a block-level element
+ *
+ * @param radius: radius in chosen unit
+ */
     .border-radius (@radius: 0.5em) {
         border-radius: @radius;
         -moz-border-radius: @radius;
         -webkit-border-radius: @radius;
     }
 
-//===
-    //Set transforms
-//===
+/**
+ * Set transforms
+ *
+ * Rotate, scale, translate or set transform origin a block-level element
+ *
+ */
     #transform{
         .rotate (@angle) {
             -moz-transform:rotate(@angle);
@@ -66,12 +83,19 @@
             -ms-transform:rotate(@angle);
             transform:rotate(@angle);
         }
-        .scale (@amount) {
-            -moz-transform:scale(@amount);
-            -webkit-transform:scale(@amount);
-            -o-transform:scale(@amount);
-            -ms-transform: scale(@amount);
-            transform:scale(@amount);
+        .skew (@transx, @transy) {
+            -moz-transform:skew(@transx, @transy);
+            -webkit-transform:skew(@transx, @transy);
+            -o-transform:skew(@transx, @transy);
+            -ms-transform:skew(@transx, @transy);
+            transform:skew(@transx, @transy);
+        }
+        .scale (@transx, @transy) {
+            -moz-transform:scale(@transx, @transy);
+            -webkit-transform:scale(@transx, @transy);
+            -o-transform:scale(@transx, @transy);
+            -ms-transform: scale(@transx, @transy);
+            transform:scale(@transx, @transy);
         }
         .translate (@transx, @transy) {
              transform: translate(@transx,@transy);
@@ -80,18 +104,21 @@
             -o-transform: translate(@transx,@transy);
             -moz-transform: translate(@transx,@transy);
         }
-        .origin (@left,@top) {
-            -moz-transform-origin: @left @top;
-            -webkit-transform-origin: @left @top;
-            -o-transform-origin: @left @top;
-            -ms-transform-origin: @left @top;
-            transform-origin: @left @top;
+        .origin (@transx, @transy) {
+            -moz-transform-origin: @transx, @transy;
+            -webkit-transform-origin: @transx, @transy;
+            -o-transform-origin: @transx, @transy;
+            -ms-transform-origin: @transx, @transy;
+            transform-origin: @transx, @transy;
         }
     }
 
-//===
-    //Set a transition on an element
-//===
+/**
+ * Set transition
+ *
+ * Set a CSS3 transition on a block-level element
+ *
+ */
     .transition (@properties: all, @duration:.2s, @ease:ease-in-out) {
         -webkit-transition: @properties @duration @ease;
         -moz-transition: @properties @duration @ease;
@@ -100,9 +127,11 @@
         transition: @properties @duration @ease;
     }
 
-//===
-    //Set animation on an element (needs @animate set first)
-//===
+/**
+ * Set animation
+ *
+ * Tie a block-level element to a predefined @animate animation
+ */
     .animate (@name, @duration: 500ms, @count: infinite, @direction: alternate) {
         -moz-animation-name: @name;
         -moz-animation-duration: @duration;
@@ -118,18 +147,22 @@
         animation-direction: @direction;
     }
 
-
-//===
-    //Change opacity
-//===
+/**
+ * Set opacity
+ *
+ * Set the opacity of an element
+ */
     .opacity(@opacity: 100) {
-      opacity: @opacity / 100;
-       filter: ~"alpha(opacity=@{opacity})";
+        opacity: @opacity / 100;
+        filter: ~"alpha(opacity=@{opacity})";
     }
 
-//===
-    //Set content into columns
-//===
+/**
+ * Set columns
+ *
+ * Flow content into columns
+ */
+
     .column (@count,@gap:20px) {
         //Count
         -moz-column-count: @count;
@@ -143,9 +176,13 @@
         column-gap: @gap;
     }
 
-//===
-    //Make CSS triangles
-//===
+/**
+ * CSS triangles
+ *
+ * Make pure CSS triangles
+ * Useful for pointers and tooltips
+ */
+
     #csstriangle{
         .top(@width:5px,@color:#000){
             content:" ";
@@ -225,9 +262,12 @@
         }
     }
 
-//===
-    //Make gradients
-//===
+/**
+ * Set gradient
+ *
+ * Set a gradient on an element
+ */
+
     #gradient {
         .horizontal(@startColor: #555, @endColor: #333) {
             background-color: @endColor;

@@ -1,7 +1,25 @@
-//======
-	//Images
-//======
+/*
+# Images
+*/
 
+/*
+## Image on it's own
+    <img src="http://placekitten.com/400/300" width="400" height="300" alt="sample image" />
+*/
+    img{
+        display:block;
+        width:auto;
+        max-width:100%;
+        border:0;
+        margin:0 0 1em 0;
+    }
+/*
+## Image within a figure tag
+    <figure>
+        <img src="http://placekitten.com/400/300" width="400" height="300" alt="sample image" />
+        <figcaption>Caption</figcaption>
+    </figure>
+*/
 figure{
 	display:inline-block;
 	margin:0 0 1em 0;
@@ -15,10 +33,3 @@ figure{
 		font-style:italic;
 	}
 
-img{
-	display:block;
-	width:auto;
-	max-width:100%;
-	border:0;
-	margin:0 0 1em 0;
-}

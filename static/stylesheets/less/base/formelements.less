@@ -1,54 +1,54 @@
-//======
-	//Form elements
-//======
+/*
+# Form elements
+*/
 
-	//===
-		//Set global constants
-	//===
-		form{
-			position:relative;
-			margin:0 0 1em 0;
+/*
+## Set global constants
+*/
+	form{
+		position:relative;
+		margin:0 0 1em 0;
+	}
+		fieldset{
+			margin:0;
+			padding:0;
+			border:none;
 		}
-			fieldset{
-				margin:0;
-				padding:0;
-				border:none;
-			}
-			legend{
-				margin:0 0 0.5em 0;
-				padding:0;
-				font-size:1;
-			}
-			label{
-				display:inline-block;
-				margin:0 0 0.25em 0;
-			}
-			input,
-			textarea,
-			select{
-				display:block;
-				.box-sizing;
-				width:100%;
-				margin:0;
-				padding:10px 15px;
-				border:1px solid @col-recessive;
-				color:@col-base;
-			}
-			input[type="checkbox"],
-			input[type="radio"]{
-				display:inline-block;
-				width:auto;
-				float:left;
-				border:none;
-				margin:0.25em 0.5em 0 0;
-			}
-			textarea{
-				min-height:200px;
-			}
-			button{
-				padding:0.5em;
-				cursor:pointer;
-			}
+		legend{
+			margin:0 0 0.5em 0;
+			padding:0;
+			font-size:1;
+		}
+		label{
+			display:inline-block;
+			margin:0 0 0.25em 0;
+		}
+		input,
+		textarea,
+		select{
+			display:block;
+			.box-sizing;
+			width:100%;
+			margin:0;
+			padding:10px 15px;
+			border:1px solid @col-recessive;
+			color:@col-base;
+		}
+		input[type="checkbox"],
+		input[type="radio"]{
+			display:inline-block;
+			width:auto;
+			float:left;
+			border:none;
+			margin:0.25em 0.5em 0 0;
+		}
+		textarea{
+			min-height:200px;
+		}
+		button{
+			padding:0.5em;
+			cursor:pointer;
+		}
 
 	//===
 		//Set styles for full forms
