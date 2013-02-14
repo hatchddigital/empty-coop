@@ -1,6 +1,6 @@
 # Empty-coop
 
-Created and maintained by the team at Hatchd Digital, Perth (see humans.txt)
+Created and maintained by the team at Hatchd Digital, Perth (see static/humans.txt)
 
 ## Purpose
 
