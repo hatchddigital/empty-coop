@@ -7,38 +7,56 @@
  */
 
 /**
- * Type sizes
+ * Typography
  */
 
-/**
- * Set base text size
- */
-    @text-base:16;
-    @lineheight-base:1.5em;
+    /**
+     * Set base text size
+     */
+        @fontsize-base:16;
+        @lineheight-base:1.5em;
 
+    /**
+     * Set font famillies
+     */
+
+         /**
+          * Define brand fonts
+          */
+          @fontfamily-capriola: 'Capriola Regular', sans-serif;
+
+         /**
+          * Define fonts by function
+          */
+          @fontfamily-base: sans-serif;
+          @fontfamily-brand:@fontfamily-capriola;
 
 
 /**
  * Colour swatches
  */
 
-/**
- * Brand colours
- */
-   @br-hatchdred:#EF4136;
+    /**
+     * Define brand colours
+     */
+       @br-hatchdred:#EF4136;
 
-/**
- * Generic colours
- */
-	@white:#fff;
-	@black:#000;
+    /**
+     * Generic colours
+     */
+    	@white:#fff;
+    	@black:#000;
 
-/**
- * Utility colours
- */
-	@col-base:#000;
-	@col-recessive:#ccc;
-	@col-highlight:#FFFB88;
-	@col-link:@br-hatchdred;
-	@col-link-hover:@br-hatchdred;
+    /**
+     * Utility colours
+     */
+    	@col-base:#000;
+    	@col-recessive:#ccc;
+    	@col-highlight:#FFFB88;
+    	@col-link:@br-hatchdred;
+    	@col-link-hover:@br-hatchdred;
+
+    /**
+     * Define colours by function
+     */
 

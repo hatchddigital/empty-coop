@@ -6,9 +6,9 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-		font-size:100/16 * @text-base + 0%;
+		font-size:100/16 * @fontsize-base + 0%;
 		line-height:@lineheight-base;
-		font-family:sans-serif;
+		font-family:@fontfamily-base;
 		color:@col-base;
 	}
 
@@ -19,6 +19,45 @@
 		font-size:1em;
 		line-height:@lineheight-base;
 	}
+
+/**
+ * Headings
+ */
+    h1,h2,h3,h4,h5,h6{
+        line-height:1.2em;
+        font-weight:normal;
+        margin:1em 0 0.5em 0;
+        position:relative;
+        clear:both;
+    }
+        h1{
+            font-size:2.5em;
+        }
+        h2{
+            font-size:2em;
+        }
+        h3{
+            font-size:1em;
+            font-weight:bold;
+        }
+        h4,
+        h5,
+        h6{
+            font-size:1em;
+        }
+
+    /**
+     * Headings within an hgroup
+     */
+        hgroup{
+            position:relative;
+            margin:0 0 1em 0;
+
+            h1,
+            h2,
+            h3,
+            {margin:0;}
+        }
 
 /**
  * Block elements
@@ -33,6 +72,105 @@
 		border:none;
 		border-top:1px solid @col-recessive;
 	}
+
+/**
+ * Quotes
+ */
+
+    /**
+     * Blockquotes
+     */
+        blockquote{
+            margin:0 0 1em 3em;
+
+            > p{
+                font-size:1.4em;
+                margin-bottom:0.60em;
+
+                &:first-child:before{
+                    content:'\201C';
+                }
+                &:first-child:after{
+                    content:'\201D';
+                }
+            }
+            footer p{
+                margin:-0.5em 0 0 0;
+                font-size:0.85em;
+                font-style:italic;
+
+                &:before{
+                    content:"- ";
+                }
+            }
+        }
+
+    /**
+     * Inline quotes
+     */
+        q{
+            font-style:italic;
+            color:inherit;
+        }
+        cite{
+            font-style:italic;
+        }
+
+
+/**
+ * Lists
+ */
+
+    /**
+     * Globals
+     */
+        ul,ol,dl{
+            margin:0 0 1em 2em;
+            padding:0;
+        }
+            li{
+                margin:0 0 0.25em 0;
+            }
+
+    /**
+     * Unordered lists
+     */
+        ul{
+            list-style:disc outside;
+
+            ul{
+                margin:0.25em 0 0.5em 1em;
+            }
+        }
+
+    /**
+     * Ordered lists
+     */
+        ol{
+            list-style:decimal outside;
+
+            ol{
+                margin:0.25em 0 0.5em 1.5em;
+                list-style-type:lower-roman;
+            }
+        }
+
+    /**
+     * Definiton lists
+     */
+        dl{
+            margin-left:0;
+        }
+            dt{
+                font-weight:bold;
+                margin:0 0 0.5em 0;
+                padding:1em 0 0 0;
+            }
+            dd{
+                margin:0 0 0.5em 0;
+            }
+
+
 /**
  * Inline elements
  */

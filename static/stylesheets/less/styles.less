@@ -38,8 +38,8 @@
  *
  * Pull in the relevent chickenwire grid (if applicable)
  */
-    @import '_mixins/chickenwire-fluid.less';
-	//@import '_mixins/chickenwire-fixed.less';
+    @import '_mixins/grid-fluid.less';
+	//@import '_mixins/grid-fixed.less';
 
 /**
  * Establish any resource using an @rule
@@ -65,13 +65,10 @@
     /**
      * Set base rules that can apply site-wide
      *
-     * These should apply to naked elements, no class needed
+     * These should apply to naked elements, no classes should be defined here
      *
      */
 		@import 'html-elements/typography.less';
-		@import 'html-elements/headings.less';
-		@import 'html-elements/lists.less';
-		@import 'html-elements/quotes.less';
 		@import 'html-elements/code.less';
 		@import 'html-elements/links.less';
 		@import 'html-elements/formelements.less';
@@ -79,12 +76,12 @@
 		@import 'html-elements/tables.less';
 
     /**
-     * Set reusable utilities
+     * Define layout classes
      *
      * non-presentational classes, used to achieve functional things like clearing floats, visually hiding elements etc...
      *
      */
-		@import 'reusable-components/utilities.less';
+		@import 'layout-classes.less';
 
     /**
      * Define modular components
@@ -92,7 +89,7 @@
      * Reusable components, called with a class (or classes) that can exist anywhere in the site
      *
      */
-		@import 'reusable-components/component.less';
+		@import 'reusable-components/example-component.less';
 
     /**
      * Set master layout
@@ -124,20 +121,20 @@
          */
 		.lt-ie9{
             @import 'responsive-design/breakpt-standard.less';
-			@import 'vendor-overrides/vendorsp-ie8.less';
+			@import 'browser-overrides/overrides-ie8.less';
 		}
 
          /**
          * IE7 and below
          */
 		.lt-ie8{
-			@import 'vendor-overrides/vendorsp-ie7.less';
+			@import 'browser-overrides/overrides-ie7.less';
 		}
 
         /**
-         * Property-specific
+         * Using modernizer classes
          */
-		  @import 'vendor-overrides/vendorsp-byproperty.less';
+		  @import 'browser-overrides/overrides-modernizr.less';
 }
 
 /**
