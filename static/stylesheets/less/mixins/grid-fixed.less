@@ -62,12 +62,15 @@
      */
         .dist(@desired-cols:@d-col, @row-cols:@d-col){
 
-            @context-width: @mwth - (@gtr * @desired-cols - 1);
+            @context-width: @mwth - @gtr * (@row-cols/@desired-cols);
 
+            // 1000 - 20 * (12 / 3)
+
+            max-width:@context-width + 0px;
             float:left;
             width:floor(@context-width / @d-col * @desired-cols + 0px);
-            margin-right:floor(@gtr/2 + 0px);
-            margin-left:floor(@gtr/2 + 0px);
+            margin-right:@gtr/2 + 0px;
+            margin-left:@gtr/2 + 0px;
         }
 
 
