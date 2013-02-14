@@ -24,7 +24,6 @@
 
 	@import '_settings.less';
     @import '_mixins/predefined-mixins.less';
-	@import '_mixins/project-mixins.less';
     @import '_mixins/chickenwire-fluid.less';
 	//@import '_mixins/chickenwire-fixed.less';
 
@@ -33,7 +32,7 @@
 	//(set rules for any CSS resource requiring an @ prefix, such as @animate rules or @font-face fonts)
 //===
 
-	//@import 'resources/webfonts.less';
+	@import 'resources/webfonts.less';
 
 
 //===
@@ -137,7 +136,7 @@
     //===
         //Minor adjustments to layout
     //===
-    @import 'responsive/breakpt-mobile.less';
+    @import 'responsive/breakpt-minor.less';
 
 //===
 	//set styles for print
@@ -152,5 +151,5 @@
     //(remove for production)
 //===
 @media screen{
-    @import 'demo-styles/styleguide.less';
+    //@import 'demo-styles/styleguide.less';
 }

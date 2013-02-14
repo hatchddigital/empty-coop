@@ -1,54 +1,56 @@
-//=================
-//Chickenwire: A free-range grid mixin
-//Fixed version
-//=================
-
-/*
-
-    mwth ..... = mwth  (max pixel width of container)
-    default-context = d-col (default number of columns)
-    context ....... = c-col (if nesting, column count of container)
-    column  ....... = t-col (target column count)
-    gutter  ....... = gtr   (gutter)
-
-    width = 100 / d-col * t-col
-
+/**
+ * Chickenwire: Fixed version
+ * A free-range grid mixin
+ *
+ * @max-width ..... = mwth  (max pixel width of container)
+ * @default-context = d-col (default number of columns)
+ * @context ....... = c-col (if nesting, column count of container)
+ * @column  ....... = t-col (target column count)
+ * @gutter  ....... = gtr   (gutter)
+ *
+ * width = 100 / d-col * t-col
+ *
 */
 
-//===
-    //Set defaults
-//===
+
+/**
+ * Set defaults
+ */
 @mwth  : 1000; //mwth
 @d-col : 12; //Default number of columns
 @gtr   : 10; //Gutter size (in pixels)
 
-//===
-    //Set grid mixin
-//===
+/**
+ * Set grid mixin
+ */
 	#grid{
 
-		//===
-            //To create a grid unit with a gutter on the right-hand side only.
-            //The last unit in a row will need the right margin set to "0"
-		//===
-			.run(@desired-cols:@d-col, @row-cols:@d-col){
+    /**
+     * To create a grid unit with a gutter on the right-hand side only.
+     *
+     * The last unit in a row will need the right margin set to "0"
+     * Or should use the .run-last() mixin
+     *
+     */
+		.run(@desired-cols:@d-col, @row-cols:@d-col){
 
-				@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
+			@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
 
-				float:left;
-				width:round(@context-width / @row-cols * @desired-cols) + 0px;
-				margin-right:@gtr + 0px;
-			}
-		//===
-            //For the last column in a row, remove the gutter
-		//===
-			.run-last(@desired-cols:@d-col, @row-cols:@d-col){
+			float:left;
+			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+			margin-right:@gtr + 0px;
+		}
 
-				@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
+	/**
+     * For the last column in a row, remove the gutter
+     */
+		.run-last(@desired-cols:@d-col, @row-cols:@d-col){
 
-				float:left;
-				width:round(@context-width / @row-cols * @desired-cols) + 0px;
+			@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
 
-			}
+			float:left;
+			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+
+		}
 
 	}

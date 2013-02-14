@@ -1,52 +1,52 @@
-//======
-	//Base list styles
-//======
+/**
+ * Base link styles
+ */
 
-	//===
-		//Globals
-	//===
-		ul,ol,dl{
-			margin:0 0 1em 2em;
-			padding:0;
+/**
+ * Globals
+ */
+	ul,ol,dl{
+		margin:0 0 1em 2em;
+		padding:0;
+	}
+		li{
+			margin:0 0 0.25em 0;
 		}
-			li{
-				margin:0 0 0.25em 0;
-			}
 
-	//===
-		//Unordered lists
-	//===
+/**
+ * Unordered lists
+ */
+	ul{
+		list-style:disc outside;
+
 		ul{
-			list-style:disc outside;
-
-			ul{
-				margin:0.25em 0 0.5em 1em;
-			}
+			margin:0.25em 0 0.5em 1em;
 		}
+	}
 
-	//===
-		//Ordered lsits
-	//===
+/**
+ * Ordered lists
+ */
+	ol{
+		list-style:decimal outside;
+
 		ol{
-			list-style:decimal outside;
-
-			ol{
-				margin:0.25em 0 0.5em 1.5em;
-				list-style-type:lower-roman;
-			}
+			margin:0.25em 0 0.5em 1.5em;
+			list-style-type:lower-roman;
 		}
+	}
 
-	//===
-		//Definition lists
-	//===
-		dl{
-			margin-left:0;
+/**
+ * Definiton lists
+ */
+	dl{
+		margin-left:0;
+	}
+		dt{
+			font-weight:bold;
+			margin:0 0 0.5em 0;
+			padding:1em 0 0 0;
 		}
-			dt{
-				font-weight:bold;
-				margin:0 0 0.5em 0;
-				padding:1em 0 0 0;
-			}
-			dd{
-				margin:0 0 0.5em 0;
-			}
+		dd{
+			margin:0 0 0.5em 0;
+		}
