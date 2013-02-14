@@ -3,17 +3,17 @@
  *
  *	@Author Hatchd
  *
- *  ...MMM...........................................MM ................MMM....
- *  ...MMM.......................MM .................MM.................MMM....
- *  ...MMM.......................MM..................MM.................MMM....
- *  ...MMMMMMMM..... MMMMMM......MMMMMM....MMMMMM....MMMMMMMN..... MMMMMMMM....
- *  ...MMMMMMMMM ...MMMMMMMMM....MMMMMM...MMMMMMMM...MMMMMMMMM... MMMMMMMMM....
- *  ...MMM... MM..........MMM....MMN..... MMM........MM....MMM....MM....MMM....
- *  ...MMM... MM.....MMMMMMMM....MMN......MM.........MM....MMM...MMM....MMM....
- *  ...MMM... MM....MMM...MMM....MMN......MM ........MM....MMM...MMM....MMM....
- *  ...MMM... MM....MMM...MMM....MMN..... MMM........MM....MMM....MM....MMM....
- *  ...MMM... MM....MMM..MMMM....MMM..... MMMM..MM...MM....MMM....MMM..MMMM....
- *  ...MMM... MM.....MMMMMMMM....MMMMMM....MMMMMMM...MM....MMM.... MMMMMMM.....
+ *  ...HHH...........................................HH ................DDD....
+ *  ...HHH.......................TT .................HH.................DDD....
+ *  ...HHH.......................TT..................HH.................DDD....
+ *  ...HHHHHHHH..... AAAAAA......TTTTTT....CCCCCC....HHHHHHHN..... DDDDDDDD....
+ *  ...HHHHHHHHH ...AAAAAAAAA....TTTTTT...CCCCCCCC...HHHHHHHHH... DDDDDDDDD....
+ *  ...HHH... HH..........AAA....TTT..... CCC........HH....HHH....DD....DDD....
+ *  ...HHH... HH.....AAAAAAAA....TTT......CC.........HH....HHH...DDD....DDD....
+ *  ...HHH... HH....AAA...AAA....TTT......CC ........HH....HHH...DDD....DDD....
+ *  ...HHH... HH....AAA...AAA....TTT..... CCC........HH....HHH....DD....DDD....
+ *  ...HHH... HH....AAA..AAAA....TTT..... CCCC..CC...HH....HHH....DDD..DDDD....
+ *  ...HHH... HH.....AAAAAAAA....TTTTTT....CCCCCCC...HH....HHH.... DDDDDDD.....
  *
  */
 
@@ -60,7 +60,7 @@
      * Ensure we level any browser differences, so we can build any subsequent declarations on level ground
      *
      */
-		@import 'base/normalize.less';
+		@import 'html-elements/normalize.less';
 
     /**
      * Set base rules that can apply site-wide
@@ -68,15 +68,15 @@
      * These should apply to naked elements, no class needed
      *
      */
-		@import 'base/typography.less';
-		@import 'base/headings.less';
-		@import 'base/lists.less';
-		@import 'base/quotes.less';
-		@import 'base/code.less';
-		@import 'base/links.less';
-		@import 'base/formelements.less';
-		@import 'base/images.less';
-		@import 'base/tables.less';
+		@import 'html-elements/typography.less';
+		@import 'html-elements/headings.less';
+		@import 'html-elements/lists.less';
+		@import 'html-elements/quotes.less';
+		@import 'html-elements/code.less';
+		@import 'html-elements/links.less';
+		@import 'html-elements/formelements.less';
+		@import 'html-elements/images.less';
+		@import 'html-elements/tables.less';
 
     /**
      * Set reusable utilities
@@ -84,7 +84,7 @@
      * non-presentational classes, used to achieve functional things like clearing floats, visually hiding elements etc...
      *
      */
-		@import 'base/utilities.less';
+		@import 'reusable-components/utilities.less';
 
     /**
      * Define modular components
@@ -92,7 +92,7 @@
      * Reusable components, called with a class (or classes) that can exist anywhere in the site
      *
      */
-		@import 'components/component.less';
+		@import 'reusable-components/component.less';
 
     /**
      * Set master layout
@@ -100,7 +100,7 @@
      * The scaffolding of the site, defined through elements that occur only once per page, defined via an aria role or ID
      *
      */
-		@import 'layout/layout-master.less';
+		@import 'page-layouts/layout-master.less';
 
     /**
      * Set unique template layout(s)
@@ -109,7 +109,7 @@
      * These definitions should be set from a unique HTML or body class
      *
      */
-		//...
+		//@import 'page-layouts/layout-[uniquepage].less';
 
     /**
      * Set vendor-specific rules
@@ -123,21 +123,21 @@
          * IE8 and below
          */
 		.lt-ie9{
-            @import 'responsive/breakpt-standard.less';
-			@import 'vendor_specific/vendorsp-ie8.less';
+            @import 'responsive-design/breakpt-standard.less';
+			@import 'vendor-overrides/vendorsp-ie8.less';
 		}
 
          /**
          * IE7 and below
          */
 		.lt-ie8{
-			@import 'vendor_specific/vendorsp-ie7.less';
+			@import 'vendor-overrides/vendorsp-ie7.less';
 		}
 
         /**
          * Property-specific
          */
-		  @import 'vendor_specific/vendorsp-byproperty.less';
+		  @import 'vendor-overrides/vendorsp-byproperty.less';
 }
 
 /**
@@ -154,20 +154,20 @@
      *
      */
     	@media screen and(max-width:1200px){
-    		@import 'responsive/breakpt-standard.less';
+    		@import 'responsive-design/breakpt-standard.less';
     	}
 
     /**
      * Mobile layout
      */
 	@media screen and(max-width:600px){
-		@import 'responsive/breakpt-mobile.less';
+		@import 'responsive-design/breakpt-mobile.less';
 	}
 
     /**
      * Minor adjustments to layout
      */
-    @import 'responsive/breakpt-minor.less';
+    @import 'responsive-design/breakpt-minor.less';
 
 /**
  *
