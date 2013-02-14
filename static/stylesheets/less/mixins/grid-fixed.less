@@ -18,7 +18,7 @@
  */
 @mwth  : 1000; //mwth
 @d-col : 12; //Default number of columns
-@gtr   : 10; //Gutter size (in pixels)
+@gtr   : 20; //Gutter size (in pixels)
 
 /**
  * Set grid mixin
@@ -37,7 +37,7 @@
 			@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
 
 			float:left;
-			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+			width:floor(@context-width / @row-cols * @desired-cols + 0px);
 			margin-right:@gtr + 0px;
 		}
 
@@ -49,8 +49,38 @@
 			@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
 
 			float:left;
-			width:round(@context-width / @row-cols * @desired-cols) + 0px;
+			width:floor(@context-width / @row-cols * @desired-cols + 0px);
 
 		}
+
+
+    /**
+     * To create a grid unit with half-width gutters at both sides.
+     *
+     * Useful for laying out thumbnail galleries and similar, where
+     * is is more difficult to shave off the last gutter in a row.
+     */
+        .dist(@desired-cols:@d-col, @row-cols:@d-col){
+
+            @context-width: @mwth - (@gtr * @desired-cols - 1);
+
+            float:left;
+            width:floor(@context-width / @d-col * @desired-cols + 0px);
+            margin-right:floor(@gtr/2 + 0px);
+            margin-left:floor(@gtr/2 + 0px);
+        }
+
+
+    /**
+     * To create a nude grid unit with no gutters or additional properties
+     */
+        .nude( @desired-cols:@d-col, @row-cols:@d-col){
+
+            @context-width: @mwth - @gtr * (@d-col/@desired-cols - 1);
+
+            width:floor(@context-width / @row-cols * @desired-cols + 0px);
+
+        }
+
 
 	}

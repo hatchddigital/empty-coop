@@ -1,31 +1,31 @@
 @import '../../../static/stylesheets/less/styles.less';
-@import '../../../static/stylesheets/less/mixins/grid-fluid.less';
+@import '../../../static/stylesheets/less/mixins/grid-fixed.less';
 
-    .t-chickenwire-fluid{
+.t-chickenwire-fixed{
+    max-width:@mwth + 0px;
+    margin:0 auto;
 
-        max-width:2000px;
-        margin:0 auto;
-
-
-        //Waterfall example
-        [class*="cw-fluid-waterfall"]{
+    //Waterfall example
+        [class*="cw-fixed-waterfall"]{
             margin-bottom:1em;
             padding:10px 0;
             background:@col-recessive;
         }
 
-            .cw-fluid-waterfall-1col{#grid > .nude(1);}
-            .cw-fluid-waterfall-2col{#grid > .nude(2);}
-            .cw-fluid-waterfall-3col{#grid > .nude(3);}
-            .cw-fluid-waterfall-4col{#grid > .nude(4);}
-            .cw-fluid-waterfall-5col{#grid > .nude(5);}
-            .cw-fluid-waterfall-6col{#grid > .nude(6);}
-            .cw-fluid-waterfall-7col{#grid > .nude(7);}
-            .cw-fluid-waterfall-8col{#grid > .nude(8);}
-            .cw-fluid-waterfall-9col{#grid > .nude(9);}
-            .cw-fluid-waterfall-10col{#grid > .nude(10);}
-            .cw-fluid-waterfall-11col{#grid > .nude(11);}
-            .cw-fluid-waterfall-12col{#grid > .nude(12);}
+            .cw-fixed-waterfall-1col{#grid > .nude(1);}
+            .cw-fixed-waterfall-2col{#grid > .nude(2);}
+            .cw-fixed-waterfall-3col{#grid > .nude(3);}
+            .cw-fixed-waterfall-4col{#grid > .nude(4);}
+            .cw-fixed-waterfall-5col{#grid > .nude(5);}
+            .cw-fixed-waterfall-6col{#grid > .nude(6);}
+            .cw-fixed-waterfall-7col{#grid > .nude(7);}
+            .cw-fixed-waterfall-8col{#grid > .nude(8);}
+            .cw-fixed-waterfall-9col{#grid > .nude(9);}
+            .cw-fixed-waterfall-10col{#grid > .nude(10);}
+            .cw-fixed-waterfall-11col{#grid > .nude(11);}
+            .cw-fixed-waterfall-12col{#grid > .nude(12);}
+
+
 
 
         //Run grid example
@@ -67,8 +67,9 @@
         }
             .cw-distparent-3333{
                 div{
-                    #grid > .dist(3);
+                    #grid > .dist(4);
                 }
             }
 
-    }
+
+}
