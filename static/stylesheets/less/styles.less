@@ -23,7 +23,7 @@
  * Define colours, text sizes etc... before any styles are pulled in
  *
  */
-    @import '_settings.less';
+    @import 'settings.less';
 
 /**
  * Mixins
@@ -31,20 +31,21 @@
  * Define predefined mixins
  *
  */
-    @import '_mixins/predefined-mixins.less';
+    @import 'mixins/predefined-mixins.less';
 
 /**
  * Grid
  *
  * Pull in the relevent chickenwire grid (if applicable)
  */
-    @import '_mixins/grid-fluid.less';
-	//@import '_mixins/grid-fixed.less';
+    @import 'mixins/grid-fluid.less';
+	//@import 'mixins/grid-fixed.less';
 
 /**
  * Establish any resource using an @rule
  *
- * Set rules for any CSS resource requiring an @ prefix, such as @animate rules or @font-face fonts
+ * Set rules for any CSS resource requiring an @ prefix,
+ * such as @animate rules or @font-face fonts
  *
  */
 	@import 'resources/webfonts.less';
@@ -57,7 +58,8 @@
     /**
      * Create a clean slate
      *
-     * Ensure we level any browser differences, so we can build any subsequent declarations on level ground
+     * Ensure we level any browser differences, so we can build any
+     * subsequent declarations on level ground
      *
      */
 		@import 'html-elements/normalize.less';
@@ -76,17 +78,19 @@
 		@import 'html-elements/tables.less';
 
     /**
-     * Define layout classes
+     * Define display fixes
      *
-     * non-presentational classes, used to achieve functional things like clearing floats, visually hiding elements etc...
+     * non-presentational classes, used to achieve functional things like
+     * clearing floats, visually hiding elements etc...
      *
      */
-		@import 'layout-classes.less';
+		@import 'display-fixes.less';
 
     /**
      * Define modular components
      *
-     * Reusable components, called with a class (or classes) that can exist anywhere in the site
+     * Reusable components, called with a class (or classes)
+     * that can exist anywhere in the site
      *
      */
 		@import 'reusable-components/example-component.less';
@@ -94,7 +98,8 @@
     /**
      * Set master layout
      *
-     * The scaffolding of the site, defined through elements that occur only once per page, defined via an aria role or ID
+     * The scaffolding of the site, defined through elements that occur only
+     * once per page, defined via an aria role or ID
      *
      */
 		@import 'page-layouts/layout-master.less';
@@ -102,8 +107,9 @@
     /**
      * Set unique template layout(s)
      *
-     * Overrides to master layout or new rules, unique to a specific template or set of templates.
-     * These definitions should be set from a unique HTML or body class
+     * Overrides to master layout or new rules, unique to a specific
+     * template or set of templates. These definitions should be set
+     * from a unique HTML or body class
      *
      */
 		//@import 'page-layouts/layout-[uniquepage].less';
@@ -140,14 +146,17 @@
 /**
  * Set responsive rules (also for screen)
  *
- * Make changes to layout, modular components or base rules, based on screen dimension or pixel density.
+ * Make changes to layout, modular components or base rules,
+ * based on screen dimension or pixel density.
  */
 
     /**
      * Standard layout
      *
-     * This layout is the middle ground, with rules true to large-form factor screens.
-     * These rules are also used to create a fixed layout for browsers that don't understand media queries.
+     * This layout is the middle ground, with rules true
+     * to large-form factor screens.
+     * These rules are also used to create a fixed layout for browsers
+     * that don't understand media queries.
      *
      */
     	@media screen and(max-width:1200px){
@@ -170,8 +179,9 @@
  *
  * Set styles for print
  *
- * When any page from the site is printed, set rules to ensure only the useful bits are included,
- * and that units  of measurement are transposed from pixels to physical ones - like mm, and points
+ * When any page from the site is printed, set rules to ensure only
+ * the useful bits are included, and that units  of measurement are transposed
+ * from pixels to physical ones - like mm, and points
  *
  */
 @media print{
