@@ -16,9 +16,11 @@
 /**
  * Set defaults
  */
-@mwth  : 1000; //mwth
+@mwth  : 980; //mwth
 @d-col : 12; //Default number of columns
 @gtr   : 20; //Gutter size (in pixels)
+@grid-width:round( ( @mwth - ( @gtr * (@d-col - 1) ) ) /@d-col );
+@grid-width-dist:floor( ( @mwth - ( @gtr * @d-col ) ) /@d-col );
 
 /**
  * Set grid mixin
@@ -32,25 +34,18 @@
      * Or should use the .run-last() mixin
      *
      */
-		.run(@desired-cols:@d-col, @row-cols:@d-col){
-
-			@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
-
+		.run(@desired-cols:@d-col){
 			float:left;
-			width:floor(@context-width / @row-cols * @desired-cols + 0px);
+            width:(@grid-width * @desired-cols) + (@gtr * @desired-cols) - @gtr + 0px;
 			margin-right:@gtr + 0px;
 		}
 
 	/**
      * For the last column in a row, remove the gutter
      */
-		.run-last(@desired-cols:@d-col, @row-cols:@d-col){
-
-			@context-width: @mwth - @gtr * (@row-cols/@desired-cols - 1);
-
+		.run-last(@desired-cols:@d-col){
 			float:left;
-			width:floor(@context-width / @row-cols * @desired-cols + 0px);
-
+            width:(@grid-width * @desired-cols) + (@gtr * @desired-cols) - @gtr + 0px;
 		}
 
 
@@ -60,15 +55,9 @@
      * Useful for laying out thumbnail galleries and similar, where
      * is is more difficult to shave off the last gutter in a row.
      */
-        .dist(@desired-cols:@d-col, @row-cols:@d-col){
-
-            @context-width: @mwth - @gtr * (@row-cols/@desired-cols);
-
-            // 1000 - 20 * (12 / 3)
-
-            max-width:@context-width + 0px;
+        .dist(@desired-cols:@d-col){
             float:left;
-            width:floor(@context-width / @d-col * @desired-cols + 0px);
+            width:(@grid-width-dist * @desired-cols) + (@gtr * @desired-cols) - @gtr + 0px;
             margin-right:@gtr/2 + 0px;
             margin-left:@gtr/2 + 0px;
         }
@@ -77,12 +66,8 @@
     /**
      * To create a nude grid unit with no gutters or additional properties
      */
-        .nude( @desired-cols:@d-col, @row-cols:@d-col){
-
-            @context-width: @mwth - @gtr * (@d-col/@desired-cols - 1);
-
-            width:floor(@context-width / @row-cols * @desired-cols + 0px);
-
+        .nude( @desired-cols:@d-col){
+            width:(@grid-width * @desired-cols) + (@gtr * @desired-cols) - @gtr + 0px;
         }
 
 

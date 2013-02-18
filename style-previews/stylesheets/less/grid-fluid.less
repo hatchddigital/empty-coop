@@ -55,6 +55,27 @@
                 }
             }
 
+        //Run grid with nesting example
+        [class*="cw-runparentnested"]{
+            div div{
+                background:darken(@col-recessive,10%);
+            }
+        }
+
+            .cw-runparentnested-84{
+                > div:nth-child(1){#grid > .run(8);}
+                > div:nth-child(2){
+                    #grid > .run(4);
+                }
+                    div div:nth-child(1){#grid > .run(3,4,@gn1);}
+                    div div:nth-child(2){#grid > .run(1,4,@gn1);}
+
+                div:last-child,
+                div div:last-child{
+                    margin-right:0;
+                }
+            }
+
         //Distributed grid example
         [class*="cw-distparent"]{
             margin-bottom:1em;
