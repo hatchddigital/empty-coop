@@ -45,6 +45,17 @@
     }
 
 /**
+ * Evenly distribute items
+ *
+ * Automagically set items evenly in a line
+ *
+ * @param item-number: number of items to distribute
+ */
+    .distribute-items(@item-number){
+        width:100/@item-number + 0%;
+    }
+
+/**
  * Set background size
  *
  * Set the background-size for an element, as FF3.6 still needs -moz- prefix
