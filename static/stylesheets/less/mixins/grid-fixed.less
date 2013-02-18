@@ -19,6 +19,7 @@
 @mwth  : 980; //mwth
 @d-col : 12; //Default number of columns
 @gtr   : 20; //Gutter size (in pixels)
+@total-width:(@grid-width * @d-col) + (@gtr * @d-col) - @gtr + 0px;
 @grid-width:round( ( @mwth - ( @gtr * (@d-col - 1) ) ) /@d-col );
 @grid-width-dist:floor( ( @mwth - ( @gtr * @d-col ) ) /@d-col );
 
