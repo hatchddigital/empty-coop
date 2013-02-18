@@ -3,7 +3,7 @@
 
     .t-chickenwire-fluid{
 
-        max-width:2000px;
+        max-width:@rounded-width+0px;
         margin:0 auto;
 
 
@@ -67,8 +67,8 @@
                 > div:nth-child(2){
                     #grid > .run(4);
                 }
-                    div div:nth-child(1){#grid > .run(3,4,@gn1);}
-                    div div:nth-child(2){#grid > .run(1,4,@gn1);}
+                    div div:nth-child(1){#grid > .run(3,4,@gutter-nest-1);}
+                    div div:nth-child(2){#grid > .run(1,4,@gutter-nest-1);}
 
                 div:last-child,
                 div div:last-child{
