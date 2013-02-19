@@ -7,10 +7,10 @@ on this site. For example: webfonts or iStock Photo images.
 
 ...
 
-### Libraries
+## Libraries
 
 ...
 
-### iStock photos
+## iStock photos
 
 ...
