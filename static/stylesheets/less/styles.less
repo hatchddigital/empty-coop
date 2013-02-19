@@ -158,14 +158,14 @@
     /**
      * Mobile layout
      */
-	@media screen and(max-width:600px){
-		@import 'responsive-design/breakpt-mobile.less';
-	}
+    	@media screen and(max-width:600px){
+    		@import 'responsive-design/breakpt-mobile.less';
+    	}
 
     /**
      * Minor adjustments to layout
      */
-    @import 'responsive-design/breakpt-minor.less';
+        @import 'responsive-design/breakpt-minor.less';
 
 /**
  *
@@ -177,5 +177,26 @@
  *
  */
 @media print{
-	//..
+
+	/**
+     * Create a clean slate
+     *
+     * Ensure we level any browser differences, so we can build any
+     * subsequent declarations on level ground
+     *
+     */
+        @import 'html-elements/normalize.less';
+
+    /**
+     * Set base rules that can apply site-wide
+     *
+     * These should apply to naked elements, no classes should be defined here
+     *
+     */
+        @import 'html-elements/typography.less';
+        @import 'html-elements/code.less';
+        @import 'html-elements/links.less';
+        @import 'html-elements/formelements.less';
+        @import 'html-elements/images.less';
+        @import 'html-elements/tables.less';
 }
