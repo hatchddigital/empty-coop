@@ -143,17 +143,30 @@
  */
 
     /**
+    * Large screen layout
+    */
+        @media screen and(max-width:5000px){
+            @import 'responsive-design/breakpt-largescreen.less';
+        }
+
+    /**
      * Standard layout
      *
-     * This layout is the middle ground, with rules true
-     * to large-form factor screens.
-     * These rules are also used to create a fixed layout for browsers
-     * that don't understand media queries.
+     * This layout is the middle ground, with rules true to large-form factor
+     * screens. These rules are also used to create a fixed layout for
+     * browsers that don't understand media queries.
      *
      */
-    	@media screen and(min-width:601px) and(max-width:1200px){
+    	@media screen and(max-width:2000px){
     		@import 'responsive-design/breakpt-standard.less';
     	}
+
+    /**
+    * Tablet layout
+    */
+        @media screen and(max-width:1024px){
+            @import 'responsive-design/breakpt-tablet.less';
+        }
 
     /**
      * Mobile layout
