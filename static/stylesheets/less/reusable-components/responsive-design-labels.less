@@ -1,0 +1,39 @@
+/**
+ * Responsive design labels
+ *
+ * This is to help see breakpoints whilst developing the site.
+ *
+ */
+
+/**
+ * Set label appearance
+ */
+body:before{
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    content:"Responsive breakpoint label";
+    width:90%;
+    padding:10px 5%;
+    border-bottom:1px solid @col-recessive;
+    background:fade(orange,50%);
+    box-shadow:inset 0 -1px 0 0 fade(@white,50%);
+}
+
+/**
+ * Apply labels to all major breakpoints
+ */
+@media screen and(max-width:@rwd-largescreen-max){
+    body:before{content:"Large screen";}
+}
+@media screen and(max-width:@rwd-standard-max){
+    body:before{content:"Standard layout";}
+}
+@media screen and(max-width:@rwd-tablet-max){
+    body:before{content:"Tablet layout";}
+}
+@media screen and(max-width:@rwd-mobile-max){
+    body:before{content:"Mobile layout";}
+}
+

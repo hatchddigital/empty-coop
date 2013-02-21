@@ -145,7 +145,7 @@
     /**
     * Large screen layout
     */
-        @media screen and(max-width:5000px){
+        @media screen and(max-width:@rwd-largescreen-max){
             @import 'responsive-design/breakpt-largescreen.less';
         }
 
@@ -157,23 +157,23 @@
      * browsers that don't understand media queries.
      *
      */
-    	@media screen and(max-width:2000px){
-    		@import 'responsive-design/breakpt-standard.less';
-    	}
+        @media screen and(max-width:@rwd-standard-max){
+            @import 'responsive-design/breakpt-standard.less';
+        }
 
     /**
     * Tablet layout
     */
-        @media screen and(max-width:1024px){
+        @media screen and(max-width:@rwd-tablet-max){
             @import 'responsive-design/breakpt-tablet.less';
         }
 
     /**
      * Mobile layout
      */
-    	@media screen and(max-width:600px){
-    		@import 'responsive-design/breakpt-mobile.less';
-    	}
+        @media screen and(max-width:@rwd-mobile-max){
+            @import 'responsive-design/breakpt-mobile.less';
+        }
 
     /**
      * Minor adjustments to layout
