@@ -28,27 +28,25 @@
 
 /**
  * Clearfix
+ *
+ * @src http://css-tricks.com/snippets/css/clear-fix
+ * IE6 part not included, as we've dropped IE6 support
  */
+    .clearfix:after {
+        display:block;
+        visibility:hidden;
+        clear:both;
+        content:" ";
+        height:0;
+        font-size:0;
+    }
 
-    .clearfix:after{
-		visibility:hidden;
-		display:block;
-		font-size:0;
-		content:" ";
-		clear:both;
-		height:0;
-	}
-	.clearfix{
-		display:inline-block;
-	}
-	/* Start commented backslash hack \*/
-		* html .clearfix{
-			height:1%;
-		}
-		.clearfix{
-			display:block;
-		}
-	/* Close commented backslash hack */
+     /**
+      * IE7
+      */
+        *:first-child+html .clearfix{
+            zoom:1;
+        }
 
 /**
  * Set text to be replaced by an image
