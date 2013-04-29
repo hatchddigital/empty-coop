@@ -113,40 +113,69 @@
  *
  */
     #transform{
-        .rotate (@angle) {
+
+        /**
+         * Rotate an element
+         * @angle [value] deg
+         */
+        .rotate (@angle: 0deg) {
             -moz-transform:rotate(@angle);
             -webkit-transform:rotate(@angle);
             -o-transform:rotate(@angle);
             -ms-transform:rotate(@angle);
             transform:rotate(@angle);
         }
-        .skew (@transx, @transy) {
-            -moz-transform:skew(@transx, @transy);
-            -webkit-transform:skew(@transx, @transy);
-            -o-transform:skew(@transx, @transy);
-            -ms-transform:skew(@transx, @transy);
-            transform:skew(@transx, @transy);
+
+        /**
+         * Skew an element
+         * @transx [value] deg
+         * @transy [value] deg
+         */
+        .skew (@transx: 0deg, @transy: 0deg) {
+            -moz-transform:skew(@transx @transy);
+            -webkit-transform:skew(@transx @transy);
+            -o-transform:skew(@transx @transy);
+            -ms-transform:skew(@transx @transy);
+            transform:skew(@transx @transy);
         }
-        .scale (@transx, @transy) {
+
+        /**
+         * Scale an element
+         * @transx [value]
+         * @transy [value]
+         */
+        .scale (@transx:1.5, @transy:1.5) {
             -moz-transform:scale(@transx, @transy);
             -webkit-transform:scale(@transx, @transy);
             -o-transform:scale(@transx, @transy);
             -ms-transform: scale(@transx, @transy);
             transform:scale(@transx, @transy);
         }
-        .translate (@transx, @transy) {
+
+        /**
+         * Translate an element
+         * @transx [value]
+         * @transy [value]
+         */
+        .translate (@transx:200px, @transy:200px) {
              transform: translate(@transx,@transy);
             -ms-transform: translate(@transx,@transy);
             -webkit-transform: translate(@transx,@transy);
             -o-transform: translate(@transx,@transy);
             -moz-transform: translate(@transx,@transy);
         }
-        .origin (@transx, @transy) {
-            -moz-transform-origin: @transx @transy;
-            -webkit-transform-origin: @transx @transy;
-            -o-transform-origin: @transx @transy;
-            -ms-transform-origin: @transx @transy;
-            transform-origin: @transx @transy;
+
+        /**
+         * Change the transform origin for an element
+         * @value if string: top/bottom left/right
+         * @value if num: horizontal (px/%/em) vertical (px/%/em)
+         */
+        .origin (@value:top left) {
+            -moz-transform-origin: @value;
+            -webkit-transform-origin: @value;
+            -o-transform-origin: @value;
+            -ms-transform-origin: @value;
+            transform-origin: @value;
         }
     }
 
