@@ -76,4 +76,25 @@
         width:(100/@container-columns * @desired-columns) + 0%;
 
     }
+
+    /**
+     * Use a grid width to set horz. padding
+     */
+    .pad-right(@desired-columns, @container-columns:@total-columns){
+        padding-right:(100/@container-columns * @desired-columns) + 0%;
+    }
+    .pad-left(@desired-columns, @container-columns:@total-columns){
+        padding-left:(100/@container-columns * @desired-columns) + 0%;
+    }
+
+     /**
+     * Use a grid width to set horz. margin
+     */
+    .margin-right(@desired-columns, @container-columns:@total-columns){
+        margin-right:(100/@container-columns * @desired-columns) + 0%;
+    }
+    .margin-left(@desired-columns, @container-columns:@total-columns){
+        margin-left:(100/@container-columns * @desired-columns) + 0%;
+    }
+
 }
