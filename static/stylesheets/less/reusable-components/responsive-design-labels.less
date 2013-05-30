@@ -24,16 +24,16 @@ body:before{
 /**
  * Apply labels to all major breakpoints
  */
-@media screen and(max-width:@rwd-largescreen-max){
+@media @largescreen{
     body:before{content:"Large screen";}
 }
-@media screen and(max-width:@rwd-standard-max){
+@media @standard{
     body:before{content:"Standard layout";}
 }
-@media screen and(max-width:@rwd-tablet-max){
+@media @tablet{
     body:before{content:"Tablet layout";}
 }
-@media screen and(max-width:@rwd-mobile-max){
+@media @mobile{
     body:before{content:"Mobile layout";}
 }
 

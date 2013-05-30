@@ -7,13 +7,53 @@
 *If it has a multi-word name, subclasses shoudl be prefixed with an abbreviation of that name
 */
 
-.post{
-}
 
-	.post-heading{
-	}
-	.post-meta{
-	}
-	.post-img{
+/**
+ * Universally applicable rules
+ */
+    .post{
+    }
+    	.post-heading{
+    	}
+    	.post-meta{
+    	}
+    	.post-img{
 
-	}
+    	}
+
+/**
+ * Style changes, based on environment
+ */
+
+    /**
+     * Media queries
+     */
+        @media @tablet{
+            .post{
+                background:red;
+            }
+        }
+        @media @mobile{
+            .post{
+                background:green;
+            }
+        }
+
+    /**
+     * Modernizr hooks
+     */
+        .no-cssgradients{
+            .post{
+                background:yellow;
+            }
+        }
+
+    /**
+     * IE overrides
+     */
+        .lt-ie8{
+            .post{
+                background:purple;
+            }
+        }
+

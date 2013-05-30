@@ -113,74 +113,22 @@
      *
      * Adjust or scale-back site elements, depending on a specific browser,
      * or a CSS property that may not be supported by every browser
+     * There will be extended by LESS rules inside individial components.
      *
      */
 
         /**
          * IE8 and below
          */
-		.lt-ie9{
-            @import 'responsive-design/breakpt-standard.less';
-			@import 'browser-overrides/overrides-ie8.less';
-		}
+    		.lt-ie9{
+    		}
 
          /**
          * IE7 and below
          */
-		.lt-ie8{
-			@import 'browser-overrides/overrides-ie7.less';
-		}
-
-        /**
-         * Using modernizer classes
-         */
-		  @import 'browser-overrides/overrides-modernizr.less';
+    		.lt-ie8{
+    		}
 }
-
-/**
- * Set responsive rules (also for screen)
- *
- * Make changes to layout, modular components or base rules,
- * based on screen dimension or pixel density.
- */
-
-    /**
-    * Large screen layout
-    */
-        @media screen and(max-width:@rwd-largescreen-max){
-            @import 'responsive-design/breakpt-largescreen.less';
-        }
-
-    /**
-     * Standard layout
-     *
-     * This layout is the middle ground, with rules true to large-form factor
-     * screens. These rules are also used to create a fixed layout for
-     * browsers that don't understand media queries.
-     *
-     */
-        @media screen and(min-width:@rwd-standard-max){
-            @import 'responsive-design/breakpt-standard.less';
-        }
-
-    /**
-    * Tablet layout
-    */
-        @media screen and(max-width:@rwd-tablet-max){
-            @import 'responsive-design/breakpt-tablet.less';
-        }
-
-    /**
-     * Mobile layout
-     */
-        @media screen and(max-width:@rwd-mobile-max){
-            @import 'responsive-design/breakpt-mobile.less';
-        }
-
-    /**
-     * Minor adjustments to layout
-     */
-        @import 'responsive-design/breakpt-minor.less';
 
 /**
  *

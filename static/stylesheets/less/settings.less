@@ -8,7 +8,6 @@
 
 /**
  * Grid
- *
  */
     /**
      * Grid config
@@ -29,31 +28,16 @@
 
 /**
  * Responsive design
- *
- * All rwd breakpoints are handled with max-width. Feel free to change this
- * of course, or add more variables as needed. These variables to not cover
- * minor breakponts (see all breakpints within styles.less).
  */
 
     /**
-    * Large screen layout
-    */
-        @rwd-largescreen-max: 5000px;
-
-    /**
-     * Standard layout
+     * Breakpoints
+     * Figure no need to prefix these!
      */
-        @rwd-standard-max: 2000px;
-
-    /**
-     * Tablet layout
-     */
-        @rwd-tablet-max: 1024px;
-
-    /**
-     * Mobile layout
-     */
-        @rwd-mobile-max: 600px;
+        @largescreen:~"(min-width:1199px)";
+        @standard:~"(max-width:2000px)";
+        @tablet:~"(max-width:1024px)";
+        @mobile:~"(max-width:600px)";
 
     /**
      * Include helper labels?
