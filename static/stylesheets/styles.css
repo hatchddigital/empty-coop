@@ -485,6 +485,10 @@ body:before {
        */
   
     /**
+   * For mobile, remove text-size adjust on webkit-based browsers
+   */
+  
+    /**
        * Set base rules that can apply site-wide
        *
        * These should apply to naked elements, no classes should be defined here
@@ -1227,6 +1231,11 @@ body:before {
     margin: 0;
   }
 }
+@media screen and (max-width:600px) {
+  {
+    -webkit-text-size-adjust: none;
+  }
+}
 @media screen and (max-width:1024px) {
   .post {
     background: red;
@@ -1247,14 +1256,16 @@ body:before {
  *
  */
 @media print {
-  /**
+  {
+    /**
        * Create a clean slate
        *
        * Ensure we level any browser differences, so we can build any
        * subsequent declarations on level ground
        *
        */
-  /**
+  
+    /**
    * normalize.css 2012-07-07T09:50 UTC
    *
    * @src http://github.com/necolas/normalize.css
@@ -1262,13 +1273,276 @@ body:before {
    * All unneeded components, and ones addressing presentation that are
    * handled elsewhere have been stripped out.
    */
-  /**
+  
+    /**
    * HTML5 display definitions
    *
    */
-  /**
+  
+    /**
       * Corrects `block` display not defined in IE6/7/8/9 & FF3.
       */
+  
+    /**
+       * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
+       */
+  
+    /**
+       * Prevents modern browsers from displaying `audio` without controls.
+       * Remove excess height in iOS5 devices.
+       */
+  
+    /**
+       * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
+       *
+       * known issue:no IE6 support.
+       */
+  
+    /**
+       * Remove list-style and margin on nav
+       *
+       * Added by the Hatchd team
+       *
+       */
+  
+    /**
+   * Base
+   *
+   */
+  
+    /**
+       * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
+       * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
+       */
+  
+    /**
+       * Improves readability when focused and also mouse hovered in all browsers.
+       *
+       * @src people.opera.com/patrickl/experiments/keyboard/test
+       *
+       */
+  
+    /**
+   * Forms
+   *
+   */
+  
+    /**
+       * Define consistent border, margin, and padding.
+       */
+  
+    /**
+       * 1. Corrects color not being inherited in IE6/7/8/9.
+       * 2. Corrects text not wrapping in FF3.
+       * 3. Corrects alignment displayed oddly in IE6/7.
+       */
+  
+    /**
+       * 1. Corrects font size not being inherited in all browsers.
+       * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
+       * 3. Improves appearance and consistency in all browsers.
+       */
+  
+    /**
+       * Addresses FF3/4 setting `line-height` on `input` using
+       * `!important` in the UA stylesheet.
+       */
+  
+    /**
+       * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+       * 2. Corrects inability to style clickable `input` types in iOS.
+       * 3. Improves usability and consistency of cursor style between image-type `input` and others.
+       * 4. Removes inner spacing in IE7 without affecting normal text inputs.
+       * Known issue:inner spacing remains in IE6.
+      */
+  
+    /**
+       * Re-set default cursor for disabled elements.
+       */
+  
+    /**
+       * 1. Addresses box sizing set to content-box in IE8/9.
+       * 2. Removes excess padding in IE8/9.
+       * 3. Removes excess padding in IE7.
+       * Known issue:excess padding remains in IE6.
+      */
+  
+    /**
+       * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
+       * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
+      */
+  
+    /**
+       * Removes inner padding and search cancel button in S5, Chrome on OS X.
+       */
+  
+    /**
+       * Removes inner padding and border in FF3+.
+       */
+  
+    /**
+       * 1. Removes default vertical scrollbar in IE6/7/8/9.
+       * 2. Improves readability and alignment in all browsers.
+       */
+  
+    /**
+   * Tables
+   *
+   */
+  
+    /**
+       * Remove most spacing between table cells.
+       */
+  
+    /**
+   * For mobile, remove text-size adjust on webkit-based browsers
+   */
+  
+    /**
+       * Set base rules that can apply site-wide
+       *
+       * These should apply to naked elements, no classes should be defined here
+       *
+       */
+  
+    /**
+   * Base type styles
+   */
+  
+    /**
+   * Set base font size/line-height and declare the px size of an em unit
+   */
+  
+    /**
+   * Headings
+   */
+  
+    /**
+       * Headings within an hgroup
+       */
+  
+    /**
+   * Block elements
+   */
+  
+    /**
+   * Quotes
+   */
+  
+    /**
+       * Blockquotes
+       */
+  
+    /**
+       * Inline quotes
+       */
+  
+    /**
+   * Lists
+   */
+  
+    /**
+       * Globals
+       */
+  
+    /**
+       * Unordered lists
+       */
+  
+    /**
+       * Ordered lists
+       */
+  
+    /**
+       * Definiton lists
+       */
+  
+    /**
+   * Inline elements
+   */
+  
+    /**
+       * Superscript/subscript
+       */
+  
+    /**
+       * For marking up content relevency/edits and highlighting content
+       */
+  
+    /**
+       * Small print
+       */
+  
+    /**
+       * Phrase tags
+       */
+  
+    /**
+   * Code formatting
+   *
+   */
+  
+    /**
+  * Preformatted text
+  */
+  
+    /**
+  * Code, samp, kbd
+  */
+  
+    /**
+  * Var
+  */
+  
+    /**
+   * Base link and text selection styles
+   */
+  
+    /**
+   * Link styles
+   */
+  
+    /**
+   * Text selection styles
+   */
+  
+    /**
+   * Form elements
+   *
+   * Basic styles for forms.
+   * All laid out form fields should be set within an unordered list.
+   */
+  
+    /**
+   * Set global constants
+   */
+  
+    /**
+       * Set styles for full forms
+       *
+       * sets of inputs/labels should always be encased in
+       * an ordered list for example
+       */
+  
+    /**
+   * Base image styles
+   */
+  
+    /**
+   * Image on its own
+   */
+  
+    /**
+   * Image within a figure tag
+   *
+   * Used when the image is supporting some related copy
+   */
+  
+    /**
+   * Base table styles
+   */
+  
+  }
   article,
   aside,
   details,
@@ -1282,9 +1556,6 @@ body:before {
   summary {
     display: block;
   }
-  /**
-       * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
-       */
   audio,
   canvas,
   video {
@@ -1292,28 +1563,13 @@ body:before {
     *display: inline;
     *zoom: 1;
   }
-  /**
-       * Prevents modern browsers from displaying `audio` without controls.
-       * Remove excess height in iOS5 devices.
-       */
   audio:not([controls]) {
     display: none;
     height: 0;
   }
-  /**
-       * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
-       *
-       * known issue:no IE6 support.
-       */
   [hidden] {
     display: none;
   }
-  /**
-       * Remove list-style and margin on nav
-       *
-       * Added by the Hatchd team
-       *
-       */
   nav ul,
   nav ol {
     margin: 0;
@@ -1322,55 +1578,24 @@ body:before {
   nav li {
     margin: 0;
   }
-  /**
-   * Base
-   *
-   */
-  /**
-       * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
-       * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
-       */
   html {
     font-size: 100%;
   }
-  /**
-       * Improves readability when focused and also mouse hovered in all browsers.
-       *
-       * @src people.opera.com/patrickl/experiments/keyboard/test
-       *
-       */
   a:active,
   a:hover {
     outline: 0;
   }
-  /**
-   * Forms
-   *
-   */
-  /**
-       * Define consistent border, margin, and padding.
-       */
   fieldset {
     border: 1px solid #c0c0c0;
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
   }
-  /**
-       * 1. Corrects color not being inherited in IE6/7/8/9.
-       * 2. Corrects text not wrapping in FF3.
-       * 3. Corrects alignment displayed oddly in IE6/7.
-       */
   legend {
     border: 0;
     padding: 0;
     white-space: normal;
     *margin-left: -7px;
   }
-  /**
-       * 1. Corrects font size not being inherited in all browsers.
-       * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
-       * 3. Improves appearance and consistency in all browsers.
-       */
   button,
   input,
   select,
@@ -1380,21 +1605,10 @@ body:before {
     vertical-align: baseline;
     *vertical-align: middle;
   }
-  /**
-       * Addresses FF3/4 setting `line-height` on `input` using
-       * `!important` in the UA stylesheet.
-       */
   button,
   input {
     line-height: normal;
   }
-  /**
-       * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
-       * 2. Corrects inability to style clickable `input` types in iOS.
-       * 3. Improves usability and consistency of cursor style between image-type `input` and others.
-       * 4. Removes inner spacing in IE7 without affecting normal text inputs.
-       * Known issue:inner spacing remains in IE6.
-      */
   button,
   html input[type="button"],
   input[type="reset"],
@@ -1403,19 +1617,10 @@ body:before {
     cursor: pointer;
     *overflow: visible;
   }
-  /**
-       * Re-set default cursor for disabled elements.
-       */
   button[disabled],
   input[disabled] {
     cursor: default;
   }
-  /**
-       * 1. Addresses box sizing set to content-box in IE8/9.
-       * 2. Removes excess padding in IE8/9.
-       * 3. Removes excess padding in IE7.
-       * Known issue:excess padding remains in IE6.
-      */
   input[type="checkbox"],
   input[type="radio"] {
     box-sizing: border-box;
@@ -1425,59 +1630,26 @@ body:before {
     *height: 13px;
     *width: 13px;
   }
-  /**
-       * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
-       * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
-      */
   input[type="search"] {
     -webkit-appearance: textfield;
   }
-  /**
-       * Removes inner padding and search cancel button in S5, Chrome on OS X.
-       */
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
   }
-  /**
-       * Removes inner padding and border in FF3+.
-       */
   button::-moz-focus-inner,
   input::-moz-focus-inner {
     border: 0;
     padding: 0;
   }
-  /**
-       * 1. Removes default vertical scrollbar in IE6/7/8/9.
-       * 2. Improves readability and alignment in all browsers.
-       */
   textarea {
     overflow: auto;
     vertical-align: top;
   }
-  /**
-   * Tables
-   *
-   */
-  /**
-       * Remove most spacing between table cells.
-       */
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
-  /**
-       * Set base rules that can apply site-wide
-       *
-       * These should apply to naked elements, no classes should be defined here
-       *
-       */
-  /**
-   * Base type styles
-   */
-  /**
-   * Set base font size/line-height and declare the px size of an em unit
-   */
   body {
     font-size: 100%;
     line-height: 1.5em;
@@ -1491,9 +1663,6 @@ body:before {
     font-size: 1em;
     line-height: 1.5em;
   }
-  /**
-   * Headings
-   */
   h1,
   h2,
   h3,
@@ -1521,9 +1690,6 @@ body:before {
   h6 {
     font-size: 1em;
   }
-  /**
-       * Headings within an hgroup
-       */
   hgroup {
     position: relative;
     margin: 0 0 1em 0;
@@ -1533,9 +1699,6 @@ body:before {
   hgroup h3 {
     margin: 0;
   }
-  /**
-   * Block elements
-   */
   p {
     margin: 0 0 1em 0;
   }
@@ -1546,12 +1709,6 @@ body:before {
     border: none;
     border-top: 1px solid #cccccc;
   }
-  /**
-   * Quotes
-   */
-  /**
-       * Blockquotes
-       */
   blockquote {
     margin: 0 0 1em 3em;
   }
@@ -1573,9 +1730,6 @@ body:before {
   blockquote footer p:before {
     content: "- ";
   }
-  /**
-       * Inline quotes
-       */
   q {
     font-style: italic;
     color: inherit;
@@ -1583,12 +1737,6 @@ body:before {
   cite {
     font-style: italic;
   }
-  /**
-   * Lists
-   */
-  /**
-       * Globals
-       */
   ul,
   ol,
   dl {
@@ -1598,18 +1746,12 @@ body:before {
   li {
     margin: 0 0 0.25em 0;
   }
-  /**
-       * Unordered lists
-       */
   ul {
     list-style: disc outside;
   }
   ul ul {
     margin: 0.25em 0 0.5em 1em;
   }
-  /**
-       * Ordered lists
-       */
   ol {
     list-style: decimal outside;
   }
@@ -1617,9 +1759,6 @@ body:before {
     margin: 0.25em 0 0.5em 1.5em;
     list-style-type: lower-roman;
   }
-  /**
-       * Definiton lists
-       */
   dl {
     margin-left: 0;
   }
@@ -1631,12 +1770,6 @@ body:before {
   dd {
     margin: 0 0 0.5em 0;
   }
-  /**
-   * Inline elements
-   */
-  /**
-       * Superscript/subscript
-       */
   sup,
   sub {
     font-size: 75%;
@@ -1650,9 +1783,6 @@ body:before {
   sub {
     bottom: -0.25em;
   }
-  /**
-       * For marking up content relevency/edits and highlighting content
-       */
   ins {
     background-color: #fffb88;
   }
@@ -1668,16 +1798,10 @@ body:before {
     color: inherit;
     font-weight: normal;
   }
-  /**
-       * Small print
-       */
   small {
     font-weight: normal;
     font-style: normal;
   }
-  /**
-       * Phrase tags
-       */
   strong,
   b {
     font-weight: bold;
@@ -1691,13 +1815,6 @@ body:before {
     font-style: inherit;
     position: relative;
   }
-  /**
-   * Code formatting
-   *
-   */
-  /**
-  * Preformatted text
-  */
   pre {
     white-space: pre;
     width: 100%;
@@ -1707,28 +1824,16 @@ body:before {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
-  /**
-  * Code, samp, kbd
-  */
   code,
   samp,
   kbd {
     display: inline-block;
     padding: 0 0.5em;
   }
-  /**
-  * Var
-  */
   var {
     font-style: italic;
     font-weight: bold;
   }
-  /**
-   * Base link and text selection styles
-   */
-  /**
-   * Link styles
-   */
   a,
   a:link,
   a:visited {
@@ -1745,9 +1850,6 @@ body:before {
   a[href^="tel"] {
     color: inherit;
   }
-  /**
-   * Text selection styles
-   */
   ::selection {
     color: #ffffff;
     background: #ef4136;
@@ -1756,15 +1858,6 @@ body:before {
     color: #ffffff;
     background: #ef4136;
   }
-  /**
-   * Form elements
-   *
-   * Basic styles for forms.
-   * All laid out form fields should be set within an unordered list.
-   */
-  /**
-   * Set global constants
-   */
   form {
     position: relative;
     margin: 0 0 1em 0;
@@ -1815,12 +1908,6 @@ body:before {
     padding: 0.5em;
     cursor: pointer;
   }
-  /**
-       * Set styles for full forms
-       *
-       * sets of inputs/labels should always be encased in
-       * an ordered list for example
-       */
   form ul {
     margin: 0;
     padding: 0;
@@ -1842,12 +1929,6 @@ body:before {
   form .buttons {
     padding-top: 1.5em;
   }
-  /**
-   * Base image styles
-   */
-  /**
-   * Image on its own
-   */
   img {
     display: block;
     width: auto;
@@ -1857,11 +1938,6 @@ body:before {
   img:not[src*="maps.gstatic.com"] {
     max-width: 100%;
   }
-  /**
-   * Image within a figure tag
-   *
-   * Used when the image is supporting some related copy
-   */
   figure {
     display: inline-block;
     margin: 0 0 1em 0;
@@ -1873,9 +1949,6 @@ body:before {
     margin-top: 0.25em;
     font-style: italic;
   }
-  /**
-   * Base table styles
-   */
   table {
     width: 100%;
     margin: 0 0 1em 0;
@@ -1901,5 +1974,10 @@ body:before {
     border-bottom: none;
     font-size: 0.85em;
     font-style: italic;
+  }
+}
+@media print and (max-width:600px) {
+  {
+    -webkit-text-size-adjust: none;
   }
 }
