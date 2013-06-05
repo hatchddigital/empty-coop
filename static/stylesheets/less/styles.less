@@ -90,44 +90,26 @@
 		@import 'reusable-components/example-component.less';
 
     /**
-     * Set master layout
+     * Set static page elements
      *
      * The scaffolding of the site, defined through elements that occur only
      * once per page, defined via an aria role or ID
      *
      */
-		@import 'page-layouts/layout-master.less';
+        @import 'page-elements/page-outer.less';
+        @import 'page-elements/page-header.less';
+        @import 'page-elements/page-content.less';
+        @import 'page-elements/page-footer.less';
 
     /**
-     * Set unique template layout(s)
+     * Set page layout(s)
      *
-     * Overrides to master layout or new rules, unique to a specific
-     * template or set of templates. These definitions should be set
-     * from a unique HTML or body class
-     *
-     */
-		//@import 'page-layouts/layout-[uniquepage].less';
-
-    /**
-     * Set vendor-specific rules
-     *
-     * Adjust or scale-back site elements, depending on a specific browser,
-     * or a CSS property that may not be supported by every browser
-     * There will be extended by LESS rules inside individial components.
+     * Rules unique to a specific template or set of templates.
+     * These definitions should be set from a unique class
      *
      */
+	   @import 'page-layouts/layout-default.less';
 
-        /**
-         * IE8 and below
-         */
-    		.lt-ie9{
-    		}
-
-         /**
-         * IE7 and below
-         */
-    		.lt-ie8{
-    		}
 }
 
 /**
