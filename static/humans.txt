@@ -16,13 +16,14 @@
 
 # TEAM
 
-    Curtis -- Designer
     Jack -- Front-end developer -- @jackarmley
     Jen -- Designer -- @syrrup
     Jimmy -- Back-end developer -- @ppjim3
     Neil -- Back-end developer -- @neilf_
     Niaal -- Front-end developer -- @niaalist
     Pascal -- Designer -- @pascalwijnberg
+    Curtis -- Designer
+    Jen -- Designer
 
 # THANKS
 
