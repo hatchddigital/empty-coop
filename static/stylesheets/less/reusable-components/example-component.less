@@ -1,22 +1,33 @@
 /**
-*An example component
+* An example component
 *
-*Add what the component does here
+* Add what the component does here
 */
 
 
 /**
  * Universally applicable rules
  */
-    .post{
-    }
-    	.post-heading{
-    	}
-    	.post-meta{
-    	}
-    	.post-img{
 
-    	}
+    /**
+     * Basic post
+     */
+        .post{
+            background:@col-recessive;
+        }
+        	.post-heading{
+                font-size:@fontsize-large;
+        	}
+        	.post-img{
+                border:1px solid @col-base;
+        	}
+    /**
+     * Extend > Post with keyline
+     */
+        .post--keyline
+        :extend(.post){
+            border-bottom:1px solid @col-base;
+        }
 
 /**
  * Style changes, based on environment
