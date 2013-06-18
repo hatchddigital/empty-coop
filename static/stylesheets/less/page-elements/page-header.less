@@ -6,30 +6,21 @@
  */
 
 /**
- * Universally applicable rules
+ * Media queries
  */
-
+    @media @largescreen{}
+    @media @standard{}
+    @media @tablet{}
+    @media @mobile{}
 
 /**
- * Style changes, based on environment
+ * Modernizr hooks
  */
+    .no-cssgradients{}
 
-    /**
-     * Media queries
-     */
-        @media @largescreen{}
-        @media @standard{}
-        @media @tablet{}
-        @media @mobile{}
-
-    /**
-     * Modernizr hooks
-     */
-        .no-cssgradients{}
-
-    /**
-     * IE overrides
-     */
-        .lt-ie8{}
-        .lt-ie7{}
+/**
+ * IE overrides
+ */
+    .lt-ie8{}
+    .lt-ie7{}
 

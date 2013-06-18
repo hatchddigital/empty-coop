@@ -6,47 +6,40 @@
 
 
 /**
- * Universally applicable rules
+ * Basic post
  */
-
-    /**
-     * Basic post
-     */
-        .post{
-            background:@col-recessive;
-        }
-        	.post-heading{
-                font-size:@fontsize-large;
-        	}
-        	.post-img{
-                border:1px solid @col-base;
-        	}
-    /**
-     * Extend > Post with keyline
-     */
-        .post--keyline
-        :extend(.post){
-            border-bottom:1px solid @col-base;
-        }
+    .post{
+        background:@col-recessive;
+    }
+    	.post-heading{
+            font-size:@fontsize-large;
+    	}
+    	.post-img{
+            border:1px solid @col-base;
+    	}
+/**
+ * Extend > Post with keyline
+ */
+    .post--keyline
+    :extend(.post all){
+        border-bottom:1px solid @col-base;
+    }
 
 /**
- * Style changes, based on environment
+ * Media queries
  */
-    /**
-     * Media queries
-     */
-        @media @largescreen{}
-        @media @standard{}
-        @media @tablet{}
-        @media @mobile{}
+    @media @largescreen{}
+    @media @standard{}
+    @media @tablet{}
+    @media @mobile{}
 
-    /**
-     * Modernizr hooks
-     */
-        .no-cssgradients{}
+/**
+ * Modernizr hooks
+ */
+    .no-cssgradients{}
 
-    /**
-     * IE overrides
-     */
-        .lt-ie8{}
+/**
+ * IE overrides
+ */
+    .lt-ie8{}
 
