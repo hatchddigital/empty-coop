@@ -1097,6 +1097,9 @@ body:before {
     padding: 0;
     border: none;
   }
+  input[type="date"] {
+    padding-right: 0;
+  }
   textarea {
     min-height: 200px;
   }
@@ -1937,6 +1940,9 @@ body:before {
   input[type="file"] {
     padding: 0;
     border: none;
+  }
+  input[type="date"] {
+    padding-right: 0;
   }
   textarea {
     min-height: 200px;
