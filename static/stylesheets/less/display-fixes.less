@@ -9,24 +9,25 @@
     .visual-hide{
         position:absolute;
         text-indent:-90000px;
+        text-align:left !important;
         white-space:nowrap;
         overflow:hidden;
     }
 /**
  * Completely hide an element
  */
-	.hide,
+    .hide,
     .state-hide{
-		display:none;
-	}
+        display:none;
+    }
 
 /**
  * Set an element to clear the element above it
  */
-	.clear{
-		clear:both;
-		display:block;
-	}
+    .clear{
+        clear:both;
+        display:block;
+    }
 
 /**
  * Clearfix
@@ -35,30 +36,34 @@
  * IE6 part not included, as we've dropped IE6 support
  * Note: This is also available as a mixin ( .clearfix; )
  */
-    .clearfix:after {
-        display:block;
-        visibility:hidden;
-        clear:both;
-        content:" ";
-        height:0;
-        font-size:0;
-    }
+    .clearfix{
 
-     /**
-      * IE7
-      */
-        *:first-child+html .clearfix{
+        &:after{
+            display:block;
+            visibility:hidden;
+            clear:both;
+            content:" ";
+            height:0;
+            font-size:0;
+        }
+
+        /**
+        * IE7
+        */
+        *:first-child+html &{
             zoom:1;
         }
+
+    }
 
 /**
  * Set text to be replaced by an image
  */
-	.replaced{
-		display:block;
-		text-indent:-900000px;
-		overflow:hidden;
-		background-color:transparent;
-		background-repeat:no-repeat;
-		background-position:top left;
-	}
+    .replaced{
+        display:block;
+        text-indent:-900000px;
+        overflow:hidden;
+        background-color:transparent;
+        background-repeat:no-repeat;
+        background-position:top left;
+    }

@@ -661,10 +661,6 @@ body:before {
    */
   
     /**
-        * IE7
-        */
-  
-    /**
    * Set text to be replaced by an image
    */
   
@@ -1177,6 +1173,7 @@ body:before {
   .visual-hide {
     position: absolute;
     text-indent: -90000px;
+    text-align: left !important;
     white-space: nowrap;
     overflow: hidden;
   }
@@ -1187,6 +1184,12 @@ body:before {
   .clear {
     clear: both;
     display: block;
+  }
+  .clearfix {
+    /**
+          * IE7
+          */
+  
   }
   .clearfix:after {
     display: block;
