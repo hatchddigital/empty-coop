@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Capriola);
+
 /*!
  *	Styles for screen and print
  *
@@ -17,6 +18,7 @@
  *  ...HHH... HH.....AAAAAAAA....TTTTTT....CCCCCCC...HH....HHH.... DDDDDDD.....
  *
  */
+
 /**
  * Settings
  *
@@ -24,6 +26,7 @@
  * Also, establish grid type and settings
  *
  */
+
 /**
  * Global settings
  *
@@ -31,9 +34,11 @@
  * the base text size / line height value
  * More settings can be added here, the sky is the limit!
  */
+
 /**
  * Grid
  */
+
 /**
      * Grid config
      *
@@ -41,26 +46,34 @@
      * @total-columns: number of grid columns;
      * @gutter:        column gutter (px);
      */
+
 /**
      * Grid type
      */
+
 /**
  * Chickenwire: Fluid version
  * A free-range grid mixin
  *
 */
+
 /**
  * Calculated widths
  *
  * @rounded-width: @raw-width
  * @gutter: @raw-gutter converted to a percentage value;
  */
+
 /**
  * Increase grid width for nested columns
  */
+
 /**
  * Set grid mixin
  */
+
+/* line 26, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/mixins/grid-fluid.less */
+
 #grid {
   /**
      * To create a grid unit with a gutter on the right-hand side only.
@@ -69,52 +82,54 @@
      * Or should use the .run-last() mixin
      *
      */
-
   /**
      * For the last column in a row, remove the gutter
      */
-
   /**
      * To create a grid unit with half-width gutters at both sides.
      *
      * Useful for laying out thumbnail galleries and similar, where
      * is is more difficult to shave off the last gutter in a row.
      */
-
   /**
      * To create a nude grid unit with no gutters or additional properties
      */
-
   /**
      * Use a grid width to set horz. padding
      */
-
   /**
      * Use a grid width to set horz. margin
      */
-
 }
+
 /**
  * Responsive design
  */
+
 /**
      * Breakpoints
      * Figure no need to prefix these!
      */
+
 /**
      * Include helper labels?
      *
      * This is to help see breakpoints whilst developing the site.
      *
      */
+
 /**
  * Responsive design labels
  *
  * This is to help see breakpoints whilst developing the site.
  */
+
 /**
  * Set label appearance
  */
+
+/* line 10, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/responsive-design-labels.less */
+
 body:before {
   display: inline-block;
   position: fixed;
@@ -128,62 +143,79 @@ body:before {
   border-radius: 0 5px 0 0;
   font-size: 11px;
 }
+
 /**
  * Apply labels to all major breakpoints
  */
+
 @media (min-width:1199px) {
   body:before {
     content: "Large screen";
   }
 }
+
 @media (max-width:2000px) {
   body:before {
     content: "Standard layout";
   }
 }
+
 @media (max-width:1024px) {
   body:before {
     content: "Tablet layout";
   }
 }
+
 @media (max-width:600px) {
   body:before {
     content: "Mobile layout";
   }
 }
+
 /**
  * Typography
  */
+
 /**
      * Set base text size
      */
+
 /**
      * Set additional text sizes
      */
+
 /**
      * Set font famillies
      */
+
 /**
           * Define brand fonts
           */
+
 /**
           * Define fonts by function
           */
+
 /**
  * Colour swatches
  */
+
 /**
      * Define brand colours
      */
+
 /**
      * Generic colours
      */
+
 /**
      * Utility colours
      */
+
 /**
      * Define colours by function
      */
+
 /**
  * Mixins
  *
@@ -191,12 +223,14 @@ body:before {
  * set on a per-project basis
  *
  */
+
 /**
  * Predefined mixins
  *
  * A set of LESS mixins to make common css tasks that little bit easier
  *
  */
+
 /**
 * Change box model
 *
@@ -205,12 +239,14 @@ body:before {
 * @param sizing: [border-box|content-box]
 *
 */
+
 /**
  * Clearfix
  *
  * @src http://css-tricks.com/snippets/css/clear-fix
  * IE6 part not included, as we've dropped IE6 support
  */
+
 /**
  * Make an element square
  *
@@ -218,6 +254,7 @@ body:before {
  *
  * @param size: size in chosen unit
  */
+
 /**
  * Set width and height
  *
@@ -226,6 +263,7 @@ body:before {
  * @param width: width in chosen unit
  * @param height: height in chosen unit
  */
+
 /**
  * Evenly distribute items
  *
@@ -233,6 +271,7 @@ body:before {
  *
  * @param item-number: number of items to distribute
  */
+
 /**
  * Set background size
  *
@@ -240,6 +279,7 @@ body:before {
  *
  * @param size: width in chosen unit, height in chosen unit
  */
+
 /**
  * Set border-radius
  *
@@ -247,83 +287,91 @@ body:before {
  *
  * @param radius: radius in chosen unit
  */
+
 /**
  * Set transforms
  *
  * Rotate, scale, translate or set transform origin a block-level element
  *
  */
+
+/* line 115, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/mixins/predefined-mixins.less */
+
 #transform {
   /**
          * Rotate an element
          * @angle [value] deg
          */
-
   /**
          * Skew an element
          * @transx [value] deg
          * @transy [value] deg
          */
-
   /**
          * Scale an element
          * @transx [value]
          * @transy [value]
          */
-
   /**
          * Translate an element
          * @transx [value]
          * @transy [value]
          */
-
   /**
          * Change the transform origin for an element
          * @value if string: top/bottom left/right
          * @value if num: horizontal (px/%/em) vertical (px/%/em)
          */
-
 }
+
 /**
  * Set transition
  *
  * Set a CSS3 transition on a block-level element
  *
  */
+
 /**
  * Set animation
  *
  * Tie a block-level element to a predefined @animate animation
  */
+
 /**
  * Set opacity
  *
  * Set the opacity of an element
  */
+
 /**
  * Set columns
  *
  * Flow content into columns
  */
+
 /**
  * CSS triangles
  *
  * Make pure CSS triangles
  * Useful for pointers and tooltips
  */
+
 /**
  * Set gradient
  *
  * Set a gradient on an element
  */
+
 /**
  * Custom mixins
  *
  * Mixins that can be set on a per-project basis
  */
+
 /**
  * Example: Stripe background
  */
+
 /**
  * Establish any resource using an @rule
  *
@@ -331,419 +379,26 @@ body:before {
  * such as @animate rules or @font-face fonts
  *
  */
+
 /**
  * Webfonts
  */
+
 /**
  * Reference webfonts with an @font-face rule
  */
+
 /**
  * Sample: Capriola 400
  *
  * @src http://www.google.com/webfonts
  */
+
 /**
  * Set styles for screen
  */
+
 @media screen {
-  {
-    /**
-       * Create a clean slate
-       *
-       * Ensure we level any browser differences, so we can build any
-       * subsequent declarations on level ground
-       *
-       */
-  
-    /**
-   * normalize.css 2012-07-07T09:50 UTC
-   *
-   * @src http://github.com/necolas/normalize.css
-   *
-   * All unneeded components, and ones addressing presentation that are
-   * handled elsewhere have been stripped out.
-   */
-  
-    /**
-   * HTML5 display definitions
-   *
-   */
-  
-    /**
-      * Corrects `block` display not defined in IE6/7/8/9 & FF3.
-      */
-  
-    /**
-       * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
-       */
-  
-    /**
-       * Prevents modern browsers from displaying `audio` without controls.
-       * Remove excess height in iOS5 devices.
-       */
-  
-    /**
-       * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
-       *
-       * known issue:no IE6 support.
-       */
-  
-    /**
-       * Remove list-style and margin on nav
-       *
-       * Added by the Hatchd team
-       *
-       */
-  
-    /**
-   * Base
-   *
-   */
-  
-    /**
-       * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
-       * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
-       */
-  
-    /**
-       * Improves readability when focused and also mouse hovered in all browsers.
-       *
-       * @src people.opera.com/patrickl/experiments/keyboard/test
-       *
-       */
-  
-    /**
-   * Forms
-   *
-   */
-  
-    /**
-       * Define consistent border, margin, and padding.
-       */
-  
-    /**
-       * 1. Corrects color not being inherited in IE6/7/8/9.
-       * 2. Corrects text not wrapping in FF3.
-       * 3. Corrects alignment displayed oddly in IE6/7.
-       */
-  
-    /**
-       * 1. Corrects font size not being inherited in all browsers.
-       * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
-       * 3. Improves appearance and consistency in all browsers.
-       */
-  
-    /**
-       * Addresses FF3/4 setting `line-height` on `input` using
-       * `!important` in the UA stylesheet.
-       */
-  
-    /**
-       * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
-       * 2. Corrects inability to style clickable `input` types in iOS.
-       * 3. Improves usability and consistency of cursor style between image-type `input` and others.
-       * 4. Removes inner spacing in IE7 without affecting normal text inputs.
-       * Known issue:inner spacing remains in IE6.
-      */
-  
-    /**
-       * Re-set default cursor for disabled elements.
-       */
-  
-    /**
-       * 1. Addresses box sizing set to content-box in IE8/9.
-       * 2. Removes excess padding in IE8/9.
-       * 3. Removes excess padding in IE7.
-       * Known issue:excess padding remains in IE6.
-      */
-  
-    /**
-       * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
-       * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
-      */
-  
-    /**
-       * Removes inner padding and search cancel button in S5, Chrome on OS X.
-       */
-  
-    /**
-       * Removes inner padding and border in FF3+.
-       */
-  
-    /**
-       * 1. Removes default vertical scrollbar in IE6/7/8/9.
-       * 2. Improves readability and alignment in all browsers.
-       */
-  
-    /**
-   * Tables
-   *
-   */
-  
-    /**
-       * Remove most spacing between table cells.
-       */
-  
-    /**
-   * For mobile, remove text-size adjust on webkit-based browsers
-   */
-  
-    /**
-       * Set base rules that can apply site-wide
-       *
-       * These should apply to naked elements, no classes should be defined here
-       *
-       */
-  
-    /**
-   * Base type styles
-   */
-  
-    /**
-   * Set base font size/line-height and declare the px size of an em unit
-   */
-  
-    /**
-   * Headings
-   */
-  
-    /**
-   * Block elements
-   */
-  
-    /**
-   * Quotes
-   */
-  
-    /**
-       * Blockquotes
-       */
-  
-    /**
-       * Inline quotes
-       */
-  
-    /**
-   * Lists
-   */
-  
-    /**
-       * Globals
-       */
-  
-    /**
-       * Unordered lists
-       */
-  
-    /**
-       * Ordered lists
-       */
-  
-    /**
-       * Definiton lists
-       */
-  
-    /**
-   * Inline elements
-   */
-  
-    /**
-       * Superscript/subscript
-       */
-  
-    /**
-       * For marking up content relevency/edits and highlighting content
-       */
-  
-    /**
-       * Small print
-       */
-  
-    /**
-       * Phrase tags
-       */
-  
-    /**
-   * Code formatting
-   *
-   */
-  
-    /**
-  * Preformatted text
-  */
-  
-    /**
-  * Code, samp, kbd
-  */
-  
-    /**
-  * Var
-  */
-  
-    /**
-   * Base link and text selection styles
-   */
-  
-    /**
-   * Link styles
-   */
-  
-    /**
-   * Text selection styles
-   */
-  
-    /**
-   * Form elements
-   *
-   * Basic styles for forms.
-   * All laid out form fields should be set within an unordered list.
-   */
-  
-    /**
-   * Set global constants
-   */
-  
-    /**
-       * Set styles for full forms
-       *
-       * sets of inputs/labels should always be encased in
-       * an ordered list for example
-       */
-  
-    /**
-   * Base image styles
-   */
-  
-    /**
-   * Image on its own
-   */
-  
-    /**
-   * Image within a figure tag
-   * Used when the image is supporting some related copy
-   */
-  
-    /**
-   * Base table styles
-   */
-  
-    /**
-       * Define display fixes
-       *
-       * non-presentational classes, used to achieve functional things like
-       * clearing floats, visually hiding elements etc...
-       *
-       */
-  
-    /**
-   * Display fixes
-   */
-  
-    /**
-   * Hide a text element but ensure it is still readable via assistive technology
-   * @src http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
-   */
-  
-    /**
-   * Completely hide an element
-   */
-  
-    /**
-   * Set an element to clear the element above it
-   */
-  
-    /**
-   * Clearfix
-   *
-   * @src http://css-tricks.com/snippets/css/clear-fix
-   * IE6 part not included, as we've dropped IE6 support
-   * Note: This is also available as a mixin ( .clearfix; )
-   */
-  
-    /**
-   * Set text to be replaced by an image
-   */
-  
-    /**
-       * Define modular components
-       *
-       * Reusable components, called with a class (or classes)
-       * that can exist anywhere in the site
-       *
-       */
-  
-    /**
-  * An example component
-  *
-  * Add what the component does here
-  */
-  
-    /**
-   * Basic post
-   */
-  
-    /**
-   * Extend > Post with keyline
-   */
-  
-    /**
-       * Set static page elements
-       *
-       * The scaffolding of the site, defined through elements that occur only
-       * once per page, defined via an aria role or ID
-       *
-       */
-  
-    /**
-   * Page header
-   *
-   * The header area of the page, typically containing site logo
-   * and site navigation
-   */
-  
-    /**
-   * Page content
-   *
-   * The inner content area of the page
-   */
-  
-    /**
-   * Page footer
-   *
-   * The footer area of the page
-   */
-  
-    /**
-       * Set page layout(s)
-       *
-       * Rules unique to a specific template or set of templates.
-       * These definitions should be set from a unique class
-       *
-       */
-  
-    /**
-   * Default layout
-   *
-   * Layout for a default page
-   */
-  
-    /**
-   * Outer areas
-   */
-  
-    /**
-   * Media queries
-   */
-  
-    /**
-   * Modernizr hooks
-   */
-  
-    /**
-   * IE overrides
-   */
-  
-  }
   article,
   aside,
   details,
@@ -757,6 +412,13 @@ body:before {
   summary {
     display: block;
   }
+
+  /**
+       * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
+       */
+
+  /* line 35, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   audio,
   canvas,
   video {
@@ -764,39 +426,122 @@ body:before {
     *display: inline;
     *zoom: 1;
   }
+
+  /**
+       * Prevents modern browsers from displaying `audio` without controls.
+       * Remove excess height in iOS5 devices.
+       */
+
+  /* line 47, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   audio:not([controls]) {
     display: none;
     height: 0;
   }
+
+  /**
+       * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
+       *
+       * known issue:no IE6 support.
+       */
+
+  /* line 57, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   [hidden] {
     display: none;
   }
+
+  /**
+       * Remove list-style and margin on nav
+       *
+       * Added by the Hatchd team
+       *
+       */
+
+  /* line 67, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   nav ul,
   nav ol {
     margin: 0;
     list-style: none;
   }
+
+  /* line 72, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   nav li {
     margin: 0;
   }
+
+  /**
+   * Base
+   *
+   */
+
+  /**
+       * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
+       * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
+       */
+
+  /* line 85, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   html {
     font-size: 100%;
   }
+
+  /**
+       * Improves readability when focused and also mouse hovered in all browsers.
+       *
+       * @src people.opera.com/patrickl/experiments/keyboard/test
+       *
+       */
+
+  /* line 95, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   a:active,
   a:hover {
     outline: 0;
   }
+
+  /**
+   * Forms
+   *
+   */
+
+  /**
+       * Define consistent border, margin, and padding.
+       */
+
+  /* line 109, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   fieldset {
     border: 1px solid #c0c0c0;
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
   }
+
+  /**
+       * 1. Corrects color not being inherited in IE6/7/8/9.
+       * 2. Corrects text not wrapping in FF3.
+       * 3. Corrects alignment displayed oddly in IE6/7.
+       */
+
+  /* line 120, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   legend {
     border: 0;
     padding: 0;
     white-space: normal;
     *margin-left: -7px;
   }
+
+  /**
+       * 1. Corrects font size not being inherited in all browsers.
+       * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
+       * 3. Improves appearance and consistency in all browsers.
+       */
+
+  /* line 132, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   button,
   input,
   select,
@@ -806,10 +551,29 @@ body:before {
     vertical-align: baseline;
     *vertical-align: middle;
   }
+
+  /**
+       * Addresses FF3/4 setting `line-height` on `input` using
+       * `!important` in the UA stylesheet.
+       */
+
+  /* line 146, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   button,
   input {
     line-height: normal;
   }
+
+  /**
+       * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+       * 2. Corrects inability to style clickable `input` types in iOS.
+       * 3. Improves usability and consistency of cursor style between image-type `input` and others.
+       * 4. Removes inner spacing in IE7 without affecting normal text inputs.
+       * Known issue:inner spacing remains in IE6.
+      */
+
+  /* line 158, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   button,
   html input[type="button"],
   input[type="reset"],
@@ -818,10 +582,27 @@ body:before {
     cursor: pointer;
     *overflow: visible;
   }
+
+  /**
+       * Re-set default cursor for disabled elements.
+       */
+
+  /* line 170, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   button[disabled],
   input[disabled] {
     cursor: default;
   }
+
+  /**
+       * 1. Addresses box sizing set to content-box in IE8/9.
+       * 2. Removes excess padding in IE8/9.
+       * 3. Removes excess padding in IE7.
+       * Known issue:excess padding remains in IE6.
+      */
+
+  /* line 181, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   input[type="checkbox"],
   input[type="radio"] {
     box-sizing: border-box;
@@ -831,32 +612,99 @@ body:before {
     *height: 13px;
     *width: 13px;
   }
+
+  /**
+       * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
+       * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
+      */
+
+  /* line 193, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   input[type="search"] {
     -webkit-appearance: textfield;
   }
+
+  /**
+       * Removes inner padding and search cancel button in S5, Chrome on OS X.
+       */
+
+  /* line 200, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
   }
+
+  /**
+       * Removes inner padding and border in FF3+.
+       */
+
+  /* line 208, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   button::-moz-focus-inner,
   input::-moz-focus-inner {
     border: 0;
     padding: 0;
   }
+
+  /**
+       * 1. Removes default vertical scrollbar in IE6/7/8/9.
+       * 2. Improves readability and alignment in all browsers.
+       */
+
+  /* line 218, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   textarea {
     overflow: auto;
     vertical-align: top;
   }
+
+  /**
+   * Tables
+   *
+   */
+
+  /**
+       * Remove most spacing between table cells.
+       */
+
+  /* line 231, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  /**
+   * For mobile, remove text-size adjust on webkit-based browsers
+   */
+
+  /**
+       * Set base rules that can apply site-wide
+       *
+       * These should apply to naked elements, no classes should be defined here
+       *
+       */
+
+  /**
+   * Base type styles
+   */
+
+  /**
+   * Set base font size/line-height and declare the px size of an em unit
+   */
+
+  /* line 8, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   body {
     font-size: 100%;
     line-height: 1.5em;
     font-family: sans-serif;
     color: #000000;
   }
+
+  /* line 15, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   p,
   li,
   dt,
@@ -864,6 +712,13 @@ body:before {
     font-size: 1em;
     line-height: 1.5em;
   }
+
+  /**
+   * Headings
+   */
+
+  /* line 26, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   h1,
   h2,
   h3,
@@ -876,24 +731,46 @@ body:before {
     position: relative;
     clear: both;
   }
+
+  /* line 33, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   h1 {
     font-size: 2.5em;
   }
+
+  /* line 36, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   h2 {
     font-size: 2em;
   }
+
+  /* line 39, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   h3 {
     font-size: 1em;
     font-weight: bold;
   }
+
+  /* line 43, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   h4,
   h5,
   h6 {
     font-size: 1em;
   }
+
+  /**
+   * Block elements
+   */
+
+  /* line 52, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   p {
     margin: 0 0 1em 0;
   }
+
+  /* line 55, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   hr {
     height: 0;
     margin: 0 0 1em 0;
@@ -901,67 +778,161 @@ body:before {
     border: none;
     border-top: 1px solid #cccccc;
   }
+
+  /**
+   * Quotes
+   */
+
+  /**
+       * Blockquotes
+       */
+
+  /* line 70, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   blockquote {
     margin: 0 0 1em 3em;
   }
+
+  /* line 73, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   blockquote > p {
     font-size: 1.4em;
     margin-bottom: 0.60em;
   }
+
+  /* line 77, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   blockquote > p:first-child:before {
     content: '\201C';
   }
+
+  /* line 80, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   blockquote > p:first-child:after {
     content: '\201D';
   }
+
+  /* line 84, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   blockquote footer p {
     margin: -0.5em 0 0 0;
     font-size: 0.85em;
     font-style: italic;
   }
+
+  /* line 89, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   blockquote footer p:before {
     content: "- ";
   }
+
+  /**
+       * Inline quotes
+       */
+
+  /* line 98, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   q {
     font-style: italic;
     color: inherit;
   }
+
+  /* line 102, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   cite {
     font-style: italic;
   }
+
+  /**
+   * Lists
+   */
+
+  /**
+       * Globals
+       */
+
+  /* line 114, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   ul,
   ol,
   dl {
     margin: 0 0 1em 2em;
     padding: 0;
   }
+
+  /* line 118, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   li {
     margin: 0 0 0.25em 0;
   }
+
+  /**
+       * Unordered lists
+       */
+
+  /* line 125, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   ul {
     list-style: disc outside;
   }
+
+  /* line 128, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   ul ul {
     margin: 0.25em 0 0.5em 1em;
   }
+
+  /**
+       * Ordered lists
+       */
+
+  /* line 136, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   ol {
     list-style: decimal outside;
   }
+
+  /* line 139, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   ol ol {
     margin: 0.25em 0 0.5em 1.5em;
     list-style-type: lower-roman;
   }
+
+  /**
+       * Definiton lists
+       */
+
+  /* line 148, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   dl {
     margin-left: 0;
   }
+
+  /* line 151, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   dt {
     font-weight: bold;
     margin: 0 0 0.5em 0;
     padding: 1em 0 0 0;
   }
+
+  /* line 156, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   dd {
     margin: 0 0 0.5em 0;
   }
+
+  /**
+   * Inline elements
+   */
+
+  /**
+       * Superscript/subscript
+       */
+
+  /* line 168, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   sup,
   sub {
     font-size: 75%;
@@ -969,44 +940,98 @@ body:before {
     position: relative;
     vertical-align: baseline;
   }
+
+  /* line 174, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   sup {
     top: -0.5em;
   }
+
+  /* line 177, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   sub {
     bottom: -0.25em;
   }
+
+  /**
+       * For marking up content relevency/edits and highlighting content
+       */
+
+  /* line 184, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   ins {
     background-color: #fffb88;
   }
+
+  /* line 187, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   del {
     text-decoration: line-through;
   }
+
+  /* line 190, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   s {
     color: #cccccc;
     text-decoration: line-through;
   }
+
+  /* line 194, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   mark {
     background-color: #fffb88;
     color: inherit;
     font-weight: normal;
   }
+
+  /**
+       * Small print
+       */
+
+  /* line 202, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   small {
     font-weight: normal;
     font-style: normal;
   }
+
+  /**
+       * Phrase tags
+       */
+
+  /* line 209, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   strong,
   b {
     font-weight: bold;
   }
+
+  /* line 212, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   em,
   i {
     font-style: italic;
   }
+
+  /* line 215, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
   dfn,
   abbr {
     font-style: inherit;
     position: relative;
   }
+
+  /**
+   * Code formatting
+   *
+   */
+
+  /**
+  * Preformatted text
+  */
+
+  /* line 9, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/code.less */
+
   pre {
     white-space: pre;
     width: 100%;
@@ -1016,58 +1041,124 @@ body:before {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
+
+  /**
+  * Code, samp, kbd
+  */
+
+  /* line 20, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/code.less */
+
   code,
   samp,
   kbd {
     display: inline-block;
     padding: 0 0.5em;
   }
+
+  /**
+  * Var
+  */
+
+  /* line 27, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/code.less */
+
   var {
     font-style: italic;
     font-weight: bold;
   }
+
+  /**
+   * Base link and text selection styles
+   */
+
+  /**
+   * Link styles
+   */
+
+  /* line 8, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+
   a,
   a:link,
   a:visited {
     color: #ef4136;
     text-decoration: underline;
   }
+
+  /* line 14, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+
   a:hover {
     color: #ef4136;
   }
+
+  /* line 17, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+
   a:active {
     color: #ef4136;
     text-decoration: underline;
   }
+
+  /* line 21, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+
   a[href^="tel"] {
     color: inherit;
   }
+
+  /**
+   * Text selection styles
+   */
+
   ::selection {
     color: #ffffff;
     background: #ef4136;
   }
+
   ::-moz-selection {
     color: #ffffff;
     background: #ef4136;
   }
+
+  /**
+   * Form elements
+   *
+   * Basic styles for forms.
+   * All laid out form fields should be set within an unordered list.
+   */
+
+  /**
+   * Set global constants
+   */
+
+  /* line 11, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   form {
     position: relative;
     margin: 0 0 1em 0;
   }
+
+  /* line 15, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   fieldset {
     margin: 0;
     padding: 0;
     border: none;
   }
+
+  /* line 20, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   legend {
     margin: 0 0 0.5em 0;
     padding: 0;
     font-size: 1;
   }
+
+  /* line 25, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   label {
     display: inline-block;
     margin: 0 0 0.25em 0;
   }
+
+  /* line 29, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   input,
   textarea,
   select {
@@ -1081,6 +1172,9 @@ body:before {
     border: 1px solid #cccccc;
     color: #000000;
   }
+
+  /* line 40, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   input[type="checkbox"],
   input[type="radio"] {
     display: inline-block;
@@ -1089,71 +1183,146 @@ body:before {
     border: none;
     margin: 0.25em 0.5em 0 0;
   }
+
+  /* line 48, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   input[type="file"] {
     padding: 0;
     border: none;
   }
+
+  /* line 52, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   input[type="date"] {
     padding-right: 0;
   }
+
+  /* line 55, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   textarea {
     min-height: 200px;
   }
+
+  /* line 58, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   button {
     padding: 0.5em;
     cursor: pointer;
   }
+
+  /**
+       * Set styles for full forms
+       *
+       * sets of inputs/labels should always be encased in
+       * an ordered list for example
+       */
+
+  /* line 69, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   form ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
+
+  /* line 74, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   form li {
     position: relative;
     margin: 0;
   }
+
+  /* line 78, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   form li input,
   form li select,
   form li textarea {
     margin-bottom: 1.5em;
   }
+
+  /* line 83, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   form li input[type="checkbox"],
   form li input[type="radio"] {
     margin-bottom: 0.5em;
   }
+
+  /* line 89, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
   form .buttons {
     padding-top: 1.5em;
   }
+
+  /**
+   * Base image styles
+   */
+
+  /**
+   * Image on its own
+   */
+
+  /* line 8, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+
   img {
     display: block;
     width: auto;
     border: 0;
     margin: 0 0 1em 0;
   }
+
+  /* line 14, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+
   img:not[src*="maps.gstatic.com"] {
     max-width: 100%;
   }
+
+  /**
+   * Image within a figure tag
+   * Used when the image is supporting some related copy
+   */
+
+  /* line 22, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+
   figure {
     display: inline-block;
     margin: 0 0 1em 0;
   }
+
+  /* line 26, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+
   figure img {
     margin-bottom: 0;
   }
+
+  /* line 30, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+
   figcaption {
     margin-top: 0.25em;
     font-style: italic;
   }
+
+  /**
+   * Base table styles
+   */
+
+  /* line 5, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
   table {
     width: 100%;
     margin: 0 0 1em 0;
     border: 1px solid #000000;
   }
+
+  /* line 10, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
   table,
   th,
   td {
     border-collapse: collapse;
   }
+
+  /* line 16, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
   th,
   td {
     padding: 0.5em;
@@ -1162,14 +1331,40 @@ body:before {
     border-right: none;
     text-align: left;
   }
+
+  /* line 25, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
   thead th {
     border-bottom: 2px solid #000000;
   }
+
+  /* line 29, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
   tfoot td {
     border-bottom: none;
     font-size: 0.85em;
     font-style: italic;
   }
+
+  /**
+       * Define display fixes
+       *
+       * non-presentational classes, used to achieve functional things like
+       * clearing floats, visually hiding elements etc...
+       *
+       */
+
+  /**
+   * Display fixes
+   */
+
+  /**
+   * Hide a text element but ensure it is still readable via assistive technology
+   * @src http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+   */
+
+  /* line 9, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   .visual-hide {
     position: absolute;
     text-indent: -90000px;
@@ -1177,20 +1372,47 @@ body:before {
     white-space: nowrap;
     overflow: hidden;
   }
+
+  /**
+   * Completely hide an element
+   */
+
+  /* line 19, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   .hide,
   .state-hide {
     display: none;
   }
+
+  /**
+   * Set an element to clear the element above it
+   */
+
+  /* line 27, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   .clear {
     clear: both;
     display: block;
   }
+
+  /**
+   * Clearfix
+   *
+   * @src http://css-tricks.com/snippets/css/clear-fix
+   * IE6 part not included, as we've dropped IE6 support
+   * Note: This is also available as a mixin ( .clearfix; )
+   */
+
+  /* line 39, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   .clearfix {
     /**
           * IE7
           */
-  
   }
+
+  /* line 41, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   .clearfix:after {
     display: block;
     visibility: hidden;
@@ -1199,9 +1421,19 @@ body:before {
     height: 0;
     font-size: 0;
   }
+
+  /* line 53, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   *:first-child + html .clearfix {
     zoom: 1;
   }
+
+  /**
+   * Set text to be replaced by an image
+   */
+
+  /* line 62, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+
   .replaced {
     display: block;
     text-indent: -900000px;
@@ -1210,99 +1442,286 @@ body:before {
     background-repeat: no-repeat;
     background-position: top left;
   }
-  .post {
+
+  /**
+       * Define modular components
+       *
+       * Reusable components, called with a class (or classes)
+       * that can exist anywhere in the site
+       *
+       */
+
+  /**
+  * An example component
+  *
+  * Add what the component does here
+  */
+
+  /**
+   * Basic post
+   */
+
+  /* line 11, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
+  .post,
+  .post--keyline {
     background: #cccccc;
   }
+
+  /* line 14, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
   .post-heading {
     font-size: 2em;
   }
+
+  /* line 17, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
   .post-img {
     border: 1px solid #000000;
   }
-  .post--keyline :extend(.post all) {
+
+  /**
+   * Extend > Post with keyline
+   */
+
+  /* line 23, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
+  .post--keyline {
     border-bottom: 1px solid #000000;
   }
+
+  /**
+   * Media queries
+   */
+
+  /**
+   * Modernizr hooks
+   */
+
+  /**
+   * IE overrides
+   */
+
+  /**
+       * Set static page elements
+       *
+       * The scaffolding of the site, defined through elements that occur only
+       * once per page, defined via an aria role or ID
+       *
+       */
+
+  /**
+   * Page content
+   *
+   * The inner content area of the page
+   */
+
+  /**
+   * Media queries
+   */
+
+  /**
+   * Modernizr hooks
+   */
+
+  /**
+   * IE overrides
+   */
+
+  /**
+   * Page header
+   *
+   * The header area of the page, typically containing site logo
+   * and site navigation
+   */
+
+  /**
+   * Media queries
+   */
+
+  /**
+   * Modernizr hooks
+   */
+
+  /**
+   * IE overrides
+   */
+
+  /**
+   * Page content
+   *
+   * The inner content area of the page
+   */
+
+  /**
+   * Media queries
+   */
+
+  /**
+   * Modernizr hooks
+   */
+
+  /**
+   * IE overrides
+   */
+
+  /**
+   * Page footer
+   *
+   * The footer area of the page
+   */
+
+  /**
+   * Media queries
+   */
+
+  /**
+   * Modernizr hooks
+   */
+
+  /**
+   * IE overrides
+   */
+
+  /**
+       * Set page layout(s)
+       *
+       * Rules unique to a specific template or set of templates.
+       * These definitions should be set from a unique class
+       *
+       */
+
+  /**
+   * Default layout
+   *
+   * Layout for a default page
+   */
+
+  /**
+   * Outer areas
+   */
+
+  /* line 10, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/page-layouts/layout-default.less */
+
   body {
     margin: 0;
   }
+
+  /**
+   * Media queries
+   */
+
+  /**
+   * Modernizr hooks
+   */
+
+  /**
+   * IE overrides
+   */
 }
+
 @media screen and (max-width:600px) {
-  {
+  html {
     -webkit-text-size-adjust: none;
   }
 }
+
 @media screen and (min-width:1199px) {
-  
+
 }
+
 @media screen and (max-width:2000px) {
-  
+
 }
+
 @media screen and (max-width:1024px) {
-  
+
 }
+
 @media screen and (max-width:600px) {
-  
+
 }
+
 @media screen and (min-width:1199px) {
-  
+
 }
+
 @media screen and (max-width:2000px) {
-  
+
 }
+
 @media screen and (max-width:1024px) {
-  
+
 }
+
 @media screen and (max-width:600px) {
-  
+
 }
+
 @media screen and (min-width:1199px) {
-  
+
 }
+
 @media screen and (max-width:2000px) {
-  
+
 }
+
 @media screen and (max-width:1024px) {
-  
+
 }
+
 @media screen and (max-width:600px) {
-  
+
 }
+
 @media screen and (min-width:1199px) {
-  
+
 }
+
 @media screen and (max-width:2000px) {
-  
+
 }
+
 @media screen and (max-width:1024px) {
-  
+
 }
+
 @media screen and (max-width:600px) {
-  
+
 }
+
 @media screen and (min-width:1199px) {
-  
+
 }
+
 @media screen and (max-width:2000px) {
-  
+
 }
+
 @media screen and (max-width:1024px) {
-  
+
 }
+
 @media screen and (max-width:600px) {
-  
+
 }
+
 @media screen and (min-width:1199px) {
-  
+
 }
+
 @media screen and (max-width:2000px) {
-  
+
 }
+
 @media screen and (max-width:1024px) {
-  
+
 }
+
 @media screen and (max-width:600px) {
-  
+
 }
+
 /**
  *
  * Set styles for print
@@ -1312,718 +1731,7 @@ body:before {
  * from pixels to physical ones - like mm, and points
  *
  */
+
 @media print {
-  {
-    /**
-       * Create a clean slate
-       *
-       * Ensure we level any browser differences, so we can build any
-       * subsequent declarations on level ground
-       *
-       */
-  
-    /**
-   * normalize.css 2012-07-07T09:50 UTC
-   *
-   * @src http://github.com/necolas/normalize.css
-   *
-   * All unneeded components, and ones addressing presentation that are
-   * handled elsewhere have been stripped out.
-   */
-  
-    /**
-   * HTML5 display definitions
-   *
-   */
-  
-    /**
-      * Corrects `block` display not defined in IE6/7/8/9 & FF3.
-      */
-  
-    /**
-       * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
-       */
-  
-    /**
-       * Prevents modern browsers from displaying `audio` without controls.
-       * Remove excess height in iOS5 devices.
-       */
-  
-    /**
-       * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
-       *
-       * known issue:no IE6 support.
-       */
-  
-    /**
-       * Remove list-style and margin on nav
-       *
-       * Added by the Hatchd team
-       *
-       */
-  
-    /**
-   * Base
-   *
-   */
-  
-    /**
-       * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
-       * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
-       */
-  
-    /**
-       * Improves readability when focused and also mouse hovered in all browsers.
-       *
-       * @src people.opera.com/patrickl/experiments/keyboard/test
-       *
-       */
-  
-    /**
-   * Forms
-   *
-   */
-  
-    /**
-       * Define consistent border, margin, and padding.
-       */
-  
-    /**
-       * 1. Corrects color not being inherited in IE6/7/8/9.
-       * 2. Corrects text not wrapping in FF3.
-       * 3. Corrects alignment displayed oddly in IE6/7.
-       */
-  
-    /**
-       * 1. Corrects font size not being inherited in all browsers.
-       * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
-       * 3. Improves appearance and consistency in all browsers.
-       */
-  
-    /**
-       * Addresses FF3/4 setting `line-height` on `input` using
-       * `!important` in the UA stylesheet.
-       */
-  
-    /**
-       * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
-       * 2. Corrects inability to style clickable `input` types in iOS.
-       * 3. Improves usability and consistency of cursor style between image-type `input` and others.
-       * 4. Removes inner spacing in IE7 without affecting normal text inputs.
-       * Known issue:inner spacing remains in IE6.
-      */
-  
-    /**
-       * Re-set default cursor for disabled elements.
-       */
-  
-    /**
-       * 1. Addresses box sizing set to content-box in IE8/9.
-       * 2. Removes excess padding in IE8/9.
-       * 3. Removes excess padding in IE7.
-       * Known issue:excess padding remains in IE6.
-      */
-  
-    /**
-       * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
-       * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
-      */
-  
-    /**
-       * Removes inner padding and search cancel button in S5, Chrome on OS X.
-       */
-  
-    /**
-       * Removes inner padding and border in FF3+.
-       */
-  
-    /**
-       * 1. Removes default vertical scrollbar in IE6/7/8/9.
-       * 2. Improves readability and alignment in all browsers.
-       */
-  
-    /**
-   * Tables
-   *
-   */
-  
-    /**
-       * Remove most spacing between table cells.
-       */
-  
-    /**
-   * For mobile, remove text-size adjust on webkit-based browsers
-   */
-  
-    /**
-       * Set base rules that can apply site-wide
-       *
-       * These should apply to naked elements, no classes should be defined here
-       *
-       */
-  
-    /**
-   * Base type styles
-   */
-  
-    /**
-   * Set base font size/line-height and declare the px size of an em unit
-   */
-  
-    /**
-   * Headings
-   */
-  
-    /**
-   * Block elements
-   */
-  
-    /**
-   * Quotes
-   */
-  
-    /**
-       * Blockquotes
-       */
-  
-    /**
-       * Inline quotes
-       */
-  
-    /**
-   * Lists
-   */
-  
-    /**
-       * Globals
-       */
-  
-    /**
-       * Unordered lists
-       */
-  
-    /**
-       * Ordered lists
-       */
-  
-    /**
-       * Definiton lists
-       */
-  
-    /**
-   * Inline elements
-   */
-  
-    /**
-       * Superscript/subscript
-       */
-  
-    /**
-       * For marking up content relevency/edits and highlighting content
-       */
-  
-    /**
-       * Small print
-       */
-  
-    /**
-       * Phrase tags
-       */
-  
-    /**
-   * Code formatting
-   *
-   */
-  
-    /**
-  * Preformatted text
-  */
-  
-    /**
-  * Code, samp, kbd
-  */
-  
-    /**
-  * Var
-  */
-  
-    /**
-   * Base link and text selection styles
-   */
-  
-    /**
-   * Link styles
-   */
-  
-    /**
-   * Text selection styles
-   */
-  
-    /**
-   * Form elements
-   *
-   * Basic styles for forms.
-   * All laid out form fields should be set within an unordered list.
-   */
-  
-    /**
-   * Set global constants
-   */
-  
-    /**
-       * Set styles for full forms
-       *
-       * sets of inputs/labels should always be encased in
-       * an ordered list for example
-       */
-  
-    /**
-   * Base image styles
-   */
-  
-    /**
-   * Image on its own
-   */
-  
-    /**
-   * Image within a figure tag
-   * Used when the image is supporting some related copy
-   */
-  
-    /**
-   * Base table styles
-   */
-  
-  }
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  nav,
-  section,
-  summary {
-    display: block;
-  }
-  audio,
-  canvas,
-  video {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-  }
-  audio:not([controls]) {
-    display: none;
-    height: 0;
-  }
-  [hidden] {
-    display: none;
-  }
-  nav ul,
-  nav ol {
-    margin: 0;
-    list-style: none;
-  }
-  nav li {
-    margin: 0;
-  }
-  html {
-    font-size: 100%;
-  }
-  a:active,
-  a:hover {
-    outline: 0;
-  }
-  fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
-  }
-  legend {
-    border: 0;
-    padding: 0;
-    white-space: normal;
-    *margin-left: -7px;
-  }
-  button,
-  input,
-  select,
-  textarea {
-    font-size: 100%;
-    margin: 0;
-    vertical-align: baseline;
-    *vertical-align: middle;
-  }
-  button,
-  input {
-    line-height: normal;
-  }
-  button,
-  html input[type="button"],
-  input[type="reset"],
-  input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer;
-    *overflow: visible;
-  }
-  button[disabled],
-  input[disabled] {
-    cursor: default;
-  }
-  input[type="checkbox"],
-  input[type="radio"] {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    padding: 0;
-    *height: 13px;
-    *width: 13px;
-  }
-  input[type="search"] {
-    -webkit-appearance: textfield;
-  }
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  button::-moz-focus-inner,
-  input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-  textarea {
-    overflow: auto;
-    vertical-align: top;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  body {
-    font-size: 100%;
-    line-height: 1.5em;
-    font-family: sans-serif;
-    color: #000000;
-  }
-  p,
-  li,
-  dt,
-  dd {
-    font-size: 1em;
-    line-height: 1.5em;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: 1.2em;
-    font-weight: normal;
-    margin: 1em 0 0.5em 0;
-    position: relative;
-    clear: both;
-  }
-  h1 {
-    font-size: 2.5em;
-  }
-  h2 {
-    font-size: 2em;
-  }
-  h3 {
-    font-size: 1em;
-    font-weight: bold;
-  }
-  h4,
-  h5,
-  h6 {
-    font-size: 1em;
-  }
-  p {
-    margin: 0 0 1em 0;
-  }
-  hr {
-    height: 0;
-    margin: 0 0 1em 0;
-    padding: 0;
-    border: none;
-    border-top: 1px solid #cccccc;
-  }
-  blockquote {
-    margin: 0 0 1em 3em;
-  }
-  blockquote > p {
-    font-size: 1.4em;
-    margin-bottom: 0.60em;
-  }
-  blockquote > p:first-child:before {
-    content: '\201C';
-  }
-  blockquote > p:first-child:after {
-    content: '\201D';
-  }
-  blockquote footer p {
-    margin: -0.5em 0 0 0;
-    font-size: 0.85em;
-    font-style: italic;
-  }
-  blockquote footer p:before {
-    content: "- ";
-  }
-  q {
-    font-style: italic;
-    color: inherit;
-  }
-  cite {
-    font-style: italic;
-  }
-  ul,
-  ol,
-  dl {
-    margin: 0 0 1em 2em;
-    padding: 0;
-  }
-  li {
-    margin: 0 0 0.25em 0;
-  }
-  ul {
-    list-style: disc outside;
-  }
-  ul ul {
-    margin: 0.25em 0 0.5em 1em;
-  }
-  ol {
-    list-style: decimal outside;
-  }
-  ol ol {
-    margin: 0.25em 0 0.5em 1.5em;
-    list-style-type: lower-roman;
-  }
-  dl {
-    margin-left: 0;
-  }
-  dt {
-    font-weight: bold;
-    margin: 0 0 0.5em 0;
-    padding: 1em 0 0 0;
-  }
-  dd {
-    margin: 0 0 0.5em 0;
-  }
-  sup,
-  sub {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  sup {
-    top: -0.5em;
-  }
-  sub {
-    bottom: -0.25em;
-  }
-  ins {
-    background-color: #fffb88;
-  }
-  del {
-    text-decoration: line-through;
-  }
-  s {
-    color: #cccccc;
-    text-decoration: line-through;
-  }
-  mark {
-    background-color: #fffb88;
-    color: inherit;
-    font-weight: normal;
-  }
-  small {
-    font-weight: normal;
-    font-style: normal;
-  }
-  strong,
-  b {
-    font-weight: bold;
-  }
-  em,
-  i {
-    font-style: italic;
-  }
-  dfn,
-  abbr {
-    font-style: inherit;
-    position: relative;
-  }
-  pre {
-    white-space: pre;
-    width: 100%;
-    overflow: auto;
-    margin: 0 0 1em 0;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-  }
-  code,
-  samp,
-  kbd {
-    display: inline-block;
-    padding: 0 0.5em;
-  }
-  var {
-    font-style: italic;
-    font-weight: bold;
-  }
-  a,
-  a:link,
-  a:visited {
-    color: #ef4136;
-    text-decoration: underline;
-  }
-  a:hover {
-    color: #ef4136;
-  }
-  a:active {
-    color: #ef4136;
-    text-decoration: underline;
-  }
-  a[href^="tel"] {
-    color: inherit;
-  }
-  ::selection {
-    color: #ffffff;
-    background: #ef4136;
-  }
-  ::-moz-selection {
-    color: #ffffff;
-    background: #ef4136;
-  }
-  form {
-    position: relative;
-    margin: 0 0 1em 0;
-  }
-  fieldset {
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  legend {
-    margin: 0 0 0.5em 0;
-    padding: 0;
-    font-size: 1;
-  }
-  label {
-    display: inline-block;
-    margin: 0 0 0.25em 0;
-  }
-  input,
-  textarea,
-  select {
-    display: block;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding: 10px 15px;
-    border: 1px solid #cccccc;
-    color: #000000;
-  }
-  input[type="checkbox"],
-  input[type="radio"] {
-    display: inline-block;
-    width: auto;
-    float: left;
-    border: none;
-    margin: 0.25em 0.5em 0 0;
-  }
-  input[type="file"] {
-    padding: 0;
-    border: none;
-  }
-  input[type="date"] {
-    padding-right: 0;
-  }
-  textarea {
-    min-height: 200px;
-  }
-  button {
-    padding: 0.5em;
-    cursor: pointer;
-  }
-  form ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  form li {
-    position: relative;
-    margin: 0;
-  }
-  form li input,
-  form li select,
-  form li textarea {
-    margin-bottom: 1.5em;
-  }
-  form li input[type="checkbox"],
-  form li input[type="radio"] {
-    margin-bottom: 0.5em;
-  }
-  form .buttons {
-    padding-top: 1.5em;
-  }
-  img {
-    display: block;
-    width: auto;
-    border: 0;
-    margin: 0 0 1em 0;
-  }
-  img:not[src*="maps.gstatic.com"] {
-    max-width: 100%;
-  }
-  figure {
-    display: inline-block;
-    margin: 0 0 1em 0;
-  }
-  figure img {
-    margin-bottom: 0;
-  }
-  figcaption {
-    margin-top: 0.25em;
-    font-style: italic;
-  }
-  table {
-    width: 100%;
-    margin: 0 0 1em 0;
-    border: 1px solid #000000;
-  }
-  table,
-  th,
-  td {
-    border-collapse: collapse;
-  }
-  th,
-  td {
-    padding: 0.5em;
-    border: 1px dotted #000000;
-    border-top: none;
-    border-right: none;
-    text-align: left;
-  }
-  thead th {
-    border-bottom: 2px solid #000000;
-  }
-  tfoot td {
-    border-bottom: none;
-    font-size: 0.85em;
-    font-style: italic;
-  }
-}
-@media print and (max-width:600px) {
-  {
-    -webkit-text-size-adjust: none;
-  }
+
 }
