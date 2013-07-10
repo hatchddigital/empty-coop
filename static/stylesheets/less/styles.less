@@ -45,103 +45,63 @@
 	@import 'resources/webfonts.less';
 
 /**
- * Set styles for screen
+ * Create a clean slate
+ *
+ * Ensure we level any browser differences, so we can build any
+ * subsequent declarations on level ground
+ *
  */
-@media screen{
-
-    /**
-     * Create a clean slate
-     *
-     * Ensure we level any browser differences, so we can build any
-     * subsequent declarations on level ground
-     *
-     */
-		@import 'html-elements/normalize.less';
-
-    /**
-     * Set base rules that can apply site-wide
-     *
-     * These should apply to naked elements, no classes should be defined here
-     *
-     */
-		@import 'html-elements/typography.less';
-		@import 'html-elements/code.less';
-		@import 'html-elements/links.less';
-		@import 'html-elements/formelements.less';
-		@import 'html-elements/images.less';
-		@import 'html-elements/tables.less';
-
-    /**
-     * Define display fixes
-     *
-     * non-presentational classes, used to achieve functional things like
-     * clearing floats, visually hiding elements etc...
-     *
-     */
-		@import 'display-fixes.less';
-
-    /**
-     * Define modular components
-     *
-     * Reusable components, called with a class (or classes)
-     * that can exist anywhere in the site
-     *
-     */
-		@import 'reusable-components/example-component.less';
-
-    /**
-     * Set static page elements
-     *
-     * The scaffolding of the site, defined through elements that occur only
-     * once per page, defined via an aria role or ID
-     *
-     */
-        @import 'page-elements/page-outer.less';
-        @import 'page-elements/page-header.less';
-        @import 'page-elements/page-content.less';
-        @import 'page-elements/page-footer.less';
-
-    /**
-     * Set page layout(s)
-     *
-     * Rules unique to a specific template or set of templates.
-     * These definitions should be set from a unique class
-     *
-     */
-	   @import 'page-layouts/layout-default.less';
-
-}
+	@import 'html-elements/normalize.less';
 
 /**
+ * Set base rules that can apply site-wide
  *
- * Set styles for print
- *
- * When any page from the site is printed, set rules to ensure only
- * the useful bits are included, and that units  of measurement are transposed
- * from pixels to physical ones - like mm, and points
+ * These should apply to naked elements, no classes should be defined here
  *
  */
-@media print{
+	@import 'html-elements/typography.less';
+	@import 'html-elements/code.less';
+	@import 'html-elements/links.less';
+	@import 'html-elements/formelements.less';
+	@import 'html-elements/images.less';
+	@import 'html-elements/tables.less';
 
-	/**
-     * Create a clean slate
-     *
-     * Ensure we level any browser differences, so we can build any
-     * subsequent declarations on level ground
-     *
-     */
-        @import 'html-elements/normalize.less';
+/**
+ * Define display fixes
+ *
+ * non-presentational classes, used to achieve functional things like
+ * clearing floats, visually hiding elements etc...
+ *
+ */
+	@import 'display-fixes.less';
 
-    /**
-     * Set base rules that can apply site-wide
-     *
-     * These should apply to naked elements, no classes should be defined here
-     *
-     */
-        @import 'html-elements/typography.less';
-        @import 'html-elements/code.less';
-        @import 'html-elements/links.less';
-        @import 'html-elements/formelements.less';
-        @import 'html-elements/images.less';
-        @import 'html-elements/tables.less';
-}
+/**
+ * Define modular components
+ *
+ * Reusable components, called with a class (or classes)
+ * that can exist anywhere in the site
+ *
+ */
+	@import 'reusable-components/example-component.less';
+
+/**
+ * Set static page elements
+ *
+ * The scaffolding of the site, defined through elements that occur only
+ * once per page, defined via an aria role or ID
+ *
+ */
+    @import 'page-elements/page-outer.less';
+    @import 'page-elements/page-header.less';
+    @import 'page-elements/page-content.less';
+    @import 'page-elements/page-footer.less';
+
+/**
+ * Set page layout(s)
+ *
+ * Rules unique to a specific template or set of templates.
+ * These definitions should be set from a unique class
+ *
+ */
+   @import 'page-layouts/layout-default.less';
+

@@ -72,7 +72,7 @@
  * Set grid mixin
  */
 
-/* line 26, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/mixins/grid-fluid.less */
+/* line 26, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/mixins/grid-fluid.less */
 
 #grid {
   /**
@@ -113,9 +113,7 @@
 
 /**
      * Include helper labels?
-     *
      * This is to help see breakpoints whilst developing the site.
-     *
      */
 
 /**
@@ -128,7 +126,7 @@
  * Set label appearance
  */
 
-/* line 10, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/responsive-design-labels.less */
+/* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/responsive-design-labels.less */
 
 body:before {
   display: inline-block;
@@ -295,7 +293,7 @@ body:before {
  *
  */
 
-/* line 115, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/mixins/predefined-mixins.less */
+/* line 115, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/mixins/predefined-mixins.less */
 
 #transform {
   /**
@@ -417,7 +415,7 @@ body:before {
        * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
        */
 
-  /* line 35, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 35, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   audio,
   canvas,
@@ -432,7 +430,7 @@ body:before {
        * Remove excess height in iOS5 devices.
        */
 
-  /* line 47, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 47, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   audio:not([controls]) {
     display: none;
@@ -445,7 +443,7 @@ body:before {
        * known issue:no IE6 support.
        */
 
-  /* line 57, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 57, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   [hidden] {
     display: none;
@@ -458,7 +456,7 @@ body:before {
        *
        */
 
-  /* line 67, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 67, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   nav ul,
   nav ol {
@@ -466,7 +464,7 @@ body:before {
     list-style: none;
   }
 
-  /* line 72, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 72, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   nav li {
     margin: 0;
@@ -482,7 +480,7 @@ body:before {
        * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
        */
 
-  /* line 85, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 85, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   html {
     font-size: 100%;
@@ -495,7 +493,7 @@ body:before {
        *
        */
 
-  /* line 95, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 95, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   a:active,
   a:hover {
@@ -511,7 +509,7 @@ body:before {
        * Define consistent border, margin, and padding.
        */
 
-  /* line 109, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 109, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   fieldset {
     border: 1px solid #c0c0c0;
@@ -525,7 +523,7 @@ body:before {
        * 3. Corrects alignment displayed oddly in IE6/7.
        */
 
-  /* line 120, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 120, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   legend {
     border: 0;
@@ -540,7 +538,7 @@ body:before {
        * 3. Improves appearance and consistency in all browsers.
        */
 
-  /* line 132, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 132, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   button,
   input,
@@ -557,7 +555,7 @@ body:before {
        * `!important` in the UA stylesheet.
        */
 
-  /* line 146, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 146, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   button,
   input {
@@ -572,7 +570,7 @@ body:before {
        * Known issue:inner spacing remains in IE6.
       */
 
-  /* line 158, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 158, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   button,
   html input[type="button"],
@@ -587,7 +585,7 @@ body:before {
        * Re-set default cursor for disabled elements.
        */
 
-  /* line 170, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 170, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   button[disabled],
   input[disabled] {
@@ -601,7 +599,7 @@ body:before {
        * Known issue:excess padding remains in IE6.
       */
 
-  /* line 181, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 181, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   input[type="checkbox"],
   input[type="radio"] {
@@ -618,7 +616,7 @@ body:before {
        * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
       */
 
-  /* line 193, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 193, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   input[type="search"] {
     -webkit-appearance: textfield;
@@ -628,7 +626,7 @@ body:before {
        * Removes inner padding and search cancel button in S5, Chrome on OS X.
        */
 
-  /* line 200, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 200, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-decoration {
@@ -639,7 +637,7 @@ body:before {
        * Removes inner padding and border in FF3+.
        */
 
-  /* line 208, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 208, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   button::-moz-focus-inner,
   input::-moz-focus-inner {
@@ -652,7 +650,7 @@ body:before {
        * 2. Improves readability and alignment in all browsers.
        */
 
-  /* line 218, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 218, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   textarea {
     overflow: auto;
@@ -668,7 +666,7 @@ body:before {
        * Remove most spacing between table cells.
        */
 
-  /* line 231, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+  /* line 231, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
 
   table {
     border-collapse: collapse;
@@ -694,7 +692,7 @@ body:before {
    * Set base font size/line-height and declare the px size of an em unit
    */
 
-  /* line 8, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   body {
     font-size: 100%;
@@ -703,7 +701,7 @@ body:before {
     color: #000000;
   }
 
-  /* line 15, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 15, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   p,
   li,
@@ -717,7 +715,7 @@ body:before {
    * Headings
    */
 
-  /* line 26, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 26, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   h1,
   h2,
@@ -732,26 +730,26 @@ body:before {
     clear: both;
   }
 
-  /* line 33, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 33, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   h1 {
     font-size: 2.5em;
   }
 
-  /* line 36, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 36, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   h2 {
     font-size: 2em;
   }
 
-  /* line 39, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 39, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   h3 {
     font-size: 1em;
     font-weight: bold;
   }
 
-  /* line 43, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 43, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   h4,
   h5,
@@ -763,13 +761,13 @@ body:before {
    * Block elements
    */
 
-  /* line 52, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 52, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   p {
     margin: 0 0 1em 0;
   }
 
-  /* line 55, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 55, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   hr {
     height: 0;
@@ -787,32 +785,32 @@ body:before {
        * Blockquotes
        */
 
-  /* line 70, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 70, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   blockquote {
     margin: 0 0 1em 3em;
   }
 
-  /* line 73, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 73, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   blockquote > p {
     font-size: 1.4em;
     margin-bottom: 0.60em;
   }
 
-  /* line 77, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 77, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   blockquote > p:first-child:before {
     content: '\201C';
   }
 
-  /* line 80, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 80, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   blockquote > p:first-child:after {
     content: '\201D';
   }
 
-  /* line 84, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 84, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   blockquote footer p {
     margin: -0.5em 0 0 0;
@@ -820,7 +818,7 @@ body:before {
     font-style: italic;
   }
 
-  /* line 89, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 89, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   blockquote footer p:before {
     content: "- ";
@@ -830,14 +828,14 @@ body:before {
        * Inline quotes
        */
 
-  /* line 98, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 98, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   q {
     font-style: italic;
     color: inherit;
   }
 
-  /* line 102, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 102, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   cite {
     font-style: italic;
@@ -851,7 +849,7 @@ body:before {
        * Globals
        */
 
-  /* line 114, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 114, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   ul,
   ol,
@@ -860,7 +858,7 @@ body:before {
     padding: 0;
   }
 
-  /* line 118, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 118, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   li {
     margin: 0 0 0.25em 0;
@@ -870,13 +868,13 @@ body:before {
        * Unordered lists
        */
 
-  /* line 125, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 125, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   ul {
     list-style: disc outside;
   }
 
-  /* line 128, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 128, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   ul ul {
     margin: 0.25em 0 0.5em 1em;
@@ -886,13 +884,13 @@ body:before {
        * Ordered lists
        */
 
-  /* line 136, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 136, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   ol {
     list-style: decimal outside;
   }
 
-  /* line 139, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 139, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   ol ol {
     margin: 0.25em 0 0.5em 1.5em;
@@ -903,13 +901,13 @@ body:before {
        * Definiton lists
        */
 
-  /* line 148, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 148, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   dl {
     margin-left: 0;
   }
 
-  /* line 151, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 151, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   dt {
     font-weight: bold;
@@ -917,7 +915,7 @@ body:before {
     padding: 1em 0 0 0;
   }
 
-  /* line 156, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 156, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   dd {
     margin: 0 0 0.5em 0;
@@ -931,7 +929,7 @@ body:before {
        * Superscript/subscript
        */
 
-  /* line 168, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 168, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   sup,
   sub {
@@ -941,13 +939,13 @@ body:before {
     vertical-align: baseline;
   }
 
-  /* line 174, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 174, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   sup {
     top: -0.5em;
   }
 
-  /* line 177, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 177, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   sub {
     bottom: -0.25em;
@@ -957,26 +955,26 @@ body:before {
        * For marking up content relevency/edits and highlighting content
        */
 
-  /* line 184, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 184, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   ins {
     background-color: #fffb88;
   }
 
-  /* line 187, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 187, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   del {
     text-decoration: line-through;
   }
 
-  /* line 190, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 190, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   s {
     color: #cccccc;
     text-decoration: line-through;
   }
 
-  /* line 194, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 194, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   mark {
     background-color: #fffb88;
@@ -988,7 +986,7 @@ body:before {
        * Small print
        */
 
-  /* line 202, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 202, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   small {
     font-weight: normal;
@@ -999,21 +997,21 @@ body:before {
        * Phrase tags
        */
 
-  /* line 209, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 209, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   strong,
   b {
     font-weight: bold;
   }
 
-  /* line 212, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 212, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   em,
   i {
     font-style: italic;
   }
 
-  /* line 215, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/typography.less */
+  /* line 215, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
   dfn,
   abbr {
@@ -1030,7 +1028,7 @@ body:before {
   * Preformatted text
   */
 
-  /* line 9, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/code.less */
+  /* line 9, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
 
   pre {
     white-space: pre;
@@ -1046,7 +1044,7 @@ body:before {
   * Code, samp, kbd
   */
 
-  /* line 20, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/code.less */
+  /* line 20, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
 
   code,
   samp,
@@ -1059,7 +1057,7 @@ body:before {
   * Var
   */
 
-  /* line 27, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/code.less */
+  /* line 27, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
 
   var {
     font-style: italic;
@@ -1074,7 +1072,7 @@ body:before {
    * Link styles
    */
 
-  /* line 8, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+  /* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
 
   a,
   a:link,
@@ -1083,20 +1081,20 @@ body:before {
     text-decoration: underline;
   }
 
-  /* line 14, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+  /* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
 
   a:hover {
     color: #ef4136;
   }
 
-  /* line 17, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+  /* line 17, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
 
   a:active {
     color: #ef4136;
     text-decoration: underline;
   }
 
-  /* line 21, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/links.less */
+  /* line 21, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
 
   a[href^="tel"] {
     color: inherit;
@@ -1127,14 +1125,14 @@ body:before {
    * Set global constants
    */
 
-  /* line 11, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 11, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   form {
     position: relative;
     margin: 0 0 1em 0;
   }
 
-  /* line 15, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 15, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   fieldset {
     margin: 0;
@@ -1142,7 +1140,7 @@ body:before {
     border: none;
   }
 
-  /* line 20, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 20, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   legend {
     margin: 0 0 0.5em 0;
@@ -1150,14 +1148,14 @@ body:before {
     font-size: 1;
   }
 
-  /* line 25, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   label {
     display: inline-block;
     margin: 0 0 0.25em 0;
   }
 
-  /* line 29, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 29, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   input,
   textarea,
@@ -1173,7 +1171,7 @@ body:before {
     color: #000000;
   }
 
-  /* line 40, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 40, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   input[type="checkbox"],
   input[type="radio"] {
@@ -1184,26 +1182,26 @@ body:before {
     margin: 0.25em 0.5em 0 0;
   }
 
-  /* line 48, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 48, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   input[type="file"] {
     padding: 0;
     border: none;
   }
 
-  /* line 52, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 52, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   input[type="date"] {
     padding-right: 0;
   }
 
-  /* line 55, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 55, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   textarea {
     min-height: 200px;
   }
 
-  /* line 58, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 58, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   button {
     padding: 0.5em;
@@ -1217,7 +1215,7 @@ body:before {
        * an ordered list for example
        */
 
-  /* line 69, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 69, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   form ul {
     margin: 0;
@@ -1225,14 +1223,14 @@ body:before {
     list-style: none;
   }
 
-  /* line 74, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 74, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   form li {
     position: relative;
     margin: 0;
   }
 
-  /* line 78, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 78, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   form li input,
   form li select,
@@ -1240,14 +1238,14 @@ body:before {
     margin-bottom: 1.5em;
   }
 
-  /* line 83, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 83, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   form li input[type="checkbox"],
   form li input[type="radio"] {
     margin-bottom: 0.5em;
   }
 
-  /* line 89, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+  /* line 89, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
 
   form .buttons {
     padding-top: 1.5em;
@@ -1261,7 +1259,7 @@ body:before {
    * Image on its own
    */
 
-  /* line 8, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+  /* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
 
   img {
     display: block;
@@ -1270,7 +1268,7 @@ body:before {
     margin: 0 0 1em 0;
   }
 
-  /* line 14, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+  /* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
 
   img:not[src*="maps.gstatic.com"] {
     max-width: 100%;
@@ -1281,20 +1279,20 @@ body:before {
    * Used when the image is supporting some related copy
    */
 
-  /* line 22, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+  /* line 22, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
 
   figure {
     display: inline-block;
     margin: 0 0 1em 0;
   }
 
-  /* line 26, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+  /* line 26, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
 
   figure img {
     margin-bottom: 0;
   }
 
-  /* line 30, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/images.less */
+  /* line 30, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
 
   figcaption {
     margin-top: 0.25em;
@@ -1305,7 +1303,7 @@ body:before {
    * Base table styles
    */
 
-  /* line 5, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+  /* line 5, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
 
   table {
     width: 100%;
@@ -1313,7 +1311,7 @@ body:before {
     border: 1px solid #000000;
   }
 
-  /* line 10, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+  /* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
 
   table,
   th,
@@ -1321,7 +1319,7 @@ body:before {
     border-collapse: collapse;
   }
 
-  /* line 16, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+  /* line 16, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
 
   th,
   td {
@@ -1332,13 +1330,13 @@ body:before {
     text-align: left;
   }
 
-  /* line 25, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+  /* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
 
   thead th {
     border-bottom: 2px solid #000000;
   }
 
-  /* line 29, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/html-elements/tables.less */
+  /* line 29, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
 
   tfoot td {
     border-bottom: none;
@@ -1363,7 +1361,7 @@ body:before {
    * @src http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
    */
 
-  /* line 9, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 9, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   .visual-hide {
     position: absolute;
@@ -1377,7 +1375,7 @@ body:before {
    * Completely hide an element
    */
 
-  /* line 19, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 19, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   .hide,
   .state-hide {
@@ -1388,7 +1386,7 @@ body:before {
    * Set an element to clear the element above it
    */
 
-  /* line 27, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 27, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   .clear {
     clear: both;
@@ -1403,7 +1401,7 @@ body:before {
    * Note: This is also available as a mixin ( .clearfix; )
    */
 
-  /* line 39, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 39, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   .clearfix {
     /**
@@ -1411,7 +1409,7 @@ body:before {
           */
   }
 
-  /* line 41, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 41, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   .clearfix:after {
     display: block;
@@ -1422,7 +1420,7 @@ body:before {
     font-size: 0;
   }
 
-  /* line 53, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 53, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   *:first-child + html .clearfix {
     zoom: 1;
@@ -1432,7 +1430,7 @@ body:before {
    * Set text to be replaced by an image
    */
 
-  /* line 62, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/display-fixes.less */
+  /* line 62, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
 
   .replaced {
     display: block;
@@ -1461,20 +1459,20 @@ body:before {
    * Basic post
    */
 
-  /* line 11, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+  /* line 11, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
 
   .post,
   .post--keyline {
     background: #cccccc;
   }
 
-  /* line 14, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+  /* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
 
   .post-heading {
     font-size: 2em;
   }
 
-  /* line 17, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+  /* line 17, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
 
   .post-img {
     border: 1px solid #000000;
@@ -1484,7 +1482,7 @@ body:before {
    * Extend > Post with keyline
    */
 
-  /* line 23, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+  /* line 23, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
 
   .post--keyline {
     border-bottom: 1px solid #000000;
@@ -1601,7 +1599,7 @@ body:before {
    * Outer areas
    */
 
-  /* line 10, /Users/jimmyhillis/Development/empty-coop/static/stylesheets/less/page-layouts/layout-default.less */
+  /* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/page-layouts/layout-default.less */
 
   body {
     margin: 0;

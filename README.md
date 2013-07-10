@@ -6,8 +6,8 @@ Uses LESS 1.4.0
 ## Purpose
 
 Empty-coop is a consistent base for all our projects at Hatchd. It doesn't
-force the author to adjust to a specific way of writing; it is a
-starting point not a boilerplate.
+force the author to adjust to a specific way of writing (although we have a
+house  style at Hatchd); it is a starting point not a framework.
 
 ## Guidelines
 
@@ -19,7 +19,8 @@ guidelines on using Empty-coop.
 For development and to get the most out of this boilerplate we recommend
 you install Node & npm, Grunt and Bower. This allows you to manage and
 build your code with simple command-line commands. This removes usage of
-CodeKit for any development needs. Basic toolcahin setup on a Mac looks like:
+GUI software like CodeKit for any development needs. Basic toolcahin setup
+on a Mac looks like:
 
 ```sh
 brew install node
