@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Capriola);
-
 /*!
  *	Styles for screen and print
  *
@@ -24,7 +22,6 @@
  *
  * Define colours, text sizes etc... before any styles are pulled in
  * Also, establish grid type and settings
- *
  */
 
 /**
@@ -187,14 +184,6 @@ body:before {
      */
 
 /**
-          * Define brand fonts
-          */
-
-/**
-          * Define fonts by function
-          */
-
-/**
  * Colour swatches
  */
 
@@ -219,7 +208,6 @@ body:before {
  *
  * Define predefined mixins, and custom mixins (optional) that can be
  * set on a per-project basis
- *
  */
 
 /**
@@ -375,1361 +363,1317 @@ body:before {
  *
  * Set rules for any CSS resource requiring an @ prefix,
  * such as @animate rules or @font-face fonts
- *
  */
 
 /**
  * Webfonts
- */
-
-/**
+ *
  * Reference webfonts with an @font-face rule
  */
 
 /**
- * Sample: Capriola 400
+ * Create a clean slate
  *
- * @src http://www.google.com/webfonts
+ * Ensure we level any browser differences, so we can build any
+ * subsequent declarations on level ground
  */
 
 /**
- * Set styles for screen
+ * normalize.css 2012-07-07T09:50 UTC
+ *
+ * @src http://github.com/necolas/normalize.css
+ *
+ * All unneeded components, and ones addressing presentation that are
+ * handled elsewhere have been stripped out.
  */
 
-@media screen {
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  nav,
-  section,
-  summary {
-    display: block;
-  }
-
-  /**
-       * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
-       */
-
-  /* line 35, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  audio,
-  canvas,
-  video {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-  }
-
-  /**
-       * Prevents modern browsers from displaying `audio` without controls.
-       * Remove excess height in iOS5 devices.
-       */
-
-  /* line 47, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  audio:not([controls]) {
-    display: none;
-    height: 0;
-  }
-
-  /**
-       * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
-       *
-       * known issue:no IE6 support.
-       */
-
-  /* line 57, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  [hidden] {
-    display: none;
-  }
-
-  /**
-       * Remove list-style and margin on nav
-       *
-       * Added by the Hatchd team
-       *
-       */
-
-  /* line 67, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  nav ul,
-  nav ol {
-    margin: 0;
-    list-style: none;
-  }
-
-  /* line 72, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  nav li {
-    margin: 0;
-  }
-
-  /**
-   * Base
-   *
-   */
-
-  /**
-       * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
-       * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
-       */
-
-  /* line 85, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  html {
-    font-size: 100%;
-  }
-
-  /**
-       * Improves readability when focused and also mouse hovered in all browsers.
-       *
-       * @src people.opera.com/patrickl/experiments/keyboard/test
-       *
-       */
-
-  /* line 95, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  a:active,
-  a:hover {
-    outline: 0;
-  }
-
-  /**
-   * Forms
-   *
-   */
-
-  /**
-       * Define consistent border, margin, and padding.
-       */
-
-  /* line 109, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
-  }
-
-  /**
-       * 1. Corrects color not being inherited in IE6/7/8/9.
-       * 2. Corrects text not wrapping in FF3.
-       * 3. Corrects alignment displayed oddly in IE6/7.
-       */
-
-  /* line 120, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  legend {
-    border: 0;
-    padding: 0;
-    white-space: normal;
-    *margin-left: -7px;
-  }
-
-  /**
-       * 1. Corrects font size not being inherited in all browsers.
-       * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
-       * 3. Improves appearance and consistency in all browsers.
-       */
-
-  /* line 132, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  button,
-  input,
-  select,
-  textarea {
-    font-size: 100%;
-    margin: 0;
-    vertical-align: baseline;
-    *vertical-align: middle;
-  }
-
-  /**
-       * Addresses FF3/4 setting `line-height` on `input` using
-       * `!important` in the UA stylesheet.
-       */
-
-  /* line 146, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  button,
-  input {
-    line-height: normal;
-  }
-
-  /**
-       * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
-       * 2. Corrects inability to style clickable `input` types in iOS.
-       * 3. Improves usability and consistency of cursor style between image-type `input` and others.
-       * 4. Removes inner spacing in IE7 without affecting normal text inputs.
-       * Known issue:inner spacing remains in IE6.
-      */
-
-  /* line 158, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  button,
-  html input[type="button"],
-  input[type="reset"],
-  input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer;
-    *overflow: visible;
-  }
-
-  /**
-       * Re-set default cursor for disabled elements.
-       */
-
-  /* line 170, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  button[disabled],
-  input[disabled] {
-    cursor: default;
-  }
-
-  /**
-       * 1. Addresses box sizing set to content-box in IE8/9.
-       * 2. Removes excess padding in IE8/9.
-       * 3. Removes excess padding in IE7.
-       * Known issue:excess padding remains in IE6.
-      */
-
-  /* line 181, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    padding: 0;
-    *height: 13px;
-    *width: 13px;
-  }
-
-  /**
-       * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
-       * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
-      */
-
-  /* line 193, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  input[type="search"] {
-    -webkit-appearance: textfield;
-  }
-
-  /**
-       * Removes inner padding and search cancel button in S5, Chrome on OS X.
-       */
-
-  /* line 200, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  input[type="search"]::-webkit-search-cancel-button,
-  input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-
-  /**
-       * Removes inner padding and border in FF3+.
-       */
-
-  /* line 208, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  button::-moz-focus-inner,
-  input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-
-  /**
-       * 1. Removes default vertical scrollbar in IE6/7/8/9.
-       * 2. Improves readability and alignment in all browsers.
-       */
-
-  /* line 218, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  textarea {
-    overflow: auto;
-    vertical-align: top;
-  }
-
-  /**
-   * Tables
-   *
-   */
-
-  /**
-       * Remove most spacing between table cells.
-       */
-
-  /* line 231, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
-  /**
-   * For mobile, remove text-size adjust on webkit-based browsers
-   */
-
-  /**
-       * Set base rules that can apply site-wide
-       *
-       * These should apply to naked elements, no classes should be defined here
-       *
-       */
-
-  /**
-   * Base type styles
-   */
-
-  /**
-   * Set base font size/line-height and declare the px size of an em unit
-   */
-
-  /* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  body {
-    font-size: 100%;
-    line-height: 1.5em;
-    font-family: sans-serif;
-    color: #000000;
-  }
-
-  /* line 15, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  p,
-  li,
-  dt,
-  dd {
-    font-size: 1em;
-    line-height: 1.5em;
-  }
-
-  /**
-   * Headings
-   */
-
-  /* line 26, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: 1.2em;
-    font-weight: normal;
-    margin: 1em 0 0.5em 0;
-    position: relative;
-    clear: both;
-  }
-
-  /* line 33, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  h1 {
-    font-size: 2.5em;
-  }
-
-  /* line 36, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  h2 {
-    font-size: 2em;
-  }
-
-  /* line 39, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  h3 {
-    font-size: 1em;
-    font-weight: bold;
-  }
-
-  /* line 43, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  h4,
-  h5,
-  h6 {
-    font-size: 1em;
-  }
-
-  /**
-   * Block elements
-   */
-
-  /* line 52, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  p {
-    margin: 0 0 1em 0;
-  }
-
-  /* line 55, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  hr {
-    height: 0;
-    margin: 0 0 1em 0;
-    padding: 0;
-    border: none;
-    border-top: 1px solid #cccccc;
-  }
-
-  /**
-   * Quotes
-   */
-
-  /**
-       * Blockquotes
-       */
-
-  /* line 70, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  blockquote {
-    margin: 0 0 1em 3em;
-  }
-
-  /* line 73, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  blockquote > p {
-    font-size: 1.4em;
-    margin-bottom: 0.60em;
-  }
-
-  /* line 77, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  blockquote > p:first-child:before {
-    content: '\201C';
-  }
-
-  /* line 80, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  blockquote > p:first-child:after {
-    content: '\201D';
-  }
-
-  /* line 84, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  blockquote footer p {
-    margin: -0.5em 0 0 0;
-    font-size: 0.85em;
-    font-style: italic;
-  }
-
-  /* line 89, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  blockquote footer p:before {
-    content: "- ";
-  }
-
-  /**
-       * Inline quotes
-       */
-
-  /* line 98, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  q {
-    font-style: italic;
-    color: inherit;
-  }
-
-  /* line 102, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  cite {
-    font-style: italic;
-  }
-
-  /**
-   * Lists
-   */
-
-  /**
-       * Globals
-       */
-
-  /* line 114, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  ul,
-  ol,
-  dl {
-    margin: 0 0 1em 2em;
-    padding: 0;
-  }
-
-  /* line 118, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  li {
-    margin: 0 0 0.25em 0;
-  }
-
-  /**
-       * Unordered lists
-       */
-
-  /* line 125, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  ul {
-    list-style: disc outside;
-  }
-
-  /* line 128, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  ul ul {
-    margin: 0.25em 0 0.5em 1em;
-  }
-
-  /**
-       * Ordered lists
-       */
-
-  /* line 136, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  ol {
-    list-style: decimal outside;
-  }
-
-  /* line 139, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  ol ol {
-    margin: 0.25em 0 0.5em 1.5em;
-    list-style-type: lower-roman;
-  }
-
-  /**
-       * Definiton lists
-       */
-
-  /* line 148, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  dl {
-    margin-left: 0;
-  }
-
-  /* line 151, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  dt {
-    font-weight: bold;
-    margin: 0 0 0.5em 0;
-    padding: 1em 0 0 0;
-  }
-
-  /* line 156, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  dd {
-    margin: 0 0 0.5em 0;
-  }
-
-  /**
-   * Inline elements
-   */
-
-  /**
-       * Superscript/subscript
-       */
-
-  /* line 168, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  sup,
-  sub {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-
-  /* line 174, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  sup {
-    top: -0.5em;
-  }
-
-  /* line 177, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  sub {
-    bottom: -0.25em;
-  }
-
-  /**
-       * For marking up content relevency/edits and highlighting content
-       */
-
-  /* line 184, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  ins {
-    background-color: #fffb88;
-  }
-
-  /* line 187, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  del {
-    text-decoration: line-through;
-  }
-
-  /* line 190, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  s {
-    color: #cccccc;
-    text-decoration: line-through;
-  }
-
-  /* line 194, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  mark {
-    background-color: #fffb88;
-    color: inherit;
-    font-weight: normal;
-  }
-
-  /**
-       * Small print
-       */
-
-  /* line 202, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  small {
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  /**
-       * Phrase tags
-       */
-
-  /* line 209, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  strong,
-  b {
-    font-weight: bold;
-  }
-
-  /* line 212, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  em,
-  i {
-    font-style: italic;
-  }
-
-  /* line 215, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
-
-  dfn,
-  abbr {
-    font-style: inherit;
-    position: relative;
-  }
-
-  /**
-   * Code formatting
-   *
-   */
-
-  /**
-  * Preformatted text
-  */
-
-  /* line 9, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
-
-  pre {
-    white-space: pre;
-    width: 100%;
-    overflow: auto;
-    margin: 0 0 1em 0;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-  }
-
-  /**
-  * Code, samp, kbd
-  */
-
-  /* line 20, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
-
-  code,
-  samp,
-  kbd {
-    display: inline-block;
-    padding: 0 0.5em;
-  }
-
-  /**
-  * Var
-  */
-
-  /* line 27, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
-
-  var {
-    font-style: italic;
-    font-weight: bold;
-  }
-
-  /**
-   * Base link and text selection styles
-   */
-
-  /**
-   * Link styles
-   */
-
-  /* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
-
-  a,
-  a:link,
-  a:visited {
-    color: #ef4136;
-    text-decoration: underline;
-  }
-
-  /* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
-
-  a:hover {
-    color: #ef4136;
-  }
-
-  /* line 17, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
-
-  a:active {
-    color: #ef4136;
-    text-decoration: underline;
-  }
-
-  /* line 21, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
-
-  a[href^="tel"] {
-    color: inherit;
-  }
-
-  /**
-   * Text selection styles
-   */
-
-  ::selection {
-    color: #ffffff;
-    background: #ef4136;
-  }
-
-  ::-moz-selection {
-    color: #ffffff;
-    background: #ef4136;
-  }
-
-  /**
-   * Form elements
-   *
-   * Basic styles for forms.
-   * All laid out form fields should be set within an unordered list.
-   */
-
-  /**
-   * Set global constants
-   */
-
-  /* line 11, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  form {
-    position: relative;
-    margin: 0 0 1em 0;
-  }
-
-  /* line 15, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  fieldset {
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-
-  /* line 20, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  legend {
-    margin: 0 0 0.5em 0;
-    padding: 0;
-    font-size: 1;
-  }
-
-  /* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  label {
-    display: inline-block;
-    margin: 0 0 0.25em 0;
-  }
-
-  /* line 29, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  input,
-  textarea,
-  select {
-    display: block;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding: 10px 15px;
-    border: 1px solid #cccccc;
-    color: #000000;
-  }
-
-  /* line 40, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    display: inline-block;
-    width: auto;
-    float: left;
-    border: none;
-    margin: 0.25em 0.5em 0 0;
-  }
-
-  /* line 48, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  input[type="file"] {
-    padding: 0;
-    border: none;
-  }
-
-  /* line 52, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  input[type="date"] {
-    padding-right: 0;
-  }
-
-  /* line 55, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  textarea {
-    min-height: 200px;
-  }
-
-  /* line 58, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  button {
-    padding: 0.5em;
-    cursor: pointer;
-  }
-
-  /**
-       * Set styles for full forms
-       *
-       * sets of inputs/labels should always be encased in
-       * an ordered list for example
-       */
-
-  /* line 69, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  form ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  /* line 74, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  form li {
-    position: relative;
-    margin: 0;
-  }
-
-  /* line 78, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  form li input,
-  form li select,
-  form li textarea {
-    margin-bottom: 1.5em;
-  }
-
-  /* line 83, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  form li input[type="checkbox"],
-  form li input[type="radio"] {
-    margin-bottom: 0.5em;
-  }
-
-  /* line 89, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
-
-  form .buttons {
-    padding-top: 1.5em;
-  }
-
-  /**
-   * Base image styles
-   */
-
-  /**
-   * Image on its own
-   */
-
-  /* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
-
-  img {
-    display: block;
-    width: auto;
-    border: 0;
-    margin: 0 0 1em 0;
-  }
-
-  /* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
-
-  img:not[src*="maps.gstatic.com"] {
-    max-width: 100%;
-  }
-
-  /**
-   * Image within a figure tag
-   * Used when the image is supporting some related copy
-   */
-
-  /* line 22, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
-
-  figure {
-    display: inline-block;
-    margin: 0 0 1em 0;
-  }
-
-  /* line 26, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
-
-  figure img {
-    margin-bottom: 0;
-  }
-
-  /* line 30, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
-
-  figcaption {
-    margin-top: 0.25em;
-    font-style: italic;
-  }
-
-  /**
-   * Base table styles
-   */
-
-  /* line 5, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
-
-  table {
-    width: 100%;
-    margin: 0 0 1em 0;
-    border: 1px solid #000000;
-  }
-
-  /* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
-
-  table,
-  th,
-  td {
-    border-collapse: collapse;
-  }
-
-  /* line 16, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
-
-  th,
-  td {
-    padding: 0.5em;
-    border: 1px dotted #000000;
-    border-top: none;
-    border-right: none;
-    text-align: left;
-  }
-
-  /* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
-
-  thead th {
-    border-bottom: 2px solid #000000;
-  }
-
-  /* line 29, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
-
-  tfoot td {
-    border-bottom: none;
-    font-size: 0.85em;
-    font-style: italic;
-  }
-
-  /**
-       * Define display fixes
-       *
-       * non-presentational classes, used to achieve functional things like
-       * clearing floats, visually hiding elements etc...
-       *
-       */
-
-  /**
-   * Display fixes
-   */
-
-  /**
-   * Hide a text element but ensure it is still readable via assistive technology
-   * @src http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
-   */
-
-  /* line 9, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  .visual-hide {
-    position: absolute;
-    text-indent: -90000px;
-    text-align: left !important;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  /**
-   * Completely hide an element
-   */
-
-  /* line 19, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  .hide,
-  .state-hide {
-    display: none;
-  }
-
-  /**
-   * Set an element to clear the element above it
-   */
-
-  /* line 27, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  .clear {
-    clear: both;
-    display: block;
-  }
-
-  /**
-   * Clearfix
-   *
-   * @src http://css-tricks.com/snippets/css/clear-fix
-   * IE6 part not included, as we've dropped IE6 support
-   * Note: This is also available as a mixin ( .clearfix; )
-   */
-
-  /* line 39, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  .clearfix {
-    /**
-          * IE7
-          */
-  }
-
-  /* line 41, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  .clearfix:after {
-    display: block;
-    visibility: hidden;
-    clear: both;
-    content: " ";
-    height: 0;
-    font-size: 0;
-  }
-
-  /* line 53, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  *:first-child + html .clearfix {
-    zoom: 1;
-  }
-
-  /**
-   * Set text to be replaced by an image
-   */
-
-  /* line 62, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
-
-  .replaced {
-    display: block;
-    text-indent: -900000px;
-    overflow: hidden;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: top left;
-  }
-
-  /**
-       * Define modular components
-       *
-       * Reusable components, called with a class (or classes)
-       * that can exist anywhere in the site
-       *
-       */
-
-  /**
-  * An example component
-  *
-  * Add what the component does here
-  */
-
-  /**
-   * Basic post
-   */
-
-  /* line 11, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
-
-  .post,
-  .post--keyline {
-    background: #cccccc;
-  }
-
-  /* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
-
-  .post-heading {
-    font-size: 2em;
-  }
-
-  /* line 17, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
-
-  .post-img {
-    border: 1px solid #000000;
-  }
-
-  /**
-   * Extend > Post with keyline
-   */
-
-  /* line 23, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
-
-  .post--keyline {
-    border-bottom: 1px solid #000000;
-  }
-
-  /**
-   * Media queries
-   */
-
-  /**
-   * Modernizr hooks
-   */
-
-  /**
-   * IE overrides
-   */
-
-  /**
-       * Set static page elements
-       *
-       * The scaffolding of the site, defined through elements that occur only
-       * once per page, defined via an aria role or ID
-       *
-       */
-
-  /**
-   * Page content
-   *
-   * The inner content area of the page
-   */
-
-  /**
-   * Media queries
-   */
-
-  /**
-   * Modernizr hooks
-   */
-
-  /**
-   * IE overrides
-   */
-
-  /**
-   * Page header
-   *
-   * The header area of the page, typically containing site logo
-   * and site navigation
-   */
-
-  /**
-   * Media queries
-   */
-
-  /**
-   * Modernizr hooks
-   */
-
-  /**
-   * IE overrides
-   */
-
-  /**
-   * Page content
-   *
-   * The inner content area of the page
-   */
-
-  /**
-   * Media queries
-   */
-
-  /**
-   * Modernizr hooks
-   */
-
-  /**
-   * IE overrides
-   */
-
-  /**
-   * Page footer
-   *
-   * The footer area of the page
-   */
-
-  /**
-   * Media queries
-   */
-
-  /**
-   * Modernizr hooks
-   */
-
-  /**
-   * IE overrides
-   */
-
-  /**
-       * Set page layout(s)
-       *
-       * Rules unique to a specific template or set of templates.
-       * These definitions should be set from a unique class
-       *
-       */
-
-  /**
-   * Default layout
-   *
-   * Layout for a default page
-   */
-
-  /**
-   * Outer areas
-   */
-
-  /* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/page-layouts/layout-default.less */
-
-  body {
-    margin: 0;
-  }
-
-  /**
-   * Media queries
-   */
-
-  /**
-   * Modernizr hooks
-   */
-
-  /**
-   * IE overrides
-   */
+/**
+ * HTML5 display definitions
+ *
+ */
+
+/**
+    * Corrects `block` display not defined in IE6/7/8/9 & FF3.
+    */
+
+/* line 18, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
 }
 
-@media screen and (max-width:600px) {
+/**
+     * Corrects `inline-block` display not defined in IE6/7/8/9 & FF3.
+     */
+
+/* line 35, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/**
+     * Prevents modern browsers from displaying `audio` without controls.
+     * Remove excess height in iOS5 devices.
+     */
+
+/* line 47, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+     * Addresses styling for `hidden` attribute not present in IE7/8/9, FF3, S4.
+     *
+     * known issue:no IE6 support.
+     */
+
+/* line 57, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+[hidden] {
+  display: none;
+}
+
+/**
+     * Remove list-style and margin on nav
+     *
+     * Added by the Hatchd team
+     *
+     */
+
+/* line 67, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+nav ul,
+nav ol {
+  margin: 0;
+  list-style: none;
+}
+
+/* line 72, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+nav li {
+  margin: 0;
+}
+
+/**
+ * Base
+ *
+ */
+
+/**
+     * 1. Corrects text resizing oddly in IE6/7 when body `font-size` is set using `em` units.
+     * 2. Prevents text resizing in webkit mobile (added by Hatchd team)
+     */
+
+/* line 85, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+html {
+  font-size: 100%;
+}
+
+/**
+     * Improves readability when focused and also mouse hovered in all browsers.
+     *
+     * @src people.opera.com/patrickl/experiments/keyboard/test
+     *
+     */
+
+/* line 95, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/**
+ * Forms
+ *
+ */
+
+/**
+     * Define consistent border, margin, and padding.
+     */
+
+/* line 109, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+     * 1. Corrects color not being inherited in IE6/7/8/9.
+     * 2. Corrects text not wrapping in FF3.
+     * 3. Corrects alignment displayed oddly in IE6/7.
+     */
+
+/* line 120, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px;
+}
+
+/**
+     * 1. Corrects font size not being inherited in all browsers.
+     * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome.
+     * 3. Improves appearance and consistency in all browsers.
+     */
+
+/* line 132, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+/**
+     * Addresses FF3/4 setting `line-height` on `input` using
+     * `!important` in the UA stylesheet.
+     */
+
+/* line 146, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+button,
+input {
+  line-height: normal;
+}
+
+/**
+     * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
+     * 2. Corrects inability to style clickable `input` types in iOS.
+     * 3. Improves usability and consistency of cursor style between image-type `input` and others.
+     * 4. Removes inner spacing in IE7 without affecting normal text inputs.
+     * Known issue:inner spacing remains in IE6.
+    */
+
+/* line 158, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible;
+}
+
+/**
+     * Re-set default cursor for disabled elements.
+     */
+
+/* line 170, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+/**
+     * 1. Addresses box sizing set to content-box in IE8/9.
+     * 2. Removes excess padding in IE8/9.
+     * 3. Removes excess padding in IE7.
+     * Known issue:excess padding remains in IE6.
+    */
+
+/* line 181, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
+}
+
+/**
+     * 1. Addresses `appearance` set to `searchfield` in S5, Chrome.
+     * 2. Addresses `box-sizing` set to `border-box` in S5, Chrome (include `-moz` to future-proof).
+    */
+
+/* line 193, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+/**
+     * Removes inner padding and search cancel button in S5, Chrome on OS X.
+     */
+
+/* line 200, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+     * Removes inner padding and border in FF3+.
+     */
+
+/* line 208, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+     * 1. Removes default vertical scrollbar in IE6/7/8/9.
+     * 2. Improves readability and alignment in all browsers.
+     */
+
+/* line 218, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+/**
+ * Tables
+ *
+ */
+
+/**
+     * Remove most spacing between table cells.
+     */
+
+/* line 231, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/normalize.less */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * For mobile, remove text-size adjust on webkit-based browsers
+ */
+
+@media (max-width:600px) {
   html {
     -webkit-text-size-adjust: none;
   }
 }
 
-@media screen and (min-width:1199px) {
+/**
+ * Set base rules that can apply site-wide
+ *
+ * These should apply to naked elements, no classes should be defined here
+ */
 
-}
+/**
+ * Base type styles
+ */
 
-@media screen and (max-width:2000px) {
+/**
+ * Set base font size/line-height and declare the px size of an em unit
+ */
 
-}
+/* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
 
-@media screen and (max-width:1024px) {
-
-}
-
-@media screen and (max-width:600px) {
-
-}
-
-@media screen and (min-width:1199px) {
-
-}
-
-@media screen and (max-width:2000px) {
-
-}
-
-@media screen and (max-width:1024px) {
-
-}
-
-@media screen and (max-width:600px) {
-
-}
-
-@media screen and (min-width:1199px) {
-
-}
-
-@media screen and (max-width:2000px) {
-
-}
-
-@media screen and (max-width:1024px) {
-
-}
-
-@media screen and (max-width:600px) {
-
-}
-
-@media screen and (min-width:1199px) {
-
-}
-
-@media screen and (max-width:2000px) {
-
-}
-
-@media screen and (max-width:1024px) {
-
-}
-
-@media screen and (max-width:600px) {
-
-}
-
-@media screen and (min-width:1199px) {
-
-}
-
-@media screen and (max-width:2000px) {
-
-}
-
-@media screen and (max-width:1024px) {
-
-}
-
-@media screen and (max-width:600px) {
-
-}
-
-@media screen and (min-width:1199px) {
-
-}
-
-@media screen and (max-width:2000px) {
-
-}
-
-@media screen and (max-width:1024px) {
-
-}
-
-@media screen and (max-width:600px) {
-
+body {
+  color: #000000;
+  font-size: 100%;
+  line-height: 1.5em;
+  font-family: sans-serif;
 }
 
 /**
- *
- * Set styles for print
- *
- * When any page from the site is printed, set rules to ensure only
- * the useful bits are included, and that units  of measurement are transposed
- * from pixels to physical ones - like mm, and points
+ * Headings
+ */
+
+/* line 18, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  clear: both;
+  margin: 1em 0 0.5em 0;
+  line-height: 1.2em;
+  font-weight: normal;
+}
+
+/* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+h1 {
+  font-size: 2.5em;
+}
+
+/* line 28, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+h2 {
+  font-size: 2em;
+}
+
+/* line 31, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+h3 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 35, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+h4,
+h5,
+h6 {
+  font-size: 1em;
+}
+
+/**
+ * Block elements
+ */
+
+/* line 44, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+p {
+  margin: 0 0 1em 0;
+}
+
+/* line 47, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+hr {
+  height: 0;
+  margin: 0 0 1em 0;
+  padding: 0;
+  border: none;
+  border-top: 1px solid #cccccc;
+}
+
+/**
+ * Quotes
+ */
+
+/**
+     * Blockquotes
+     */
+
+/* line 62, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+blockquote {
+  margin: 0 0 1em 3em;
+}
+
+/* line 64, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+blockquote > p {
+  font-size: 1.4em;
+  margin-bottom: 0.60em;
+}
+
+/* line 67, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+blockquote > p:first-child:before {
+  content: '\201C';
+}
+
+/* line 70, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+blockquote > p:first-child:after {
+  content: '\201D';
+}
+
+/* line 74, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+blockquote footer p {
+  margin: -0.5em 0 0 0;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+/* line 78, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+blockquote footer p:before {
+  content: "- ";
+}
+
+/**
+     * Inline quotes
+     */
+
+/* line 87, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+q {
+  font-style: italic;
+  color: inherit;
+}
+
+/* line 91, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+cite {
+  font-style: italic;
+}
+
+/**
+ * Lists
+ */
+
+/**
+     * Globals
+     */
+
+/* line 103, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+ul,
+ol,
+dl {
+  margin: 0 0 1em 2em;
+  padding: 0;
+}
+
+/* line 107, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+li {
+  margin: 0 0 0.25em 0;
+}
+
+/**
+     * Unordered lists
+     */
+
+/* line 114, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+ul {
+  list-style: disc outside;
+}
+
+/* line 116, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+ul ul {
+  margin: 0.25em 0 0.5em 1em;
+}
+
+/**
+     * Ordered lists
+     */
+
+/* line 124, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+ol {
+  list-style: decimal outside;
+}
+
+/* line 126, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+ol ol {
+  margin: 0.25em 0 0.5em 1.5em;
+  list-style-type: lower-roman;
+}
+
+/**
+     * Definiton lists
+     */
+
+/* line 135, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+dl {
+  margin-left: 0;
+}
+
+/* line 138, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+dt {
+  font-weight: bold;
+  margin: 0 0 0.5em 0;
+}
+
+/* line 142, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+dd {
+  margin: 0 0 0.5em 0;
+}
+
+/**
+ * Inline elements
+ */
+
+/**
+     * Superscript/subscript
+     */
+
+/* line 154, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+sup,
+sub {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 161, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+sup {
+  top: -0.5em;
+}
+
+/* line 164, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+sub {
+  bottom: -0.25em;
+}
+
+/**
+     * For marking up content relevency/edits and highlighting content
+     */
+
+/* line 171, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+ins {
+  background-color: #fffb88;
+}
+
+/* line 174, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+del {
+  text-decoration: line-through;
+}
+
+/* line 177, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+s {
+  color: #cccccc;
+  text-decoration: line-through;
+}
+
+/* line 181, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+mark {
+  background-color: #fffb88;
+  color: inherit;
+  font-weight: normal;
+}
+
+/**
+     * Small print
+     */
+
+/* line 189, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+small {
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+     * Phrase tags
+     */
+
+/* line 196, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+strong,
+b {
+  font-weight: bold;
+}
+
+/* line 199, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+em,
+i {
+  font-style: italic;
+}
+
+/* line 202, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/typography.less */
+
+dfn,
+abbr {
+  font-style: inherit;
+  position: relative;
+}
+
+/**
+ * Code formatting
  *
  */
+
+/**
+* Preformatted text
+*/
+
+/* line 9, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
+
+pre {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  overflow: auto;
+  white-space: pre;
+  width: 100%;
+  margin: 0 0 1em 0;
+}
+
+/**
+* Code, samp, kbd
+*/
+
+/* line 20, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
+
+code,
+samp,
+kbd {
+  display: inline-block;
+  padding: 0 0.5em;
+}
+
+/**
+* Var
+*/
+
+/* line 27, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/code.less */
+
+var {
+  font-style: italic;
+  font-weight: bold;
+}
+
+/**
+ * Base link and text selection styles
+ */
+
+/**
+ * Link styles
+ */
+
+/* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
+
+a,
+a:link,
+a:visited {
+  color: #ef4136;
+  text-decoration: underline;
+}
+
+/* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
+
+a:hover {
+  color: #ef4136;
+}
+
+/* line 17, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
+
+a:active {
+  color: #ef4136;
+  text-decoration: underline;
+}
+
+/* line 21, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/links.less */
+
+a[href^="tel"] {
+  color: inherit;
+}
+
+/**
+ * Text selection styles
+ */
+
+::selection {
+  color: #ffffff;
+  background: #ef4136;
+}
+
+::-moz-selection {
+  color: #ffffff;
+  background: #ef4136;
+}
+
+/**
+ * Form elements
+ */
+
+/* line 5, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+form {
+  position: relative;
+  margin: 0 0 1em 0;
+}
+
+/* line 9, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+legend {
+  margin: 0 0 0.5em 0;
+  padding: 0;
+  font-size: 1;
+}
+
+/* line 19, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+label {
+  display: inline-block;
+  margin: 0 0 0.25em 0;
+}
+
+/* line 23, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+input,
+textarea,
+select {
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 10px 15px;
+  border: 1px solid #cccccc;
+  color: #000000;
+}
+
+/* line 34, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+  width: auto;
+  float: left;
+  border: none;
+  margin: 0.25em 0.5em 0 0;
+}
+
+/* line 42, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+input[type="file"] {
+  padding: 0;
+  border: none;
+}
+
+/* line 46, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+input[type="date"] {
+  padding-right: 0;
+}
+
+/* line 49, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+textarea {
+  min-height: 10em;
+}
+
+/* line 52, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/formelements.less */
+
+button {
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+/**
+ * Base image styles
+ */
+
+/**
+ * Image on its own
+ */
+
+/* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
+
+img {
+  display: block;
+  width: auto;
+  border: 0;
+  margin: 0 0 1em 0;
+}
+
+/* line 13, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
+
+img:not[src*="maps.gstatic.com"] {
+  max-width: 100%;
+}
+
+/**
+ * Image within a figure tag
+ * Used when the image is supporting some related copy
+ */
+
+/* line 21, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
+
+figure {
+  display: block;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+/* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
+
+figure img {
+  margin-bottom: 0;
+}
+
+/* line 29, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/images.less */
+
+figcaption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/**
+ * Base table styles
+ */
+
+/* line 5, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
+table {
+  width: 100%;
+  margin: 0 0 1em 0;
+  border: 1px solid #000000;
+}
+
+/* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
+table,
+th,
+td {
+  border-collapse: collapse;
+}
+
+/* line 16, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
+th,
+td {
+  padding: 0.5em;
+  border: 1px dotted #000000;
+  border-top: none;
+  border-right: none;
+  text-align: left;
+}
+
+/* line 25, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
+thead th {
+  border-bottom: 2px solid #000000;
+}
+
+/* line 29, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/html-elements/tables.less */
+
+tfoot td {
+  border-bottom: none;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+/**
+ * Define display fixes
+ *
+ * non-presentational classes, used to achieve functional things like
+ * clearing floats, visually hiding elements etc...
+ */
+
+/**
+ * Display fixes
+ */
+
+/**
+ * Hide a text element but ensure it is still readable via assistive technology
+ */
+
+/* line 8, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+.visual-hide {
+  position: absolute;
+  text-indent: -90000px;
+  text-align: left !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/**
+ * Completely hide an element
+ */
+
+/* line 18, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+.hide,
+.state-hide {
+  display: none;
+}
+
+/**
+ * Set an element to clear the element above it
+ */
+
+/* line 26, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+.clear {
+  clear: both;
+  display: block;
+}
+
+/**
+ * Clearfix
+ *
+ * @src http://css-tricks.com/snippets/css/clear-fix
+ * IE6 part not included, as we've dropped IE6 support
+ * Note: This is also available as a mixin ( .clearfix; )
+ */
+
+/* line 38, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+.clearfix {
+  /**
+        * IE7
+        */
+}
+
+/* line 39, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  clear: both;
+  content: " ";
+  height: 0;
+  font-size: 0;
+}
+
+/* line 50, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+*:first-child + html .clearfix {
+  zoom: 1;
+}
+
+/**
+ * Set text to be replaced by an image
+ */
+
+/* line 58, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/display-fixes.less */
+
+.replaced {
+  display: block;
+  text-indent: -900000px;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+/**
+ * Define modular components
+ *
+ * Reusable components, called with a class (or classes)
+ * that can exist anywhere in the site
+ */
+
+/**
+* An example component
+*
+* Add what the component does here
+*/
+
+/**
+ * Basic post
+ */
+
+/* line 11, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
+.post,
+.post--keyline {
+  background: #cccccc;
+}
+
+/* line 14, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
+.post-heading {
+  font-size: 2em;
+}
+
+/* line 17, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
+.post-img {
+  border: 1px solid #000000;
+}
+
+/**
+ * Extend > Post with keyline
+ */
+
+/* line 23, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/reusable-components/example-component.less */
+
+.post--keyline {
+  border-bottom: 1px solid #000000;
+}
+
+/**
+ * Media queries
+ */
+
+@media (min-width:1199px) {
+
+}
+
+@media (max-width:2000px) {
+
+}
+
+@media (max-width:1024px) {
+
+}
+
+@media (max-width:600px) {
+
+}
 
 @media print {
 
 }
+
+/**
+ * Modernizr hooks
+ */
+
+/**
+ * IE overrides
+ */
+
+/**
+ * Set static page elements
+ *
+ * The scaffolding of the site, defined through elements that occur only
+ * once per page, defined via an aria role or ID
+ */
+
+/**
+ * Page content
+ *
+ * The inner content area of the page
+ */
+
+/**
+ * Media queries
+ */
+
+@media (min-width:1199px) {
+
+}
+
+@media (max-width:2000px) {
+
+}
+
+@media (max-width:1024px) {
+
+}
+
+@media (max-width:600px) {
+
+}
+
+@media print {
+
+}
+
+/**
+ * Modernizr hooks
+ */
+
+/**
+ * IE overrides
+ */
+
+/**
+ * Page header
+ *
+ * The header area of the page, typically containing site logo
+ * and site navigation
+ */
+
+/**
+ * Media queries
+ */
+
+@media (min-width:1199px) {
+
+}
+
+@media (max-width:2000px) {
+
+}
+
+@media (max-width:1024px) {
+
+}
+
+@media (max-width:600px) {
+
+}
+
+@media print {
+
+}
+
+/**
+ * Modernizr hooks
+ */
+
+/**
+ * IE overrides
+ */
+
+/**
+ * Page content
+ *
+ * The inner content area of the page
+ */
+
+/**
+ * Media queries
+ */
+
+@media (min-width:1199px) {
+
+}
+
+@media (max-width:2000px) {
+
+}
+
+@media (max-width:1024px) {
+
+}
+
+@media (max-width:600px) {
+
+}
+
+@media print {
+
+}
+
+/**
+ * Modernizr hooks
+ */
+
+/**
+ * IE overrides
+ */
+
+/**
+ * Page footer
+ *
+ * The footer area of the page
+ */
+
+/**
+ * Media queries
+ */
+
+@media (min-width:1199px) {
+
+}
+
+@media (max-width:2000px) {
+
+}
+
+@media (max-width:1024px) {
+
+}
+
+@media (max-width:600px) {
+
+}
+
+@media print {
+
+}
+
+/**
+ * Modernizr hooks
+ */
+
+/**
+ * IE overrides
+ */
+
+/**
+ * Set page layout(s)
+ *
+ * Rules unique to a specific template or set of templates.
+ * These definitions should be set from a unique class
+ */
+
+/**
+ * Default layout
+ *
+ * Layout for a default page
+ */
+
+/**
+ * Outer areas
+ */
+
+/* line 10, /Applications/MAMP/htdocs/empty-coop/static/stylesheets/less/page-layouts/layout-default.less */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Media queries
+ */
+
+@media (min-width:1199px) {
+
+}
+
+@media (max-width:2000px) {
+
+}
+
+@media (max-width:1024px) {
+
+}
+
+@media (max-width:600px) {
+
+}
+
+@media print {
+
+}
+
+/**
+ * Modernizr hooks
+ */
+
+/**
+ * IE overrides
+ */
