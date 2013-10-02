@@ -17,7 +17,7 @@
 # TEAM
 
     Jack -- Front-end developer -- @jackarmley
-    Jane -- Front-end developer
+    Jane -- Front-end developer -- @janeyee21
     Jimmy -- Back-end developer -- @ppjim3
     Neil -- Back-end developer -- @neilf_
     Doug -- Back-end developer -- @shadowmint
