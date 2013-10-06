@@ -52,7 +52,8 @@ module.exports = function (grunt) {
             development: {
                 options: {
                     paths: ['<%= pkg.stylesheets %>/less'],
-                    dumpLineNumbers: 'comments'
+                    dumpLineNumbers: 'comments',
+                    strictMath: true
                 },
                 files: {
                     '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/less/styles.less'
@@ -61,7 +62,8 @@ module.exports = function (grunt) {
             production: {
                 options: {
                     paths: ['<%= pkg.stylesheets %>/less'],
-                    yuicompress: true
+                    yuicompress: true,
+                    strictMath: true
                 },
                 files: {
                     '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/less/styles.less'
