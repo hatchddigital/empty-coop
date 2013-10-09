@@ -34,39 +34,38 @@
      * Breakpoints
      * Figure no need to prefix these!
      */
-        @largescreen:~"(min-width:1199px)";
         @standard:~"(max-width:2000px)";
         @tablet:~"(max-width:1024px)";
         @mobile:~"(max-width:600px)";
-
-    /**
-     * Include helper labels?
-     * This is to help see breakpoints whilst developing the site.
-     */
-        @import 'reusable-components/responsive-design-labels.less';
-
 
 /**
  * Typography
  */
 
     /**
-     * Set base text size
+     * Define the size of an em (base font size)
      */
-        @fontsize-base:16;
-        @lineheight-base:1.5em;
+        @fontsize:16;
 
     /**
-     * Set additional text sizes
+     * Set Text sizes
      */
-        @fontsize-small:0.75em;
-        @fontsize-large:2em;
+        @small:0.75em;
+        @large:2em;
 
     /**
-     * Set font famillies
+     * Project font famillies
      */
-      @fontfamily-base:sans-serif;
-      @fontfamily-brand:helvetica;
+      @ff-default:@sans;
+
+      /**
+       * Basic font famillies
+       * Note: Altering left-hand variable name will affect other LESS files
+       */
+          @sans:sans-serif;
+          @serif:serif;
+          @monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+          "Lucida Typewriter", monospace;
 
 
 /**
@@ -74,26 +73,20 @@
  */
 
     /**
-     * Define brand colours
+     * Project colours
      */
-       @br-hatchdred:#EF4136;
+        @white:#fff;
+        @black:#000;
+        @yellow:#FFFB88;
+        @red:#aa3025;
 
     /**
-     * Generic colours
+     * Basic colours
+     * Note: Altering left-hand variable name will affect other LESS files
      */
-    	@white:#fff;
-    	@black:#000;
-
-    /**
-     * Utility colours
-     */
-    	@col-base:#000;
-    	@col-recessive:#ccc;
-    	@col-highlight:#FFFB88;
-    	@col-link:@br-hatchdred;
-    	@col-link-hover:@br-hatchdred;
-
-    /**
-     * Define colours by function
-     */
+    	@default:@black;
+    	@muted:lighten(@black,50%);
+    	@highlight:@bright;
+    	@link:@red;
+    	@link-active:@red;
 

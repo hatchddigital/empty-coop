@@ -6,10 +6,10 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-        color:@col-base;
-		font-size:100/16 * @fontsize-base + 0%;
-		line-height:@lineheight-base;
-		font-family:@fontfamily-base;
+        color:@default;
+		font-size:100/16 * @fontsize + 0%;
+		line-height:1.5em;
+		font-family:@ff-default;
 	}
 
 /**
@@ -49,7 +49,7 @@
 		margin:0 0 1em 0;
 		padding:0;
 		border:none;
-		border-top:1px solid @col-recessive;
+		border-top:1px solid @muted;
 	}
 
 /**
@@ -169,17 +169,17 @@
      * For marking up content relevency/edits and highlighting content
      */
     	ins{
-    		background-color:@col-highlight;
+    		background-color:@highlight;
     	}
     	del{
     		text-decoration:line-through;
     	}
     	s{
-    		color:@col-recessive;
+    		color:@muted;
     		text-decoration:line-through;
     	}
     	mark{
-    		background-color:@col-highlight;
+    		background-color:@highlight;
     		color:inherit;
     		font-weight:normal;
     	}

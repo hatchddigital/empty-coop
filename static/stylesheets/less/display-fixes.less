@@ -29,30 +29,6 @@
     }
 
 /**
- * Clearfix
- *
- * @src http://css-tricks.com/snippets/css/clear-fix
- * IE6 part not included, as we've dropped IE6 support
- * Note: This is also available as a mixin ( .clearfix; )
- */
-    .clearfix{
-        &:after{
-            display:block;
-            visibility:hidden;
-            clear:both;
-            content:" ";
-            height:0;
-            font-size:0;
-        }
-        /**
-        * IE7
-        */
-        *:first-child+html &{
-            zoom:1;
-        }
-    }
-
-/**
  * Set text to be replaced by an image
  */
     .replaced{
