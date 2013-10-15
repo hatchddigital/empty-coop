@@ -1,7 +1,6 @@
 /**
- * Chickenwire: Fixed version
- * A free-range grid mixin
- *
+ * Fixed grid
+ * All units in px
 */
 
 /**
@@ -14,60 +13,72 @@
  * @column-width:              single column width
  * @distributed-column-width:  distributed single column width
  */
-    @rounded-width:(@column-width * @total-columns) + (@gutter * @total-columns) - @gutter + 0px;
+    @rounded-width:unit((
+        (@column-width * @total-columns) +
+        (@gutter * @total-columns) - @gutter
+    ),px);
     @gutter:@raw-gutter;
-    @column-width:round( ( @raw-width - ( @gutter * (@total-columns - 1) ) ) /@total-columns );
-    @distributed-column-width:floor( ( @raw-width - ( @gutter * @total-columns ) ) /@total-columns );
-
-
+    @column-width:round((
+        (@raw-width - ( @gutter * (@total-columns - 1) ) ) /@total-columns
+    ));
+    @distributed-column-width:floor((
+        ( @raw-width - ( @gutter * @total-columns ) ) /@total-columns
+    ));
 
 /**
- * Set grid mixin
+ * Mixin
  */
-	#grid{
+    #grid{
 
     /**
-     * To create a grid unit with a gutter on the right-hand side only.
-     *
-     * The last unit in a row will need the right margin set to "0"
-     * Or should use the .run-last() mixin
-     *
+     * Grid unit:
+     * Right-hand gutter
      */
-		.run(@desired-cols:@total-columns){
-			float:left;
-            width:(@column-width * @desired-cols) + (@gutter * @desired-cols) - @gutter + 0px;
-			margin-right:@gutter + 0px;
-		}
-
-	/**
-     * For the last column in a row, remove the gutter
-     */
-		.run-last(@desired-cols:@total-columns){
-			float:left;
-            width:(@column-width * @desired-cols) + (@gutter * @desired-cols) - @gutter + 0px;
-		}
-
+        .run(@desired-cols:@total-columns){
+            float:left;
+            width:unit((
+                (@column-width * @desired-cols) +
+                (@gutter * @desired-cols) - @gutter
+            ),px);
+            margin-right:unit(@gutter,px);
+        }
 
     /**
-     * To create a grid unit with half-width gutters at both sides.
-     *
-     * Useful for laying out thumbnail galleries and similar, where
-     * is is more difficult to shave off the last gutter in a row.
+     * Grid unit:
+     * No gutter
+     * Note: Should be used for last unit in a row
+     */
+        .run-last(@desired-cols:@total-columns){
+            float:left;
+            width:unit((
+               (@column-width * @desired-cols) +
+               (@gutter * @desired-cols) - @gutter
+            ),px);
+        }
+
+    /**
+     * Grid unit:
+     * Equal gutter on both sides
      */
         .dist(@desired-cols:@total-columns){
             float:left;
-            width:(@distributed-column-width * @desired-cols) + (@gutter * @desired-cols) - @gutter + 0px;
+            width:unit((
+               (@distributed-column-width * @desired-cols) +
+               (@gutter * @desired-cols) - @gutter
+            ),px);
             margin-right:@gutter/2 + 0px;
             margin-left:@gutter/2 + 0px;
         }
 
-
-    /**
-     * To create a nude grid unit with no gutters or additional properties
+     /**
+     * Grid unit:
+     * Width only
      */
-        .nude( @desired-cols:@total-columns){
-            width:(@column-width * @desired-cols) + (@gutter * @desired-cols) - @gutter + 0px;
+        .nude(@desired-cols:@total-columns){
+            width:unit((
+               (@column-width * @desired-cols) +
+               (@gutter * @desired-cols) - @gutter
+           ),px);
         }
 
-
-	}
+    }
