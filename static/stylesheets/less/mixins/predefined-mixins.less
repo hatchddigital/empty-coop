@@ -6,28 +6,6 @@
  */
 
 /**
- * Clearfix
- * @src http://css-tricks.com/snippets/css/clear-fix
- * IE6 part not included, as we've dropped IE6 support
- */
-    .clearfix(){
-        &:after{
-            display:block;
-            visibility:hidden;
-            clear:both;
-            content:" ";
-            height:0;
-            font-size:0;
-        }
-        /**
-        * IE7
-        */
-        *:first-child+html &{
-            zoom:1;
-        }
-    }
-
-/**
  * Make an element square
  * Automagically set the same width/height for a block-level element
  *
