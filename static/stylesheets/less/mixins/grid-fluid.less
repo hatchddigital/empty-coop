@@ -1,7 +1,5 @@
 /**
- * Chickenwire: Fluid version
- * A free-range grid mixin
- *
+ * Fluid grid
 */
 
 /**
@@ -11,90 +9,70 @@
  * @gutter: @raw-gutter converted to a percentage value;
  */
     @rounded-width:@raw-width;
-    @gutter:@raw-gutter/@raw-width * 100;
+    @gutter:(@raw-gutter/@raw-width * 100);
 
 /**
- * Increase grid width for nested columns
+ * Ensure gutter doesn't get thinner as grid units are nested
  */
-    @gutter-nest-1  : @gutter + 1; //When nested 1 level deep
-    @gutter-nest-2  : @gutter + 2; //When nested 2 levels deep
-    @gutter-nest-3  : @gutter + 3; //When nested 3 levels deep
+    @gutter-nest-1  : (@gutter + 1); //When nested 1 level deep
+    @gutter-nest-2  : (@gutter + 2); //When nested 2 levels deep
+    @gutter-nest-3  : (@gutter + 3); //When nested 3 levels deep
 
 /**
- * Set grid mixin
+ * Mixin
  */
 #grid{
 
     /**
-     * To create a grid unit with a gutter on the right-hand side only.
-     *
-     * The last unit in a row will need the right margin set to "0"
-     * Or should use the .run-last() mixin
-     *
+     * Grid unit:
+     * Right-hand gutter
      */
     .run(@desired-columns, @container-columns:@total-columns, @gutter:@gutter){
-
-        @calculated-gutter-number:@gutter * (@container-columns - 1);
-        @calculated-width:100 - @calculated-gutter-number;
-
+        @calculated-gutter-number:(@gutter * (@container-columns - 1));
+        @calculated-width:(100 - @calculated-gutter-number);
         float:left;
-        width:(@calculated-width / @container-columns) * @desired-columns + (@gutter * @desired-columns - @gutter)  + 0%;
-        margin-right:@gutter + 0%;
+        width:unit((
+           (@calculated-width / @container-columns) * @desired-columns +
+           (@gutter * @desired-columns - @gutter)
+        ),~'%');
+        margin-right:unit(@gutter,~'%');
     }
 
     /**
-     * For the last column in a row, remove the gutter
+     * Grid unit:
+     * No gutter
+     * Note: Should be used for last unit in a row
      */
     .run-last(@desired-columns, @container-columns:@total-columns, @gutter:@gutter){
-
-        @calculated-gutter-number:@gutter * (@container-columns - 1);
+        @calculated-gutter-number:(@gutter * (@container-columns - 1));
         @calculated-width:100 - @calculated-gutter-number;
-
         float:left;
-        width:(@calculated-width / @container-columns) * @desired-columns + (@gutter * @desired-columns - @gutter)  + 0%;
+        width:unit((
+           (@calculated-width / @container-columns) * @desired-columns +
+           (@gutter * @desired-columns - @gutter)
+        ),~'%');
     }
+
     /**
-     * To create a grid unit with half-width gutters at both sides.
-     *
-     * Useful for laying out thumbnail galleries and similar, where
-     * is is more difficult to shave off the last gutter in a row.
+     * Grid unit:
+     * Equal gutter on both sides
      */
-	.dist(@desired-columns, @container-columns:@total-columns, @gutter:@gutter){
-
+    .dist(@desired-columns, @container-columns:@total-columns, @gutter:@gutter){
         float:left;
-		width:(100/@container-columns * @desired-columns) - @gutter + 0%;
-		margin-right:@gutter/2 + 0%;
-		margin-left:@gutter/2 + 0%;
-
-	}
+        width:unit((
+           (100/@container-columns * @desired-columns) - @gutter
+        ),~'%');
+        margin-right:unit((@gutter/2),~'%');
+        margin-left:unit((@gutter/2),~'%');
+    }
 
     /**
-     * To create a nude grid unit with no gutters or additional properties
+     * Grid unit:
+     * Width only
      */
     .nude(@desired-columns, @container-columns:@total-columns){
-
-        width:(100/@container-columns * @desired-columns) + 0%;
-
+        width:unit((
+           100/@container-columns * @desired-columns
+        ),~'%');
     }
-
-    /**
-     * Use a grid width to set horz. padding
-     */
-    .pad-right(@desired-columns, @container-columns:@total-columns){
-        padding-right:(100/@container-columns * @desired-columns) + 0%;
-    }
-    .pad-left(@desired-columns, @container-columns:@total-columns){
-        padding-left:(100/@container-columns * @desired-columns) + 0%;
-    }
-
-     /**
-     * Use a grid width to set horz. margin
-     */
-    .margin-right(@desired-columns, @container-columns:@total-columns){
-        margin-right:(100/@container-columns * @desired-columns) + 0%;
-    }
-    .margin-left(@desired-columns, @container-columns:@total-columns){
-        margin-left:(100/@container-columns * @desired-columns) + 0%;
-    }
-
 }
