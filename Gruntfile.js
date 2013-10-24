@@ -106,7 +106,7 @@ module.exports = function (grunt) {
                     hashes: false,
                     font: 'eggbox',
                     icon: 'eggbox',
-                    relativeFontPath: '../../fonts/eggbox',
+                    relativeFontPath: 'fonts/eggbox',
                     template: '<%= pkg.eggboxicons %>/templates/eggbox.css',
                     htmlDemoTemplate: '<%= pkg.eggboxicons %>/templates/your-eggbox.html',
                     destHtml: '<%= pkg.fonts %>/eggbox',
