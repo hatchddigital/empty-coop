@@ -1,7 +1,9 @@
 # Empty-coop
 
 Created and maintained by the team at Hatchd Digital, Perth (see static/humans.txt).
-Uses LESS 1.4.0
+Uses LESS 1.5.0
+
+Now comes bundled with the [eggbox](https://github.com/hatchddigital/eggbox) icon set by default (built in as a grunt task).
 
 ## Purpose
 
