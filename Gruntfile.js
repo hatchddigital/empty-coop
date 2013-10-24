@@ -7,6 +7,7 @@ module.exports = function (grunt) {
         scripts: 'static/scripts',
         fonts: 'static/fonts',
         eggboxicons: 'static/libs/eggbox'
+        custom_eggboxicons: 'static/custom-eggbox'
     };
 
     // configurable paths
@@ -91,7 +92,7 @@ module.exports = function (grunt) {
             default: {
                 src: [
                     '<%= pkg.eggboxicons %>/src/*.svg',
-                    'static/custom-eggbox/*.svg'],
+                    '<%= pkg.custom_eggboxicons %>/*.svg'],
                 dest: '<%= pkg.fonts %>/eggbox',
                 htmlDemo : true,
                 destCss: '<%= pkg.stylesheets %>/less/reusable-components/',
