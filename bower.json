@@ -3,6 +3,7 @@
   "version": "0.1.2",
   "dependencies": {
     "requirejs": "~2.1.6",
-    "jquery": "~1.9.0"
+    "jquery": "~1.9.0",
+    "eggbox":"git://github.com/hatchddigital/eggbox.git"
   }
 }
