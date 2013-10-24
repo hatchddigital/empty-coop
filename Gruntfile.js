@@ -151,18 +151,18 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'clean',
         'jshint',
+        'webfont:default',
         'less:development',
         'autoprefixer:development',
-        'webfont:default',
         'requirejs'
     ]);
 
     // Server build
     grunt.registerTask('server', [
         'clean',
+        'webfont:default',
         'less:production',
         'autoprefixer:production',
-        'webfont:default',
         'requirejs'
     ]);
 
