@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         stylesheets: 'static/stylesheets',
         scripts: 'static/scripts',
         fonts: 'static/fonts',
-        eggboxicons: 'static/libs/eggbox'
+        eggboxicons: 'static/libs/eggbox',
         custom_eggboxicons: 'static/custom-eggbox'
     };
 
@@ -18,7 +18,8 @@ module.exports = function (grunt) {
                 files: [
                     '<%= pkg.templates %>/*',
                     '<%= pkg.stylesheets %>}/less/{,*/}*.less',
-                    '<%= pkg.scripts %>}/{,*/}*.js'
+                    '<%= pkg.scripts %>}/{,*/}*.js',
+                    '<%= pkg.custom_eggboxicons %>}/{,*/}*.svg'
                 ],
                 tasks: ['livereload']
             }
@@ -32,6 +33,11 @@ module.exports = function (grunt) {
             css: {
                 files: '<%= pkg.stylesheets %>/**/*.less',
                 tasks: ['less:development', 'autoprefixer:development'],
+                spawn: true
+            },
+            eggbox: {
+                files: '<%= pkg.custom_eggboxicons %>/**/*.svg',
+                tasks: ['webfont:default'],
                 spawn: true
             }
         },
