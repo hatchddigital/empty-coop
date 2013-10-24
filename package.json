@@ -21,6 +21,7 @@
     "grunt-notify": "~0.2.13",
     "autoprefixer": "~0.8.2",
     "grunt-autoprefixer": "~0.3.0",
-    "connect": "~2.9.0"
+    "connect": "~2.9.0",
+    "grunt-webfont": "~0.1.11"
   }
 }

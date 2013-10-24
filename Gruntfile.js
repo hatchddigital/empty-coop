@@ -4,7 +4,9 @@ module.exports = function (grunt) {
 
     var pkgConfig = {
         stylesheets: 'static/stylesheets',
-        scripts: 'static/scripts'
+        scripts: 'static/scripts',
+        fonts: 'static/fonts',
+        eggboxicons: 'static/libs/eggbox'
     };
 
     // configurable paths
@@ -85,6 +87,24 @@ module.exports = function (grunt) {
                 }
             }
         },
+        webfont: {
+            default: {
+                src: '<%= pkg.eggboxicons %>/src/*.svg',
+                dest: '<%= pkg.fonts %>/eggbox',
+                htmlDemo : true,
+                destCss: '<%= pkg.stylesheets %>/less/reusable-components/',
+                options: {
+                    hashes: false,
+                    font: 'eggbox',
+                    icon: 'eggbox',
+                    relativeFontPath: '../../fonts/eggbox',
+                    template: '<%= pkg.eggboxicons %>/templates/eggbox.css',
+                    htmlDemoTemplate: '<%= pkg.eggboxicons %>/templates/your-eggbox.html',
+                    destHtml: '<%= pkg.fonts %>/eggbox',
+                    stylesheet: 'less'
+                }
+            }
+        },
         requirejs: {
             compile: {
                 options: {
@@ -110,6 +130,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-regarde');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-webfont');
 
     // Simply watch script which does a build on entry
     grunt.registerTask('watch', [
@@ -123,6 +144,7 @@ module.exports = function (grunt) {
         'jshint',
         'less:development',
         'autoprefixer:development',
+        'webfont:default',
         'requirejs'
     ]);
 
@@ -131,6 +153,7 @@ module.exports = function (grunt) {
         'clean',
         'less:production',
         'autoprefixer:production',
+        'webfont:default',
         'requirejs'
     ]);
 
