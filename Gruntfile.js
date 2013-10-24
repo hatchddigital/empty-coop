@@ -89,7 +89,9 @@ module.exports = function (grunt) {
         },
         webfont: {
             default: {
-                src: '<%= pkg.eggboxicons %>/src/*.svg',
+                src: [
+                    '<%= pkg.eggboxicons %>/src/*.svg',
+                    'static/custom-eggbox/*.svg'],
                 dest: '<%= pkg.fonts %>/eggbox',
                 htmlDemo : true,
                 destCss: '<%= pkg.stylesheets %>/less/reusable-components/',
