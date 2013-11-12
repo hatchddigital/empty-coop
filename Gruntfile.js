@@ -71,7 +71,6 @@ module.exports = function (grunt) {
             production: {
                 options: {
                     paths: ['<%= pkg.stylesheets %>/less'],
-                    yuicompress: true,
                     strictMath: true
                 },
                 files: {
@@ -89,6 +88,13 @@ module.exports = function (grunt) {
                 }
             },
             production: {
+                files: {
+                    '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/styles.css'
+                }
+            }
+        },
+        cssmin: {
+            combine: {
                 files: {
                     '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/styles.css'
                 }
@@ -132,12 +138,12 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-notify');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-regarde');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-regarde');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-webfont');
 
@@ -163,7 +169,8 @@ module.exports = function (grunt) {
         'webfont:default',
         'less:production',
         'autoprefixer:production',
-        'requirejs'
+        'requirejs',
+        'cssmin'
     ]);
 
 };
