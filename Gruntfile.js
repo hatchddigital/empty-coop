@@ -6,8 +6,8 @@ module.exports = function (grunt) {
         stylesheets: 'static/stylesheets',
         scripts: 'static/scripts',
         fonts: 'static/fonts',
-        eggboxicons: 'static/libs/eggbox',
-        custom_eggboxicons: 'static/custom-eggbox'
+        eggboxicons: 'bower_components/eggbox',
+        custom_eggboxicons: 'bower_components/custom-eggbox'
     };
 
     // configurable paths
