@@ -27,12 +27,17 @@ form{
 		box-sizing:border-box;
 		width:100%;
 		margin:0;
-		border:1px solid @muted;
 		color:@default;
 	}
     input,
     textarea{
         padding:10px 15px;
+        border:1px solid @muted;
+        border-radius:0;
+    }
+    input:not([type="radio"]):not([type="checkbox"]),
+    textarea{
+        -webkit-appearance:none;
     }
 	input[type="checkbox"],
 	input[type="radio"]{
@@ -49,7 +54,8 @@ form{
     input[type="date"]{
         padding-right:0;
     }
-	button{
+	button,
+    input[type="submit"]{
 		padding:0.5em;
 		cursor:pointer;
 	}
