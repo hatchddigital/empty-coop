@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="en-au"><![endif]-->
+<!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
+<!--[if IE 8]><html class="lt-ie10 lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
+<!--[if IE 9]><html class="lt-ie10 no-js" id="ie9" lang="en-au"><![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en-au"> <!--<![endif]-->
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width,user-scalable=no, scale=1, maximum-scale=1.0" />
+
+        <title>Empty Coop</title>
+
+        <link rel="stylesheet" href="../stylesheets/styles.css" />
+
+        <!-- Important early load external scripts -->
+        <script src="../scripts/modernizr.js"></script>
+
+        <!-- Icons for browsers + mobile devices, bookmarsk, etc. -->
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="../images/apple-touch-icon-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/apple-touch-icon-144x144-precomposed.png">
+
+        <!-- Meta configuration for Search Engines and Facebook -->
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="images/facebook.png" />
+        <meta property="og:site_name" content="" />
+        <meta property="og:description" content=""/>
+        <!-- If moderation is required & available -->
+        <!-- <meta property="fb:admins" content="USER_ID" /> -->
+
+    </head>
+
+    <body class="form-demo">
+
+        <style>
+            .form-demo{
+                width:90%;
+                max-width:600px;
+                margin:50px auto 0;
+            }
+        </style>
+
+        <h2>Input on its own</h2>
+        <div class="input-group">
+            <label class="input-label" for="name">Full name</label>
+            <div class="input-controls">
+                <input class="input-control" type="text" name="name" placeholder="Your name here" />
+                <span class="input-addition--btn">
+                    <button>Hey there</button>
+                </span>
+            </div>
+        </div>
+
+
+        <h2>Full form</h2>
+        <form class="form-horz">
+            <div class="input-group">
+                <label class="input-label" for="name">Full name</label>
+                <div class="input-controls">
+                    <input class="input-control" type="text" name="name" placeholder="Your name here" />
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="email">Email</label>
+                <div class="input-controls">
+                    <input class="input-control" type="email" name="email" placeholder="Your email" />
+                    <span class="input-addition">@</span>
+                </div>
+
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="email">Address</label>
+                <div class="input-controls">
+                    <textarea class="input-control" name="email" placeholder="Address"></textarea>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="country">Country</label>
+                <div class="input-controls">
+                    <select class="input-control" name="country">
+                        <option>Australia</option>
+                        <option>Antigua</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="gender">Gender</label>
+                <div class="input-controls">
+                    <label for="gender-male" class="input-control">
+                        <input type="checkbox" name="gender" id="gender-male"/>
+                        Male
+                    </label>
+                    <label for="gender-female" class="input-control">
+                        <input type="checkbox" name="gender" id="gender-female"/>
+                        Female
+                    </label>
+                    <label for="gender-other" class="input-control">
+                        <input type="checkbox" name="gender" id="gender-other"/>
+                        Other
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="likes">I like</label>
+                <div class="input-controls">
+                    <label for="likes-apples" class="input-control">
+                        <input type="radio" name="likes" id="likes-apples"/>
+                        Apples
+                    </label>
+                    <label for="likes-oranges" class="input-control">
+                        <input type="radio" name="likes" id="likes-oranges"/>
+                        Oranges
+                    </label>
+                    <label for="likes-pears" class="input-control">
+                        <input type="radio" name="likes" id="likes-pears"/>
+                        Pears
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="cars">Fave cars</label>
+                <div class="input-controls">
+                    <select class="input-control" name="cars">
+                        <optgroup label="Swedish Cars">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                        </optgroup>
+                        <optgroup label="German Cars">
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button>Submit me</button>
+            </div>
+        </form>
+
+        <!-- JavaScript libraries and UX based code -->
+        <script data-main="../scripts/app" src="../libs/requirejs/require.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,174 @@
+/**
+* Forms
+*
+* Ready-made but visually basic form styles
+*/
+
+/**
+input-group
+    label.input-label
+    div.input-controls
+        [1]
+        input.input-control
+        [2]
+        label.input-control
+            input[type='checkbox|radio']
+        span.input-addition
+ */
+
+/**
+ * Init
+ *
+ * Define variables, helper mixins and animations
+ * local to this component
+ */
+    // @sample-var: foo;
+    // .sample-mixin(@args:default){}
+    // @keyframes sample{}
+
+/**
+ * Component classes
+ */
+
+    /**
+     * Parent forms
+     */
+        .form-horz{
+            .input-group{
+                display:table;
+                width:100%;
+            }
+                .input-label{
+                    width:150px;
+                }
+        }
+        .form-vert{
+            .input-label{
+                display:block;
+                margin-bottom:1em;
+                padding:0;
+            }
+            /**
+             * Checkboxes / radio buttons
+             */
+                label.input-control{
+                    &:first-child{
+                        padding-top:0;
+                    }
+                }
+            /**
+             * Option groups
+             */
+                select.input-control{
+                    margin-top:0;
+                }
+        }
+
+    /**
+     * Input groups
+     */
+        .input-group{
+            margin-bottom:1em;
+        }
+
+            /**
+             * Shared styles
+             */
+                .input-label,
+                .input-control,
+                [class^="input-addition"]{
+                    display:table-cell;
+                    vertical-align:top;
+                    padding:1em;
+                    line-height:1.5em;
+                }
+
+            /**
+             * Label
+             */
+                .input-label{
+                    padding-left:0;
+                }
+
+            /**
+             * Input controls group
+             */
+                .input-controls{
+                    display:table;
+                    width:100%;
+                }
+                    .input-control{
+                        width:100%;
+                        margin:0;
+
+                        /**
+                         * Regular inputs
+                         */
+                            input&{
+                                border:1px solid @muted;
+                            }
+                        /**
+                         * Checkboxes / radio buttons
+                         */
+                            label&{
+                                display:block;
+                                width:auto;
+                                padding:0.25em 0;
+                                &:first-child{
+                                    padding-top:1em;
+                                }
+                            }
+                        /**
+                         * Option groups
+                         */
+                            select&{
+                                margin:1em 0;
+                                padding:0;
+                            }
+                    }
+
+                    [class^="input-addition"]{
+                        width:1%;
+                        white-space:nowrap;
+                        padding-top:0;
+                        padding-bottom:0;
+                        color:@white;
+                        background:@muted;
+                        text-align:center;
+                        vertical-align:middle;
+                    }
+                        .input-addition--btn{
+                            padding:0;
+                            background:none;
+                            button{
+                                padding:1em;
+                                border:1px solid @muted;
+                                background:@muted;
+                                line-height:1.5em;
+                                &::-moz-focus-inner{
+                                    /**
+                                     * Firefox makes it's own line height
+                                     * Fix here: http://davidwalsh.name/firefox-buttons
+                                     */
+                                    margin:-0.22em 0;
+                                }
+                            }
+                        }
+
+/**
+ * Modernizr hooks
+ */
+    // .no-flexbox{}
+
+/**
+ * Media queries
+ */
+    // @media @tablet{}
+    // Set in settings.less
+
+/**
+ * IE overrides
+ */
+    //.lt-ie9{}
+    //.lt-ie8{}
+
