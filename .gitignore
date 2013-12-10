@@ -1,6 +1,16 @@
-.DS_Store
+# compiled files
 *.css
 *-min.js
-static/libs/*
+*.min.js
+static/fonts/eggbox/*
+
+# npm and bower third party libs
+# to be installed win package.json and bower.json
 node_modules/
 npm-debug.log
+static/libs/*
+
+# os files
+.DS_Store
+*.swp
+*.ini~

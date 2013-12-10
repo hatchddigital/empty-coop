@@ -1,80 +1,84 @@
-/*global module:false*/
+/**
+ * Grunt configuration for front end deployment.
+ *
+ * The following tasks will generate development or production front end
+ * ready code. This includes linting, compiling and minifying code. As a
+ * standard `development` tasks will lint and compile (no minification) while
+ * `production` tasks should compile and minify (no linting).
+ *
+ * @author jimmyhillis <jimmy@hatchd.com.au>
+ * @author neilf <neil@hatchd.com.au>
+ */
+
 module.exports = function (grunt) {
     'use strict';
 
-    var pkgConfig = {
-        stylesheets: 'static/stylesheets',
-        scripts: 'static/scripts',
-        fonts: 'static/fonts',
-        eggboxicons: 'bower_components/eggbox',
-        custom_eggboxicons: 'bower_components/custom-eggbox'
-    };
-
-    // configurable paths
+    // Task configuration
+    //
     grunt.initConfig({
-        pkg: pkgConfig,
+        pkg: grunt.file.readJSON('package.json'),
+        dirs: {
+            stylesheets: 'static/stylesheets',
+            scripts: 'static/scripts',
+            fonts: 'static/fonts',
+            eggboxicons: 'bower_components/eggbox',
+            custom_eggboxicons: 'bower_components/custom-eggbox'
+        },
         watch: {
             livereload: {
                 files: [
-                    '<%= pkg.templates %>/*',
-                    '<%= pkg.stylesheets %>}/less/{,*/}*.less',
-                    '<%= pkg.scripts %>}/{,*/}*.js',
-                    '<%= pkg.custom_eggboxicons %>}/{,*/}*.svg'
+                    '<%= dirs.templates %>/*',
+                    '<%= dirs.stylesheets %>}/less/{,*/}*.less',
+                    '<%= dirs.scripts %>}/{,*/}*.js',
+                    '<%= dirs.custom_eggboxicons %>}/{,*/}*.svg'
                 ],
                 tasks: ['livereload']
             }
         },
-        regarde: {
-            js: {
-                files: ['<%= pkg.scripts %>/**/*.js', '!<%= pkg.scripts %>/**/*-min.js'],
-                tasks: ['jshint', 'requirejs'],
-                spawn: true
-            },
-            css: {
-                files: '<%= pkg.stylesheets %>/**/*.less',
-                tasks: ['less:development', 'autoprefixer:development'],
-                spawn: true
-            },
-            eggbox: {
-                files: '<%= pkg.custom_eggboxicons %>/**/*.svg',
-                tasks: ['webfont:default'],
-                spawn: true
-            }
-        },
-        open: {
-            server: {
-                path: 'http://localhost:<%= pkg.port %>'
-            }
-        },
         clean: [
-            '<%= pkg.scripts %>/*-min.js',
-            '<%= pkg.stylesheets %>/*.css'
+            '<%= dirs.scripts %>/*.min.js',
+            '<%= dirs.stylesheets %>/*.css'
         ],
-        jshint: {
-            all: [
-                'Gruntfile.js',
-                '<%= pkg.app %>/scripts/{,*/}*.js',
-                '!<%= pkg.app %>/scripts/lib/*'
-            ]
+        // Webfonts
+        webfont: {
+            production: {
+                src: [
+                    '<%= dirs.eggboxicons %>/src/*.svg',
+                    '<%= dirs.custom_eggboxicons %>/*.svg'],
+                dest: '<%= dirs.fonts %>/eggbox',
+                htmlDemo : true,
+                destCss: '<%= dirs.stylesheets %>/less/reusable-components/',
+                options: {
+                    hashes: false,
+                    font: 'eggbox',
+                    icon: 'eggbox',
+                    relativeFontPath: '../fonts/eggbox',
+                    template: '<%= dirs.eggboxicons %>/templates/eggbox.css',
+                    htmlDemoTemplate: '<%= dirs.eggboxicons %>/templates/your-eggbox.html',
+                    destHtml: '<%= dirs.fonts %>/eggbox',
+                    stylesheet: 'less'
+                }
+            }
         },
+        // Stylesheets
         less: {
             development: {
                 options: {
-                    paths: ['<%= pkg.stylesheets %>/less'],
+                    paths: ['<%= dirs.stylesheets %>/less'],
                     dumpLineNumbers: 'comments',
                     strictMath: true
                 },
                 files: {
-                    '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/less/styles.less'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.less'
                 }
             },
             production: {
                 options: {
-                    paths: ['<%= pkg.stylesheets %>/less'],
+                    paths: ['<%= dirs.stylesheets %>/less'],
                     strictMath: true
                 },
                 files: {
-                    '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/less/styles.less'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.less'
                 }
             }
         },
@@ -84,68 +88,70 @@ module.exports = function (grunt) {
             },
             development: {
                 files: {
-                    '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/styles.css'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/styles.css'
                 }
             },
             production: {
                 files: {
-                    '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/styles.css'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/styles.css'
                 }
             }
         },
         cssmin: {
             combine: {
                 files: {
-                    '<%= pkg.stylesheets %>/styles.css': '<%= pkg.stylesheets %>/styles.css'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/styles.css'
                 }
             }
         },
-        webfont: {
-            default: {
-                src: [
-                    '<%= pkg.eggboxicons %>/src/*.svg',
-                    '<%= pkg.custom_eggboxicons %>/*.svg'],
-                dest: '<%= pkg.fonts %>/eggbox',
-                htmlDemo : true,
-                destCss: '<%= pkg.stylesheets %>/less/reusable-components/',
-                options: {
-                    hashes: false,
-                    font: 'eggbox',
-                    icon: 'eggbox',
-                    relativeFontPath: '../fonts/eggbox',
-                    template: '<%= pkg.eggboxicons %>/templates/eggbox.css',
-                    htmlDemoTemplate: '<%= pkg.eggboxicons %>/templates/your-eggbox.html',
-                    destHtml: '<%= pkg.fonts %>/eggbox',
-                    stylesheet: 'less'
-                }
+        // Javascript
+        jshint: {
+            all: [
+                'Gruntfile.js',
+                '<%= dirs.app %>/scripts/{,*/}*.js',
+                '!<%= dirs.app %>/scripts/lib/*'
+            ]
+        },
+        regarde: {
+            js: {
+                files: ['<%= dirs.scripts %>/**/*.js', '!<%= dirs.scripts %>/**/*.min.js'],
+                tasks: ['jshint', 'requirejs'],
+                spawn: true
+            },
+            css: {
+                files: '<%= dirs.stylesheets %>/**/*.less',
+                tasks: ['less:development', 'autoprefixer:development'],
+                spawn: true
+            },
+            eggbox: {
+                files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
+                tasks: ['webfont'],
+                spawn: true
             }
         },
         requirejs: {
             compile: {
                 options: {
                     name: 'app',
-                    baseUrl: '<%= pkg.scripts %>',
-                    mainConfigFile: '<%= pkg.scripts %>/app.js',
-                    out: '<%= pkg.scripts %>/app-min.js'
+                    baseUrl: '<%= dirs.scripts %>',
+                    mainConfigFile: '<%= dirs.scripts %>/app.js',
+                    out: '<%= dirs.scripts %>/app.min.js'
                 }
-            }
-        },
-        bower: {
-            all: {
-                rjsConfig: '<%= pkg.app %>/scripts/main.js'
             }
         }
     });
 
+    // Required tasks
+
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-regarde');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-webfont');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-webfont');
 
     // Simply watch script which does a build on entry
     grunt.registerTask('watch', [
@@ -156,21 +162,21 @@ module.exports = function (grunt) {
     // Build for development purposes with linting
     grunt.registerTask('default', [
         'clean',
-        'jshint',
-        'webfont:default',
+        'webfont',
         'less:development',
         'autoprefixer:development',
+        'jshint',
         'requirejs'
     ]);
 
     // Server build
     grunt.registerTask('server', [
         'clean',
-        'webfont:default',
+        'webfont',
         'less:production',
         'autoprefixer:production',
-        'requirejs',
-        'cssmin'
+        'cssmin',
+        'requirejs'
     ]);
 
 };

@@ -1,15 +1,22 @@
-# Empty-coop
+# Empty Coop
 
-Created and maintained by the team at Hatchd Digital, Perth (see static/humans.txt).
-Uses LESS 1.5.0
+Created and maintained by the team at Hatchd Digital, Perth
+(see static/humans.txt). We use:
 
-Now comes bundled with the [eggbox](https://github.com/hatchddigital/eggbox) icon set by default (built in as a grunt task).
+- [Grunt](http://gruntjs.com/)
+- [LESS](http://lesscss.org/)
+- [jQuery](http://jquery.com/)
+- [RequireJS](http://requirejs.org/)
+
+*As of `#0.1.2` the coop comes bundled with the
+[eggbox](https://github.com/hatchddigital/eggbox) icon set!*
 
 ## Purpose
 
-Empty-coop is a consistent base for all our projects at Hatchd. It doesn't
-force the author to adjust to a specific way of writing (although we have a
-house  style at Hatchd); it is a starting point not a framework.
+Empty-coop is a consistent base for all our projects at
+[Hatchd](http://hatchd.com.au). It doesn't force the author to adjust to a
+specific way of writing (although we have a house style at Hatchd); **It's a
+starting point, not a framework.**
 
 ## Guidelines
 
@@ -29,9 +36,10 @@ brew install node
 npm install -g grunt-cli bower
 ```
 
-This will install Node with NPM + grunt-cli and bower globally ready for use.
-For more information see [node](http://nodejs.org/),
-[grunt](http://gruntjs.com/), and [bower](bower.io) projects.
+This will install `node` with `npm` + `grunt` and `bower` commenads globally,
+ready for use with this project. For more information see the
+[node](http://nodejs.org/), [npm](http://npmjs.com.au),
+[grunt](http://gruntjs.com/) and [bower](bower.io) projects.
 
 ## Usage
 

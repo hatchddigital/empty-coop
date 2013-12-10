@@ -2,10 +2,32 @@
   "name": "empty-coop",
   "version": "0.1.2",
   "author": "Hatchd Digital <hello@hatchd.com.au>",
-  "description": "Empty coop",
+  "description": "A starting point for all web-based projects at Hatchd. Leverages LESS, requireJS and Grunt.",
+  "contributors": [
+    {
+      "name": "Jack Armley",
+      "email": "jack@hatchd.com.au"
+    },
+    {
+      "name": "Jimmy Hillis",
+      "email": "jimmy@hatchd.com.au"
+    },
+    {
+      "name": "Niaal Holder",
+      "email": "niaal@hatchd.com.au"
+    },
+    {
+      "name": "Jane Yee",
+      "email": "jane@hatchd.com.au"
+    }
+  ],
   "homepage": "http://hatchd.com.au/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hatchdditigal/empty-coop.git"
+  },
   "private": true,
-  "devDependencies": {
+  "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.4",
@@ -21,7 +43,9 @@
     "grunt-notify": "~0.2.13",
     "autoprefixer": "~0.8.2",
     "grunt-autoprefixer": "~0.3.0",
-    "connect": "~2.9.0",
     "grunt-webfont": "~0.1.11"
+  },
+  "devDependencies": {
+    "connect": "~2.9.0"
   }
 }

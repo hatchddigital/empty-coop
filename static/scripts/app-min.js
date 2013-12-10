@@ -1,1 +1,0 @@
-require.config({paths:{jquery:"../libs/jquery/jquery"}}),require([],function(){require([document.body.id])}),define("app",function(){});
