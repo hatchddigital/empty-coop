@@ -141,7 +141,7 @@ module.exports = function (grunt) {
         },
         modernizr: {
             devFile: 'remote',
-            outputFile: '<%= dirs.scripts %>/libs/modernizr/modernizr.min.js',
+            outputFile: '<%= dirs.scripts %>/../libs/modernizr/modernizr.min.js',
             extra: {
                 'shiv': true,
                 'load': false,

@@ -1,7 +1,6 @@
 {
   "name": "empty-coop",
   "dependencies": {
-    "modernizr": "2.x.x",
     "jquery": "1.x.x",
     "requirejs": "~2.1.x",
     "eggbox": "git://github.com/hatchddigital/eggbox.git"
