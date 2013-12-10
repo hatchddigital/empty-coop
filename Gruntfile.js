@@ -35,6 +35,23 @@ module.exports = function (grunt) {
                 tasks: ['livereload']
             }
         },
+        regarde: {
+            js: {
+                files: ['<%= dirs.scripts %>/**/*.js', '!<%= dirs.scripts %>/**/*.min.js'],
+                tasks: ['jshint', 'requirejs'],
+                spawn: true
+            },
+            css: {
+                files: '<%= dirs.stylesheets %>/**/*.less',
+                tasks: ['less:development', 'autoprefixer:development'],
+                spawn: true
+            },
+            eggbox: {
+                files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
+                tasks: ['webfont'],
+                spawn: true
+            }
+        },
         clean: [
             '<%= dirs.scripts %>/*.min.js',
             '<%= dirs.stylesheets %>/*.css'
@@ -108,26 +125,9 @@ module.exports = function (grunt) {
         jshint: {
             all: [
                 'Gruntfile.js',
-                '<%= dirs.app %>/scripts/{,*/}*.js',
-                '!<%= dirs.app %>/scripts/lib/*'
+                '<%= dirs.scripts %>/{,*/}*.js',
+                '!<%= dirs.scripts %>/{,*/}*.min.js'
             ]
-        },
-        regarde: {
-            js: {
-                files: ['<%= dirs.scripts %>/**/*.js', '!<%= dirs.scripts %>/**/*.min.js'],
-                tasks: ['jshint', 'requirejs'],
-                spawn: true
-            },
-            css: {
-                files: '<%= dirs.stylesheets %>/**/*.less',
-                tasks: ['less:development', 'autoprefixer:development'],
-                spawn: true
-            },
-            eggbox: {
-                files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
-                tasks: ['webfont'],
-                spawn: true
-            }
         },
         requirejs: {
             compile: {
@@ -138,6 +138,21 @@ module.exports = function (grunt) {
                     out: '<%= dirs.scripts %>/app.min.js'
                 }
             }
+        },
+        modernizr: {
+            devFile: 'remote',
+            outputFile: '<%= dirs.scripts %>/libs/modernizr/modernizr.min.js',
+            extra: {
+                'shiv': true,
+                'load': false,
+                'cssclasses': true
+            },
+            uglify: true,
+            parseFiles: true,
+            files: [
+                '<%= dirs.stylesheets %>/styles.css',
+                '<%= dirs.scripts %>/app.min.js'
+            ]
         }
     });
 
@@ -152,6 +167,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-modernizr');
 
     // Simply watch script which does a build on entry
     grunt.registerTask('watch', [
@@ -166,7 +182,8 @@ module.exports = function (grunt) {
         'less:development',
         'autoprefixer:development',
         'jshint',
-        'requirejs'
+        'requirejs',
+        'modernizr'
     ]);
 
     // Server build
