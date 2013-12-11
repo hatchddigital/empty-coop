@@ -2,5 +2,6 @@
 *.css
 *-min.js
 static/libs/*
+static/fonts/eggbox
 node_modules/
 npm-debug.log
