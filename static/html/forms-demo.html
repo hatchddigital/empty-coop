@@ -98,15 +98,15 @@
                 <div class="input-controls">
                     <label for="gender-male" class="input-control">
                         <input type="checkbox" name="gender" id="gender-male"/>
-                        Male
+                        <span>Male</span>
                     </label>
                     <label for="gender-female" class="input-control">
                         <input type="checkbox" name="gender" id="gender-female"/>
-                        Female
+                        <span>Female</span>
                     </label>
                     <label for="gender-other" class="input-control">
                         <input type="checkbox" name="gender" id="gender-other"/>
-                        Other
+                        <span>Other</span>
                     </label>
                 </div>
             </div>
@@ -115,15 +115,15 @@
                 <div class="input-controls">
                     <label for="likes-apples" class="input-control">
                         <input type="radio" name="likes" id="likes-apples"/>
-                        Apples
+                        <span>Apples</span>
                     </label>
                     <label for="likes-oranges" class="input-control">
                         <input type="radio" name="likes" id="likes-oranges"/>
-                        Oranges
+                        <span>Oranges</span>
                     </label>
                     <label for="likes-pears" class="input-control">
                         <input type="radio" name="likes" id="likes-pears"/>
-                        Pears
+                        <span>Pears</span>
                     </label>
                 </div>
             </div>
@@ -142,10 +142,21 @@
                     </select>
                 </div>
             </div>
+
+            <div class="input-group">
+                <label class="input-label" for="cars">Price range</label>
+                <div class="input-controls">
+                    <input type="range" class="input-control" name="points" min="1" max="10">
+                </div>
+            </div>
+
             <div class="form-actions">
                 <button>Submit me</button>
             </div>
         </form>
+
+
+
 
         <!-- JavaScript libraries and UX based code -->
         <script data-main="../scripts/app" src="../libs/requirejs/require.js"></script>

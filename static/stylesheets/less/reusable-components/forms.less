@@ -107,6 +107,10 @@ input-group
                             input&{
                                 border:1px solid @muted;
                             }
+                            input[type="range"]&{
+                                margin:0.5em 0;
+                                border:none;
+                            }
                         /**
                          * Checkboxes / radio buttons
                          */
@@ -114,6 +118,7 @@ input-group
                                 display:block;
                                 width:auto;
                                 padding:0.25em 0;
+                                cursor:pointer;
                                 &:first-child{
                                     padding-top:1em;
                                 }
@@ -154,6 +159,111 @@ input-group
                                 }
                             }
                         }
+
+    /**
+     * Trying out some proper styling
+     */
+        .input-group{
+            padding:0 0 1em;
+            border-bottom:1px dashed lighten(@muted,30%);
+        }
+            .input-control{
+                input&,
+                textarea&{
+                    background:darken(@white,1%);
+                    border-color:lighten(@muted,20%);
+                    box-shadow:inset 0 4px 0 0 lighten(@muted,40%);
+                    transition:.15s ease-in-out;
+                    &:focus{
+                        background:@white;
+                        box-shadow:inset 0 2px 0 0 lighten(@muted,40%);
+                    }
+                }
+                label&{
+                    position:relative;
+                    input[type="radio"],
+                    input[type="checkbox"]{
+                        display:none;
+                    }
+                    span{
+                        position:relative;
+                        padding-left:1.5em;
+                        &:before{
+                            content:" ";
+                            position:absolute;
+                            top:50%;
+                            left:0;
+                            box-sizing:border-box;
+                            .setsquare(1em);
+                            margin:(-1em/2) 0 0 0;
+                            border:1px solid @muted;
+                            background-color:@link;
+                            transition:.15s ease-in-out;
+                        }
+                    }
+                    input[type="radio"]{
+                        + span:before{
+                            border-radius:1em;
+                            background:linear-gradient(to bottom,@link,lighten(@link,20%) );
+                            box-shadow:inset 0 0 0 1em @white;
+                            transform:scale(.8);
+                        }
+                        &:checked + span:before{
+                            box-shadow:inset 0 0 0 3px @white;
+                            transform:scale(1);
+                        }
+                    }
+                    input[type="checkbox"]{
+                        + span:before{
+                            border-radius:5px;
+                            background:
+                                linear-gradient(
+                                    45deg,
+                                    transparent 46%,
+                                    @link 46%,
+                                    @link 54%,
+                                    transparent 54%),
+                                linear-gradient(
+                                    -45deg,
+                                    transparent 46%,
+                                    @link 46%,
+                                    @link 54%,
+                                    transparent 54%);
+                            box-shadow:inset 0 0 0 1em @white;
+                            transform:scale(.8);
+                        }
+                        &:checked + span:before{
+                            border-radius:3px;
+                            box-shadow:inset 0 0 0 3px @white;
+                            transform:scale(1);
+                        }
+                    }
+                }
+            }
+            [class^="input-addition"]{
+                border-radius:0 10px 10px 0;
+                background:lighten(@muted,20%);
+            }
+        .form-actions:extend(.clearfix all){
+            button{
+                position:relative;
+                top:0;
+                float:right;
+                padding:1em;
+                border:none;
+                border-radius:5px;
+                background:@link;
+                color:@white;
+                box-shadow:0 4px 0 0 darken(@link,20%);
+                transition:.15s ease-in-out;
+                &:hover{
+                    top:3px;
+                    background:@link-active;
+                    box-shadow:0 1px 0 0 darken(@link,20%);
+                }
+            }
+        }
+
 
 /**
  * Modernizr hooks
