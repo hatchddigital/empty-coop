@@ -24,20 +24,12 @@ module.exports = function (grunt) {
             eggboxicons: 'bower_components/eggbox',
             custom_eggboxicons: 'bower_components/custom-eggbox'
         },
-        watch: {
-            livereload: {
-                files: [
-                    '<%= dirs.templates %>/*',
-                    '<%= dirs.stylesheets %>}/less/{,*/}*.less',
-                    '<%= dirs.scripts %>}/{,*/}*.js',
-                    '<%= dirs.custom_eggboxicons %>}/{,*/}*.svg'
-                ],
-                tasks: ['livereload']
-            }
-        },
         regarde: {
             js: {
-                files: ['<%= dirs.scripts %>/**/*.js', '!<%= dirs.scripts %>/**/*.min.js'],
+                files: [
+                    '<%= dirs.scripts %>/**/*.js',
+                    '!<%= dirs.scripts %>/**/*min.js'
+                ],
                 tasks: ['jshint', 'requirejs'],
                 spawn: true
             },
