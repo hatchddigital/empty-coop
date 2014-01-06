@@ -21,8 +21,8 @@ module.exports = function (grunt) {
             stylesheets: 'static/stylesheets',
             scripts: 'static/scripts',
             fonts: 'static/fonts',
-            eggboxicons: 'bower_components/eggbox',
-            custom_eggboxicons: 'bower_components/custom-eggbox'
+            eggboxicons: 'static/libs/eggbox/',
+            custom_eggboxicons: 'static/custom-eggbox'
         },
         regarde: {
             js: {
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
                     '<%= dirs.custom_eggboxicons %>/*.svg'],
                 dest: '<%= dirs.fonts %>/eggbox',
                 htmlDemo : true,
-                destCss: '<%= dirs.stylesheets %>/less/reusable-components/',
+                destCss: '<%= dirs.stylesheets %>/sass/reusable-components/',
                 options: {
                     hashes: false,
                     font: 'eggbox',
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
                     template: '<%= dirs.eggboxicons %>/templates/eggbox.css',
                     htmlDemoTemplate: '<%= dirs.eggboxicons %>/templates/your-eggbox.html',
                     destHtml: '<%= dirs.fonts %>/eggbox',
-                    stylesheet: 'less'
+                    stylesheet: 'scss'
                 }
             }
         },
@@ -74,8 +74,9 @@ module.exports = function (grunt) {
             development: {
                 options: {
                     style: 'expanded',
-                    lineNumbers: true,
+                    sourcemap: true,
                     debugInfo: true,
+                    lineNumbers: true,
                     noCache: true
                 },
                 files: {

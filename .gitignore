@@ -4,7 +4,8 @@
 *-min.js
 *.min.js
 static/fonts/eggbox/*
-static/stylesheets/less/reusable-components/eggbox.less
+static/stylesheets/less/reusable-components/_eggbox.scss
+.sass-cache/
 
 # npm and bower third party libs
 # to be installed win package.json and bower.json
