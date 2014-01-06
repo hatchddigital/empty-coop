@@ -21,8 +21,14 @@ module.exports = function (grunt) {
             stylesheets: 'static/stylesheets',
             scripts: 'static/scripts',
             fonts: 'static/fonts',
+            icons: 'static/images/eggbox',
+            eggbox: 'static/libs/eggbox',
             eggboxicons: 'static/libs/eggbox/',
             custom_eggboxicons: 'static/custom-eggbox'
+        },
+        eggbox: {
+            iconSize: '16x16',
+            iconColor: '000000'
         },
         regarde: {
             js: {
@@ -40,7 +46,7 @@ module.exports = function (grunt) {
             },
             eggbox: {
                 files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
-                tasks: ['webfont'],
+                tasks: ['webfont', 'shell'],
                 spawn: true
             }
         },
@@ -48,6 +54,19 @@ module.exports = function (grunt) {
             '<%= dirs.scripts %>/*.min.js',
             '<%= dirs.stylesheets %>/*.css'
         ],
+        // Icons
+        shell: {
+            build_icons: {
+                options: {
+                    stdout: true,
+                    stderr: true
+                },
+                command: [
+                  'mkdir -p <%= dirs.icons %>',
+                  'python <%= dirs.eggbox %>/svg2png.py -c <%= eggbox.iconColor %> -o <%= dirs.icons %> -s <%= eggbox.iconSize %> <%= dirs.eggbox %>/src'
+                ].join(' && ')
+            }
+        },
         // Webfonts
         webfont: {
             production: {
@@ -162,6 +181,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-modernizr');
+    grunt.loadNpmTasks('grunt-shell');
 
     // Simply watch script which does a build on entry
     grunt.registerTask('watch', [
@@ -172,6 +192,7 @@ module.exports = function (grunt) {
     // Build for development purposes with linting
     grunt.registerTask('default', [
         'clean',
+        'shell',
         'webfont',
         'sass:development',
         'autoprefixer:development',
@@ -183,6 +204,7 @@ module.exports = function (grunt) {
     // Server build
     grunt.registerTask('server', [
         'clean',
+        'shell',
         'webfont',
         'sass:production',
         'autoprefixer:production',
