@@ -3,6 +3,7 @@
 *-min.js
 *.min.js
 static/fonts/eggbox/*
+static/images/eggbox/*
 static/stylesheets/less/reusable-components/eggbox.less
 
 # npm and bower third party libs
