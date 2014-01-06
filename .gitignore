@@ -1,5 +1,6 @@
 # compiled files
 *.css
+*.css.map
 *-min.js
 *.min.js
 static/fonts/eggbox/*

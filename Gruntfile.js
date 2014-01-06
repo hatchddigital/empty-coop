@@ -75,7 +75,9 @@ module.exports = function (grunt) {
                 options: {
                     paths: ['<%= dirs.stylesheets %>/less'],
                     dumpLineNumbers: 'comments',
-                    strictMath: true
+                    strictMath: true,
+                    sourceMap: true,
+                    sourceMapFilename: '<%= dirs.stylesheets %>/styles.css.map'
                 },
                 files: {
                     '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.less'
