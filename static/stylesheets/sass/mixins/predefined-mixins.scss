@@ -1,0 +1,102 @@
+/**
+ * Predefined mixins
+ *
+ * A set of LESS mixins to make common css tasks that little bit easier
+ *
+ */
+
+/**
+ * Make an element square
+ * Automagically set the same width/height for a block-level element
+ *
+ * @param size: size in chosen unit
+ */
+    @mixin setsquare($size) {
+        width:$size;
+        height:$size;
+    }
+
+/**
+ * Set width and height
+ * Automagically set the width/height for a block-level element
+ *
+ * @param width: width in chosen unit
+ * @param height: height in chosen unit
+ */
+    @mixin setsize($width,$height) {
+        width:$width;
+        height:$height;
+    }
+
+/**
+ * Evenly distribute items
+ * Automagically set items evenly in a line
+ *
+ * @param item-number: number of items to distribute
+ */
+    @mixin distribute-items($item-number){
+       width:100 / $item-number#{'%'};
+    }
+
+/**
+ * CSS triangles
+ * Make pure CSS triangles
+ * Useful for pointers and tooltips
+ */
+    @mixin triangle($dir,$color,$size){
+        content:' ';
+        display:block;
+        width:0;
+        height:0;
+        border:$size solid transparent;
+        @if $dir == top{
+            border-bottom-color:$color;
+        }
+        @else if $dir == right{
+            border-left-color:$color;
+        }
+        @else if $dir == bottom{
+            border-top-color:$color;
+        }
+        @else if $dir == left{
+            border-right-color:$color;
+        }
+        @else if $dir == topright{
+            border-top-color:$color;
+            border-right-color:$color;
+            border-width:$size/1.5;
+        }
+        @else if $dir == bottomright{
+            border-bottom-color:$color;
+            border-right-color:$color;
+            border-width:$size/1.5;
+        }
+        @else if $dir == topleft{
+            border-top-color:$color;
+            border-left-color:$color;
+            border-width:$size/1.5;
+        }
+        @else if $dir == bottomleft{
+            border-bottom-color:$color;
+            border-left-color:$color;
+            border-width:$size/1.5;
+        }
+    }
+
+/**
+ * Style placeholder text
+ */
+    @mixin placeholder($color:#fff){
+        &::-webkit-input-placeholder {
+           color:$color;
+        }
+        &:-moz-placeholder {
+           color:$color;
+        }
+        &::-moz-placeholder {
+           color:$color;
+        }
+        &:-ms-input-placeholder {
+           color:$color;
+        }
+    }

@@ -8,12 +8,12 @@
 	a,
 	a:link,
 	a:visited{
-		color:@link;
+		color:$link;
 		text-decoration:underline;
 	}
 	a:hover,
     a:active{
-	    color:@link-active;
+	    color:$link-active;
         text-decoration:none;
 	}
     :focus{

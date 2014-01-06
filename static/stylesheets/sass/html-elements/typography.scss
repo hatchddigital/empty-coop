@@ -6,10 +6,10 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-        color:@default;
-        font-size:unit( (100/16*@fontsize),~'%' );
-		line-height:1.5em;
-		font-family:@ff-default;
+        color:$default;
+        font-size:(100/16)*$fontsize#{'%'};
+        line-height:1.5em;
+        font-family:$ff-default;
 	}
     p,li,dt,dd,input,textarea,button{
         line-height:1.5em;
@@ -49,7 +49,7 @@
 		margin:0 0 1em 0;
 		padding:0;
 		border:none;
-		border-top:1px solid @muted;
+		border-top:1px solid $muted;
 	}
 
 /**
@@ -169,17 +169,17 @@
      * For marking up content relevency/edits and highlighting content
      */
     	ins{
-    		background-color:@highlight;
+    		background-color:$highlight;
     	}
     	del{
     		text-decoration:line-through;
     	}
     	s{
-    		color:@muted;
+    		color:$muted;
     		text-decoration:line-through;
     	}
     	mark{
-    		background-color:@highlight;
+    		background-color:$highlight;
     		color:inherit;
     		font-weight:normal;
     	}

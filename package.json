@@ -2,7 +2,7 @@
   "name": "empty-coop",
   "version": "0.1.3",
   "author": "Hatchd Digital <hello@hatchd.com.au>",
-  "description": "A starting point for all web-based projects at Hatchd. Leverages LESS, requireJS and Grunt.",
+  "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, requireJS and Grunt.",
   "contributors": [
     {
       "name": "Jack Armley",
@@ -35,7 +35,7 @@
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-contrib-livereload": "0.1.2",
     "grunt-contrib-requirejs": "~0.4.1",
-    "grunt-contrib-less": "~0.8.3",
+    "grunt-contrib-sass": "~0.6.0",
     "grunt-contrib-clean": "0.5.0",
     "grunt-regarde": "~0.1.1",
     "grunt-notify": "~0.2.13",

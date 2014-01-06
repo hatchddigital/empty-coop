@@ -34,8 +34,8 @@ module.exports = function (grunt) {
                 spawn: true
             },
             css: {
-                files: '<%= dirs.stylesheets %>/**/*.less',
-                tasks: ['less:development', 'autoprefixer:development'],
+                files: '<%= dirs.stylesheets %>/**/*.scss',
+                tasks: ['sass:development', 'autoprefixer:development'],
                 spawn: true
             },
             eggbox: {
@@ -70,26 +70,25 @@ module.exports = function (grunt) {
             }
         },
         // Stylesheets
-        less: {
+        sass: {
             development: {
                 options: {
-                    paths: ['<%= dirs.stylesheets %>/less'],
-                    dumpLineNumbers: 'comments',
-                    strictMath: true,
-                    sourceMap: true,
-                    sourceMapFilename: '<%= dirs.stylesheets %>/styles.css.map'
+                    style: 'expanded',
+                    lineNumbers: true,
+                    debugInfo: true,
+                    noCache: true
                 },
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.less'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/sass/styles.scss'
                 }
             },
             production: {
                 options: {
-                    paths: ['<%= dirs.stylesheets %>/less'],
-                    strictMath: true
+                    style: 'compressed',
+                    noCache: true
                 },
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.less'
+                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.scss'
                 }
             }
         },
@@ -156,7 +155,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-regarde');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-webfont');
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -173,7 +172,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'clean',
         'webfont',
-        'less:development',
+        'sass:development',
         'autoprefixer:development',
         'jshint',
         'requirejs',
@@ -184,7 +183,7 @@ module.exports = function (grunt) {
     grunt.registerTask('server', [
         'clean',
         'webfont',
-        'less:production',
+        'sass:production',
         'autoprefixer:production',
         'cssmin',
         'requirejs'

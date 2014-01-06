@@ -1,0 +1,90 @@
+/**
+ * Global settings
+ *
+ * Use this file to set custom colours, and to set
+ * the base text size / line height value
+ * More settings can be added here, the sky is the limit!
+ */
+
+/**
+ * Responsive breakpoints
+ */
+    @mixin breakpoint($point){
+        @if $point == standard{
+            @media (max-width:2000px){ @content; }
+        }
+        @else if $point == tablet{
+            @media (max-width:1024px){ @content; }
+        }
+        @else if $point == mobile{
+            @media (max-width:600px){ @content; }
+        }
+        @else if $point == retina{
+            @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi){ @content; }
+        }
+    }
+
+/**
+ * Eggbox
+ */
+    /**
+     * Fallback settings
+     */
+        // @eggbox-size:~"16x16";
+        // @eggbox-imagepath:~"static/images/eggbox";
+        // //Colours
+        // @eggbox-col--default:"000000";
+        // @eggbox-col--white:"ffffff";
+
+/**
+ * Typography
+ */
+
+    /**
+     * Define the size of an em (base font size)
+     */
+        $fontsize:16;
+
+    /**
+     * Set Text sizes
+     */
+        $small:0.75em;
+        $large:2em;
+
+    /**
+     * Project font famillies
+     */
+
+      /**
+       * Basic font famillies
+       * Note: Altering left-hand variable name will affect other LESS files
+       */
+        $sans:sans-serif;
+        $serif:serif;
+        $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+        "Lucida Typewriter", monospace;
+
+        $ff-default:$sans;
+
+/**
+ * Colour swatches
+ */
+
+    /**
+     * Project colours
+     */
+        $white:#fff;
+        $black:#000;
+        $yellow:#FFFB88;
+        $red:#aa3025;
+
+    /**
+     * Basic colours
+     * Note: Altering left-hand variable name will affect other LESS files
+     */
+    	$default:$black;
+    	$muted:lighten($black,50%);
+    	$highlight:$yellow;
+    	$link:$red;
+    	$link-active:lighten($red,10%);
+

@@ -24,15 +24,15 @@
  * Define colours, text sizes etc... before any styles are pulled in
  * Also, establish grid type and settings
  */
-    @import 'settings.less';
+    @import 'settings';
 /**
  * Mixins
  *
  * Define predefined mixins, and custom mixins (optional) that can be
  * set on a per-project basis
  */
-    @import 'mixins/predefined-mixins.less';
-    @import 'mixins/custom-mixins.less';
+    @import 'mixins/predefined-mixins';
+    @import 'mixins/custom-mixins';
 
 /**
  * Establish any resource using an @rule
@@ -40,7 +40,7 @@
  * Set rules for any CSS resource requiring an @ prefix,
  * such as @animate rules or @font-face fonts
  */
-	@import 'resources/webfonts.less';
+	@import 'resources/webfonts';
 
 /**
  * Create a clean slate
@@ -48,19 +48,19 @@
  * Ensure we level any browser differences, so we can build any
  * subsequent declarations on level ground
  */
-	@import 'html-elements/normalize.less';
+	@import 'html-elements/normalize';
 
 /**
  * Set base rules that can apply site-wide
  *
  * These should apply to naked elements, no classes should be defined here
  */
-	@import 'html-elements/typography.less';
-	@import 'html-elements/code.less';
-	@import 'html-elements/links.less';
-	@import 'html-elements/formelements.less';
-	@import 'html-elements/images.less';
-	@import 'html-elements/tables.less';
+	@import 'html-elements/typography';
+	@import 'html-elements/code';
+	@import 'html-elements/links';
+	@import 'html-elements/formelements';
+	@import 'html-elements/images';
+	@import 'html-elements/tables';
 
 /**
  * Define display fixes
@@ -68,7 +68,7 @@
  * non-presentational classes, used to achieve functional things like
  * clearing floats, visually hiding elements etc...
  */
-	@import 'display-fixes.less';
+	@import 'display-fixes';
 
 /**
  * Define modular components
@@ -76,7 +76,7 @@
  * Reusable components, called with a class (or classes)
  * that can exist anywhere in the site
  */
-    //@import 'reusable-components/eggbox.less';
+    //@import 'reusable-components/eggbox';
 
 /**
  * Set static page elements
@@ -84,10 +84,10 @@
  * The scaffolding of the site, defined through elements that occur only
  * once per page, defined via an aria role or ID
  */
-    @import 'page-elements/page-outer.less';
-    @import 'page-elements/page-header.less';
-    @import 'page-elements/page-content.less';
-    @import 'page-elements/page-footer.less';
+    @import 'page-elements/page-outer';
+    @import 'page-elements/page-header';
+    @import 'page-elements/page-content';
+    @import 'page-elements/page-footer';
 
 /**
  * Set page layout(s)
@@ -95,5 +95,5 @@
  * Rules unique to a specific template or set of templates.
  * These definitions should be set from a unique class
  */
-   @import 'page-layouts/layout-template.less';
+   @import 'page-layouts/layout-template';
 

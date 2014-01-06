@@ -1,7 +1,5 @@
 /**
- * Sample bespoke page layout
- *
- * Note: global page elements should be defined within /page-elements
+ * Page outer
  */
 
 /**
@@ -10,8 +8,8 @@
  * Define variables, helper mixins and animations
  * local to this component
  */
-    // @sample-var: foo;
-    // .sample-mixin(@args:default){}
+    // $sample-var: foo;
+    // @mixin sample-mixin($args:default){}
     // @keyframes sample{}
 
 /**
