@@ -30,11 +30,11 @@
     /**
      * Fallback settings
      */
-        // @eggbox-size:~"16x16";
-        // @eggbox-imagepath:~"static/images/eggbox";
-        // //Colours
-        // @eggbox-col--default:"000000";
-        // @eggbox-col--white:"ffffff";
+        $eggbox-size:"16x16";
+        $eggbox-imagepath:"static/images/eggbox";
+        //Colours
+        $eggbox-col--default:"000000";
+        $eggbox-col--white:"ffffff";
 
 /**
  * Typography
