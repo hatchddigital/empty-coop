@@ -5,20 +5,17 @@
 /**
  * Link styles
  */
-	a,
-	a:link,
-	a:visited{
-		color:$link;
-		text-decoration:underline;
-	}
-	a:hover,
-    a:active{
-	    color:$link-active;
-        text-decoration:none;
-	}
+    a{
+        color:$link;
+        text-decoration:underline;
+        &:hover{
+            color:$link-active;
+            text-decoration:none;
+        }
+        &[href^="tel"]{
+            color:inherit;
+        }
+    }
     :focus{
         outline:none;
-    }
-    a[href^="tel"]{
-        color:inherit;
     }
