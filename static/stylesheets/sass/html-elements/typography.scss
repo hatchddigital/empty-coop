@@ -9,7 +9,7 @@
         color:$default;
         font-size:(100/16)*$fontsize#{'%'};
         line-height:1.5em;
-        font-family:$ff-default;
+        @include font(default);
 	}
     p,li,dt,dd,input,textarea,button{
         line-height:1.5em;
