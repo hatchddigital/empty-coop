@@ -4,7 +4,7 @@ Created and maintained by the team at Hatchd Digital, Perth
 (see static/humans.txt). We use:
 
 - [Grunt](http://gruntjs.com/)
-- [LESS](http://lesscss.org/)
+- [SASS](http://sass-lang.com/)
 - [jQuery](http://jquery.com/)
 - [RequireJS](http://requirejs.org/)
 
