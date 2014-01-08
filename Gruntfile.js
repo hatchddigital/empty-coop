@@ -30,7 +30,7 @@ module.exports = function (grunt) {
             iconSize: '16x16',
             iconColor: '000000'
         },
-        regarde: {
+        watch: {
             js: {
                 files: [
                     '<%= dirs.scripts %>/**/*.js',
@@ -39,14 +39,14 @@ module.exports = function (grunt) {
                 tasks: ['jshint', 'requirejs'],
                 spawn: true
             },
-            css: {
-                files: '<%= dirs.stylesheets %>/**/*.scss',
-                tasks: ['sass:development', 'autoprefixer:development'],
-                spawn: true
-            },
             eggbox: {
                 files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
-                tasks: ['webfont', 'shell'],
+                tasks: ['webfont'],
+                spawn: true
+            },
+            css: {
+                files: '<%= dirs.stylesheets %>/**/*.scss',
+                tasks: ['compass:development'],
                 spawn: true
             }
         },
@@ -89,14 +89,15 @@ module.exports = function (grunt) {
             }
         },
         // Stylesheets
-        sass: {
+        compass: {
             development: {
                 options: {
-                    style: 'expanded',
-                    sourcemap: true,
-                    debugInfo: true,
-                    lineNumbers: true,
-                    noCache: true
+                    sassDir: '<%= dirs.stylesheets %>/sass',
+                    cssDir: '<%= dirs.stylesheets %>',
+                    specify: '<%= dirs.stylesheets %>/sass/styles.scss',
+                    assetCacheBuster: true,
+                    outputStyle: 'expanded',
+                    debugInfo: true
                 },
                 files: {
                     '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/sass/styles.scss'
@@ -104,8 +105,12 @@ module.exports = function (grunt) {
             },
             production: {
                 options: {
-                    style: 'compressed',
-                    noCache: true
+                    sassDir: '<%= dirs.stylesheets %>/sass',
+                    cssDir: '<%= dirs.stylesheets %>',
+                    specify: '<%= dirs.stylesheets %>/sass/styles.scss',
+                    assetCacheBuster: true,
+                    outputStyle: 'compressed',
+                    debugInfo: false
                 },
                 files: {
                     '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.scss'
@@ -175,7 +180,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-regarde');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-webfont');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -184,9 +190,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Simply watch script which does a build on entry
-    grunt.registerTask('watch', [
+    grunt.registerTask('monitor', [
         'default',
-        'regarde'
+        'watch'
     ]);
 
     // Build for development purposes with linting
@@ -194,7 +200,7 @@ module.exports = function (grunt) {
         'clean',
         'shell',
         'webfont',
-        'sass:development',
+        'compass:development',
         'autoprefixer:development',
         'jshint',
         'requirejs',
@@ -206,7 +212,7 @@ module.exports = function (grunt) {
         'clean',
         'shell',
         'webfont',
-        'sass:production',
+        'compass:production',
         'autoprefixer:production',
         'cssmin',
         'requirejs'
