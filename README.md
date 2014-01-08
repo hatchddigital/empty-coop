@@ -8,8 +8,11 @@ Created and maintained by the team at Hatchd Digital, Perth
 - [jQuery](http://jquery.com/)
 - [RequireJS](http://requirejs.org/)
 
-*As of `#0.1.2` the coop comes bundled with the
-[eggbox](https://github.com/hatchddigital/eggbox) icon set!*
+*~~As of `#0.1.2` the coop comes bundled with the
+[eggbox](https://github.com/hatchddigital/eggbox) icon set!~~*
+
+* We're working on updating eggbox for the SASS version of empty-coop.
+Should be up soon! *
 
 ## Purpose
 
