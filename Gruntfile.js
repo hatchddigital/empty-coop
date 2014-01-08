@@ -13,22 +13,25 @@
 module.exports = function (grunt) {
     'use strict';
 
+    // Set root path
+    var root = 'static';
+
     // Task configuration
-    //
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        dirs: {
-            stylesheets: 'static/stylesheets',
-            scripts: 'static/scripts',
-            fonts: 'static/fonts',
-            icons: 'static/images/eggbox',
-            eggbox: 'static/libs/eggbox',
-            eggboxicons: 'static/libs/eggbox/',
-            custom_eggboxicons: 'static/custom-eggbox'
+        assets: {
+            stylesheets: root+'/stylesheets',
+            scripts: root+'/scripts',
+            fonts: root+'/fonts',
+            images: root+'/images'
         },
         eggbox: {
             iconSize: '16x16',
-            iconColor: '000000'
+            iconColor: '000000',
+            fallbacks: root+'/images/eggbox',
+            root: root+'/libs/eggbox',
+            icons: root+'/libs/eggbox/src',
+            customIcons: root+'/custom-eggbox'
         },
         watch: {
             options:{
@@ -41,28 +44,49 @@ module.exports = function (grunt) {
             },
             js: {
                 files: [
-                    '<%= dirs.scripts %>/**/*.js',
-                    '!<%= dirs.scripts %>/**/*min.js'
+                    '<%= assets.scripts %>/**/*.js',
+                    '!<%= assets.scripts %>/**/*min.js'
                 ],
                 tasks: ['jshint', 'requirejs'],
                 spawn: true
             },
             eggbox: {
-                files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
+                files: '<%= eggbox.customIcons %>/**/*.svg',
                 tasks: ['webfont','shell'],
                 spawn: true
             },
             css: {
-                files: '<%= dirs.stylesheets %>/**/*.scss',
+                files: '<%= assets.stylesheets %>/**/*.scss',
                 tasks: ['compass:development', 'autoprefixer:development'],
                 spawn: true
             }
         },
         clean: [
-            '<%= dirs.scripts %>/*.min.js',
-            '<%= dirs.stylesheets %>/*.css'
+            '<%= assets.scripts %>/*.min.js',
+            '<%= assets.stylesheets %>/*.css'
         ],
-        // Icons
+        // Eggbox webfont
+        webfont: {
+            production: {
+                src: [
+                    '<%= eggbox.icons %>/*.svg',
+                    '<%= eggbox.customIcons %>/*.svg'],
+                dest: '<%= assets.fonts %>/eggbox',
+                htmlDemo : true,
+                destCss: '<%= assets.stylesheets %>/sass/reusable-components/',
+                options: {
+                    hashes: false,
+                    font: 'eggbox',
+                    icon: 'eggbox',
+                    relativeFontPath: '../fonts/eggbox',
+                    template: '<%= eggbox.root %>/templates/eggbox.css',
+                    htmlDemoTemplate: '<%= eggbox.root %>/templates/your-eggbox.html',
+                    destHtml: '<%= assets.fonts %>/eggbox',
+                    stylesheet: 'scss'
+                }
+            }
+        },
+        // Eggbox image fallbacks
         shell: {
             build_icons: {
                 options: {
@@ -70,58 +94,37 @@ module.exports = function (grunt) {
                     stderr: true
                 },
                 command: [
-                  'mkdir -p <%= dirs.icons %>',
-                  'python <%= dirs.eggbox %>/svg2png.py -c <%= eggbox.iconColor %> -o <%= dirs.icons %> -s <%= eggbox.iconSize %> <%= dirs.eggbox %>/src'
+                  'mkdir -p <%= eggbox.fallbacks %>',
+                  'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.iconColor %> -o <%= eggbox.fallbacks %> -s <%= eggbox.iconSize %> <%= eggbox.icons %>'
                 ].join(' && ')
-            }
-        },
-        // Webfonts
-        webfont: {
-            production: {
-                src: [
-                    '<%= dirs.eggboxicons %>/src/*.svg',
-                    '<%= dirs.custom_eggboxicons %>/*.svg'],
-                dest: '<%= dirs.fonts %>/eggbox',
-                htmlDemo : true,
-                destCss: '<%= dirs.stylesheets %>/sass/reusable-components/',
-                options: {
-                    hashes: false,
-                    font: 'eggbox',
-                    icon: 'eggbox',
-                    relativeFontPath: '../fonts/eggbox',
-                    template: '<%= dirs.eggboxicons %>/templates/eggbox.css',
-                    htmlDemoTemplate: '<%= dirs.eggboxicons %>/templates/your-eggbox.html',
-                    destHtml: '<%= dirs.fonts %>/eggbox',
-                    stylesheet: 'scss'
-                }
             }
         },
         // Stylesheets
         compass: {
             development: {
                 options: {
-                    sassDir: '<%= dirs.stylesheets %>/sass',
-                    cssDir: '<%= dirs.stylesheets %>',
-                    specify: '<%= dirs.stylesheets %>/sass/styles.scss',
+                    sassDir: '<%= assets.stylesheets %>/sass',
+                    cssDir: '<%= assets.stylesheets %>',
+                    specify: '<%= assets.stylesheets %>/sass/styles.scss',
                     assetCacheBuster: true,
                     outputStyle: 'expanded',
                     debugInfo: true
                 },
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/sass/styles.scss'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
                 }
             },
             production: {
                 options: {
-                    sassDir: '<%= dirs.stylesheets %>/sass',
-                    cssDir: '<%= dirs.stylesheets %>',
-                    specify: '<%= dirs.stylesheets %>/sass/styles.scss',
+                    sassDir: '<%= assets.stylesheets %>/sass',
+                    cssDir: '<%= assets.stylesheets %>',
+                    specify: '<%= assets.stylesheets %>/sass/styles.scss',
                     assetCacheBuster: true,
                     outputStyle: 'compressed',
                     debugInfo: false
                 },
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/less/styles.scss'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/less/styles.scss'
                 }
             }
         },
@@ -131,19 +134,19 @@ module.exports = function (grunt) {
             },
             development: {
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
                 }
             },
             production: {
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
                 }
             }
         },
         cssmin: {
             combine: {
                 files: {
-                    '<%= dirs.stylesheets %>/styles.css': '<%= dirs.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
                 }
             }
         },
@@ -151,23 +154,23 @@ module.exports = function (grunt) {
         jshint: {
             all: [
                 'Gruntfile.js',
-                '<%= dirs.scripts %>/{,*/}*.js',
-                '!<%= dirs.scripts %>/{,*/}*.min.js'
+                '<%= assets.scripts %>/{,*/}*.js',
+                '!<%= assets.scripts %>/{,*/}*.min.js'
             ]
         },
         requirejs: {
             compile: {
                 options: {
                     name: 'app',
-                    baseUrl: '<%= dirs.scripts %>',
-                    mainConfigFile: '<%= dirs.scripts %>/app.js',
-                    out: '<%= dirs.scripts %>/app.min.js'
+                    baseUrl: '<%= assets.scripts %>',
+                    mainConfigFile: '<%= assets.scripts %>/app.js',
+                    out: '<%= assets.scripts %>/app.min.js'
                 }
             }
         },
         modernizr: {
             devFile: 'remote',
-            outputFile: '<%= dirs.scripts %>/../libs/modernizr/modernizr.min.js',
+            outputFile: '<%= assets.scripts %>/../libs/modernizr/modernizr.min.js',
             extra: {
                 'shiv': true,
                 'load': false,
@@ -176,8 +179,8 @@ module.exports = function (grunt) {
             uglify: true,
             parseFiles: true,
             files: [
-                '<%= dirs.stylesheets %>/styles.css',
-                '<%= dirs.scripts %>/app.min.js'
+                '<%= assets.stylesheets %>/styles.css',
+                '<%= assets.scripts %>/app.min.js'
             ]
         }
     });
