@@ -2,8 +2,8 @@
   "name": "empty-coop",
   "dependencies": {
     "jquery": "1.x.x",
-    "requirejs": "~2.1.x",
-    "eggbox": "git://github.com/hatchddigital/eggbox.git#sass"
+    "requirejs": "~2.1.x"
+    //"eggbox": "git://github.com/hatchddigital/eggbox.git#sass"
   },
   "private": true
 }
