@@ -1,0 +1,58 @@
+/**
+ * Grid
+ * A simple and flexible grid mixin
+*/
+
+/**
+ * Calculated widths
+ *
+ * @rounded-width: @raw-width
+ * @gutter: @raw-gutter converted to a percentage value;
+ */
+    $rounded-width:$raw-width;
+    $gutter:($raw-gutter/$raw-width * 100);
+
+/**
+ * Mixin
+ */
+
+    /**
+     * Regular grid unit, floated with/without gutters
+     */
+        @mixin grid(
+            $desired-columns,
+            $container-columns:$total-columns,
+            $addgutters:rightgutter){
+
+            $calculated-gutter-number:($gutter * ($container-columns - 1));
+            $calculated-width:(100 - $calculated-gutter-number);
+
+            @if $addgutters == bothgutter{
+                width:(
+                   (100/$container-columns * $desired-columns) - $gutter
+                )#{'%'};
+                margin-right:($gutter/2)#{'%'};
+                margin-left:($gutter/2)#{'%'};
+            }
+            @else if $addgutters == rightgutter{
+                width:(
+                   ($calculated-width / $container-columns) * $desired-columns +
+                   ($gutter * $desired-columns - $gutter)
+                )#{'%'};
+                margin-right:$gutter#{'%'};
+            }
+            @else if $addgutters == nogutter{
+                width:(
+                   ($calculated-width / $container-columns) * $desired-columns +
+                   ($gutter * $desired-columns - $gutter)
+                )#{'%'};
+            }
+            float:left;
+        }
+    /**
+     * Nude grid unit, width only
+     * @type {[type]}
+     */
+        @mixin nudegrid($desired-columns, $container-columns:$total-columns){
+            width:(100/$container-columns * $desired-columns)#{'%'};
+        }
