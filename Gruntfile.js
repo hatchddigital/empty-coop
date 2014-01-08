@@ -8,13 +8,14 @@
  *
  * @author jimmyhillis <jimmy@hatchd.com.au>
  * @author neilf <neil@hatchd.com.au>
+ * @author janeyee <jane@hatchd.com.au>
+ * @author jackarmley <jack@hatchd.com.au>
  */
 
 module.exports = function (grunt) {
     'use strict';
 
     // Task configuration
-    //
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
