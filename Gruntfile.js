@@ -31,6 +31,14 @@ module.exports = function (grunt) {
             iconColor: '000000'
         },
         watch: {
+            options:{
+                atBegin:true
+            },
+            startup: {
+                files: [],
+                tasks: ['default'],
+                spawn: true
+            },
             js: {
                 files: [
                     '<%= dirs.scripts %>/**/*.js',
@@ -41,12 +49,12 @@ module.exports = function (grunt) {
             },
             eggbox: {
                 files: '<%= dirs.custom_eggboxicons %>/**/*.svg',
-                tasks: ['webfont'],
+                tasks: ['webfont','shell'],
                 spawn: true
             },
             css: {
                 files: '<%= dirs.stylesheets %>/**/*.scss',
-                tasks: ['compass:development'],
+                tasks: ['compass:development', 'autoprefixer:development'],
                 spawn: true
             }
         },
@@ -188,12 +196,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-modernizr');
     grunt.loadNpmTasks('grunt-shell');
-
-    // Simply watch script which does a build on entry
-    grunt.registerTask('monitor', [
-        'default',
-        'watch'
-    ]);
 
     // Build for development purposes with linting
     grunt.registerTask('default', [
