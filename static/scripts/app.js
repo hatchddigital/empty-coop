@@ -12,8 +12,8 @@
  * FOR DEVELOPERS:
  *
  * ALL external libraries and should be imported here, using a build
- * script like Grunt. This vesion of the file should be pretty, well
- * formatted, and only contain code that is unique to your own  app code.
+ * script like Grunt. This version of the file should be pretty, well
+ * formatted, and only contain code that is unique to your own app.
  * Your site should always use /app-min.js when loading, which contains a
  * minified version of this script prepended with all.
  *
