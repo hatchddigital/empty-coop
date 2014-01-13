@@ -15,7 +15,8 @@
 module.exports = function (grunt) {
     'use strict';
 
-    // Set root path
+    // Set root path (if you change this line you must also change the
+    // project template to match).
     var root = 'static';
 
     // Task configuration
