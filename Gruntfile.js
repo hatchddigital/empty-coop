@@ -10,6 +10,7 @@
  * @author neilf <neil@hatchd.com.au>
  * @author janeyee <jane@hatchd.com.au>
  * @author jackarmley <jack@hatchd.com.au>
+ * @author  douglinder <doug@hatchd.com.au>
  */
 
 module.exports = function (grunt) {
@@ -59,7 +60,7 @@ module.exports = function (grunt) {
             },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
-                tasks: ['compass:development', 'autoprefixer:development'],
+                tasks: ['compass:development', 'modernizr', 'autoprefixer:development'],
                 spawn: true
             }
         },
