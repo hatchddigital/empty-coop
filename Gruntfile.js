@@ -61,7 +61,7 @@ module.exports = function (grunt) {
             },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
-                tasks: ['compass:development', 'modernizr', 'autoprefixer:development'],
+                tasks: ['compass:development', 'modernizr', 'autoprefixer:development', 'cmq'],
                 spawn: true
             }
         },
@@ -128,7 +128,7 @@ module.exports = function (grunt) {
                     debugInfo: false
                 },
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/less/styles.scss'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
                 }
             }
         },
@@ -142,6 +142,16 @@ module.exports = function (grunt) {
                 }
             },
             production: {
+                files: {
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
+                }
+            }
+        },
+        cmq: {
+            combine: {
+                options: {
+                    log: false
+                },
                 files: {
                     '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
                 }
@@ -202,6 +212,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-modernizr');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-combine-media-queries');
 
     // Build for development purposes with linting
     grunt.registerTask('default', [
@@ -210,6 +221,7 @@ module.exports = function (grunt) {
         'webfont',
         'compass:development',
         'autoprefixer:development',
+        'cmq:combine',
         'jshint',
         'requirejs',
         'modernizr'
@@ -222,6 +234,7 @@ module.exports = function (grunt) {
         'webfont',
         'compass:production',
         'autoprefixer:production',
+        'cmq:combine',
         'cssmin',
         'requirejs'
     ]);
