@@ -43,7 +43,8 @@
     "autoprefixer": "~0.8.2",
     "grunt-autoprefixer": "~0.3.0",
     "grunt-webfont": "~0.1.11",
-    "grunt-modernizr": "0.4.x"
+    "grunt-modernizr": "0.4.x",
+    "grunt-combine-media-queries": "1.0.9"
   },
   "devDependencies": {
     "connect": "~2.9.0"

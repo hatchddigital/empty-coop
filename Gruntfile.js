@@ -61,7 +61,7 @@ module.exports = function (grunt) {
             },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
-                tasks: ['compass:development', 'modernizr', 'autoprefixer:development'],
+                tasks: ['compass:development', 'modernizr', 'autoprefixer:development', 'cmq'],
                 spawn: true
             }
         },
@@ -147,6 +147,16 @@ module.exports = function (grunt) {
                 }
             }
         },
+        cmq: {
+            combine: {
+                options: {
+                    log: false
+                },
+                files: {
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
+                }
+            }
+        },
         cssmin: {
             combine: {
                 files: {
@@ -202,6 +212,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-modernizr');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-combine-media-queries');
 
     // Build for development purposes with linting
     grunt.registerTask('default', [
@@ -210,6 +221,7 @@ module.exports = function (grunt) {
         'webfont',
         'compass:development',
         'autoprefixer:development',
+        'cmq:combine',
         'jshint',
         'requirejs',
         'modernizr'
@@ -222,6 +234,7 @@ module.exports = function (grunt) {
         'webfont',
         'compass:production',
         'autoprefixer:production',
+        'cmq:combine',
         'cssmin',
         'requirejs'
     ]);
