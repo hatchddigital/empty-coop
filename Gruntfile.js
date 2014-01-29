@@ -128,7 +128,7 @@ module.exports = function (grunt) {
                     debugInfo: false
                 },
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/less/styles.scss'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
                 }
             }
         },
