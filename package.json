@@ -1,6 +1,6 @@
 {
   "name": "empty-coop",
-  "version": "0.1.3",
+  "version": "0.2.2",
   "author": "Hatchd Digital <hello@hatchd.com.au>",
   "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, requireJS and Grunt.",
   "contributors": [
@@ -17,8 +17,12 @@
       "email": "niaal@hatchd.com.au"
     },
     {
-      "name": "Jane Yee",
+      "name": "Jane Yeap",
       "email": "jane@hatchd.com.au"
+    },
+    {
+      "name": "Neil Ferreira",
+      "email": "neil@hatchd.com.au"
     }
   ],
   "homepage": "http://hatchd.com.au/",

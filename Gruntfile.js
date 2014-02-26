@@ -241,7 +241,8 @@ module.exports = function (grunt) {
         'autoprefixer:production',
         'cmq:combine',
         'cssmin',
-        'requirejs'
+        'requirejs',
+        'modernizr'
     ]);
 
 };
