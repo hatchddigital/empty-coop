@@ -30,8 +30,13 @@ module.exports = function (grunt) {
             images: root+'/images'
         },
         eggbox: {
-            iconSize: '16x16',
-            iconColor: '000000',
+            colors: {
+                black: '000000',
+                white: 'ffffff'
+            },
+            sizes: {
+                default: '16x16'
+            },
             fallbacks: root+'/images/eggbox',
             root: root+'/libs/eggbox',
             icons: root+'/libs/eggbox/src',
@@ -99,7 +104,7 @@ module.exports = function (grunt) {
                 },
                 command: [
                   'mkdir -p <%= eggbox.fallbacks %>',
-                  'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.iconColor %> -o <%= eggbox.fallbacks %> -s <%= eggbox.iconSize %> <%= eggbox.icons %>'
+                  'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.colors.white %> -o <%= eggbox.fallbacks %> -s <%= eggbox.sizes.default %> <%= eggbox.icons %>'
                 ].join(' && ')
             }
         },
