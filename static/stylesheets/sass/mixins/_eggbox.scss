@@ -140,7 +140,10 @@
         @return false;
     }
 
-    @mixin eggbox($position: before, $icon: false, $styles: styles ) {
+    /**
+    * Mixin
+    */
+    @mixin eggbox($icon: false, $position: before, $styles: styles ) {
         &:#{$position} {
             @if $icon {
                 content: match($eggboxicons, $icon);
@@ -159,6 +162,23 @@
             }
         }
     }
+
+    /**
+     * Fallbacks for browsers that don't support
+     * @font-face and generated content
+     *
+     * Set fallback variables in settings.less
+     */
+        @mixin eggbox-fallback($icon: false, $styles: styles){
+            $colour:$eggbox-col--default;
+            $size:$eggbox-size;
+            background-image:url("#{$eggbox-imagepath}/#{nth($icon,2)}-#{$size}-#{$colour}.png");
+            @if $styles != nostyles{
+                background-position:center left;
+                background-repeat:no-repeat;
+            }
+        }
+
 
 
 
