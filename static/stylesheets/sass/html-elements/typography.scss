@@ -134,14 +134,16 @@
      */
         dl{
             margin-left:0;
+            @at-root{
+                dt{
+                    font-weight:bold;
+                    margin:0 0 0.5em 0;
+                }
+                dd{
+                    margin:0 0 0.5em 0;
+                }
+            }
         }
-            dt{
-                font-weight:bold;
-                margin:0 0 0.5em 0;
-            }
-            dd{
-                margin:0 0 0.5em 0;
-            }
 
 
 /**

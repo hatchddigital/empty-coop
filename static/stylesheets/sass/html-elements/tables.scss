@@ -6,25 +6,27 @@ table{
 	width:100%;
 	margin:0 0 1em 0;
 	border:1px solid map-get($colors,default);
+    @at-root{
+    	table,
+    	th,
+    	td{
+    		border-collapse:collapse;
+    	}
+    	th,
+    	td{
+    		padding:0.5em;
+    		border:1px dotted map-get($colors,default);
+    		border-top:none;
+    		border-right:none;
+    		text-align:left;
+    	}
+    	thead th{
+    		border-bottom:2px solid map-get($colors,default);
+    	}
+    	tfoot td{
+    		border-bottom:none;
+    		font-size:0.85em;
+    		font-style:italic;
+    	}
+    }
 }
-	table,
-	th,
-	td{
-		border-collapse:collapse;
-	}
-	th,
-	td{
-		padding:0.5em;
-		border:1px dotted map-get($colors,default);
-		border-top:none;
-		border-right:none;
-		text-align:left;
-	}
-	thead th{
-		border-bottom:2px solid map-get($colors,default);
-	}
-	tfoot td{
-		border-bottom:none;
-		font-size:0.85em;
-		font-style:italic;
-	}
