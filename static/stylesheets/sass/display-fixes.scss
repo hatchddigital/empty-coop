@@ -6,7 +6,7 @@
  * Clearfix
  * @src http://css-tricks.com/snippets/css/clear-fix
  */
-    .clearfix{
+    %clearfix{
         &:after{
             display:block;
             visibility:hidden;
@@ -26,37 +26,25 @@
 /**
  * Hide a text element but ensure it is still readable via assistive technology
  */
-    .visual-hide{
+    %visual-hide{
         position:absolute;
-        text-indent:-90000px;
-        text-align:left !important;
+        text-indent:100%;
+        text-align:left;
         white-space:nowrap;
         overflow:hidden;
     }
 /**
  * Completely hide an element
  */
-    .hide,
-    .state-hide{
+    %hide,
+    %state-hide{
         display:none;
     }
 
 /**
  * Set an element to clear the element above it
  */
-    .clear{
+    %clear{
         clear:both;
         display:block;
-    }
-
-/**
- * Set text to be replaced by an image
- */
-    .replaced{
-        display:block;
-        text-indent:-900000px;
-        overflow:hidden;
-        background-color:transparent;
-        background-repeat:no-repeat;
-        background-position:top left;
     }

@@ -5,7 +5,7 @@
 table{
 	width:100%;
 	margin:0 0 1em 0;
-	border:1px solid $default;
+	border:1px solid $color-default;
 }
 	table,
 	th,
@@ -15,13 +15,13 @@ table{
 	th,
 	td{
 		padding:0.5em;
-		border:1px dotted $default;
+		border:1px dotted $color-default;
 		border-top:none;
 		border-right:none;
 		text-align:left;
 	}
 	thead th{
-		border-bottom:2px solid $default;
+		border-bottom:2px solid $color-default;
 	}
 	tfoot td{
 		border-bottom:none;
