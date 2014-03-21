@@ -96,12 +96,16 @@
         $black:#000;
         $yellow:#FFFB88;
         $red:#aa3025;
+
     /**
      * Usage
      */
-    	$color-default:$black;
-    	$color-muted:lighten($black,50%);
-    	$color-highlight:$yellow;
-    	$color-link:$red;
-    	$color-linkactive:lighten($color-link,10%);
-
+        $colors: (
+            default: $black,
+            black: $black,
+            white: $white,
+            muted: lighten($black,50%),
+            highlight:$yellow,
+            link:$red,
+            linkactive:lighten($red,10%)
+        );

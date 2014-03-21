@@ -6,7 +6,7 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-        color:$color-default;
+        color:map-get($colors,default);
         font-size:(100/16)*$fontsize#{'%'};
         line-height:1.5em;
         @include font(default);
@@ -49,7 +49,7 @@
 		margin:0 0 1em 0;
 		padding:0;
 		border:none;
-		border-top:1px solid $color-muted;
+		border-top:1px solid map-get($colors,muted);
 	}
 
 /**
@@ -169,17 +169,17 @@
      * For marking up content relevency/edits and highlighting content
      */
     	ins{
-    		background-color:$color-highlight;
+    		background-color:map-get($colors,highlight);
     	}
     	del{
     		text-decoration:line-through;
     	}
     	s{
-    		color:$color-muted;
+    		color:map-get($colors,muted);
     		text-decoration:line-through;
     	}
     	mark{
-    		background-color:$color-highlight;
+    		background-color:map-get($colors,highlight);
     		color:inherit;
     		font-weight:normal;
     	}

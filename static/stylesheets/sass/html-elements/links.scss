@@ -6,10 +6,10 @@
  * Link styles
  */
     a{
-        color:$color-link;
+        color:map-get($colors,link);
         text-decoration:underline;
         &:hover{
-            color:$color-linkactive;
+            color:map-get($colors,linkactive);
             text-decoration:none;
         }
         &[href^="tel"]{
