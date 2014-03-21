@@ -24,13 +24,6 @@ guidelines on using Empty-coop.
 
 ## Requirements
 
-Uses Sass 3.3, and Compass. Currently, only Compass Alpha supports SASS 3.3, so the following ruby gems need to be installed:
-
-```
-gem install sass
-gem install compass -v 1.0.0.alpha.16 --pre
-```
-
 For development and to get the most out of this boilerplate we recommend
 you install Node & npm, Grunt and Bower. This allows you to manage and
 build your code with simple command-line commands. This removes usage of

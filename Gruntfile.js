@@ -66,7 +66,7 @@ module.exports = function (grunt) {
             },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
-                tasks: ['compass:development', 'modernizr', 'autoprefixer:development', 'cmq'],
+                tasks: ['sass:development', 'modernizr', 'autoprefixer:development', 'cmq'],
                 spawn: true
             }
         },
@@ -109,15 +109,13 @@ module.exports = function (grunt) {
             }
         },
         // Stylesheets
-        compass: {
+        sass: {
             development: {
                 options: {
-                    sassDir: '<%= assets.stylesheets %>/sass',
-                    cssDir: '<%= assets.stylesheets %>',
-                    specify: '<%= assets.stylesheets %>/sass/styles.scss',
-                    assetCacheBuster: true,
-                    outputStyle: 'expanded',
-                    debugInfo: true
+                    style: 'expanded',
+                    debugInfo: true,
+                    sourcemap: true,
+                    noCache: true
                 },
                 files: {
                     '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
@@ -125,12 +123,10 @@ module.exports = function (grunt) {
             },
             production: {
                 options: {
-                    sassDir: '<%= assets.stylesheets %>/sass',
-                    cssDir: '<%= assets.stylesheets %>',
-                    specify: '<%= assets.stylesheets %>/sass/styles.scss',
-                    assetCacheBuster: true,
-                    outputStyle: 'compressed',
-                    debugInfo: false
+                    style: 'compressed',
+                    debugInfo: false,
+                    sourcemap: false,
+                    noCache: true
                 },
                 files: {
                     '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
@@ -210,7 +206,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -224,7 +220,7 @@ module.exports = function (grunt) {
         'clean',
         'shell',
         'webfont',
-        'compass:development',
+        'sass:development',
         'autoprefixer:development',
         'cmq:combine',
         'jshint',
@@ -237,7 +233,7 @@ module.exports = function (grunt) {
         'clean',
         'shell',
         'webfont',
-        'compass:production',
+        'sass:production',
         'autoprefixer:production',
         'cmq:combine',
         'cssmin',
