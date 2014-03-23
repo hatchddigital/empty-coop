@@ -27,12 +27,12 @@ form{
 		box-sizing:border-box;
 		width:100%;
 		margin:0;
-		color:map-get($colors,default);
+		color:color(default);
 	}
     input,
     textarea{
         padding:10px 15px;
-        border:1px solid map-get($colors,muted);
+        border:1px solid color(muted);
         border-radius:0;
     }
     input:not([type="radio"]):not([type="checkbox"]),

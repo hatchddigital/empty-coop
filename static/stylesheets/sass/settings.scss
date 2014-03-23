@@ -22,17 +22,20 @@
  */
     @mixin breakpoint($point){
         @if $point == standard{
-            @media (max-width:2000px){ @content; }
+            @media ( max-width:calcbreakpoint(2000) ){ @content; }
         }
         @else if $point == tablet{
-            @media (max-width:1024px){ @content; }
+            @media ( max-width:calcbreakpoint(1024) ){ @content; }
         }
         @else if $point == mobile{
-            @media (max-width:600px){ @content; }
+            @media ( max-width:calcbreakpoint(600) ){ @content; }
         }
         @else if $point == retina{
             @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi){ @content; }
         }
+    }
+    @function calcbreakpoint($target){
+        @return ($target / 16)#{'em'};
     }
 
 /**
@@ -47,46 +50,59 @@
         $eggbox-col--default:"000000";
         $eggbox-col--white:"ffffff";
 
+
 /**
- * Typography
+ * Font sizes
  */
 
     /**
-     * Define the size of an em (base font size)
+     * Project font sizes
      */
-        $fontsize:16;
+        $fontsize-base:16;
+        $font-sizes: (
+            jumbo: calcfontsize(60),
+            large: calcfontsize(30),
+            emphasized: calcfontsize(20),
+            default: 1em,
+            small: calcfontsize(14)
+        );
+        @function calcfontsize($target){
+            @return ($target / $fontsize-base)#{'em'};
+        }
 
     /**
-     * Set Text sizes
+     * Usage
      */
-        $small:0.75em;
-        $large:2em;
+        @function fontsize($size){
+            @return map-get($font-sizes,$size);
+        }
+
+/**
+ *  Font famillies
+ */
 
     /**
      * Project font famillies
      */
+        $sans:sans-serif;
+        $serif:serif;
+        $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+        "Lucida Typewriter", monospace;
 
-        /**
-         * Base
-         */
-            $sans:sans-serif;
-            $serif:serif;
-            $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
-            "Lucida Typewriter", monospace;
-
-        /**
-         * Brand
-         */
-            @mixin font($face:default){
-                @if $face == default{
-                    font:{
-                        family:$sans;
-                    }
-                }
-            }
+    /**
+     * Usage
+     */
+        $font-famillies: (
+            default: $sans,
+            pageheading: $sans,
+            smallprint: $sans
+        );
+        @function fontfamily($family){
+            @return map-get($font-famillies,$family);
+        }
 
 /**
- * Colour swatches
+ * Colours
  */
 
     /**
@@ -98,7 +114,7 @@
         $red:#aa3025;
 
     /**
-     * Usage
+     * Color Usage
      */
         $colors: (
             default: $black,
@@ -109,3 +125,6 @@
             link:$red,
             linkactive:lighten($red,10%)
         );
+        @function color($color){
+            @return map-get($colors,$color);
+        }

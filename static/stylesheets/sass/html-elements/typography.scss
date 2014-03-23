@@ -6,10 +6,10 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-        color:map-get($colors,default);
-        font-size:(100/16)*$fontsize#{'%'};
+        color:color(default);
+        font-size:(100/16)*$fontsize-base#{'%'};
         line-height:1.5em;
-        @include font(default);
+        font-family:fontfamily(default);
 	}
     p,li,dt,dd,input,textarea,button{
         line-height:1.5em;
@@ -24,18 +24,18 @@
         font-weight:normal;
     }
         h1{
-            font-size:3em;
+            font-size:fontsize(jumbo);
         }
         h2{
-            font-size:2.5em;
+            font-size:fontsize(large);
         }
         h3{
-            font-size:1.5em;
+            font-size:fontsize(emphasized);
         }
         h4,
         h5,
         h6{
-            font-size:1em;
+            font-size:fontsize(default);
         }
 
 /**
@@ -49,7 +49,7 @@
 		margin:0 0 1em 0;
 		padding:0;
 		border:none;
-		border-top:1px solid map-get($colors,muted);
+		border-top:1px solid color(muted);
 	}
 
 /**
@@ -171,17 +171,17 @@
      * For marking up content relevency/edits and highlighting content
      */
     	ins{
-    		background-color:map-get($colors,highlight);
+    		background-color:color(highlight);
     	}
     	del{
     		text-decoration:line-through;
     	}
     	s{
-    		color:map-get($colors,muted);
+    		color:color(muted);
     		text-decoration:line-through;
     	}
     	mark{
-    		background-color:map-get($colors,highlight);
+    		background-color:color(highlight);
     		color:inherit;
     		font-weight:normal;
     	}
