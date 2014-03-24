@@ -92,7 +92,6 @@
             font-style:italic;
         }
 
-
 /**
  * Lists
  */
@@ -103,10 +102,12 @@
         ul,ol,dl{
             margin:0 0 1em 2em;
             padding:0;
-        }
-            li{
-                margin:0 0 0.25em 0;
+            @at-root{
+                li{
+                    margin:0 0 0.25em 0;
+                }
             }
+        }
 
     /**
      * Unordered lists

@@ -63,7 +63,7 @@
             jumbo: calcfontsize(60),
             large: calcfontsize(30),
             emphasized: calcfontsize(20),
-            default: 1em,
+            default: calcfontsize($fontsize-base),
             small: calcfontsize(14)
         );
         @function calcfontsize($target){
