@@ -60,15 +60,12 @@
      */
         $fontsize-base:16;
         $font-sizes: (
-            jumbo: calcfontsize(60),
-            large: calcfontsize(30),
-            emphasized: calcfontsize(20),
-            default: calcfontsize($fontsize-base),
-            small: calcfontsize(14)
+            jumbo: 3em,
+            large: 2em,
+            emphasized: 1.5em,
+            default: 1em,
+            small: 75em
         );
-        @function calcfontsize($target){
-            @return ($target / $fontsize-base)#{'em'};
-        }
 
     /**
      * Usage
