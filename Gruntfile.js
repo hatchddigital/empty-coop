@@ -197,7 +197,20 @@ module.exports = function (grunt) {
                 '<%= assets.stylesheets %>/styles.css',
                 '<%= assets.scripts %>/app.min.js'
             ]
-        }
+        },
+        imagemin: {
+            production: {
+                options: {
+                    optimizationLevel: 7
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= assets.images %>',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: '<%= assets.images %>'
+                }]
+            }
+          }
     });
 
     // Required tasks
@@ -207,6 +220,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-webfont');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -238,7 +252,8 @@ module.exports = function (grunt) {
         'cmq:combine',
         'cssmin',
         'requirejs',
-        'modernizr'
+        'modernizr',
+        'imagemin:production'
     ]);
 
 };
