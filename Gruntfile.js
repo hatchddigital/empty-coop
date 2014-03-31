@@ -27,7 +27,9 @@ module.exports = function (grunt) {
             stylesheets: root+'/stylesheets',
             scripts: root+'/scripts',
             fonts: root+'/fonts',
-            images: root+'/images'
+            images: root+'/images',
+            email_source: root+'/../emails',
+            email_public: root+'/email'
         },
         eggbox: {
             colors: {
@@ -64,6 +66,11 @@ module.exports = function (grunt) {
                 tasks: ['webfont','shell'],
                 spawn: true
             },
+            email: {
+                files: '<%= assets.email_source %>/**/*',
+                tasks: ['shell:build_email'],
+                spawn: true
+            },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
                 tasks: ['sass:development', 'modernizr', 'autoprefixer:development', 'cmq'],
@@ -71,6 +78,7 @@ module.exports = function (grunt) {
             }
         },
         clean: [
+            '<%= assets.email_public %>/*',
             '<%= assets.scripts %>/*.min.js',
             '<%= assets.stylesheets %>/*.css'
         ],
@@ -106,7 +114,19 @@ module.exports = function (grunt) {
                   'mkdir -p <%= eggbox.fallbacks %>',
                   'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.colors.white %> -o <%= eggbox.fallbacks %> -s <%= eggbox.sizes.default %> <%= eggbox.icons %>'
                 ].join(' && ')
-            }
+            },
+            // build_email: {
+            //     options: {
+            //         stdout: true,
+            //         stderr: true
+            //     },
+            //     command: [
+            //         'mkdir -p <%= assets.email_public %>',
+            //         'grunt --gruntfile <%= assets.email_source %>/Gruntfile.js',
+            //         'cp -Rf <%= assets.email_source %>/images/ <%= assets.email_public %>/images/',
+            //         'cp <%= assets.email_source %>/stylesheets/styles.css <%= assets.email_public %>/styles.css'
+            //     ].join(' && ')
+            // }
         },
         // Stylesheets
         sass: {
@@ -210,7 +230,7 @@ module.exports = function (grunt) {
                     dest: '<%= assets.images %>'
                 }]
             }
-          }
+        }
     });
 
     // Required tasks

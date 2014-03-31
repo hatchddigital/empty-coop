@@ -22,111 +22,217 @@
     $eggboxicons: (
     
         'alert-fill' : '\f100',
+    
         'arrow-full-down' : '\f101',
+    
         'arrow-full-left' : '\f102',
+    
         'arrow-full-right' : '\f103',
+    
         'arrow-full-up' : '\f104',
+    
         'arrow-fullinverted-down' : '\f105',
+    
         'arrow-fullinverted-left' : '\f106',
+    
         'arrow-fullinverted-right' : '\f107',
+    
         'arrow-fullinverted-up' : '\f108',
+    
         'arrow-hairline-down' : '\f109',
+    
         'arrow-hairline-left' : '\f10a',
+    
         'arrow-hairline-right' : '\f10b',
+    
         'arrow-hairline-up' : '\f10c',
+    
         'arrow-keyline-down' : '\f10d',
+    
         'arrow-keyline-left' : '\f10e',
+    
         'arrow-keyline-right' : '\f10f',
+    
         'arrow-keyline-up' : '\f110',
+    
         'arrow-outline-down' : '\f111',
+    
         'arrow-outline-left' : '\f112',
+    
         'arrow-outline-right' : '\f113',
+    
         'arrow-outline-up' : '\f114',
+    
         'battery-50' : '\f115',
+    
         'battery-full' : '\f116',
+    
         'battery-low' : '\f117',
+    
         'bell' : '\f118',
+    
         'book-closed' : '\f119',
+    
         'book-open' : '\f11a',
+    
         'bookmark' : '\f11b',
+    
         'calendar' : '\f11c',
+    
         'check' : '\f11d',
+    
         'checkbox-blank' : '\f11e',
+    
         'checkbox-checked' : '\f11f',
+    
         'clock' : '\f120',
+    
         'coffeecup' : '\f121',
+    
         'comment' : '\f122',
+    
         'contract' : '\f123',
+    
         'conversation' : '\f124',
+    
         'cross-large' : '\f125',
+    
         'cross-small' : '\f126',
+    
         'documents' : '\f127',
+    
         'download' : '\f128',
+    
         'edit' : '\f129',
+    
         'email-closed' : '\f12a',
+    
         'email-open' : '\f12b',
+    
         'equaliser-horz' : '\f12c',
+    
         'equaliser-vert' : '\f12d',
+    
         'expand' : '\f12e',
+    
         'facebook-fill' : '\f12f',
+    
         'facebook' : '\f130',
+    
         'favourite' : '\f131',
+    
         'flag' : '\f132',
+    
         'forbidden' : '\f133',
+    
         'foursquare-inverted' : '\f134',
+    
         'foursquare' : '\f135',
+    
         'googleplus' : '\f136',
+    
         'handshake' : '\f137',
+    
         'heart' : '\f138',
+    
         'help-inverse' : '\f139',
+    
         'help' : '\f13a',
+    
         'home' : '\f13b',
+    
         'image' : '\f13c',
+    
         'info-fill' : '\f13d',
+    
         'info' : '\f13e',
+    
         'instagram' : '\f13f',
+    
         'link' : '\f140',
+    
         'linked' : '\f141',
+    
         'linkedin-fill' : '\f142',
+    
         'location-pointer' : '\f143',
+    
         'lock-locked' : '\f144',
+    
         'lock-unlocked' : '\f145',
+    
         'logout-1' : '\f146',
+    
         'logout-2' : '\f147',
+    
         'mapmarker' : '\f148',
+    
         'menutoggle' : '\f149',
+    
         'microphone' : '\f14a',
+    
         'minus' : '\f14b',
+    
         'paperclip' : '\f14c',
+    
         'phone' : '\f14d',
+    
         'plus' : '\f14e',
+    
         'presentation' : '\f14f',
+    
         'print' : '\f150',
+    
         'profile-2' : '\f151',
+    
         'profile' : '\f152',
+    
         'refresh' : '\f153',
+    
         'reply' : '\f154',
+    
         'retweet' : '\f155',
+    
         'rss-fill' : '\f156',
+    
         'rss' : '\f157',
+    
         'sample' : '\f158',
+    
         'search' : '\f159',
+    
         'settings-spanner' : '\f15a',
+    
         'settings' : '\f15b',
+    
         'stopwatch' : '\f15c',
+    
         'sync-1' : '\f15d',
+    
         'sync-2' : '\f15e',
+    
         'tab' : '\f15f',
+    
         'timer' : '\f160',
+    
         'trash' : '\f161',
+    
         'twitter-fill' : '\f162',
+    
         'twitter' : '\f163',
+    
         'upload' : '\f164',
+    
         'vcard' : '\f165',
+    
         'view' : '\f166',
+    
         'youtube' : '\f167',
+    
         'zoom-in' : '\f168',
+    
         'zoom-out' : '\f169',
+    
     );
 
     @function match($haystack, $needle) {
@@ -140,9 +246,6 @@
         @return false;
     }
 
-    /**
-    * Mixin
-    */
     @mixin eggbox($icon: false, $position: before, $styles: styles ) {
         &:#{$position} {
             @if $icon {
@@ -163,22 +266,19 @@
         }
     }
 
-    /**
-     * Fallbacks for browsers that don't support
-     * @font-face and generated content
-     *
-     * Set fallback variables in settings.less
-     */
-        @mixin eggbox-fallback($icon: false, $styles: styles){
-            $colour:$eggbox-col--default;
-            $size:$eggbox-size;
-            background-image:url("#{$eggbox-imagepath}/#{nth($icon,2)}-#{$size}-#{$colour}.png");
-            @if $styles != nostyles{
-                background-position:center left;
-                background-repeat:no-repeat;
-            }
+/**
+ * Fallbacks for browsers that don't support
+ * @font-face and generated content
+ *
+ * Set fallback variables in settings.less
+ */
+    @mixin eggbox-fallback($icon: false, $colour: $black, $size: "16x16", $styles: styles){
+        background-image:url("#{$eggbox-imagepath}/#{nth($icon,1)}-#{$size}-#{$colour}.png");
+        @if $styles != nostyles{
+            background-position:center left;
+            background-repeat:no-repeat;
         }
-
+    }
 
 
 
