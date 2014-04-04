@@ -28,9 +28,11 @@
     	img{
     		margin-bottom:0;
     	}
+        @at-root{
+        	figcaption{
+        		margin-top:0.5em;
+        		font-style:italic;
+        	}
+        }
     }
-    	figcaption{
-    		margin-top:0.5em;
-    		font-style:italic;
-    	}
 

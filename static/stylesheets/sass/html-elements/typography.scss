@@ -22,21 +22,23 @@
         margin:1em 0 .5em;
         line-height:1.5em;
         font-weight:normal;
+        @at-root{
+            h1{
+                font-size:fontsize(jumbo);
+            }
+            h2{
+                font-size:fontsize(large);
+            }
+            h3{
+                font-size:fontsize(emphasized);
+            }
+            h4,
+            h5,
+            h6{
+                font-size:fontsize(default);
+            }
+        }
     }
-        h1{
-            font-size:fontsize(jumbo);
-        }
-        h2{
-            font-size:fontsize(large);
-        }
-        h3{
-            font-size:fontsize(emphasized);
-        }
-        h4,
-        h5,
-        h6{
-            font-size:fontsize(default);
-        }
 
 /**
  * Block elements
@@ -160,13 +162,15 @@
     	    line-height: 0;
     	    position: relative;
     	    vertical-align: baseline;
-    	}
-    	sup {
-    	    top: -0.5em;
-    	}
-    	sub {
-    	    bottom: -0.25em;
-    	}
+            @at-root{
+            	sup{
+            	   top: -0.5em;
+            	}
+            	sub{
+            	   bottom: -0.25em;
+            	}
+            }
+        }
 
     /**
      * For marking up content relevency/edits and highlighting content
