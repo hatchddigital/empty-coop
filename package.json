@@ -42,7 +42,7 @@
     "grunt-notify": "0.3.0",
     "grunt-shell": "0.7.0",
     "grunt-autoprefixer": "0.7.3",
-    "grunt-webfont": "0.1.11",
+    "grunt-webfont": "0.3.4",
     "grunt-modernizr": "0.5.2",
     "grunt-combine-media-queries": "1.0.15",
     "grunt-premailer": "0.2.7",

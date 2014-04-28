@@ -112,7 +112,12 @@ module.exports = function (grunt) {
                     template: '<%= eggbox.root %>/templates/eggbox.css',
                     htmlDemoTemplate: '<%= eggbox.root %>/templates/your-eggbox.html',
                     destHtml: '<%= assets.fonts %>/eggbox',
-                    stylesheet: 'scss'
+                    stylesheet: 'scss',
+                    templateOptions: {
+                        baseClass: 'eggbox',
+                        classPrefix: 'eggbox-',
+                        mixinPrefix: 'eggbox-'
+                    }
                 }
             }
         },
