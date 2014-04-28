@@ -58,22 +58,35 @@ module.exports = function (grunt) {
                     '<%= assets.scripts %>/**/*.js',
                     '!<%= assets.scripts %>/**/*min.js'
                 ],
-                tasks: ['jshint', 'requirejs'],
+                tasks: [
+                    'jshint',
+                    'requirejs'
+                ],
                 spawn: true
             },
             eggbox: {
                 files: '<%= eggbox.customIcons %>/**/*.svg',
-                tasks: ['webfont','shell'],
+                tasks: [
+                    'webfont',
+                    'shell'
+                ],
                 spawn: true
             },
             email: {
                 files: '<%= assets.email_source %>/**/*',
-                tasks: ['shell:build_email'],
+                tasks: [
+                    'shell:build_email'
+                ],
                 spawn: true
             },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
-                tasks: ['sass:development', 'modernizr', 'autoprefixer:development', 'cmq'],
+                tasks: [
+                    'sass:development',
+                    'modernizr:dist',
+                    'autoprefixer:development',
+                    'cmq'
+                ],
                 spawn: true
             }
         },
@@ -204,19 +217,23 @@ module.exports = function (grunt) {
             }
         },
         modernizr: {
-            devFile: 'remote',
-            outputFile: '<%= assets.scripts %>/../libs/modernizr/modernizr.min.js',
-            extra: {
-                'shiv': true,
-                'load': false,
-                'cssclasses': true
-            },
-            uglify: true,
-            parseFiles: true,
-            files: [
-                '<%= assets.stylesheets %>/styles.css',
-                '<%= assets.scripts %>/app.min.js'
-            ]
+            dist: {
+                devFile: 'remote',
+                outputFile: '<%= assets.scripts %>/../libs/modernizr/modernizr.min.js',
+                extra: {
+                    'shiv': true,
+                    'load': false,
+                    'cssclasses': true
+                },
+                uglify: true,
+                parseFiles: true,
+                files: {
+                    src: [
+                        '<%= assets.stylesheets %>/styles.css',
+                        '<%= assets.scripts %>/app.min.js'
+                    ]
+                }
+            }
         },
         imagemin: {
             production: {
@@ -259,7 +276,7 @@ module.exports = function (grunt) {
         'cmq:combine',
         'jshint',
         'requirejs',
-        'modernizr'
+        'modernizr:dist'
     ]);
 
     // Server build
@@ -272,7 +289,7 @@ module.exports = function (grunt) {
         'cmq:combine',
         'cssmin',
         'requirejs',
-        'modernizr',
+        'modernizr:dist',
         'imagemin:production'
     ]);
 
