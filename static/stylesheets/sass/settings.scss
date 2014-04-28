@@ -20,23 +20,48 @@
 /**
  * Responsive breakpoints
  */
-    @mixin breakpoint($point){
-        @if $point == standard{
-            @media ( max-width:calcbreakpoint(2000) ){ @content; }
+
+    /**
+     * Define which breakpoint width
+     * should be used for ie8 and below
+     */
+        $fallback-breakpoint: tablet;
+
+    /**
+     * Set breakpoints
+     */
+        @mixin breakpoint($point){
+            @if $point == standard{
+                @media ( max-width:calcbreakpoint(2000) ){ @content; }
+                @if $point == $fallback-breakpoint{
+                    .lt-ie9{
+                       @content;
+                    }
+                }
+            }
+            @else if $point == tablet{
+                @media ( max-width:calcbreakpoint(1024) ){ @content; }
+                @if $point == $fallback-breakpoint{
+                    .lt-ie9{
+                       @content;
+                    }
+                }
+            }
+            @else if $point == mobile{
+                @media ( max-width:calcbreakpoint(600) ){ @content; }
+                @if $point == $fallback-breakpoint{
+                    .lt-ie9{
+                       @content;
+                    }
+                }
+            }
+            @else if $point == retina{
+                @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi){ @content; }
+            }
         }
-        @else if $point == tablet{
-            @media ( max-width:calcbreakpoint(1024) ){ @content; }
+        @function calcbreakpoint($target){
+            @return ($target / 16)#{'em'};
         }
-        @else if $point == mobile{
-            @media ( max-width:calcbreakpoint(600) ){ @content; }
-        }
-        @else if $point == retina{
-            @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi){ @content; }
-        }
-    }
-    @function calcbreakpoint($target){
-        @return ($target / 16)#{'em'};
-    }
 
 /**
  * Eggbox
