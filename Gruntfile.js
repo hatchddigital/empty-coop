@@ -72,13 +72,13 @@ module.exports = function (grunt) {
                 ],
                 spawn: true
             },
-            email: {
-                files: '<%= assets.email_source %>/**/*',
-                tasks: [
-                    'shell:build_email'
-                ],
-                spawn: true
-            },
+            // email: {
+            //     files: '<%= assets.email_source %>/**/*',
+            //     tasks: [
+            //         'shell:build_email'
+            //     ],
+            //     spawn: true
+            // },
             css: {
                 files: '<%= assets.stylesheets %>/**/*.scss',
                 tasks: [
@@ -274,7 +274,8 @@ module.exports = function (grunt) {
     // Build for development purposes with linting
     grunt.registerTask('default', [
         'clean',
-        'shell',
+        'shell:build_icons',
+        //'shell:build_email',
         'webfont',
         'sass:development',
         'autoprefixer:development',
@@ -287,7 +288,8 @@ module.exports = function (grunt) {
     // Server build
     grunt.registerTask('server', [
         'clean',
-        'shell',
+        'shell:build_icons',
+        //'shell:build_email',
         'webfont',
         'sass:production',
         'autoprefixer:production',
