@@ -1,0 +1,73 @@
+/**
+ * Settings mixins / functions
+ *
+ * Helpers that relate directly to the settings files
+ */
+
+
+/**
+ * Responsive breakpoints
+ */
+
+    @function has_max($point) {
+      $rtn: length(map_get($breakpoints, $point)) == 2;
+      @if $rtn {
+        @if nth(map_get($breakpoints, $point), 2) == false {
+          $rtn: false;
+        }
+      }
+      @return $rtn;
+    }
+    @function has_min($point) {
+        $rtn: length(map_get($breakpoints, $point)) >= 1;
+        @return $rtn and nth(map-get($breakpoints, $point), 1);
+    }
+    @function min($point) {
+        @return nth(map_get($breakpoints, $point), 1);
+    }
+    @function max($point) {
+        @return nth(map_get($breakpoints, $point), 2);
+    }
+
+    @mixin breakpoint($point) {
+      @if $mq-support {
+        @if has_max($point) and has_min($point) {
+          @media (min-width:min($point)) and (max-width:max($point)) {
+            @content;
+          }
+        }
+        @else if has_max($point) {
+          @media (max-width:max($point)) {
+            @content;
+          }
+        }
+        @else if has_min($point) {
+          @media (min-width:min($point)) {
+            @content;
+          }
+        }
+      }
+      @else {
+        @if $point == $static-breakpoint {
+          @content;
+        }
+      }
+    }
+
+/**
+ * Typography
+ */
+
+    @function fontsize($size){
+        @return map-get($font-sizes,$size);
+    }
+    @function fontfamily($family){
+        @return map-get($font-famillies,$family);
+    }
+
+/**
+ * Colours
+ */
+    @function color($color){
+        @return map-get($colors,$color);
+    }

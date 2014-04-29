@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="en-au"><![endif]-->
 <!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
 <!--[if IE 8]><html class="lt-ie10 lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
 <!--[if IE 9]><html class="lt-ie10 no-js" id="ie9" lang="en-au"><![endif]-->
@@ -13,7 +12,12 @@
 
         <title>Empty Coop</title>
 
-        <link rel="stylesheet" href="../stylesheets/styles.css" />
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="../stylesheets/styles.css" />
+        <!--<![endif]-->
+        <!--[if lt IE 9]>
+            <link rel="stylesheet" href="../stylesheets/styles-momq.css" />
+        <![endif]-->
 
         <!-- Important early load external scripts -->
         <script src="../scripts/libs/modernizr/modernizr.min.js"></script>
@@ -63,6 +67,10 @@
         <h6>Heading 6</h6>
         <p>Lorem ipsum Et esse incididunt mollit adipisicing anim esse in aliqua in sit.</p>
 
+        <div class="post">
+            <h1>Post</h1>
+            <p>Lorem ipsum Nulla labore eu dolore ullamco ullamco sed fugiat cupidatat incididunt. Lorem ipsum Proident exercitation veniam quis nostrud veniam in Excepteur est Excepteur qui cillum.</p>
+        </div>
 
         <!-- JavaScript libraries and UX based code -->
         <script data-main="../scripts/app" src="../libs/requirejs/require.js"></script>

@@ -17,23 +17,37 @@
 /**
  * Component classes
  */
+.post{
+    $mod:'.post';
+    background:color(muted);
+    @at-root{
+        #{$mod}-title{
+            font-size:2em;
+        }
+        #{$mod}-image{
+            border:1px solid color(muted);
+        }
+    }
 
-//Example - .view-about{}
+    /**
+     * Modernizr hooks
+     */
+        // .no-flexbox{}
 
-/**
- * Modernizr hooks
- */
-    // .no-flexbox{}
+    /**
+     * Media queries
+     */
+        @include breakpoint(tablet){
+            background-color:color(default);
+        }
+        @include breakpoint(mobile){
+            background-color:color(highlight);
+        }
 
-/**
- * Media queries
- */
-    // @include breakpoint(tablet){...}
-    // Set in settings.less
-
-/**
- * IE overrides
- */
-    //.lt-ie9{}
-    //.lt-ie8{}
+    /**
+     * IE overrides
+     */
+        //.lt-ie9{}
+        //.lt-ie8{}
+}
 

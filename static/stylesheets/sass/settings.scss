@@ -6,6 +6,8 @@
  * More settings can be added here, the sky is the limit!
  */
 
+@import 'mixins/settings-mixins';
+
 /**
  * Grid
  *
@@ -20,133 +22,75 @@
 /**
  * Responsive breakpoints
  */
-
     /**
-     * Define which breakpoint width
-     * should be used for ie8 and below
+     * Define which breakpoint will be
+     * the default for IE8 and below
      */
-        $fallback-breakpoint: tablet;
-
+        $static-breakpoint: tablet;
     /**
-     * Set breakpoints
+     * Define breakpoints
+     * name: (min,max);
      */
-        @mixin breakpoint($point){
-            @if $point == standard{
-                @media ( max-width:calcbreakpoint(2000) ){ @content; }
-                @if $point == $fallback-breakpoint{
-                    .lt-ie9{
-                       @content;
-                    }
-                }
-            }
-            @else if $point == tablet{
-                @media ( max-width:calcbreakpoint(1024) ){ @content; }
-                @if $point == $fallback-breakpoint{
-                    .lt-ie9{
-                       @content;
-                    }
-                }
-            }
-            @else if $point == mobile{
-                @media ( max-width:calcbreakpoint(600) ){ @content; }
-                @if $point == $fallback-breakpoint{
-                    .lt-ie9{
-                       @content;
-                    }
-                }
-            }
-            @else if $point == retina{
-                @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi){ @content; }
-            }
-        }
-        @function calcbreakpoint($target){
-            @return ($target / 16)#{'em'};
-        }
+        $breakpoints:(
+            mobile: (false, 600px),
+            tablet: (false, 1024px),
+            desktop: (false, 1200px)
+        );
 
 /**
- * Eggbox
+ * Eggbox:
+ * Fallback settings
  */
-    /**
-     * Fallback settings
-     */
-        $eggbox-size:"16x16";
-        $eggbox-imagepath:"../images/eggbox";
-        //Colours
-        $eggbox-col--default:"000000";
-        $eggbox-col--white:"ffffff";
-
+    $eggbox-size:"16x16";
+    $eggbox-imagepath:"../images/eggbox";
+    //Colours
+    $eggbox-col--default:"000000";
+    $eggbox-col--white:"ffffff";
 
 /**
  * Font sizes
+ * @usage: fontsize($size);
  */
+    $fontsize-base:16;
+    $font-sizes: (
+        jumbo: 3em,
+        large: 2em,
+        emphasized: 1.5em,
+        default: 1em,
+        small: 75em
+    );
 
-    /**
-     * Project font sizes
-     */
-        $fontsize-base:16;
-        $font-sizes: (
-            jumbo: 3em,
-            large: 2em,
-            emphasized: 1.5em,
-            default: 1em,
-            small: 75em
-        );
-
-    /**
-     * Usage
-     */
-        @function fontsize($size){
-            @return map-get($font-sizes,$size);
-        }
 
 /**
- *  Font famillies
+ * Font famillies
+ * @usage: fontfamily($family)
  */
+    $sans:sans-serif;
+    $serif:serif;
+    $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
 
-    /**
-     * Project font famillies
-     */
-        $sans:sans-serif;
-        $serif:serif;
-        $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
-        "Lucida Typewriter", monospace;
-
-    /**
-     * Usage
-     */
-        $font-famillies: (
-            default: $sans,
-            pageheading: $sans,
-            smallprint: $sans
-        );
-        @function fontfamily($family){
-            @return map-get($font-famillies,$family);
-        }
+    $font-famillies: (
+        default: $sans,
+        pageheading: $sans,
+        smallprint: $sans
+    );
 
 /**
  * Colours
+ * @usage: color($color);
  */
+    $white:#fff;
+    $black:#000;
+    $yellow:#FFFB88;
+    $red:#aa3025;
 
-    /**
-     * Project colours
-     */
-        $white:#fff;
-        $black:#000;
-        $yellow:#FFFB88;
-        $red:#aa3025;
-
-    /**
-     * Color Usage
-     */
-        $colors: (
-            default: $black,
-            black: $black,
-            white: $white,
-            muted: lighten($black,50%),
-            highlight:$yellow,
-            link:$red,
-            linkactive:lighten($red,10%)
-        );
-        @function color($color){
-            @return map-get($colors,$color);
-        }
+    $colors: (
+        default: $black,
+        black: $black,
+        white: $white,
+        muted: lighten($black,50%),
+        highlight:$yellow,
+        link:$red,
+        linkactive:lighten($red,10%)
+    );
