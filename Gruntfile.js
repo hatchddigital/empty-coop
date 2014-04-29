@@ -151,12 +151,13 @@ module.exports = function (grunt) {
             development: {
                 options: {
                     style: 'expanded',
-                    debugInfo: true,
+                    debugInfo: false,
                     sourcemap: true,
                     noCache: true
                 },
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss',
+                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/sass/styles-nomq.scss'
                 }
             },
             production: {
@@ -167,7 +168,8 @@ module.exports = function (grunt) {
                     noCache: true
                 },
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss',
+                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/sass/styles-nomq.scss'
                 }
             }
         },
@@ -177,12 +179,14 @@ module.exports = function (grunt) {
             },
             development: {
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
+                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
                 }
             },
             production: {
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
+                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
                 }
             }
         },
@@ -192,14 +196,16 @@ module.exports = function (grunt) {
                     log: false
                 },
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
+                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
                 }
             }
         },
         cssmin: {
             combine: {
                 files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css'
+                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
+                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
                 }
             }
         },
@@ -235,6 +241,7 @@ module.exports = function (grunt) {
                 files: {
                     src: [
                         '<%= assets.stylesheets %>/styles.css',
+                        '<%= assets.stylesheets %>/styles-nomq.css',
                         '<%= assets.scripts %>/app.min.js'
                     ]
                 }
