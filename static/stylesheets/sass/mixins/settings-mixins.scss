@@ -77,12 +77,19 @@
     // Set breakpoint mixin
     @mixin breakpoint($point){
       @if $mq-support {
-        @media screen #{sizes($point)} {
-          @content
+        @if $point != 'retina'{
+            @media screen #{sizes($point)} {
+              @content
+            }
+        }
+        @else {
+            @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi){
+                @content;
+            }
         }
       }
       @else {
-        @if $point == $static-breakpoint{
+        @if index($static-breakpoints,$point){
           @content
         }
       }

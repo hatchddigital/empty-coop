@@ -23,18 +23,23 @@
  * Responsive breakpoints
  */
     /**
-     * Define which breakpoint will be
+     * Define which breakpoint(s) will be
      * the default for IE8 and below
      */
-        $static-breakpoint: tablet;
+        $static-breakpoints:
+            desktop,
+            tablet,
+            mobile
+        ;
+
     /**
      * Define breakpoints
      * @usage: name: horz(min,max) vert(min,max);
      */
         $breakpoints:(
-            mobile:(false,600) (),
+            desktop:(1025,false) (),
             tablet:(false,1024) (),
-            desktop:(1025,false) ()
+            mobile:(false,600) ()
         );
 
 /**
