@@ -37,8 +37,8 @@
     "grunt-contrib-requirejs": "0.4.4",
     "grunt-contrib-clean": "0.5.0",
     "grunt-contrib-watch": "0.6.1",
-    "grunt-contrib-sass":"0.7.3",
-    "grunt-contrib-imagemin":"0.6.1",
+    "grunt-contrib-sass": "0.7.3",
+    "grunt-contrib-imagemin": "0.6.1",
     "grunt-notify": "0.3.0",
     "grunt-shell": "0.7.0",
     "grunt-autoprefixer": "0.7.3",
@@ -46,13 +46,16 @@
     "grunt-modernizr": "0.5.2",
     "grunt-combine-media-queries": "1.0.15",
     "grunt-premailer": "0.2.7",
-    "grunt-contrib-watch": "0.6.1",
     "grunt-contrib-haml": "0.1.2",
     "grunt-contrib-htmlmin": "0.2.0",
     "grunt-nodemailer": "0.2.0",
     "grunt-inline": "0.2.7"
   },
   "devDependencies": {
-    "connect": "2.14.5"
+    "connect": "2.14.5",
+    "grunt-contrib-copy": "^0.5.0"
+  },
+  "scripts": {
+    "quickstart": "npm install && bower install && grunt"
   }
 }

@@ -7,6 +7,7 @@ static/fonts/eggbox/*
 static/stylesheets/sass/reusable-components/_eggbox.scss
 .sass-cache/
 static/images/eggbox/*
+static/stylesheets/sass/mixins/_eggbox.scss
 
 # npm and bower third party libs
 # to be installed win package.json and bower.json

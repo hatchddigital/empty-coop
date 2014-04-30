@@ -42,6 +42,7 @@ module.exports = function (grunt) {
             fallbacks: root+'/images/eggbox',
             root: root+'/libs/eggbox',
             icons: root+'/libs/eggbox/src',
+            iconTmp: root+'/libs/eggbox/tmp',
             customIcons: root+'/custom-eggbox'
         },
         watch: {
@@ -67,6 +68,7 @@ module.exports = function (grunt) {
             eggbox: {
                 files: '<%= eggbox.customIcons %>/**/*.svg',
                 tasks: [
+                    'copy:webfont',
                     'webfont',
                     'shell'
                 ],
@@ -96,11 +98,21 @@ module.exports = function (grunt) {
             '<%= assets.stylesheets %>/*.css'
         ],
         // Eggbox webfont
+        copy: {
+            webfont: {
+                expand: true,
+                src: [
+                  '<%= eggbox.icons %>/*.svg',
+                  '<%= eggbox.customIcons %>/*.svg'
+                ],
+                dest: '<%= eggbox.iconTmp %>',
+                flatten: true,
+                filter: 'isFile'
+            }
+        },
         webfont: {
             production: {
-                src: [
-                    '<%= eggbox.icons %>/*.svg',
-                    '<%= eggbox.customIcons %>/*.svg'],
+                src: ['<%= eggbox.iconTmp %>/*.svg'],
                 dest: '<%= assets.fonts %>/eggbox',
                 htmlDemo : true,
                 destCss: '<%= assets.stylesheets %>/sass/mixins/',
@@ -263,7 +275,6 @@ module.exports = function (grunt) {
     });
 
     // Required tasks
-
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-webfont');
@@ -274,6 +285,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-modernizr');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-combine-media-queries');
@@ -283,6 +295,7 @@ module.exports = function (grunt) {
         'clean',
         'shell:build_icons',
         //'shell:build_email',
+        'copy:webfont',
         'webfont',
         'sass:development',
         'autoprefixer:development',
@@ -297,6 +310,7 @@ module.exports = function (grunt) {
         'clean',
         'shell:build_icons',
         //'shell:build_email',
+        'copy:webfont',
         'webfont',
         'sass:production',
         'autoprefixer:production',
