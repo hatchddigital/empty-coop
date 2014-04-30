@@ -19,7 +19,9 @@
  */
 .post{
     $mod:'.post';
+    padding:30px;
     background:color(muted);
+    @include eggbox(view);
     @at-root{
         #{$mod}-title{
             font-size:2em;
@@ -32,22 +34,22 @@
     /**
      * Modernizr hooks
      */
-        // .no-flexbox{}
+        // .no-flexbox &{}
 
     /**
      * Media queries
      */
-        @include breakpoint(tablet){
-            background-color:color(default);
-        }
         @include breakpoint(mobile){
             background-color:color(highlight);
+        }
+        @include breakpoint(tablet){
+            background-color:color(default);
         }
 
     /**
      * IE overrides
      */
-        //.lt-ie9{}
-        //.lt-ie8{}
+        //.lt-ie9 &{}
+        //.lt-ie8 &{}
 }
 

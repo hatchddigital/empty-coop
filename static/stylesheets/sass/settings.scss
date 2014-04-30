@@ -29,12 +29,12 @@
         $static-breakpoint: tablet;
     /**
      * Define breakpoints
-     * name: (min,max);
+     * @usage: name: horz(min,max) vert(min,max);
      */
         $breakpoints:(
-            mobile: (false, 600px),
-            tablet: (false, 1024px),
-            desktop: (false, 1200px)
+            mobile:(false,600) (),
+            tablet:(false,1024) (),
+            desktop:(1025,false) ()
         );
 
 /**

@@ -9,47 +9,81 @@
  * Responsive breakpoints
  */
 
-    @function has_max($point) {
-      $rtn: length(map_get($breakpoints, $point)) == 2;
-      @if $rtn {
-        @if nth(map_get($breakpoints, $point), 2) == false {
-          $rtn: false;
+    // Retrieve  breakpoint type
+    @function get-breakpoint-value($point, $ori, $index) {
+      $values: map-get($breakpoints, $point);
+      $items: ();
+      @if $ori == 'vert' {
+          $items: nth($values, 2);
+        }
+      @else if $ori == 'horz' {
+          $items: nth($values, 1);
+      }
+      @if length($items) >= $index {
+        $value: nth($items, $index);
+        @if $value {
+          @return pxem(nth($items, $index));
         }
       }
-      @return $rtn;
-    }
-    @function has_min($point) {
-        $rtn: length(map_get($breakpoints, $point)) >= 1;
-        @return $rtn and nth(map-get($breakpoints, $point), 1);
-    }
-    @function min($point) {
-        @return nth(map_get($breakpoints, $point), 1);
-    }
-    @function max($point) {
-        @return nth(map_get($breakpoints, $point), 2);
+      @return false;
     }
 
-    @mixin breakpoint($point) {
+    // Convert pixel breakpoint value to em
+    @function pxem($target){
+      @return ($target / 16)#{'em'};
+    }
+
+    // Get min-width breakpoint value
+    @function minw($point) {
+      $value: get-breakpoint-value($point, 'horz', 1);
+      @if $value {
+        @return 'and (min-width: ' + $value + ')';
+      }
+      @return '';
+    }
+
+    // Get max-width breakpoint value
+    @function maxw($point) {
+      $value: get-breakpoint-value($point, 'horz', 2);
+      @if $value {
+        @return 'and (max-width: ' + $value + ')';
+      }
+      @return '';
+    }
+
+    // Get min-height breakpoint value
+    @function minh($point) {
+      $value: get-breakpoint-value($point, 'vert', 1);
+      @if $value {
+        @return 'and (min-height: ' + $value + ')';
+      }
+      @return '';
+    }
+
+    // Get max-height breakpoint value
+    @function maxh($point) {
+      $value: get-breakpoint-value($point, 'vert', 2);
+      @if $value {
+        @return 'and (max-height: ' + $value + ')';
+      }
+      @return '';
+    }
+
+    // Build the media query
+    @function sizes($point) {
+      @return minw($point) + maxw($point) + minh($point) + maxh($point)
+    }
+
+    // Set breakpoint mixin
+    @mixin breakpoint($point){
       @if $mq-support {
-        @if has_max($point) and has_min($point) {
-          @media (min-width:min($point)) and (max-width:max($point)) {
-            @content;
-          }
-        }
-        @else if has_max($point) {
-          @media (max-width:max($point)) {
-            @content;
-          }
-        }
-        @else if has_min($point) {
-          @media (min-width:min($point)) {
-            @content;
-          }
+        @media screen #{sizes($point)} {
+          @content
         }
       }
       @else {
-        @if $point == $static-breakpoint {
-          @content;
+        @if $point == $static-breakpoint{
+          @content
         }
       }
     }
