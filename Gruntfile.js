@@ -8,9 +8,9 @@
  *
  * @author jimmyhillis <jimmy@hatchd.com.au>
  * @author neilf <neil@hatchd.com.au>
- * @author janeyee <jane@hatchd.com.a0u>
+ * @author janeyee <jane@hatchd.com.au>
  * @author jackarmley <jack@hatchd.com.au>
- * @author  douglinder <doug@hatchd.com.au>
+ * @author douglinder <doug@hatchd.com.au>
  */
 
 module.exports = function (grunt) {
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 
     // Set root path (if you change this line you must also change the
     // project template to match).
-    var root = '120years/static';
+    var root = 'static';
 
     // Task configuration
     grunt.initConfig({
