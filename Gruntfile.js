@@ -92,11 +92,15 @@ module.exports = function (grunt) {
                 spawn: true
             }
         },
-        clean: [
-            '<%= assets.email_public %>/*',
-            '<%= assets.scripts %>/*.min.js',
-            '<%= assets.stylesheets %>/*.css'
-        ],
+        clean: {
+            dist: {
+                source:[
+                    '<%= assets.email_public %>/*',
+                    '<%= assets.scripts %>/*.min.js',
+                    '<%= assets.stylesheets %>/*.css'
+                ]
+            }
+        },
         // Eggbox webfont
         copy: {
             webfont: {
