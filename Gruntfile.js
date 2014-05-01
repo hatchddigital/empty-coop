@@ -8,7 +8,7 @@
  *
  * @author jimmyhillis <jimmy@hatchd.com.au>
  * @author neilf <neil@hatchd.com.au>
- * @author janeyee <jane@hatchd.com.au>
+ * @author janeyee <jane@hatchd.com.a0u>
  * @author jackarmley <jack@hatchd.com.au>
  * @author  douglinder <doug@hatchd.com.au>
  */
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 
     // Set root path (if you change this line you must also change the
     // project template to match).
-    var root = 'static';
+    var root = '120years/static';
 
     // Task configuration
     grunt.initConfig({
@@ -70,7 +70,7 @@ module.exports = function (grunt) {
                 tasks: [
                     'copy:webfont',
                     'webfont',
-                    'shell'
+                    'shell:build_icons'
                 ],
                 spawn: true
             },
@@ -145,18 +145,18 @@ module.exports = function (grunt) {
                   'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.colors.white %> -o <%= eggbox.fallbacks %> -s <%= eggbox.sizes.default %> <%= eggbox.icons %>'
                 ].join(' && ')
             },
-            // build_email: {
-            //     options: {
-            //         stdout: true,
-            //         stderr: true
-            //     },
-            //     command: [
-            //         'mkdir -p <%= assets.email_public %>',
-            //         'grunt --gruntfile <%= assets.email_source %>/Gruntfile.js',
-            //         'cp -Rf <%= assets.email_source %>/images/ <%= assets.email_public %>/images/',
-            //         'cp <%= assets.email_source %>/stylesheets/styles.css <%= assets.email_public %>/styles.css'
-            //     ].join(' && ')
-            // }
+            build_email: {
+                options: {
+                    stdout: true,
+                    stderr: true
+                },
+                command: [
+                    'mkdir -p <%= assets.email_public %>',
+                    'grunt --gruntfile <%= assets.email_source %>/Gruntfile.js',
+                    'cp -Rf <%= assets.email_source %>/images/ <%= assets.email_public %>/images/',
+                    'cp <%= assets.email_source %>/stylesheets/styles.css <%= assets.email_public %>/styles.css'
+                ].join(' && ')
+            }
         },
         // Stylesheets
         sass: {
