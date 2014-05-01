@@ -10,19 +10,29 @@
  */
 
     // Retrieve  breakpoint type
-    @function get-breakpoint-value($point, $ori, $index) {
+    @function get-breakpoint-value($point, $type, $index) {
       $values: map-get($breakpoints, $point);
+      $convertValue: true;
       $items: ();
-      @if $ori == 'vert' {
-          $items: nth($values, 2);
-        }
-      @else if $ori == 'horz' {
-          $items: nth($values, 1);
+      @if $type == 'orientation' {
+        $items: nth($values, 3);
+        $convertValue: false;
+      }
+      @else if $type == 'width' {
+        $items: nth($values, 2);
+      }
+      @else if $type == 'height' {
+        $items: nth($values, 1);
       }
       @if length($items) >= $index {
         $value: nth($items, $index);
         @if $value {
-          @return pxem(nth($items, $index));
+          @if $convertValue {
+            @return pxem(nth($items, $index));
+          }
+          @else {
+            @return nth($items, $index);
+          }
         }
       }
       @return false;
@@ -35,7 +45,7 @@
 
     // Get min-width breakpoint value
     @function minw($point) {
-      $value: get-breakpoint-value($point, 'horz', 1);
+      $value: get-breakpoint-value($point, 'width', 1);
       @if $value {
         @return 'and (min-width: ' + $value + ')';
       }
@@ -44,7 +54,7 @@
 
     // Get max-width breakpoint value
     @function maxw($point) {
-      $value: get-breakpoint-value($point, 'horz', 2);
+      $value: get-breakpoint-value($point, 'width', 2);
       @if $value {
         @return 'and (max-width: ' + $value + ')';
       }
@@ -53,7 +63,7 @@
 
     // Get min-height breakpoint value
     @function minh($point) {
-      $value: get-breakpoint-value($point, 'vert', 1);
+      $value: get-breakpoint-value($point, 'height', 1);
       @if $value {
         @return 'and (min-height: ' + $value + ')';
       }
@@ -62,16 +72,25 @@
 
     // Get max-height breakpoint value
     @function maxh($point) {
-      $value: get-breakpoint-value($point, 'vert', 2);
+      $value: get-breakpoint-value($point, 'height', 2);
       @if $value {
         @return 'and (max-height: ' + $value + ')';
       }
       @return '';
     }
 
+    // Get orientation breakpoint value
+    @function orientation($point) {
+      $value: get-breakpoint-value($point, 'orientation', 1);
+      @if $value {
+        @return 'and (orientation: ' + $value + ')';
+      }
+      @return '';
+    }
+
     // Build the media query
     @function sizes($point) {
-      @return minw($point) + maxw($point) + minh($point) + maxh($point)
+        @return minw($point) + maxw($point) + minh($point) + maxh($point) + orientation($point);
     }
 
     // Set breakpoint mixin

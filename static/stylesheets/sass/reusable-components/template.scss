@@ -18,17 +18,14 @@
  * Component classes
  */
 .post{
-    $mod:'.post';
     padding:30px;
     background:color(muted);
     @include eggbox(view);
-    @at-root{
-        #{$mod}-title{
-            font-size:2em;
-        }
-        #{$mod}-image{
-            border:1px solid color(muted);
-        }
+    &-title{
+        font-size:2em;
+    }
+    &-desc{
+        font-size:1em;
     }
 
     /**

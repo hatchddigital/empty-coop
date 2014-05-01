@@ -27,7 +27,7 @@ guidelines on using Empty-coop.
 For development and to get the most out of this boilerplate we recommend
 you install Node & npm, Grunt and Bower. This allows you to manage and
 build your code with simple command-line commands. This removes usage of
-GUI software like CodeKit for any development needs. Basic toolcahin setup
+GUI software like CodeKit for any development needs. Basic toolchain setup
 on a Mac looks like:
 
 ```sh

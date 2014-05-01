@@ -34,12 +34,13 @@
 
     /**
      * Define breakpoints
-     * @usage: name: horz(min,max) vert(min,max);
+     * @usage:
+     * name: width(min,max) height(min,max) orientation(portrait|landscape)
      */
         $breakpoints:(
-            desktop:(1025,false) (),
-            tablet:(false,1024) (),
-            mobile:(false,600) ()
+            desktop:(1025,false) () (),
+            tablet:(false,1024) () (),
+            mobile:(false,600) () (portrait)
         );
 
 /**
