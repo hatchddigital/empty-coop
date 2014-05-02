@@ -18,10 +18,10 @@
         $items: nth($values, 3);
         $convertValue: false;
       }
-      @else if $type == 'width' {
+      @else if $type == 'height' {
         $items: nth($values, 2);
       }
-      @else if $type == 'height' {
+      @else if $type == 'width' {
         $items: nth($values, 1);
       }
       @if length($items) >= $index {
