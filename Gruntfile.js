@@ -68,7 +68,6 @@ module.exports = function (grunt) {
             eggbox: {
                 files: '<%= eggbox.customIcons %>/**/*.svg',
                 tasks: [
-                    'copy:webfont',
                     'webfont',
                     'shell:build_icons'
                 ],
@@ -102,21 +101,11 @@ module.exports = function (grunt) {
             }
         },
         // Eggbox webfont
-        copy: {
-            webfont: {
-                expand: true,
-                src: [
-                  '<%= eggbox.icons %>/*.svg',
-                  '<%= eggbox.customIcons %>/*.svg'
-                ],
-                dest: '<%= eggbox.iconTmp %>',
-                flatten: true,
-                filter: 'isFile'
-            }
-        },
         webfont: {
             production: {
-                src: ['<%= eggbox.iconTmp %>/*.svg'],
+                src: [
+                    '<%= eggbox.icons %>/*.svg',
+                    '<%= eggbox.customIcons %>/*.svg'],
                 dest: '<%= assets.fonts %>/eggbox',
                 htmlDemo : true,
                 destCss: '<%= assets.stylesheets %>/sass/mixins/',
@@ -299,7 +288,6 @@ module.exports = function (grunt) {
         'clean',
         'shell:build_icons',
         //'shell:build_email',
-        'copy:webfont',
         'webfont',
         'sass:development',
         'autoprefixer:development',
@@ -314,7 +302,6 @@ module.exports = function (grunt) {
         'clean',
         'shell:build_icons',
         //'shell:build_email',
-        'copy:webfont',
         'webfont',
         'sass:production',
         'autoprefixer:production',
