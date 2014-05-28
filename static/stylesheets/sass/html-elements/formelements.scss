@@ -59,5 +59,15 @@ form{
     		padding:0.5em;
     		cursor:pointer;
     	}
+        @each $prefix in (
+          '::-webkit-input-',
+          ':-moz-',
+          '::-moz-',
+          ':-ms-input-')
+        {
+            #{$prefix}placeholder{
+                color: color(link);
+            }
+        }
     }
 }

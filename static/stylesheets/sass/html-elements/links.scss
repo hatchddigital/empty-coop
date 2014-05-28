@@ -19,3 +19,20 @@
     :focus{
         outline:none;
     }
+
+/**
+ * Selection styles
+ */
+    @each $prefix in (
+        '::',
+        '::-webkit-',
+        '::-moz-',
+        '::-ms-')
+    {
+        #{$prefix}selection{
+            color: color(white);
+            background: color(link);
+        }
+    }
+
+

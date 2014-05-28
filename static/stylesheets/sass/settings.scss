@@ -9,17 +9,6 @@
 @import 'mixins/settings-mixins';
 
 /**
- * Grid
- *
- * $raw width:     target container width (px);
- * $total-columns: number of grid columns;
- * $gutter:        column gutter (px);
- */
-    $raw-width:1000;
-    $total-columns:12;
-    $raw-gutter:20;
-
-/**
  * Responsive breakpoints
  */
     /**

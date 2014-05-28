@@ -82,21 +82,3 @@
             border-width:$size/1.5;
         }
     }
-
-/**
- * Style placeholder text
- */
-    @mixin placeholder($color:#fff){
-        &::-webkit-input-placeholder {
-           color:$color;
-        }
-        &:-moz-placeholder {
-           color:$color;
-        }
-        &::-moz-placeholder {
-           color:$color;
-        }
-        &:-ms-input-placeholder {
-           color:$color;
-        }
-    }
