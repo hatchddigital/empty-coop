@@ -1,6 +1,6 @@
 {
   "name": "empty-coop",
-  "version": "0.3.2",
+  "version": "0.5.x",
   "author": "Hatchd Digital <hello@hatchd.com.au>",
   "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, requireJS and Grunt.",
   "contributors": [
@@ -21,7 +21,7 @@
       "email": "neil@hatchd.com.au"
     }
   ],
-  "homepage": "http://hatchd.com.au/",
+  "homepage": "http://hatchd.com.au",
   "repository": {
     "type": "git",
     "url": "https://github.com/hatchdditigal/empty-coop.git"

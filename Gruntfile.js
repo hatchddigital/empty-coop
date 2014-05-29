@@ -23,6 +23,12 @@ module.exports = function (grunt) {
     // Task configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        banner: '/*! <%= pkg.name %>: version <%= pkg.version %>\n' +
+                '* Built on: <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+                '* Author: <%= pkg.author %>\n' +
+                '* http://<%= pkg.homepage %>\n' +
+                '* <%= pkg.description %>\n' +
+                '* Copyright (c) <%= grunt.template.today("yyyy") %> */',
         assets: {
             stylesheets: root+'/stylesheets',
             scripts: root+'/scripts',
@@ -218,6 +224,9 @@ module.exports = function (grunt) {
         },
         cssmin: {
             combine: {
+                options: {
+                    banner: '<%= banner %>'
+                },
                 files: [
                     {
                         expand: true,
