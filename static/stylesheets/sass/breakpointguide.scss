@@ -18,15 +18,14 @@ $bpguide:(
     bottom: 0;
     right: 0;
     overflow:hidden;
-    border:1px solid #999;
     background:map-get($bpguide,bg);
     color:map-get($bpguide,text);
     font:normal normal 12px/1.5em sans-serif;
     &-label{
         display: block;
         padding:.5em 1em;
-        border-bottom:1px solid #999;
         background:map-get($bpguide,label);
+        text-shadow: 0 1px 0 fade-out(black,.8);
         color:white;
         font-weight: bold;
         text-transform: uppercase;
@@ -42,8 +41,6 @@ $bpguide:(
         &-data{
             display: block;
         }
-        &-label{
-        }
         &-data{
             font-weight: bold;
         }
@@ -53,7 +50,7 @@ $bpguide:(
         $counter: $counter + 1;
         @include breakpoint($key){
             &-label{
-                background:adjust-hue(map-get($bpguide,label),$counter * (360deg / length($breakpoints)));
+                background:adjust-hue(map-get($bpguide,label), 0deg + (50 *$counter) );
                 &:before{
                     content:'#{$key}';
                 }

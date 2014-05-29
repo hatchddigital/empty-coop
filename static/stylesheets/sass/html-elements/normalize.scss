@@ -391,12 +391,3 @@
             border-collapse:collapse;
             border-spacing:0;
         }
-
-/**
- * For mobile, remove text-size adjust on webkit-based browsers
- */
-    @include breakpoint(mobile){
-        html {
-            -webkit-text-size-adjust:none;
-        }
-    }

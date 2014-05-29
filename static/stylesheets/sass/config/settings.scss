@@ -17,9 +17,10 @@
      * the default for IE8 and below
      */
         $static-breakpoints:
-            desktop,
-            tablet,
-            mobile
+            grizzlybear,
+            papabear,
+            mamabear,
+            babybear
         ;
 
     /**
@@ -28,9 +29,11 @@
      * name: width(min,max) height(min,max) orientation(portrait|landscape)
      */
         $breakpoints:(
-            desktop:(1025,false) () (),
-            tablet:(false,1024) () (),
-            mobile:(false,600) () (portrait)
+            grizzlybear:(1800,false) () (),
+            papabear:(1200,false) () (),
+            mamabear:(800,false) () (),
+            babybear:(601,false) () (),
+            tinybear:(false,600) () ()
         );
 
 /**

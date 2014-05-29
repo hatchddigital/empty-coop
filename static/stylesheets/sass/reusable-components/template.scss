@@ -27,26 +27,12 @@
     &-desc{
         font-size:1em;
     }
+    // Media queries
+    //@include breakpoint(mobile){}
+    //@include breakpoint(tablet){}
 
-    /**
-     * Modernizr hooks
-     */
-        // .no-flexbox &{}
-
-    /**
-     * Media queries
-     */
-        @include breakpoint(mobile){
-            background-color:color(highlight);
-        }
-        @include breakpoint(tablet){
-            background-color:color(default);
-        }
-
-    /**
-     * IE overrides
-     */
-        //.lt-ie9 &{}
-        //.lt-ie8 &{}
+    // IE overrides
+    //.lt-ie9 &{}
+    //.lt-ie8 &{}
 }
 
