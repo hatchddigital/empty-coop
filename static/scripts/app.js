@@ -30,7 +30,7 @@ require.config({
     }
 });
 
-require(['jquery'], function ($) {
+require(['jquery','./breakpointguide'], function ($) {
     'use strict';
 
     /**

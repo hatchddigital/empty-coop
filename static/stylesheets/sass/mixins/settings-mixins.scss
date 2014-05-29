@@ -10,9 +10,9 @@
  */
 
     // Retrieve  breakpoint type
-    @function get-breakpoint-value($point, $type, $index) {
+    @function get-breakpoint-value($point, $type, $index, $convertValue: true) {
       $values: map-get($breakpoints, $point);
-      $convertValue: true;
+      $convertValue: $convertValue;
       $items: ();
       @if $type == 'orientation' {
         $items: nth($values, 3);

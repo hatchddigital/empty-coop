@@ -1,0 +1,109 @@
+/**
+ * Breakpoint helper
+ * A visual tool to help the developer see
+ * when a breakpoint is triggered
+ */
+
+$mq-support:true;
+@import 'config/settings';
+
+$bpguide:(
+    bg:#fff,
+    text:#333,
+    label:#EF4034
+);
+
+.breakpointguide{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    overflow:hidden;
+    border:1px solid #999;
+    background:map-get($bpguide,bg);
+    color:map-get($bpguide,text);
+    font:normal normal 12px/1.5em sans-serif;
+    &-label{
+        display: block;
+        padding:.5em 1em;
+        border-bottom:1px solid #999;
+        background:map-get($bpguide,label);
+        color:white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    &-values{
+        margin: 0;
+        list-style: none;
+    }
+    &-value{
+        display: none;
+        padding:.5em 1em;
+        &-label,
+        &-data{
+            display: block;
+        }
+        &-label{
+        }
+        &-data{
+            font-weight: bold;
+        }
+    }
+    $counter: 0;
+    @each $key,$value in $breakpoints{
+        $counter: $counter + 1;
+        @include breakpoint($key){
+            &-label{
+                background:adjust-hue(map-get($bpguide,label),$counter * (360deg / length($breakpoints)));
+                &:before{
+                    content:'#{$key}';
+                }
+            }
+            @if nth($value,1) != (){
+                @if nth(nth($value,1),1){
+                    &-value--minw{
+                        display: inline-block;
+                        .breakpointguide-value-data:before{
+                            content:'#{get-breakpoint-value($key, 'width', 1, false)}';
+                        }
+                    }
+                }
+                @if nth(nth($value,1),2){
+                    &-value--maxw{
+                        display: inline-block;
+                        .breakpointguide-value-data:before{
+                            content:'#{get-breakpoint-value($key, 'width', 2, false)}';
+                        }
+                    }
+                }
+            }
+            @if nth($value,2) != (){
+                @if nth(nth($value,2),1){
+                    &-value--minh{
+                        display: inline-block;
+                        .breakpointguide-value-data:before{
+                            content:'#{get-breakpoint-value($key, 'height', 1, false)}';
+                        }
+                    }
+                }
+                @if nth(nth($value,2),2){
+                    &-value--maxh{
+                        display: inline-block;
+                        .breakpointguide-value-data:before{
+                            content:'#{get-breakpoint-value($key, 'height', 2, false)}';
+                        }
+                    }
+                }
+            }
+            @if nth($value,3) != (){
+                &-value--orientation{
+                    display: inline-block;
+                }
+                &-value--orientation{
+                    .breakpointguide-value-data:before{
+                        content:'#{get-breakpoint-value($key, 'orientation', 1, false)}';
+                    }
+                }
+            }
+        }
+    }
+}

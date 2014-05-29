@@ -65,14 +65,16 @@ module.exports = function (grunt) {
                 ],
                 spawn: true
             },
-            eggbox: {
-                files: '<%= eggbox.customIcons %>/**/*.svg',
+            css: {
+                files: '<%= assets.stylesheets %>/**/*.scss',
                 tasks: [
-                    'webfont',
-                    'shell:build_icons'
+                    'sass:development',
+                    'modernizr:dist',
+                    'autoprefixer',
+                    'cmq'
                 ],
                 spawn: true
-            },
+            }
             // email: {
             //     files: '<%= assets.email_source %>/**/*',
             //     tasks: [
@@ -80,16 +82,6 @@ module.exports = function (grunt) {
             //     ],
             //     spawn: true
             // },
-            css: {
-                files: '<%= assets.stylesheets %>/**/*.scss',
-                tasks: [
-                    'sass:development',
-                    'modernizr:dist',
-                    'autoprefixer:development',
-                    'cmq'
-                ],
-                spawn: true
-            }
         },
         clean: {
             dist: {
@@ -160,10 +152,16 @@ module.exports = function (grunt) {
                     sourcemap: true,
                     noCache: true
                 },
-                files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss',
-                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/sass/styles-nomq.scss'
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.stylesheets %>/sass/',
+                        src: '*.scss',
+                        dest: '<%= assets.stylesheets %>',
+                        ext: '.css',
+                        extDot: 'last'
+                    },
+                ]
             },
             production: {
                 options: {
@@ -172,27 +170,33 @@ module.exports = function (grunt) {
                     sourcemap: false,
                     noCache: true
                 },
-                files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/sass/styles.scss',
-                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/sass/styles-nomq.scss'
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.stylesheets %>/sass/',
+                        src: '*.scss',
+                        dest: '<%= assets.stylesheets %>',
+                        ext: '.css',
+                        extDot: 'last'
+                    },
+                ]
             }
         },
         autoprefixer: {
             options: {
                 browsers: ['last 3 versions', '> 1%', 'ie 8', 'ie 7']
             },
-            development: {
-                files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
-                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
-                }
-            },
-            production: {
-                files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
-                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
-                }
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.stylesheets %>/',
+                        src: '*.css',
+                        dest: '<%= assets.stylesheets %>',
+                        ext: '.css',
+                        extDot: 'last'
+                    },
+                ]
             }
         },
         cmq: {
@@ -200,18 +204,30 @@ module.exports = function (grunt) {
                 options: {
                     log: false
                 },
-                files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
-                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.stylesheets %>/',
+                        src: '*.css',
+                        dest: '<%= assets.stylesheets %>',
+                        ext: '.css',
+                        extDot: 'last'
+                    },
+                ]
             }
         },
         cssmin: {
             combine: {
-                files: {
-                    '<%= assets.stylesheets %>/styles.css': '<%= assets.stylesheets %>/styles.css',
-                    '<%= assets.stylesheets %>/styles-nomq.css': '<%= assets.stylesheets %>/styles-nomq.css'
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.stylesheets %>/',
+                        src: '*.css',
+                        dest: '<%= assets.stylesheets %>',
+                        ext: '.css',
+                        extDot: 'last'
+                    },
+                ]
             }
         },
         // Javascript
@@ -245,8 +261,7 @@ module.exports = function (grunt) {
                 parseFiles: true,
                 files: {
                     src: [
-                        '<%= assets.stylesheets %>/styles.css',
-                        '<%= assets.stylesheets %>/styles-nomq.css',
+                        '<%= assets.stylesheets %>/*.css',
                         '<%= assets.scripts %>/app.min.js'
                     ]
                 }
@@ -283,6 +298,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-combine-media-queries');
 
+
+    // build icon set
+    grunt.registerTask('eggbox', [
+        'webfont',
+        'shell:build_icons'
+    ]);
+
     // Build for development purposes with linting
     grunt.registerTask('default', [
         'clean',
@@ -290,7 +312,7 @@ module.exports = function (grunt) {
         //'shell:build_email',
         'webfont',
         'sass:development',
-        'autoprefixer:development',
+        'autoprefixer',
         'cmq:combine',
         'jshint',
         'requirejs',
@@ -304,7 +326,7 @@ module.exports = function (grunt) {
         //'shell:build_email',
         'webfont',
         'sass:production',
-        'autoprefixer:production',
+        'autoprefixer',
         'cmq:combine',
         'cssmin',
         'requirejs',
