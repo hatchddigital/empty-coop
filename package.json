@@ -1,6 +1,6 @@
 {
   "name": "empty-coop",
-  "version": "0.5.x",
+  "version": "0.5.4",
   "author": "Hatchd Digital <hello@hatchd.com.au>",
   "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, requireJS and Grunt.",
   "contributors": [
@@ -50,7 +50,8 @@
     "grunt-contrib-htmlmin": "0.2.0",
     "grunt-nodemailer": "0.2.0",
     "grunt-inline": "0.2.7",
-    "grunt-contrib-csslint": "0.2.0"
+    "grunt-contrib-csslint": "0.2.0",
+    "matchdep": "~0.3.0"
   },
   "devDependencies": {
     "connect": "2.14.5",

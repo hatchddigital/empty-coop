@@ -13,6 +13,7 @@
  * @author douglinder <doug@hatchd.com.au>
  */
 
+var ext = require('./.gruntExt');
 module.exports = function (grunt) {
     'use strict';
 
@@ -20,22 +21,22 @@ module.exports = function (grunt) {
     // project template to match).
     var root = 'static';
 
-    // Task configuration
-    grunt.initConfig({
+    // Configuration
+    ext.configure({
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*! <%= pkg.name %>: version <%= pkg.version %>\n' +
-                '* Built on: <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-                '* Author: <%= pkg.author %>\n' +
-                '* http://<%= pkg.homepage %>\n' +
-                '* <%= pkg.description %>\n' +
-                '* Copyright (c) <%= grunt.template.today("yyyy") %> */',
+            '* Built on: <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            '* Author: <%= pkg.author %>\n' +
+            '* http://<%= pkg.homepage %>\n' +
+            '* <%= pkg.description %>\n' +
+            '* Copyright (c) <%= grunt.template.today("yyyy") %> */',
         assets: {
-            stylesheets: root+'/stylesheets',
-            scripts: root+'/scripts',
-            fonts: root+'/fonts',
-            images: root+'/images',
-            email_source: root+'/../emails',
-            email_public: root+'/email'
+            stylesheets: root + '/stylesheets',
+            scripts: root + '/scripts',
+            fonts: root + '/fonts',
+            images: root + '/images',
+            email_source: root + '/../emails',
+            email_public: root + '/email'
         },
         eggbox: {
             colors: {
@@ -45,15 +46,19 @@ module.exports = function (grunt) {
             sizes: {
                 default: '16x16'
             },
-            fallbacks: root+'/images/eggbox',
-            root: root+'/libs/eggbox',
-            icons: root+'/libs/eggbox/src',
-            iconTmp: root+'/libs/eggbox/tmp',
-            customIcons: root+'/custom-eggbox'
-        },
+            fallbacks: root + '/images/eggbox',
+            root: root + '/libs/eggbox',
+            icons: root + '/libs/eggbox/src',
+            iconTmp: root + '/libs/eggbox/tmp',
+            customIcons: root + '/custom-eggbox'
+        }
+    });
+
+    // Common tasks
+    ext.configure({
         watch: {
-            options:{
-                atBegin:true
+            options: {
+                atBegin: true
             },
             startup: {
                 files: [],
@@ -91,21 +96,24 @@ module.exports = function (grunt) {
         },
         clean: {
             dist: {
-                source:[
+                source: [
                     '<%= assets.email_public %>/*',
                     '<%= assets.scripts %>/*.min.js',
                     '<%= assets.stylesheets %>/*.css'
                 ]
             }
-        },
-        // Eggbox webfont
+        }
+    });
+
+    // Eggbox webfont
+    ext.configure({
         webfont: {
             production: {
                 src: [
                     '<%= eggbox.icons %>/*.svg',
                     '<%= eggbox.customIcons %>/*.svg'],
                 dest: '<%= assets.fonts %>/eggbox',
-                htmlDemo : true,
+                htmlDemo: true,
                 destCss: '<%= assets.stylesheets %>/sass/mixins/',
                 options: {
                     hashes: false,
@@ -124,7 +132,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        // Eggbox image fallbacks
         shell: {
             build_icons: {
                 options: {
@@ -132,8 +139,8 @@ module.exports = function (grunt) {
                     stderr: true
                 },
                 command: [
-                  'mkdir -p <%= eggbox.fallbacks %>',
-                  'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.colors.white %> -o <%= eggbox.fallbacks %> -s <%= eggbox.sizes.default %> <%= eggbox.icons %>'
+                    'mkdir -p <%= eggbox.fallbacks %>',
+                    'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.colors.white %> -o <%= eggbox.fallbacks %> -s <%= eggbox.sizes.default %> <%= eggbox.icons %>'
                 ].join(' && ')
             },
             build_email: {
@@ -148,8 +155,11 @@ module.exports = function (grunt) {
                     'cp <%= assets.email_source %>/stylesheets/styles.css <%= assets.email_public %>/styles.css'
                 ].join(' && ')
             }
-        },
-        // Stylesheets
+        }
+    });
+
+    // Stylesheets
+    ext.configure({
         sass: {
             development: {
                 options: {
@@ -238,8 +248,11 @@ module.exports = function (grunt) {
                     },
                 ]
             }
-        },
-        // Javascript
+        }
+    });
+
+    // Javascript
+    ext.configure({
         jshint: {
             all: [
                 'Gruntfile.js',
@@ -275,47 +288,36 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },
+        }
+    });
+
+    // Image minification
+    ext.configure({
         imagemin: {
             production: {
                 options: {
                     optimizationLevel: 7
                 },
-                files: [{
-                    expand: true,
-                    cwd: '<%= assets.images %>',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= assets.images %>'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.images %>',
+                        src: ['**/*.{png,jpg,gif}'],
+                        dest: '<%= assets.images %>'
+                    }
+                ]
             }
         }
     });
 
-    // Required tasks
-    grunt.loadNpmTasks('grunt-notify');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-webfont');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-modernizr');
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-combine-media-queries');
-
-
     // build icon set
-    grunt.registerTask('eggbox', [
+    ext.registerTask('eggbox', [
         'webfont',
         'shell:build_icons'
     ]);
 
     // Build for development purposes with linting
-    grunt.registerTask('default', [
+    ext.registerTask('default', [
         'clean',
         'shell:build_icons',
         //'shell:build_email',
@@ -329,7 +331,7 @@ module.exports = function (grunt) {
     ]);
 
     // Server build
-    grunt.registerTask('server', [
+    ext.registerTask('server', [
         'clean',
         'shell:build_icons',
         //'shell:build_email',
@@ -343,4 +345,6 @@ module.exports = function (grunt) {
         'imagemin:production'
     ]);
 
+    // Load grunt configuration
+    ext.initConfig(grunt);
 };
