@@ -35,6 +35,7 @@ module.exports = function (grunt) {
             scripts: root + '/scripts',
             fonts: root + '/fonts',
             images: root + '/images',
+            templates: root + '/html',
             email_source: root + '/../emails',
             email_public: root + '/email'
         },
@@ -68,7 +69,7 @@ module.exports = function (grunt) {
             js: {
                 files: [
                     '<%= assets.scripts %>/**/*.js',
-                    '!<%= assets.scripts %>/**/*min.js'
+                    '!<%= assets.scripts %>/**/*min.js',
                 ],
                 tasks: [
                     'jshint',
@@ -83,6 +84,15 @@ module.exports = function (grunt) {
                     'modernizr:dist',
                     'autoprefixer',
                     'cmq'
+                ],
+                spawn: true
+            },
+            templates: {
+                files: [
+                    '<%= assets.templates %>/**/*.jade'
+                ],
+                tasks: [
+                    'jade:dist'
                 ],
                 spawn: true
             }
@@ -154,6 +164,27 @@ module.exports = function (grunt) {
                     'cp -Rf <%= assets.email_source %>/images/ <%= assets.email_public %>/images/',
                     'cp <%= assets.email_source %>/stylesheets/styles.css <%= assets.email_public %>/styles.css'
                 ].join(' && ')
+            }
+        }
+    });
+
+    // Jade
+    ext.configure({
+        jade: {
+            dist: {
+                options: {
+                    pretty: true
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.templates %>/jade/',
+                        src: '**/*.jade',
+                        dest: '<%= assets.templates %>',
+                        ext: '.html',
+                        extDot: 'last'
+                    },
+                ],
             }
         }
     });
@@ -323,6 +354,7 @@ module.exports = function (grunt) {
         //'shell:build_email',
         'webfont',
         'sass:development',
+        'jade:dist',
         'autoprefixer',
         'cmq:combine',
         'jshint',
@@ -337,6 +369,7 @@ module.exports = function (grunt) {
         //'shell:build_email',
         'webfont',
         'sass:production',
+        'jade:dist',
         'autoprefixer',
         'cmq:combine',
         'cssmin',
