@@ -4,6 +4,43 @@
  * Helpers that relate directly to the settings files
  */
 
+/**
+ * Reusable functions
+ */
+
+    // Getter/setter for maps
+    @function get($map, $key, $index:false){
+        $output:'';
+        @if (map_has_key($map,$key)){
+            // If map has multi-value objects
+            @if ($index){
+                $output: nth(map-get($map,$key),$index);
+            }
+            // If map is simple
+            @else{
+                $output: map-get($map,$key);
+            }
+            @return $output;
+        }
+        @else{
+            @warn '#{$key} is not a valid value';
+            @return false;
+        }
+    }
+
+    // Aliases for common map calls
+    @function fontsize($size){
+        $size: get($font-sizes,$size);
+        @return $size;
+    }
+    @function fontfamily($family){
+        $family: get($font-famillies,$family);
+        @return $family;
+    }
+    @function color($color){
+        $color: get($colors,$color,1);
+        @return $color;
+    }
 
 /**
  * Responsive breakpoints
@@ -11,81 +48,81 @@
 
     // Retrieve  breakpoint type
     @function get-breakpoint-value($point, $type, $index, $convertValue: true) {
-      $values: map-get($breakpoints, $point);
-      $convertValue: $convertValue;
-      $items: ();
-      @if $type == 'orientation' {
-        $items: nth($values, 3);
-        $convertValue: false;
-      }
-      @else if $type == 'height' {
-        $items: nth($values, 2);
-      }
-      @else if $type == 'width' {
-        $items: nth($values, 1);
-      }
-      @if length($items) >= $index {
-        $value: nth($items, $index);
-        @if $value {
-          @if $convertValue {
-            @return pxem(nth($items, $index));
-          }
-          @else {
-            @return nth($items, $index);
-          }
+        $values: get($breakpoints, $point);
+        $convertValue: $convertValue;
+        $items: ();
+        @if $type == 'orientation' {
+            $items: nth($values, 3);
+            $convertValue: false;
         }
-      }
-      @return false;
+        @else if $type == 'height' {
+            $items: nth($values, 2);
+        }
+        @else if $type == 'width' {
+            $items: nth($values, 1);
+        }
+        @if length($items) >= $index {
+            $value: nth($items, $index);
+            @if $value {
+                @if $convertValue {
+                    @return pxem(nth($items, $index));
+                }
+                @else {
+                    @return nth($items, $index);
+                }
+            }
+        }
+        @return false;
     }
 
     // Convert pixel breakpoint value to em
     @function pxem($target){
-      @return ($target / 16)#{'em'};
+        @return ($target / 16)#{'em'};
     }
 
     // Get min-width breakpoint value
     @function minw($point) {
-      $value: get-breakpoint-value($point, 'width', 1);
-      @if $value {
-        @return 'and (min-width: ' + $value + ')';
-      }
-      @return '';
+        $value: get-breakpoint-value($point, 'width', 1);
+            @if $value {
+                @return 'and (min-width: ' + $value + ')';
+            }
+        @return '';
     }
 
     // Get max-width breakpoint value
     @function maxw($point) {
-      $value: get-breakpoint-value($point, 'width', 2);
-      @if $value {
-        @return 'and (max-width: ' + $value + ')';
-      }
-      @return '';
+        $value: get-breakpoint-value($point, 'width', 2);
+            @if $value {
+                @return 'and (max-width: ' + $value + ')';
+            }
+        @return '';
     }
 
     // Get min-height breakpoint value
     @function minh($point) {
-      $value: get-breakpoint-value($point, 'height', 1);
-      @if $value {
-        @return 'and (min-height: ' + $value + ')';
-      }
-      @return '';
+        $value: get-breakpoint-value($point, 'height', 1);
+            @if $value {
+                @return 'and (min-height: ' + $value + ')';
+            }
+        @return '';
     }
 
     // Get max-height breakpoint value
     @function maxh($point) {
-      $value: get-breakpoint-value($point, 'height', 2);
-      @if $value {
-        @return 'and (max-height: ' + $value + ')';
-      }
-      @return '';
+        $value: get-breakpoint-value($point, 'height', 2);
+            @if $value {
+                @return 'and (max-height: ' + $value + ')';
+            }
+        @return '';
     }
 
     // Get orientation breakpoint value
     @function orientation($point) {
-      $value: get-breakpoint-value($point, 'orientation', 1);
-      @if $value {
-        @return 'and (orientation: ' + $value + ')';
-      }
-      @return '';
+        $value: get-breakpoint-value($point, 'orientation', 1);
+            @if $value {
+                @return 'and (orientation: ' + $value + ')';
+            }
+        @return '';
     }
 
     // Build the media query
@@ -114,20 +151,3 @@
       }
     }
 
-/**
- * Typography
- */
-
-    @function fontsize($size){
-        @return map-get($font-sizes,$size);
-    }
-    @function fontfamily($family){
-        @return map-get($font-famillies,$family);
-    }
-
-/**
- * Colours
- */
-    @function color($color){
-        @return map-get($colors,$color);
-    }
