@@ -9,7 +9,7 @@
  */
 
     // Getter/setter for maps
-    @function get($map, $key, $index:false){
+    @function get($map, $key, $index:false, $strict: true){
         $output:'';
         @if (map_has_key($map,$key)){
             // If map has multi-value objects
@@ -23,8 +23,13 @@
             @return $output;
         }
         @else{
-            @warn '#{$key} is not a valid value';
-            @return false;
+            @if $strict{
+                @warn '#{$key} is not a valid value';
+                @return false;
+            }
+            @else{
+                @return $key;
+            }
         }
     }
 
