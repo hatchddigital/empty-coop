@@ -7,10 +7,13 @@
  */
 	body{
         color:color(default);
-        font-size:(100/16)*$fontsize-base#{'%'};
-        line-height:1.5em;
-        font-family:fontfamily(default);
-	}
+        @include font(
+            ((100/16)*$fontsize-base#{'%'}),
+            1.5em,
+            default,
+            400
+        );
+    }
     p,li,dt,dd,input,textarea,button{
         line-height:1.5em;
     }
@@ -18,26 +21,24 @@
 /**
  * Headings
  */
-    h1,h2,h3,h4,h5,h6{
+    $headings:(
+      h1: fontsize(jumbo),
+      h2: fontsize(large),
+      h3: fontsize(emphasized),
+      h4: fontsize(default),
+      h5: fontsize(default),
+      h6: fontsize(default)
+    );
+    #{map-keys( $headings )}{
+        @include font(false,1.3em,default);
         margin:1em 0 .5em;
-        line-height:1.5em;
-        font-weight:normal;
-        @at-root{
-            h1{
-                font-size:fontsize(jumbo);
-            }
-            h2{
-                font-size:fontsize(large);
-            }
-            h3{
-                font-size:fontsize(emphasized);
-            }
-            h4,
-            h5,
-            h6{
-                font-size:fontsize(default);
-            }
+      @at-root{
+        @each $headinglevel, $headingsize in ($headings){
+          #{$headinglevel}{
+            @include font($headingsize);
+          }
         }
+      }
     }
 
 /**
