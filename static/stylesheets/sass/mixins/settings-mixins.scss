@@ -22,6 +22,9 @@
             }
             @return $output;
         }
+        @else if ($key == false){
+            @return $key;
+        }
         @else{
             @if $strict{
                 @warn '#{$key} is not a valid value';
