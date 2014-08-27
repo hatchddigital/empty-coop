@@ -196,7 +196,6 @@ module.exports = function (grunt) {
                 options: {
                     style: 'expanded',
                     debugInfo: false,
-                    sourcemap: true,
                     noCache: true
                 },
                 files: [
@@ -214,7 +213,6 @@ module.exports = function (grunt) {
                 options: {
                     style: 'compressed',
                     debugInfo: false,
-                    sourcemap: false,
                     noCache: true
                 },
                 files: [
