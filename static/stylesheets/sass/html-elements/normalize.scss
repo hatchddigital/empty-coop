@@ -290,6 +290,17 @@
         }
 
     /**
+     * Stops iOS safari to zoom in on focus
+     */
+        input,
+        textarea,
+        select{
+            .touch &{
+                font-size:16px !important; //
+            }
+        }
+
+    /**
      * Address Firefox 4+ setting `line-height` on `input` using `!important` in
      * the UA stylesheet.
      */
