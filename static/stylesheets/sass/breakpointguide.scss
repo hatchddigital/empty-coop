@@ -6,6 +6,7 @@
 
 $mq-support:true;
 @import 'config/settings';
+@import 'mixins/breakpoint';
 
 $bpguide:(
     bg:#fff,
@@ -35,15 +36,7 @@ $bpguide:(
         list-style: none;
     }
     &-value{
-        display: none;
         padding:.5em 1em;
-        &-label,
-        &-data{
-            display: block;
-        }
-        &-data{
-            font-weight: bold;
-        }
     }
     $counter: 0;
     @each $key,$value in $breakpoints{
@@ -55,50 +48,9 @@ $bpguide:(
                     content:'#{$key}';
                 }
             }
-            @if nth($value,1) != (){
-                @if nth(nth($value,1),1){
-                    &-value--minw{
-                        display: inline-block;
-                        .breakpointguide-value-data:before{
-                            content:'#{get-breakpoint-value($key, 'width', 1, false)}';
-                        }
-                    }
-                }
-                @if nth(nth($value,1),2){
-                    &-value--maxw{
-                        display: inline-block;
-                        .breakpointguide-value-data:before{
-                            content:'#{get-breakpoint-value($key, 'width', 2, false)}';
-                        }
-                    }
-                }
-            }
-            @if nth($value,2) != (){
-                @if nth(nth($value,2),1){
-                    &-value--minh{
-                        display: inline-block;
-                        .breakpointguide-value-data:before{
-                            content:'#{get-breakpoint-value($key, 'height', 1, false)}';
-                        }
-                    }
-                }
-                @if nth(nth($value,2),2){
-                    &-value--maxh{
-                        display: inline-block;
-                        .breakpointguide-value-data:before{
-                            content:'#{get-breakpoint-value($key, 'height', 2, false)}';
-                        }
-                    }
-                }
-            }
-            @if nth($value,3) != (){
-                &-value--orientation{
-                    display: inline-block;
-                }
-                &-value--orientation{
-                    .breakpointguide-value-data:before{
-                        content:'#{get-breakpoint-value($key, 'orientation', 1, false)}';
-                    }
+            &-value{
+                &:before{
+                    content:'ewfwefew';
                 }
             }
         }

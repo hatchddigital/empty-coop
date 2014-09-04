@@ -17,10 +17,9 @@
      * the default for IE8 and below
      */
         $static-breakpoints:
-            grizzlybear,
-            papabear,
-            mamabear,
-            babybear
+            grain,
+            pebble,
+            rock
         ;
 
     /**
@@ -29,11 +28,19 @@
      * name: width(min,max) height(min,max) orientation(portrait|landscape)
      */
         $breakpoints:(
-            grizzlybear:(1800,false) () (),
-            papabear:(1200,false) () (),
-            mamabear:(800,false) () (),
-            babybear:(601,false) () (),
-            tinybear:(false,600) () ()
+            grain:(
+               min-width: 300px
+            ),
+            pebble:(
+                min-width: 500px
+            ),
+            rock:(
+                min-width: 800px
+            ),
+            eagleeyes:(
+                -webkit-min-device-pixel-ratio: 2,
+                min-resolution: 192dpi
+            )
         );
 
 /**

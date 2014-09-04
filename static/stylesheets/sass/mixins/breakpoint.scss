@@ -1,0 +1,44 @@
+/**
+* A simpler breakpoint mixin:
+* This mixin forces a more declarative way of writing out
+* each query which can be parsed as written,
+* allowing for more varied query types
+*/
+
+// Set a function to convert
+// pixel values to em
+// (only used for values suffixed with 'px')
+@function pxem($point){
+    $unitlesspoint: $point / ($point * 0 + 1);
+    $convpoint: ($unitlesspoint / 100 * 16)#{em};
+    @return $convpoint;
+}
+
+// Process a breakpoint, and return a
+// valid media query
+@function process($point){
+    $point: map-get($breakpoints,$point);
+    $querystr: '';
+    @each $name, $value in $point{
+        @if (unit($value) == 'px'){
+            $value: pxem($value);
+        }
+        $querystr: $querystr + 'and(' + $name + ':' + $value + ') ';
+    }
+    @return $querystr;
+}
+
+// Define breakpoint mixin.
+// For browsers that don't support media queries,
+// styles will be returned as normal
+// (ie: not wrapped in a media query)
+@mixin breakpoint($point){
+    @if ($mq-support == true){
+      @media screen #{process($point)}{
+         @content
+      }
+    }
+    @else if index($static-breakpoints,$point){
+        @content
+    }
+}
