@@ -28,6 +28,22 @@
     @return $querystr;
 }
 
+// Helper to return the content
+// of a point, outside of a media query
+@function checkpoint($point){
+    $point: map-get($breakpoints,$point);
+    $pointstring: '';
+    $i: 1;
+    @each $subpoint in $point{
+        $pointstring: $pointstring + $subpoint;
+        @if ( $i < length($point) ){
+            $pointstring: $pointstring + ', ';
+        }
+        $i: $i + 1;
+    }
+    @return $pointstring;
+}
+
 // Define breakpoint mixin.
 // For browsers that don't support media queries,
 // styles will be returned as normal

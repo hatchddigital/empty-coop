@@ -25,7 +25,6 @@ $bpguide:(
     &-label{
         display: block;
         padding:.5em 1em;
-        background:map-get($bpguide,label);
         text-shadow: 0 1px 0 fade-out(black,.8);
         color:white;
         font-weight: bold;
@@ -50,7 +49,7 @@ $bpguide:(
             }
             &-value{
                 &:before{
-                    content:'#{$value}';
+                    content:checkpoint($key);
                 }
             }
         }
