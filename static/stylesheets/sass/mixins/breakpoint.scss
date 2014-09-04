@@ -10,7 +10,7 @@
 // (only used for values suffixed with 'px')
 @function pxem($point){
     $unitlesspoint: $point / ($point * 0 + 1);
-    $convpoint: ($unitlesspoint / 100 * 16)#{em};
+    $convpoint: ($unitlesspoint / 16)#{em};
     @return $convpoint;
 }
 

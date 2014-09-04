@@ -19,5 +19,4 @@ define(['jquery'], function ($) {
     }
     breakpointguide();
 
-
 });

@@ -50,7 +50,7 @@ $bpguide:(
             }
             &-value{
                 &:before{
-                    content:'ewfwefew';
+                    content:'#{$value}';
                 }
             }
         }
