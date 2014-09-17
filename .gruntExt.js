@@ -34,8 +34,8 @@ function configure(source) {
 }
 
 /* Register a deferred set of tasks */
-function registerTask(name, subtasks) {
-  tasks.push({ name: name, tasks: subtasks });
+function registerTask(name, subtasks, override, newname) {
+  tasks.push({ name: name, tasks: subtasks, override: override, newname: newname });
 }
 
 /* Setup local configure variable and import packages, load tasks */
@@ -53,6 +53,14 @@ function initConfig(grunt) {
   // Register all the deferred tasks
   for (var i = 0; i < tasks.length; ++i) {
     var task = tasks[i];
+
+    // Rename previous task if any
+    if (task.override && task.newname) {
+        trace('  Rename task: ' + task.override + ' -> ' + task.newname);
+        grunt.task.renameTask(task.override, task.newname);
+    }
+
+    // Register this task
     trace('  Register task: ' + task.name + ' -> ' + task.tasks);
     grunt.registerTask(task.name, task.tasks);
   }

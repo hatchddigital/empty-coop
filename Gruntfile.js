@@ -57,7 +57,7 @@ module.exports = function (grunt) {
 
     // Common tasks
     ext.configure({
-        watch: {
+        watcher: {
             options: {
                 atBegin: true
             },
@@ -338,6 +338,19 @@ module.exports = function (grunt) {
             }
         }
     });
+
+    // Local dev
+    ext.configure({
+        connect: {
+            dev: {
+                options: {
+                    port: 3000,
+                    base: 'static',
+                }
+            }
+        }
+    });
+    ext.registerTask('watch', ['connect', 'watcher'], 'watch', 'watcher');
 
     // build icon set
     ext.registerTask('eggbox', [
