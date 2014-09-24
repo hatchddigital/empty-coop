@@ -336,6 +336,22 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        svgmin: {
+            options: {
+                plugins: [
+                    {
+                        removeViewBox: false
+                    }, {
+                        removeUselessStrokeAndFill: false
+                    }
+                ]
+            },
+            dist: {
+                files: {
+                    '<%= assets.images %>/image.svg': '<%= assets.images %>/image.svg'
+                }
+            }
         }
     });
 
@@ -386,7 +402,8 @@ module.exports = function (grunt) {
         'cssmin',
         'requirejs',
         'modernizr:dist',
-        'imagemin:production'
+        'imagemin:production',
+        'svgmin:dist'
     ]);
 
     // Load grunt configuration
