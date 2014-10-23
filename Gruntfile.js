@@ -57,7 +57,7 @@ module.exports = function (grunt) {
 
     // Common tasks
     ext.configure({
-        watch: {
+        watcher: {
             options: {
                 atBegin: true
             },
@@ -130,7 +130,7 @@ module.exports = function (grunt) {
                     font: 'eggbox',
                     icon: 'eggbox',
                     relativeFontPath: '../fonts/eggbox',
-                    template: '../eggbox/templates/eggbox.css',
+                    template: '<%= eggbox.root %>/templates/eggbox.css',
                     htmlDemoTemplate: '<%= eggbox.root %>/templates/your-eggbox.html',
                     destHtml: '<%= assets.fonts %>/eggbox',
                     stylesheet: 'scss',
@@ -336,8 +336,37 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        svgmin: {
+            options: {
+                plugins: [
+                    {
+                        removeViewBox: false
+                    }, {
+                        removeUselessStrokeAndFill: false
+                    }
+                ]
+            },
+            dist: {
+                files: {
+                    '<%= assets.images %>/image.svg': '<%= assets.images %>/image.svg'
+                }
+            }
         }
     });
+
+    // Local dev
+    ext.configure({
+        connect: {
+            dev: {
+                options: {
+                    port: 3000,
+                    base: 'static',
+                }
+            }
+        }
+    });
+    ext.registerTask('watch', ['connect', 'watcher'], 'watch', 'watcher');
 
     // build icon set
     ext.registerTask('eggbox', [
@@ -373,7 +402,8 @@ module.exports = function (grunt) {
         'cssmin',
         'requirejs',
         'modernizr:dist',
-        'imagemin:production'
+        'imagemin:production',
+        'svgmin:dist'
     ]);
 
     // Load grunt configuration
