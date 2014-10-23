@@ -1,60 +1,63 @@
 /**
-* A simpler breakpoint mixin:
-* This mixin forces a more declarative way of writing out
-* each query which can be parsed as written,
-* allowing for more varied query types
-*/
+ * Breakpoint functions
+ */
 
 // Set a function to convert
 // pixel values to em
 // (only used for values suffixed with 'px')
 @function pxem($point){
-    $unitlesspoint: $point / ($point * 0 + 1);
-    $convpoint: ($unitlesspoint / 16)#{em};
-    @return $convpoint;
+  $unitlesspoint: $point / ($point * 0 + 1);
+  $convpoint: ($unitlesspoint / 16)#{em};
+  @return $convpoint;
 }
 
 // Process a breakpoint, and return a
 // valid media query
-@function process($point){
-    $point: map-get($breakpoints,$point);
-    $querystr: '';
-    @each $name, $value in $point{
-        @if (unit($value) == 'px'){
-            $value: pxem($value);
-        }
-        $querystr: $querystr + 'and(' + $name + ':' + $value + ') ';
+@function process($point,$map: $breakpoints){
+  $point: map-get($map,$point);
+  $querystr: '';
+  @each $name, $value in $point{
+    @if $name != nomq{
+      @if (unit($value) == 'px'){
+        $value: pxem($value);
+      }
+      $querystr: $querystr + 'and(' + $name + ':' + $value + ') ';
     }
-    @return $querystr;
+  }
+  @return $querystr;
 }
 
-// Helper to return the content
-// of a point, outside of a media query
-@function checkpoint($point){
-    $point: map-get($breakpoints,$point);
-    $pointstring: '';
-    $i: 1;
-    @each $subpoint in $point{
-        $pointstring: $pointstring + $subpoint;
-        @if ( $i < length($point) ){
-            $pointstring: $pointstring + ', ';
-        }
-        $i: $i + 1;
+// Check if breakpoint has
+// been given the ok to be used for
+// browsers that don't support media queries
+@function usenomq($point,$map: $breakpoints){
+  $point: map-get($map,$point);
+  $usage: '';
+  @each $name, $value in $point{
+    @if ($name == nomq){
+        $usage: $value;
     }
-    @return $pointstring;
+  }
+  @return $usage;
 }
 
 // Define breakpoint mixin.
 // For browsers that don't support media queries,
-// styles will be returned as normal
+// set $mqsupport to false, and styles will be returned as normal
 // (ie: not wrapped in a media query)
 @mixin breakpoint($point){
-    @if ($mq-support == true){
-      @media screen #{process($point)}{
-         @content
-      }
+  // Set media query support to true
+  // as default. This is restated at the head of
+  // all master sass files that call manifest.scss
+  $mqsupport: true !default;
+  @if ($mqsupport == true){
+    @media screen #{process($point)}{
+       @content
     }
-    @else if index($static-breakpoints,$point){
+  }
+  @else{
+    @if (usenomq($point) == true) {
         @content
     }
+  }
 }

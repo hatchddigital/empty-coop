@@ -10,38 +10,30 @@
 
 /**
  * Responsive breakpoints
+ *
+ * Set breakpoints as a multi-dimensional map
+ * By default, function assumes breakpoint map
+ * is called $breakpoints
  */
-
-    /**
-     * Define which breakpoint(s) will be
-     * the default for IE8 and below
-     */
-        $static-breakpoints:
-            grain,
-            pebble,
-            rock
-        ;
-
-    /**
-     * Define breakpoints
-     * @usage:
-     * name: width(min,max) height(min,max) orientation(portrait|landscape)
-     */
-        $breakpoints:(
-            grain:(
-               min-width: 300px
-            ),
-            pebble:(
-                min-width: 500px
-            ),
-            rock:(
-                min-width: 800px
-            ),
-            eagleeyes:(
-                -webkit-min-device-pixel-ratio: 2,
-                min-resolution: 192dpi
-            )
-        );
+    $breakpoints:(
+      grain:(
+        min-width: 200px,
+        nomq: true
+      ),
+      pebble:(
+        min-width: 300px,
+        nomq: true
+      ),
+      mountain:(
+        min-width: 800px,
+        nomq: true
+      ),
+      eagleeyes:(
+        -webkit-min-device-pixel-ratio: 2,
+        min-resolution: 192dpi,
+        nomq: false
+      )
+    );
 
 /**
  * Eggbox:
