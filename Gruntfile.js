@@ -331,7 +331,10 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= assets.images %>',
-                        src: ['**/*.{png,jpg,gif}'],
+                        src: [
+                            '**/*.{png,jpg,gif}',
+                            '!eggbox/*'
+                        ],
                         dest: '<%= assets.images %>'
                     }
                 ]
