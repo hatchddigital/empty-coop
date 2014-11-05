@@ -13,13 +13,15 @@
 
 // Process a breakpoint, and return a
 // valid media query
-@function process($point,$map: $breakpoints){
+@function process($point, $convertem:true, $map:$breakpoints){
   $point: map-get($map,$point);
   $querystr: '';
   @each $name, $value in $point{
     @if $name != nomq{
       @if (unit($value) == 'px'){
-        $value: pxem($value);
+        @if ($convertem != false){
+          $value: pxem($value);
+        }
       }
       $querystr: $querystr + 'and(' + $name + ':' + $value + ') ';
     }
@@ -39,6 +41,22 @@
     }
   }
   @return $usage;
+}
+
+// Function to pass breakpoints to an
+// element for use by JS, using the css content attr
+@function pointlist($map){
+  $newpoint:'';
+  $i: 1;
+  @each $point, $value in $map{
+    // We use double quotes here in the key name because cssmin strips one
+    $newpoint: $newpoint + '""' + $point + '"": ' + '"' + process($point) + '"';
+    @if $i < length($map){
+      $newpoint: $newpoint + ',';
+    }
+    $i: $i + 1;
+  }
+  @return '{' + $newpoint + '}';
 }
 
 // Define breakpoint mixin.

@@ -4,7 +4,7 @@
  * when a breakpoint is triggered
  */
 
-$mq-support:true;
+$mqsupport:true;
 @import 'config/settings';
 @import 'mixins/breakpoint';
 
@@ -14,6 +14,19 @@ $bpguide:(
     label:#EF4034
 );
 
+// Custom function to process a
+// breakpoint expecially for the map
+@function processforguide($point, $map:$breakpoints){
+  $point: map-get($map,$point);
+  $querystr: '';
+  @each $name, $value in $point{
+    @if $name != nomq{
+      $querystr: $querystr + $name + ': ' + $value;
+    }
+  }
+  @return $querystr;
+}
+
 .breakpointguide{
     position: fixed;
     bottom: 0;
@@ -22,20 +35,19 @@ $bpguide:(
     background:map-get($bpguide,bg);
     color:map-get($bpguide,text);
     font:normal normal 12px/1.5em sans-serif;
-    &-label{
+    &-label,
+    &-value{
         display: block;
-        padding:.5em 1em;
+        padding: .5em 1em;
+    }
+    &-label{
+        background:map-get($bpguide,label);
         text-shadow: 0 1px 0 fade-out(black,.8);
         color:white;
-        font-weight: bold;
         text-transform: uppercase;
     }
-    &-values{
-        margin: 0;
-        list-style: none;
-    }
     &-value{
-        padding:.5em 1em;
+        font-weight: bold;
     }
     $counter: 0;
     @each $key,$value in $breakpoints{
@@ -49,7 +61,7 @@ $bpguide:(
             }
             &-value{
                 &:before{
-                    content:checkpoint($key);
+                    content:'#{processforguide($key)}';
                 }
             }
         }
