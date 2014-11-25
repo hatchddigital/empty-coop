@@ -49,3 +49,9 @@
         $color: get($colors,$color,1);
         @return $color;
     }
+
+    // Generate a percentage font size
+    @function fontbase($size){
+        $base: (100/16 * $size + '%');
+        @return unquote($base);
+    }

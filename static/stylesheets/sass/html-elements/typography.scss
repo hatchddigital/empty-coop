@@ -6,13 +6,13 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-        color:color(default);
         @include font(
-            ((100/16)*$fontsize-base#{'%'}),
+            #{fontbase(14)},
             1.5em,
             default,
             400
         );
+        color:color(default);
     }
     p,li,dt,dd,input,textarea,button{
         line-height:1.5em;
