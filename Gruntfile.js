@@ -179,7 +179,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= assets.templates %>/jade/',
-                        src: '**/*.jade',
+                        src: '*.jade',
                         dest: '<%= assets.templates %>',
                         ext: '.html',
                         extDot: 'last'

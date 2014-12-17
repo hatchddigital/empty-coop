@@ -1,3 +1,5 @@
+include ../config/settings
+
 block vars
     -var viewclass = 'default';
 
@@ -36,6 +38,7 @@ head
     meta(property='og:site_name', content='')
     meta(property='og:description', content='')
 body(class="#{viewclass}")
+    include ../partials/header
     block pagecontent
     //- JavaScript libraries and UX based code
     script(data-main='../scripts/app', src='../libs/requirejs/require.js')
