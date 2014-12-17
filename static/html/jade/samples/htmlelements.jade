@@ -1,0 +1,92 @@
+//-
+//- Globals
+//-
+
+//- Text samples
+- var lipsum = 'Lorem ipsum Proident est Excepteur deserunt fugiat Excepteur est non aliquip. Lorem ipsum Ullamco anim minim in ex fugiat Duis velit'
+- var list = ['beans','eggs','potatoes','omlettes']
+
+//- Mixin for setting a section
+mixin elementcat(title)
+    .elementcat
+        h2 #{title}
+        block
+
+//- Mixin for a form group
+mixin formgroup(label)
+    li.field= label
+        label
+        block
+
+//-
+//- Markup
+//-
+    
++elementcat('Paragraphs and links')
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+    p Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu. <a href="http://www.google.com">An external link</a> sit tempor <a href="http://jack.local:3000/html">An internal link.</a> <a href="http://192.168.15.117">Another internal link</a> Lorem ipsum Ut esse cillum sed quis occaecat sunt dolor Ut in pariatur sit.
+
+
++elementcat('Headings')
+    -for heading in ['h2','h3','h4','h5','h6']
+        #{heading} A level #{heading} heading
+
++elementcat('Lists')
+    h3 Definition list
+    dl
+        -for items in list
+            dt Title
+            dd= items
+    h3 Ordered list
+    ol
+        -for items in list
+            li= items
+    h3 Unordered list
+    ul
+        -for items in list
+            li= items
+
++elementcat('Images')
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud
+    img.set-center(src="http://www.abc.net.au/catalyst/stories/img/CheatingChickens_large.jpg")
+    p Ut esse adipisicing Duis sit tempor incididunt mollit sed. Lorem ipsum Ut esse cillum sed quis occaecat sunt dolor Ut in pariatur sit.
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+    img.set-left(src="http://www.abc.net.au/catalyst/stories/img/CheatingChickens_large.jpg")
+    p Lorem ipsum Ut esse adipisicing Duis sit tempor incididunt mollit sed. Lorem ipsum Ut esse cillum sed quis occaecat sunt dolor Ut in pariatur sit.
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+    img.set-right(src="http://www.abc.net.au/catalyst/stories/img/CheatingChickens_large.jpg")
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+    p Lorem ipsum Ut esse adipisicing Duis sit tempor incididunt mollit sed. Lorem ipsum Ut esse cillum sed quis occaecat sunt dolor Ut in pariatur sit.
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+    p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
+
++elementcat('Quotes')
+    h3 A short quote
+    blockquote
+        p Shoving feathers up your butt does not make you a chicken
+        footer: p Brad pitt
+    h3 A longer quote
+    blockquote
+        p Say everyone's talking 'bout chicken. Chicken's a popular word. But anywhere you go you're bound to find, a chicken ain't nothin' but a bird.
+        footer: p Cab Calloway
+    h3 An inline quote
+    p
+        | To quote Marty from Back to the Future:
+        q Nobody calls me Chicken Needles, Nobody!
+
++elementcat("Tables")
+    table
+        thead: tr
+            -for items in list
+                th Title
+        tfoot: tr
+            -for items in list
+                td= items
+        tbody: tr
+            -for items in list
+                td= items
+
+
+
+
