@@ -45,6 +45,7 @@
     $eggbox-col--default:"000000";
     $eggbox-col--white:"ffffff";
 
+
 /**
  * Font sizes
  * @usage: fontsize($size);
@@ -58,20 +59,44 @@
         small: 75em
     );
 
-
 /**
  * Font famillies
  * @usage: fontfamily($family)
  */
+    // Basic
     $sans:sans-serif;
     $serif:serif;
     $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
     "Lucida Typewriter", monospace;
 
+    // Brand
+    $stagsanslight: 'Stag Sans Light';
+    $europegold: 'Europe gold';
+
+    // Tie to usage
     $font-famillies: (
         default: $sans,
         pageheading: $sans,
         smallprint: $sans
+    );
+
+
+/**
+ * Generate @font-face
+ * rules for brand fonts
+ */
+    $fonts:(
+        $stagsanslight:(
+            svgfamilyname: 'Stag Sans Web',
+            filename: 'stagsans-light-web',
+            location: '../fonts/stag',
+            filetypes: eot woff ttf svg
+        ),
+        $europegold:(
+            filename: 'stagsans-light-web',
+            location: '../fonts/stag',
+            filetypes: woff ttf
+        )
     );
 
 /**

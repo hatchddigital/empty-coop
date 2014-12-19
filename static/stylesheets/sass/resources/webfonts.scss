@@ -4,5 +4,8 @@
  * Reference webfonts with an @font-face rule
  */
 
+@each $font,$props in $fonts{
+  @include fontface($font, $props...);
+}
 
 

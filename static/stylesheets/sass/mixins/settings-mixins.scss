@@ -55,3 +55,15 @@
         $base: (100/16 * $size + '%');
         @return unquote($base);
     }
+
+    // Generic list contains function
+    // @src: https://github.com/sass/sass/issues/543
+    @function contains($list,$var) {
+        $contains: false;
+        @each $item in $list {
+          @if $item == $var {
+            $contains: true; 
+          } 
+        }
+        @return $contains;
+    }
