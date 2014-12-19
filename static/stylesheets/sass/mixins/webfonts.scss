@@ -1,0 +1,71 @@
+/**
+ * Webfonts mixin
+ */
+
+@function fontsrc($svgfamilyname,$filename,$location,$filetypes){
+  
+  // Make a few starting vars
+  $typestring:'';
+  $format:'';
+  $i: 1;
+  $l: length($filetypes);
+  
+  // Loop through the $filetypes string
+  // and make the file urls
+  @each $type in $filetypes{
+    
+    // Generate format vars for each filetype
+    @if ($type == 'eot'){
+      $format: 'embedded-opentype';
+    }@else if($type == 'ttf'){
+      $format: 'truetype';
+    }@else{
+      $format: $type;
+    }
+    
+    // If multiple filetypes are passed add iefix part to url
+    // If only one is passed, assume it is the seperate eot file src
+    @if ($l > 1){
+      @if ($type == 'eot'){
+        $type: $type + '?#iefix';
+      }
+    }
+    
+    // If svg filetype is passed,
+    // Add svg family name to type string
+    @if ($type == 'svg'){
+      $type: $type + '#' + $svgfamilyname;
+    }
+    
+    // Geberate the url string
+    $typestring: $typestring + 'url("#{$location}/#{$filename}.' + $type + '")';
+    
+    // If multiple filetypes are passed add format to each url
+    @if ($l > 1){
+      $typestring: $typestring + ' format("' + $format + '")'
+    }
+    
+    // Comma seperate each url
+    @if($i < $l){
+      $typestring: $typestring + ',';
+    }
+    
+    // add to the iteration variable
+    $i: $i + 1;
+  }
+  
+  // Return the string(s)
+  @return unquote($typestring);
+  
+}
+
+@mixin fontface($familyname, $svgfamilyname: false, $filename: false, $location: false, $filetypes: eot woff ttf svg){
+  $eot: contains($filetypes,eot);
+	@font-face{
+	  font-family: $familyname;
+	  @if ($eot != false){
+	    src: fontsrc($svgfamilyname,$filename,$location,eot);
+	  }
+	  src: fontsrc($svgfamilyname,$filename,$location,$filetypes);
+	}
+}
