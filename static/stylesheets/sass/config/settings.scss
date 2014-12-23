@@ -80,33 +80,14 @@
         smallprint: $sans
     );
 
-
-/**
- * Generate @font-face
- * rules for brand fonts
- */
-    $fonts:(
-        $stagsanslight:(
-            svgfamilyname: 'Stag Sans Web',
-            filename: 'stagsans-light-web',
-            location: '../fonts/stag',
-            filetypes: eot woff ttf svg
-        ),
-        $europegold:(
-            filename: 'stagsans-light-web',
-            location: '../fonts/stag',
-            filetypes: woff ttf
-        )
-    );
-
 /**
  * Colours
  * @usage: color($color);
  */
-    $white:#fff;
-    $black:#000;
-    $yellow:#FFFB88;
-    $red:#aa3025;
+    $white: #fff;
+    $black: #000;
+    $yellow: #FFFB88;
+    $red: #aa3025;
 
     $colors: (
         default: $black,
