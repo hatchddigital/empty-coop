@@ -43,43 +43,41 @@
  * Make pure CSS triangles
  * Useful for pointers and tooltips
  */
-    @mixin triangle($dir,$color,$size){
+
+    // Translate desired direction into 
+    // the correct border side
+    @function triangle-getdir($dir){
+      $dirs:(
+        top: bottom,
+        right: left,
+        bottom: top,
+        left: right
+      );
+      @if length($dir) == 1{
+        $dir: map-get($dirs,$dir);
+      }
+      @else{
+        $dir: $dir;
+      }
+      @return $dir;
+    }
+
+    // Put it all together in a mixin
+    @mixin triangle($dir, $color:black, $size:1em){
+        $dir: triangle-getdir($dir);
         content:' ';
         display:block;
         width:0;
         height:0;
         border:$size solid transparent;
-        @if $dir == top{
-            border-bottom-color:$color;
+        // Set borders
+        @each $prop in $dir{
+          border-#{$prop}-color: $color;
         }
-        @else if $dir == right{
-            border-left-color:$color;
-        }
-        @else if $dir == bottom{
-            border-top-color:$color;
-        }
-        @else if $dir == left{
-            border-right-color:$color;
-        }
-        @else if $dir == topright{
-            border-top-color:$color;
-            border-right-color:$color;
-            border-width:$size/1.5;
-        }
-        @else if $dir == bottomright{
-            border-bottom-color:$color;
-            border-right-color:$color;
-            border-width:$size/1.5;
-        }
-        @else if $dir == topleft{
-            border-top-color:$color;
-            border-left-color:$color;
-            border-width:$size/1.5;
-        }
-        @else if $dir == bottomleft{
-            border-bottom-color:$color;
-            border-left-color:$color;
-            border-width:$size/1.5;
+        // If 2 borders are set (eg: top right)
+        // make triangle smaller
+        @if length($dir) > 1{
+          border-width:$size/1.25;
         }
     }
 
