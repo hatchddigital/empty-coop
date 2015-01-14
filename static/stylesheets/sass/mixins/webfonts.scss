@@ -37,7 +37,7 @@
       $type: $type + '#' + $svgfamilyname;
     }
     
-    // Geberate the url string
+    // Generate the url string
     $typestring: $typestring + 'url("#{$location}/#{$filename}.' + $type + '")';
     
     // If multiple filetypes are passed add format to each url

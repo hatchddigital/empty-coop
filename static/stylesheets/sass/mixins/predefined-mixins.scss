@@ -107,3 +107,37 @@
             line-height: $lineheight;
         }
     }
+
+/**
+ * Set position and position values
+ * Set positioning stuff easier 
+ * @args: position [fixed|relative|absolute|static|sticky], coords (optional)* [ tval rval bval lval ]
+ * *coords arguments can be set in any order 
+ */
+
+@mixin pos($value,$coords:false){
+    // Tie shorthand coordinate properties
+    // to valid css ones using a map
+    $fullprops:(
+        t: top,
+        r: right,
+        b: bottom,
+        l: left
+    );
+    // Set position value
+    position: $value;
+    // Set position coordinates
+    @if ($coords != false){
+        @each $group in $coords{
+            // Grab the raw property
+            $rawprop: str-slice($group,0,1);
+            // tie it to it's valid css counterpart
+            $prop: map-get($fullprops,$rawprop);
+            // Grab the value
+            $value: str-slice($group,2);
+            // Set these to make a regular ol'
+            // property-value pair
+            #{$prop}: $value;
+        }
+    }
+}
