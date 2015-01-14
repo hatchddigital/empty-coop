@@ -6,26 +6,22 @@
  */
 
 /**
- * Make an element square
- * Automagically set the same width/height for a block-level element
- *
- * @param size: size in chosen unit
- */
-    @mixin setsquare($size) {
-        width:$size;
-        height:$size;
-    }
-
-/**
- * Set width and height
+ * Set size
  * Automagically set the width/height for a block-level element
  *
- * @param width: width in chosen unit
- * @param height: height in chosen unit
+ * Accepts a list of up to 2 arguments
+ * If 1 argument: Width and height get set to the same value
+ * If 2 arguments: Width uses the first value, Height uses the second value 
  */
-    @mixin setsize($width,$height) {
-        width:$width;
-        height:$height;
+    @mixin setsize($args) {
+        $arglen: length($args);
+        @if($arglen > 1){
+            width: nth($args,1);
+            height: nth($args,2);
+        }@else{
+            width: $args;
+            height: $args;
+        }
     }
 
 /**
@@ -34,8 +30,8 @@
  *
  * @param item-number: number of items to distribute
  */
-    @mixin distribute-items($item-number){
-       width:100 / $item-number#{'%'};
+    @mixin dist($item-number){
+       width: (100 / $item-number)#{'%'};
     }
 
 /**
