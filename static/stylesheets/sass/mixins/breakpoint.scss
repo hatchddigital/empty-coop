@@ -11,11 +11,23 @@
   @return $convpoint;
 }
 
+// Determine whether the $point argument
+// is passed as a string or a map
+@function pointtype($point){
+  $type: type-of($point);
+  @if ($type == string){
+    $point: map-get($breakpoints,$point);
+  }@else{
+    $point: $point;
+  }
+  @return $point;
+}
+
 // Process a breakpoint, and return a
 // valid media query
-@function process($point, $convertem:true, $map:$breakpoints){
-  $point: map-get($map,$point);
+@function process($point, $convertem:true){
   $querystr: '';
+  $point: pointtype($point);
   @each $name, $value in $point{
     @if $name != nomq{
       @if (unit($value) == 'px'){
@@ -32,9 +44,9 @@
 // Check if breakpoint has
 // been given the ok to be used for
 // browsers that don't support media queries
-@function usenomq($point,$map: $breakpoints){
-  $point: map-get($map,$point);
+@function usenomq($point){
   $usage: '';
+  $point: pointtype($point);
   @each $name, $value in $point{
     @if ($name == nomq){
         $usage: $value;
