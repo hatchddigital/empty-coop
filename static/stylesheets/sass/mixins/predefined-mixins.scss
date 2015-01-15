@@ -141,3 +141,45 @@
         }
     }
 }
+
+/**
+* Responsive elem ratio
+* @src: http://www.wmyl.se/en/blog/proportional-scaling-responsive-boxes-using-just-css
+**/
+
+// Convert image ratio to a percentage
+// @src: http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
+@function ratiotopercent($ratio){
+    $ratio-converted: '';
+    // Get width and height
+    $ratio-w: nth($ratio,1);
+    $ratio-h: nth($ratio,2);
+    // Convert ratio to a percentage
+    $ratio-converted: ($ratio-h / $ratio-w) * 100 + '%';
+    @return unquote($ratio-converted);
+}
+
+// Create styles with a mixin
+// $child arg: string, quoted if an & selector is needed
+// $ratio arg: list with 2 items - width height
+@mixin propelem($child,$ratio){
+    $child-pseudo: false;
+    @if ($child == '&:before') or ($child == '&:after'){
+        $child-pseudo: true;
+    }
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: ratiotopercent($ratio);
+    #{$child}{
+        @if $child-pseudo == true{
+            content:' ';
+            display: block;
+        }
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
