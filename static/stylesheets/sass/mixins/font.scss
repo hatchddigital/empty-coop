@@ -1,0 +1,88 @@
+/**
+ * Font mixin
+ */
+
+$font-extras:(
+  style: style-normal italic oblique,
+  variant: variant-normal small-caps initial inherit,
+  weight: weight-normal bold bolder lighter 100 200 300 400 500 600 700 800 900,
+  stretch: stretch-normal ultra-condensed extra-condensed condensed semi-condensed semi-expanded expanded extra-expanded ultra-expanded
+);
+
+// Process additional font properties
+@function font-returnextra($input,$part:property){
+  $output: null;
+  $inputtype: type-of($input);
+  $font-props: map-keys($font-extras);
+  
+  @if ($inputtype == string){
+    // Check if input is dash-seperated
+    $inputsplit: str-index($input,'-');
+    @if ( $inputsplit == null ) {
+      @return font-matchextra($input,$part);
+    }@else{
+      $inputprefix: str-slice($input,0,($inputsplit - 1) );
+      // If the input is prefixed by the property name
+      @if ( contains($font-props,$inputprefix) ){
+          @if ($part == property){
+            $output: 'font-' + str-slice($input,0,($inputsplit - 1));
+          }@else if ($part == value){
+            $output: str-slice($input,($inputsplit + 1));
+          }
+      // If the input has no prefix
+      }@else{
+        $output: font-matchextra($input,$part);
+      }
+    }
+  }@else{
+     $output: font-matchextra($input,$part);
+  }
+  @return $output;
+}
+
+// If they exactly match a value in the $font-extras map,
+// then pair them with the appropriate property
+@function font-matchextra($input,$part:property){
+  $output: null;
+  @if ($part == property){
+    @each $property, $value in $font-extras{
+      @if contains($value,$input) {
+        $output: 'font-' + $property;
+      }
+    }
+  }
+  @else if ($part == value){
+    $output: $input;
+  }
+  @return $output;
+}
+
+// Mixin to return property value pairs
+// @args: size line height (list), family (string), additional values (list)
+@mixin font($sizes,$family:false,$extras:false){
+  
+  // Set size and line-height
+  @if ($sizes != false){
+    @each $arg in $sizes{
+      $i: index($sizes,$arg);
+      @if ($i == 1 and $arg != false){
+        font-size: get($font-sizes,$arg,false,false);
+      }@else if ($i == 2){
+        line-height: $arg;
+      }
+    }
+  }
+  
+  // Set font family
+  @if ($family != false){
+    font-family: get($font-famillies,$family,false,false);
+  }
+  
+  // Set any extra values
+  @each $arg in $extras{
+    @if (font-returnextra($arg) != null){
+      #{font-returnextra($arg,property)}: #{font-returnextra($arg,value)};
+    }
+  }
+  
+}

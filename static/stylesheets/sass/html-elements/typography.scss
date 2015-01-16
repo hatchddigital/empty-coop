@@ -6,12 +6,7 @@
  * Set base font size/line-height and declare the px size of an em unit
  */
 	body{
-        @include font(
-            #{fontbase(14)},
-            1.5em,
-            default,
-            400
-        );
+        @include font(fontbase(14) 1.5em, default, 400);
         color:color(default);
     }
     p,li,dt,dd,input,textarea,button{
@@ -30,7 +25,7 @@
       h6: fontsize(default)
     );
     #{map-keys( $headings )}{
-        @include font(false,1.3em,default);
+        @include font(false 1.3em,default);
         margin:1em 0 .5em;
       @at-root{
         @each $headinglevel, $headingsize in ($headings){

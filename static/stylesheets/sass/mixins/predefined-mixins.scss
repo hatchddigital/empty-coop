@@ -77,36 +77,6 @@
         }
     }
 
-/**
- * Set font properties
- * Set all properties within the font{}
- * namespace, and line-height.
- * Font sizes can be loose, or from the font size map.
- * Font famillies need to be from the font family map.
- */
-    @mixin font(
-        $size: $size,
-        $lineheight: false,
-        $family: false,
-        $weight: false,
-        $style: false)
-    {
-        font:{
-            @each $property,$value in (
-               weight:$weight,
-               style:$style,
-               family:get($font-famillies,$family),
-               size: get($font-sizes, $size, false, false)
-            ){
-                @if $value {
-                    #{$property}: $value;
-                }
-            }
-        };
-        @if $lineheight{
-            line-height: $lineheight;
-        }
-    }
 
 /**
  * Set position and position values
