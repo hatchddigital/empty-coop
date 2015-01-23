@@ -85,7 +85,7 @@
  * *coords arguments can be set in any order 
  */
 
-@mixin pos($value,$coords:false){
+@mixin pos($value,$coords:false,$zindex:false){
     // Tie shorthand coordinate properties
     // to valid css ones using a map
     $fullprops:(
@@ -109,6 +109,10 @@
             // property-value pair
             #{$prop}: $value;
         }
+    }
+    // Set z-index
+    @if ($zindex != false){
+        z-index: $zindex;
     }
 }
 
