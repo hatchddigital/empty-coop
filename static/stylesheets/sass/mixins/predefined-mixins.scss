@@ -81,8 +81,9 @@
 /**
  * Set position and position values
  * Set positioning stuff easier 
- * @args: position [fixed|relative|absolute|static|sticky], coords (optional)* [ tval rval bval lval ]
+ * @args: position [fixed|relative|absolute|static|sticky], coords (optional)* [ tval rval bval lval ]**
  * *coords arguments can be set in any order 
+ * ** percentage units must be quoted (eg: '50%')
  */
 
 @mixin pos($value,$coords:false,$zindex:false){
@@ -107,7 +108,7 @@
             $value: str-slice($group,2);
             // Set these to make a regular ol'
             // property-value pair
-            #{$prop}: $value;
+            #{$prop}: unquote($value);
         }
     }
     // Set z-index
