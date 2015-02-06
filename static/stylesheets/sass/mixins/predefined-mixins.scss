@@ -11,7 +11,7 @@
  *
  * Accepts a list of up to 2 arguments
  * If 1 argument: Width and height get set to the same value
- * If 2 arguments: Width uses the first value, Height uses the second value 
+ * If 2 arguments: Width uses the first value, Height uses the second value
  */
     @mixin setsize($args) {
         $arglen: length($args);
@@ -40,7 +40,7 @@
  * Useful for pointers and tooltips
  */
 
-    // Translate desired direction into 
+    // Translate desired direction into
     // the correct border side
     @function triangle-getdir($dir){
       $dirs:(
@@ -80,13 +80,13 @@
 
 /**
  * Set position and position values
- * Set positioning stuff easier 
+ * Set positioning stuff easier
  * @args: position [fixed|relative|absolute|static|sticky], coords (optional)* [ tval rval bval lval ]**
- * *coords arguments can be set in any order 
+ * *coords arguments can be set in any order
  * ** percentage units must be quoted (eg: '50%')
  */
 
-@mixin pos($value,$coords:false,$zindex:false){
+@mixin pos($value,$coords:false){
     // Tie shorthand coordinate properties
     // to valid css ones using a map
     $fullprops:(
@@ -100,20 +100,23 @@
     // Set position coordinates
     @if ($coords != false){
         @each $group in $coords{
-            // Grab the raw property
-            $rawprop: str-slice($group,0,1);
-            // tie it to it's valid css counterpart
-            $prop: map-get($fullprops,$rawprop);
-            // Grab the value
-            $value: str-slice($group,2);
-            // Set these to make a regular ol'
-            // property-value pair
-            #{$prop}: unquote($value);
+            // If value is string, set as position prop/value pair
+            @if( type-of($group) != number ){
+              // Grab the raw property
+              $rawprop: str-slice($group,0,1);
+              // tie it to it's valid css counterpart
+              $prop: map-get($fullprops,$rawprop);
+              // Grab the value
+              $value: str-slice($group,2);
+              // Set these to make a regular ol'
+              // property-value pair
+              #{$prop}: unquote($value);
+            }
+            // If value is number, set as z-index prop/value pair
+            @else{
+              z-index: $group;
+            }
         }
-    }
-    // Set z-index
-    @if ($zindex != false){
-        z-index: $zindex;
     }
 }
 
