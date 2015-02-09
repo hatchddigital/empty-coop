@@ -81,9 +81,11 @@
 /**
  * Set position and position values
  * Set positioning stuff easier
- * @args: position [fixed|relative|absolute|static|sticky], coords (optional)* [ tval rval bval lval ]**
- * *coords arguments can be set in any order
- * ** percentage units must be quoted (eg: '50%')
+ * $value: String containing valid css position value
+ * $coordinates: Space-seperated list.
+ * - For top/right/bottom/left values: Direction followed by unit. Percentage units must be quoted:
+ * - (eg t20px - top: 20px, or 'b50%' - bottom: 50%)
+ * - For z-index value, a number from 0 upwards, or unquoted string - auto
  */
 
 @mixin pos($value,$coords:false){
