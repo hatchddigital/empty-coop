@@ -100,8 +100,8 @@
     // Set position coordinates
     @if ($coords != false){
         @each $group in $coords{
-            // If value is string, set as position prop/value pair
-            @if( type-of($group) != number ){
+            // If value is string or not 'auto', set as position prop/value pair
+            @if(type-of($group) != number and $group != 'auto'){
               // Grab the raw property
               $rawprop: str-slice($group,0,1);
               // tie it to it's valid css counterpart
@@ -112,7 +112,7 @@
               // property-value pair
               #{$prop}: unquote($value);
             }
-            // If value is number, set as z-index prop/value pair
+            // If value is number or 'auto', set as z-index prop/value pair
             @else{
               z-index: $group;
             }
