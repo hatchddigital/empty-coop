@@ -2,6 +2,10 @@
  * Breakpoint functions
  */
 
+// List any helpers
+// used in the breakpoint map
+$point-helpers: nomq media;
+
 // Set a function to convert
 // pixel values to em
 // (only used for values suffixed with 'px')
@@ -12,10 +16,11 @@
 }
 
 // Determine whether the $point argument
-// is passed as a string or a map
+// is a map. If so, it means a manual
+// breakpoint has been entered
 @function pointtype($point){
   $type: type-of($point);
-  @if ($type == string){
+  @if ($type != 'map'){
     $point: map-get($breakpoints,$point);
   }@else{
     $point: $point;
@@ -25,21 +30,42 @@
 
 // Process a breakpoint, and return a
 // valid media query
-@function process($point, $convertem:true){
+@function process($point, $mediaprefix:false, $convertem:true){
   $querystr: '';
   $point: pointtype($point);
+  $pointlength: length($point);
+  $i: 1;
+  
   @each $name, $value in $point{
-    @if $name != nomq{
+    @if(contains($point-helpers,$name) == true){
+      $pointlength: $pointlength - 1;
+    }
+  }
+  
+  @each $name, $value in $point{
+    // Only process points that contain valid values
+    @if (contains($point-helpers,$name) == false){
       @if (unit($value) == 'px'){
         @if ($convertem != false){
           $value: pxem($value);
         }
       }
-      $querystr: $querystr + 'and(' + $name + ':' + $value + ') ';
+      $querystr: $querystr + '(' + $name + ':' + $value + ')';
+      @if ($i < $pointlength){
+        $querystr: $querystr + ' and ';
+      }
+      $i: $i + 1;
+    }
+    // Add media prefix
+    @if $mediaprefix != false{
+      @if $name == media{
+        $querystr: $value + ' and ' + $querystr;
+      }
     }
   }
   @return $querystr;
 }
+
 
 // Check if breakpoint has
 // been given the ok to be used for
@@ -71,23 +97,80 @@
   @return '{' + $newpoint + '}';
 }
 
-// Define breakpoint mixin.
-// For browsers that don't support media queries,
-// set $mqsupport to false, and styles will be returned as normal
-// (ie: not wrapped in a media query)
-@mixin breakpoint($point){
+// function to construct the full
+// media query string
+@function pointstring($points){
+  $pointstring: '';
+  $pointtype: type-of($points);
+  $mediaprefix: '';
+  $operators:(
+    AND : 'and',
+    OR : ','
+  );
+  $i: 1;
+  
+  @if( $pointtype != 'map'){
+    @each $point in $points{
+      // If an operator, process and convert accordingly
+      @if( map-has-key($operators,$point) == true ){
+        $point: map-get($operators,$point);
+      }
+      // If a regular point, process and convert accordingly
+      @else{
+        // Figure out whether a prefix should be added
+        // Should be if the queey is first in the string,
+        // or if the query is preceeded by an 'OR' operator
+        $mediaprefix: false;
+        @if($i == 1) or ((nth($points,($i - 1))) == OR){
+          $mediaprefix: true;
+        }
+        $point: process($point, $mediaprefix);
+      }
+      $pointstring: $pointstring + $point + ' ';
+      $i: $i + 1;
+    }
+  }
+  @else{
+    $pointstring: process($points,$mediaprefix);
+  }
+  @return $pointstring;
+}
+
+@mixin breakpoint($points){
+  // Find length of the breakpoint
+  $pointlength: length($points);
+  
+  // Get point type
+  $pointtype: type-of($points);
+
   // Set media query support to true
   // as default. This is restated at the head of
   // all master sass files that call manifest.scss
   $mqsupport: true !default;
+  
   @if ($mqsupport == true){
-    @media screen #{process($point)}{
-       @content
+    // If media queries are supported,
+    // output a media query
+    @media #{pointstring($points)}{
+      @content
     }
   }
   @else{
-    @if (usenomq($point) == true) {
+    // If media queries aren't supported,
+    // **and** only one query type has been included,
+    // **and** it has been allowed to be used on browsers
+    // that don't support media queries
+    // **or** if it is a manually entered query
+    // that has been allowed to be used on browsers
+    // that don't support media queries, then
+    // output styles outside of a media query block
+    @if (usenomq($points) == true) {
+      @if $pointtype != 'map' and $pointlength == 1{
         @content
+      }
+      @else{
+        @content
+      }
     }
   }
 }

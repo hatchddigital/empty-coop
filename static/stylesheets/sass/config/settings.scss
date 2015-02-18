@@ -29,11 +29,19 @@
         nomq: true
       ),
       eagleeyes:(
-        -webkit-min-device-pixel-ratio: 2,
+        min-device-pixel-ratio: 2,
         min-resolution: 192dpi,
+        nomq: false
+      ),
+      -webkit-eagleeyes:(
+        -webkit-min-device-pixel-ratio: 2,
+        -webkit-min-resolution: 192dpi,
         nomq: false
       )
     );
+
+    // Define a few combi breakpoints
+    $eagleeyes: eagleeyes OR -webkit-eagleeyes;
 
 /**
  * Eggbox:
