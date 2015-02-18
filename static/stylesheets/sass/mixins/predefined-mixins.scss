@@ -89,6 +89,18 @@
  */
 
 @mixin pos($value,$coords:false){
+
+    // Tie shorthand position properties
+    // to valid ones using a map.
+    // 'sticky' and 'static' have no shortcut,
+    // as they share the same first letter
+    $fullpos:(
+      r: relative,
+      a: absolute,
+      f: fixed,
+      i: inherit
+    );
+    
     // Tie shorthand coordinate properties
     // to valid css ones using a map
     $fullprops:(
@@ -97,8 +109,13 @@
         b: bottom,
         l: left
     );
+
     // Set position value
+    @if (map-has-key($fullpos,$value)){
+      $value: map-get($fullpos,$value);
+    }
     position: $value;
+    
     // Set position coordinates
     @if ($coords != false){
         @each $group in $coords{
@@ -120,6 +137,7 @@
             }
         }
     }
+    
 }
 
 /**
