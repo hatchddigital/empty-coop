@@ -3,7 +3,9 @@
 
 
 /// Automagically set an element's width/height
-/// @param {List | String} $args Width and/or height
+/// @author Jack Armley
+/// @group predefined mixins
+/// @param {List | Number} $args Width and/or height
 @mixin setsize($args) {
   $arglen: length($args);
   @if($arglen > 1){
@@ -16,15 +18,21 @@
 }
 
 /// Automagically set items evenly in a line
+/// @author Jack Armley
+/// @group predefined mixins
 /// @param {Number} $item-number Number from 0-100
 @mixin dist($item-number){
   width: (100 / $item-number)#{'%'};
 }
 
 /// Make pure CSS triangles
-/// @param {List | String} $dir - One or two direction keyword(s): top right bottom left
-/// @param {String} $color - Triangle color. Can be a raw color value or called using color(color) (default: black)
-/// @param {Number} $size - Triangle size. (default: 1em)
+/// @author Jack Armley
+/// @group predefined mixins
+/// @param {List | String} $dir - One or two direction keyword(s): top right
+/// bottom left
+/// @param {String} $color [black] - Triangle color. Can be a raw color value or
+/// called using color(color)
+/// @param {Number} $size [1em] - Triangle size.
 @mixin triangle($dir, $color:black, $size:1em){
     $dir: triangle-getdir($dir);
     content:' ';
@@ -43,8 +51,12 @@
     }
 }
 
-/// Translate desired direction into
-/// the correct border side
+/// Convert desired triangle mixin direction argument
+/// into the correct css border value
+/// @author Jack Armley
+/// @group predefined mixins
+/// @param {List | String} $dir - One or two direction keyword(s): top right
+/// bottom left
 @function triangle-getdir($dir){
   $dirs:(
     top: bottom,
@@ -62,16 +74,29 @@
 }
 
 
-
-/**
- * Set position and position values
- * Set positioning stuff easier
- * $value: String containing valid css position value
- * $coordinates: Space-seperated list.
- * - For top/right/bottom/left values: Direction followed by unit. Percentage units must be quoted:
- * - (eg t20px - top: 20px, or 'b50%' - bottom: 50%)
- * - For z-index value, a number from 0 upwards, or unquoted string - auto
- */
+/// Quickly Set position values
+/// @author Jack Armley
+/// @group predefined mixins
+/// @param {String} $value - A [valid css position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+/// value. Aliases for common values are available:
+/// - r (relative)
+/// - a (absolute)
+/// - f (fixed)
+/// - i (inherit)
+/// @param {String|Number|List} $coords [false] - x/y position values and/or z-index
+/// - **x/y values:** First letter of direction followed by value
+/// (eg: t20px - top:20px). Percentage units must be quoted.
+/// - **z-index:** Number from `0`, or the keyword `auto`
+/// @example
+///     p{
+///         @include pos(r,t20px 'l50%' auto);
+///     }
+///     p{
+///         position: relative;
+///         top: 20px;
+///         left: 50%;
+///         z-index: auto;
+///     }
 
 @mixin pos($value,$coords:false){
 
@@ -85,7 +110,7 @@
       f: fixed,
       i: inherit
     );
-    
+
     // Tie shorthand coordinate properties
     // to valid css ones using a map
     $fullprops:(
@@ -100,7 +125,7 @@
       $value: map-get($fullpos,$value);
     }
     position: $value;
-    
+
     // Set position coordinates
     @if ($coords != false){
         @each $group in $coords{
@@ -122,29 +147,15 @@
             }
         }
     }
-    
+
 }
 
-/**
-* Responsive elem ratio
-* @src: http://www.wmyl.se/en/blog/proportional-scaling-responsive-boxes-using-just-css
-**/
-
-// Convert image ratio to a percentage
-// @src: http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
-@function ratiotopercent($ratio){
-    $ratio-converted: '';
-    // Get width and height
-    $ratio-w: nth($ratio,1);
-    $ratio-h: nth($ratio,2);
-    // Convert ratio to a percentage
-    $ratio-converted: ($ratio-h / $ratio-w) * 100 + '%';
-    @return unquote($ratio-converted);
-}
-
-// Create styles with a mixin
-// $child arg: string, quoted if an & selector is needed
-// $ratio arg: list with 2 items - width height
+/// Make responsive proportionally resizing elements
+/// @author Jack Armley
+/// @group predefined mixins
+/// @link http://www.wmyl.se/en/blog/proportional-scaling-responsive-boxes-using-just-css
+/// @param {String} $child - Child element. Ensure string is quoted if using `&`
+/// @param {List} $ratio - width and height
 @mixin propelem($child,$ratio){
     $child-pseudo: false;
     @if ($child == '&:before') or ($child == '&:after'){
@@ -165,4 +176,19 @@
         width: 100%;
         height: 100%;
     }
+}
+
+/// Convert image ratio to a percentage
+/// @author Jack Armley
+/// @group predefined mixins
+/// @link http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
+/// @param {List} $ratio - width and height
+@function ratiotopercent($ratio){
+    $ratio-converted: '';
+    // Get width and height
+    $ratio-w: nth($ratio,1);
+    $ratio-h: nth($ratio,2);
+    // Convert ratio to a percentage
+    $ratio-converted: ($ratio-h / $ratio-w) * 100 + '%';
+    @return unquote($ratio-converted);
 }
