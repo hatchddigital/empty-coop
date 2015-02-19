@@ -1,81 +1,66 @@
-/**
- * Predefined mixins
- *
- * A set of SASS mixins to make common css tasks that little bit easier
- *
- */
+/// Predefined mixins
+/// A set of SASS mixins to make common css tasks that little bit easier
 
-/**
- * Set size
- * Automagically set the width/height for a block-level element
- *
- * Accepts a list of up to 2 arguments
- * If 1 argument: Width and height get set to the same value
- * If 2 arguments: Width uses the first value, Height uses the second value
- */
-    @mixin setsize($args) {
-        $arglen: length($args);
-        @if($arglen > 1){
-            width: nth($args,1);
-            height: nth($args,2);
-        }@else{
-            width: $args;
-            height: $args;
-        }
+
+/// Automagically set an element's width/height
+/// @param {List | String} $args Width and/or height
+@mixin setsize($args) {
+  $arglen: length($args);
+  @if($arglen > 1){
+    width: nth($args,1);
+    height: nth($args,2);
+  }@else{
+    width: $args;
+    height: $args;
+  }
+}
+
+/// Automagically set items evenly in a line
+/// @param {Number} $item-number Number from 0-100
+@mixin dist($item-number){
+  width: (100 / $item-number)#{'%'};
+}
+
+/// Make pure CSS triangles
+/// @param {List | String} $dir - One or two direction keyword(s): top right bottom left
+/// @param {String} $color - Triangle color. Can be a raw color value or called using color(color) (default: black)
+/// @param {Number} $size - Triangle size. (default: 1em)
+@mixin triangle($dir, $color:black, $size:1em){
+    $dir: triangle-getdir($dir);
+    content:' ';
+    display:block;
+    width:0;
+    height:0;
+    border:$size solid transparent;
+    // Set borders
+    @each $prop in $dir{
+      border-#{$prop}-color: $color;
     }
-
-/**
- * Evenly distribute items
- * Automagically set items evenly in a line
- *
- * @param item-number: number of items to distribute
- */
-    @mixin dist($item-number){
-       width: (100 / $item-number)#{'%'};
+    // If 2 borders are set (eg: top right)
+    // make triangle smaller
+    @if length($dir) > 1{
+      border-width:$size/1.25;
     }
+}
 
-/**
- * CSS triangles
- * Make pure CSS triangles
- * Useful for pointers and tooltips
- */
+/// Translate desired direction into
+/// the correct border side
+@function triangle-getdir($dir){
+  $dirs:(
+    top: bottom,
+    right: left,
+    bottom: top,
+    left: right
+  );
+  @if length($dir) == 1{
+    $dir: map-get($dirs,$dir);
+  }
+  @else{
+    $dir: $dir;
+  }
+  @return $dir;
+}
 
-    // Translate desired direction into
-    // the correct border side
-    @function triangle-getdir($dir){
-      $dirs:(
-        top: bottom,
-        right: left,
-        bottom: top,
-        left: right
-      );
-      @if length($dir) == 1{
-        $dir: map-get($dirs,$dir);
-      }
-      @else{
-        $dir: $dir;
-      }
-      @return $dir;
-    }
-
-    // Put it all together in a mixin
-    @mixin triangle($dir, $color:black, $size:1em){
-        $dir: triangle-getdir($dir);
-        content:' ';
-        display:block;
-        width:0;
-        height:0;
-        border:$size solid transparent;
-        // Set borders
-        @each $prop in $dir{
-          border-#{$prop}-color: $color;
-        }
-        // If 2 borders are set (eg: top right)
-        // make triangle smaller
-        @if length($dir) > 1{
-          border-width:$size/1.25;
-        }
-    }
 
 
 /**
