@@ -1,50 +1,41 @@
-/**
- * Helpers
- */
+// Helpers
 
-/**
- * Clearfix
- * @src http://css-tricks.com/snippets/css/clear-fix
- */
-    %clearfix{
-        &:after{
-            display:block;
-            visibility:hidden;
-            clear:both;
-            content:" ";
-            height:0;
-            font-size:0;
-        }
-        /**
-        * IE7
-        */
-        *:first-child+html &{
-            zoom:1;
-        }
-    }
-
-/**
- * Hide a text element but ensure it is still readable via assistive technology
- */
-    %visual-hide{
-        position:absolute;
-        text-indent:100%;
-        text-align:left;
-        white-space:nowrap;
-        overflow:hidden;
-    }
-/**
- * Completely hide an element
- */
-    %hide,
-    %state-hide{
-        display:none;
-    }
-
-/**
- * Set an element to clear the element above it
- */
-    %clear{
-        clear:both;
+// Clearfix
+// @author CSS Tricks
+// @link http://css-tricks.com/snippets/css/clear-fix
+%clearfix{
+    &:after{
         display:block;
+        visibility:hidden;
+        clear:both;
+        content:" ";
+        height:0;
+        font-size:0;
     }
+    // IE7
+    *:first-child+html &{
+        zoom:1;
+    }
+}
+
+// Hide a text element but ensure 
+// it is still readable via assistive technology
+%visual-hide{
+    position:absolute;
+    text-indent:100%;
+    text-align:left;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+// Completely hide an element
+%hide,
+%state-hide{
+    display:none;
+}
+
+// Set an element to clear the element above it
+%clear{
+    clear:both;
+    display:block;
+}

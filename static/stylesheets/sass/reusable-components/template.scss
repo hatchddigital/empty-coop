@@ -1,22 +1,7 @@
 /**
 * Example component name
-*
 * Example component description
 */
-
-/**
- * Init
- *
- * Define variables, helper mixins and animations
- * local to this component
- */
-    // $sample-var: foo;
-    // @mixin sample-mixin($args:default){}
-    // @keyframes sample{}
-
-/**
- * Component classes
- */
 .post{
     padding:30px;
     background:color(muted);
@@ -26,11 +11,5 @@
     &-desc{
         font-size:1em;
     }
-    // Media queries
-    //@include breakpoint(pebble){}
-
-    // IE overrides
-    //.lt-ie9 &{}
-    //.lt-ie8 &{}
 }
 

@@ -1,11 +1,9 @@
-/**
- * Global settings
- *
- * Use this file to set custom colours, and to set
- * the base text size / line height value
- * More settings can be added here, the sky is the limit!
- */
+// Global settings
+// Use this file to set custom colours, and to set
+// the base text size / line height value
+// More settings can be added here, the sky is the limit!
 
+// Import helper functions first
 @import '../mixins/settings-mixins';
 
 /// Media query breakpoints. Each key/value pair will be parsed
@@ -48,18 +46,16 @@ $breakpoints:(
 /// @require {Map} $breakpoints
 $eagleeyes: eagleeyes OR -webkit-eagleeyes;
 
-/**
- * Eggbox:
- * Fallback settings
- */
-    $eggbox-size:"16x16";
-    $eggbox-imagepath:"../images/eggbox";
-    //Colours
-    $eggbox-col--default:"000000";
-    $eggbox-col--white:"ffffff";
+// Eggbox:
+// Fallback settings
+$eggbox-size:"16x16";
+$eggbox-imagepath:"../images/eggbox";
+//Colours
+$eggbox-col--default:"000000";
+$eggbox-col--white:"ffffff";
 
 
-/// Font sizes
+// Font sizes
     
 /// Base font size
 /// @group fonts
@@ -77,7 +73,7 @@ $font-sizes: (
     small: 75em
 );
 
-/// Font famillies
+// Font famillies
 
 /// Basic sans-serif font family
 /// @group fonts
@@ -107,6 +103,8 @@ $font-famillies: (
     pageheading: $sans,
     smallprint: $sans
 );
+
+// Colours
 
 /// White
 /// @group colors
