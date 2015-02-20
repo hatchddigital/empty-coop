@@ -18,6 +18,10 @@
  *
  */
 
+/// Define media query support
+/// @group media queries
+/// @type Variable
+/// @alias mqsupport
 $mqsupport: true;
 
 @import 'config/manifest';

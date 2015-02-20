@@ -1,7 +1,48 @@
-/**
- * Font mixin
- */
+///
+/// Font mixin
+/// 
 
+
+/// Return font property/value pairs
+/// @author Jack Armley, Douglas Linder
+/// @group fonts
+/// @param {String|List} $sizes - Size (@require `$font-sizes`) and/or line-height
+/// @param {String} $family [false] - Font-family @require `$font-famillies`
+/// @param {String|List} $extras [false] - Additional font values @require `$font-extras`
+/// @require {Variable} $font-sizes
+/// @require {Variable} $font-famillies
+/// @require {Variable} $font-extras
+@mixin font($sizes,$family:false,$extras:false){
+  
+  // Set size and line-height
+  @if ($sizes != false){
+    @each $arg in $sizes{
+      $i: index($sizes,$arg);
+      @if ($i == 1 and $arg != false){
+        font-size: get($font-sizes,$arg,false,false);
+      }@else if ($i == 2){
+        line-height: $arg;
+      }
+    }
+  }
+  
+  // Set font family
+  @if ($family != false){
+    font-family: get($font-famillies,$family,false,false);
+  }
+  
+  // Set any extra values
+  @each $arg in $extras{
+    @if (font-returnextra($arg) != null){
+      #{font-returnextra($arg,property)}: #{font-returnextra($arg,value)};
+    }
+  }
+  
+}
+
+/// Additional font properties
+/// @author Jack Armley, Douglas Linder
+/// @group fonts
 $font-extras:(
   style: style-normal italic oblique,
   variant: variant-normal small-caps initial inherit,
@@ -9,7 +50,12 @@ $font-extras:(
   stretch: stretch-normal ultra-condensed extra-condensed condensed semi-condensed semi-expanded expanded extra-expanded ultra-expanded
 );
 
-// Process additional font properties
+/// Process additional font properties
+/// @author Jack Armley, Douglas Linder
+/// @group fonts
+/// @param {String|List} $input - additional font value
+/// @param {String} $part [property] - whether to return a property or a value
+/// @require {Mixin} font
 @function font-returnextra($input,$part:property){
   $output: null;
   $inputtype: type-of($input);
@@ -40,8 +86,13 @@ $font-extras:(
   @return $output;
 }
 
-// If they exactly match a value in the $font-extras map,
-// then pair them with the appropriate property
+/// If font extra keyword exists in the $font-extras map,
+/// then match to the appropriate property
+/// @author Jack Armley, Douglas Linder
+/// @group fonts
+/// @param {String} $input - Property to match
+/// @param {String} $part [property] - whether to return a property or a value
+/// @require {Mixin} font
 @function font-matchextra($input,$part:property){
   $output: null;
   @if ($part == property){
@@ -55,34 +106,4 @@ $font-extras:(
     $output: $input;
   }
   @return $output;
-}
-
-// Mixin to return property value pairs
-// @args: size line height (list), family (string), additional values (list)
-@mixin font($sizes,$family:false,$extras:false){
-  
-  // Set size and line-height
-  @if ($sizes != false){
-    @each $arg in $sizes{
-      $i: index($sizes,$arg);
-      @if ($i == 1 and $arg != false){
-        font-size: get($font-sizes,$arg,false,false);
-      }@else if ($i == 2){
-        line-height: $arg;
-      }
-    }
-  }
-  
-  // Set font family
-  @if ($family != false){
-    font-family: get($font-famillies,$family,false,false);
-  }
-  
-  // Set any extra values
-  @each $arg in $extras{
-    @if (font-returnextra($arg) != null){
-      #{font-returnextra($arg,property)}: #{font-returnextra($arg,value)};
-    }
-  }
-  
 }

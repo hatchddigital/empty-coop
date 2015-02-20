@@ -8,40 +8,45 @@
 
 @import '../mixins/settings-mixins';
 
-/**
- * Responsive breakpoints
- *
- * Set breakpoints as a multi-dimensional map
- * By default, function assumes breakpoint map
- * is called $breakpoints
- */
-    $breakpoints:(
-      grain:(
-        min-width: 200px,
-        nomq: true
-      ),
-      pebble:(
-        min-width: 300px,
-        nomq: true
-      ),
-      mountain:(
-        min-width: 800px,
-        nomq: true
-      ),
-      eagleeyes:(
-        min-device-pixel-ratio: 2,
-        min-resolution: 192dpi,
-        nomq: false
-      ),
-      -webkit-eagleeyes:(
-        -webkit-min-device-pixel-ratio: 2,
-        -webkit-min-resolution: 192dpi,
-        nomq: false
-      )
-    );
+/// Media query breakpoints. Each key/value pair will be parsed
+/// as an *and* seperated value in the media query. 
+/// #### Options
+/// - Include the key/value `nomq: true` if the query should be included in the 
+/// no-media query fallback for older browsers. 
+/// - Include the key `media` with a value for a 
+/// valid [media type](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_types)
+/// to specify an explicit media type for the query.
+/// @group media queries
+/// @type Map
+$breakpoints:(
+  grain:(
+    min-width: 200px,
+    nomq: true,
+    media: screen
+  ),
+  pebble:(
+    min-width: 300px,
+    nomq: true
+  ),
+  mountain:(
+    min-width: 800px,
+    nomq: true
+  ),
+  eagleeyes:(
+    min-device-pixel-ratio: 2,
+    min-resolution: 192dpi
+  ),
+  -webkit-eagleeyes:(
+    -webkit-min-device-pixel-ratio: 2,
+    -webkit-min-resolution: 192dpi
+  )
+);
 
-    // Define a few combi breakpoints
-    $eagleeyes: eagleeyes OR -webkit-eagleeyes;
+/// Eagle eyes combination breakpoint
+/// @group media queries
+/// @type Variable
+/// @require {Map} $breakpoints
+$eagleeyes: eagleeyes OR -webkit-eagleeyes;
 
 /**
  * Eggbox:
@@ -54,55 +59,84 @@
     $eggbox-col--white:"ffffff";
 
 
-/**
- * Font sizes
- * @usage: fontsize($size);
- */
-    $fontsize-base:14;
-    $font-sizes: (
-        jumbo: 3em,
-        large: 2em,
-        emphasized: 1.5em,
-        default: 1em,
-        small: 75em
-    );
+/// Font sizes
+    
+/// Base font size
+/// @group fonts
+/// @type Variable
+$fontsize-base:14;
 
-/**
- * Font famillies
- * @usage: fontfamily($family)
- */
-    // Basic
-    $sans:sans-serif;
-    $serif:serif;
-    $monospace:"Courier New", Courier, "Lucida Sans Typewriter",
-    "Lucida Typewriter", monospace;
+/// Font-sizes
+/// @group fonts
+/// @type Map
+$font-sizes: (
+    jumbo: 3em,
+    large: 2em,
+    emphasized: 1.5em,
+    default: 1em,
+    small: 75em
+);
 
-    // Brand
-    $stagsanslight: 'Stag Sans Light';
-    $europegold: 'Europe gold';
+/// Font famillies
 
-    // Tie to usage
-    $font-famillies: (
-        default: $sans,
-        pageheading: $sans,
-        smallprint: $sans
-    );
+/// Basic sans-serif font family
+/// @group fonts
+/// @type Variable
+/// @require {Map} $font-famillies
+$sans:sans-serif;
 
-/**
- * Colours
- * @usage: color($color);
- */
-    $white: #fff;
-    $black: #000;
-    $yellow: #FFFB88;
-    $red: #aa3025;
+/// Basic serif font family
+/// @group fonts
+/// @type Variable
+/// @require {Map} $font-famillies
+$serif:serif;
 
-    $colors: (
-        default: $black,
-        black: $black,
-        white: $white,
-        muted: lighten($black,50%),
-        highlight:$yellow,
-        link:$red,
-        linkactive:lighten($red,10%)
-    );
+/// Basic monospace font family
+/// @group fonts
+/// @type Variable
+/// @require {Map} $font-famillies
+$monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+"Lucida Typewriter", monospace;
+
+
+/// Font-famillies map tieing usage to variable names
+/// @group fonts
+/// @type Map
+$font-famillies: (
+    default: $sans,
+    pageheading: $sans,
+    smallprint: $sans
+);
+
+/// White
+/// @group colors
+/// @type Variable
+$white: #fff;
+
+/// Black
+/// @group colors
+/// @type Variable
+$black: #000;
+
+/// Yellow
+/// @group colors
+/// @type Variable
+$yellow: #FFFB88;
+
+/// Red
+/// @group colors
+/// @type Variable
+$red: #aa3025;
+
+/// Colors map tying usage to variable names
+/// @group colors
+/// @type Map
+$colors: (
+    default: $black,
+    black: $black,
+    white: $white,
+    muted: lighten($black,50%),
+    highlight:$yellow,
+    link:$red,
+    linkactive:lighten($red,10%)
+);

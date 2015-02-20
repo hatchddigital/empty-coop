@@ -2,6 +2,34 @@
  * Webfonts mixin
  */
 
+
+/// Make consistent @font-face declarations
+/// @author Jack Armley
+/// @group fonts
+/// @param {String} $familyname Font family name
+/// @param {String} $svgfamilyname [false] SVG family name
+/// @param {String} $filename [false] Font file name
+/// @param {String} $location [false] Font file location
+/// @param {String|List} $filetypes [eot woff ttf svg] Font filetypes
+/// @require {Function} fontsrc
+@mixin fontface($familyname, $svgfamilyname: false, $filename: false, $location: false, $filetypes: eot woff ttf svg){
+  $eot: contains($filetypes,eot);
+  @font-face{
+    font-family: $familyname;
+    @if ($eot != false){
+      src: fontsrc($svgfamilyname,$filename,$location,eot);
+    }
+    src: fontsrc($svgfamilyname,$filename,$location,$filetypes);
+  }
+}
+
+/// Parse font information for the fontface mixin
+/// @author Jack Armley
+/// @group fonts
+/// @param {String} $svgfamilyname SVG family name
+/// @param {String} $filename Font file name
+/// @param {String} $location Font file location
+/// @param {String|List} $filetypes Font filetypes
 @function fontsrc($svgfamilyname,$filename,$location,$filetypes){
   
   // Make a few starting vars
@@ -36,7 +64,7 @@
     @if ($type == 'svg'){
       $type: $type + '#' + $svgfamilyname;
     }
-    
+
     // Generate the url string
     $typestring: $typestring + 'url("#{$location}/#{$filename}.' + $type + '")';
     
@@ -57,15 +85,4 @@
   // Return the string(s)
   @return unquote($typestring);
   
-}
-
-@mixin fontface($familyname, $svgfamilyname: false, $filename: false, $location: false, $filetypes: eot woff ttf svg){
-  $eot: contains($filetypes,eot);
-	@font-face{
-	  font-family: $familyname;
-	  @if ($eot != false){
-	    src: fontsrc($svgfamilyname,$filename,$location,eot);
-	  }
-	  src: fontsrc($svgfamilyname,$filename,$location,$filetypes);
-	}
 }

@@ -4,7 +4,6 @@
 
 /// Automagically set an element's width/height
 /// @author Jack Armley
-/// @group predefined mixins
 /// @param {List | Number} $args Width and/or height
 @mixin setsize($args) {
   $arglen: length($args);
@@ -19,7 +18,6 @@
 
 /// Automagically set items evenly in a line
 /// @author Jack Armley
-/// @group predefined mixins
 /// @param {Number} $item-number Number from 0-100
 @mixin dist($item-number){
   width: (100 / $item-number)#{'%'};
@@ -27,9 +25,7 @@
 
 /// Make pure CSS triangles
 /// @author Jack Armley
-/// @group predefined mixins
-/// @param {List | String} $dir - One or two direction keyword(s): top right
-/// bottom left
+/// @param {List | String} $dir - One or two direction keyword(s): top right bottom left
 /// @param {String} $color [black] - Triangle color. Can be a raw color value or
 /// called using color(color)
 /// @param {Number} $size [1em] - Triangle size.
@@ -54,7 +50,6 @@
 /// Convert desired triangle mixin direction argument
 /// into the correct css border value
 /// @author Jack Armley
-/// @group predefined mixins
 /// @param {List | String} $dir - One or two direction keyword(s): top right
 /// bottom left
 @function triangle-getdir($dir){
@@ -76,7 +71,6 @@
 
 /// Quickly Set position values
 /// @author Jack Armley
-/// @group predefined mixins
 /// @param {String} $value - A [valid css position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 /// value. Aliases for common values are available:
 /// - r (relative)
@@ -152,7 +146,6 @@
 
 /// Make responsive proportionally resizing elements
 /// @author Jack Armley
-/// @group predefined mixins
 /// @link http://www.wmyl.se/en/blog/proportional-scaling-responsive-boxes-using-just-css
 /// @param {String} $child - Child element. Ensure string is quoted if using `&`
 /// @param {List} $ratio - width and height
@@ -180,7 +173,6 @@
 
 /// Convert image ratio to a percentage
 /// @author Jack Armley
-/// @group predefined mixins
 /// @link http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
 /// @param {List} $ratio - width and height
 @function ratiotopercent($ratio){

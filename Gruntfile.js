@@ -280,6 +280,15 @@ module.exports = function (grunt) {
         }
     });
 
+    // SASS docs
+    ext.configure({
+        sassdoc: {
+            default: {
+                src: '<%= assets.stylesheets %>/sass/'
+            }
+        }
+    });
+
     // Javascript
     ext.configure({
         jshint: {
@@ -389,7 +398,8 @@ module.exports = function (grunt) {
         'cmq:combine',
         'jshint',
         'requirejs',
-        'modernizr:dist'
+        'modernizr:dist',
+        'sassdoc:default'
     ]);
 
     // Server build
