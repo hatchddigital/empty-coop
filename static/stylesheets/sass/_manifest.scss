@@ -54,3 +54,8 @@
 @import 
     'page-layouts/_layout-template';
 
+/// Pull in 'shame' styles
+/// A temporary home for styles that need to be written
+/// quickly, by devs not direclty working on the front end
+/// or just because something needs to be sketched out real quick
+@import '_shame.scss'
