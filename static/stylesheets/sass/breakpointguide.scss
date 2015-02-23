@@ -4,49 +4,44 @@
  * when a breakpoint is triggered
  */
 
+/// Import dependancies
+@import 
+    'utils/_variables', 
+    'utils/_placeholders',
+    'utils/_functions',
+    'utils/_mixins';
+
 /// Define media query support
 /// @type Variable
 /// @alias mqsupport
-$mqsupport:true;
+$mqsupport: true;
 
-/// Import dependancies
-@import 'config/settings';
-@import 'mixins/breakpoint';
-
+/// Properties for the breakpoint guide
+/// @type Map
 $bpguide:(
-    bg:#fff,
-    text:#333,
-    label:#EF4034
+    'bg': #fff,
+    'text': #333,
+    'label': #EF4034
 );
 
-// Custom function to process a
-// breakpoint expecially for the map
-@function processforguide($point, $map:$breakpoints){
-  $point: map-get($map,$point);
-  $querystr: '';
-  @each $name, $value in $point{
-    @if $name != nomq{
-      $querystr: $querystr + $name + ': ' + $value;
-    }
-  }
-  @return $querystr;
-}
-
+/**
+ * Set styles for the
+ * breakpoint helper
+ */
 .breakpointguide{
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    $counter: 0;
+    @include pos(fixed,b0 r0);
     overflow:hidden;
-    background:map-get($bpguide,bg);
-    color:map-get($bpguide,text);
-    font:normal normal 12px/1.5em sans-serif;
+    background: map-get($bpguide,bg);
+    color: map-get($bpguide,text);
+    font: normal normal 12px/1.5em sans-serif;
     &-label,
     &-value{
         display: block;
         padding: .5em 1em;
     }
     &-label{
-        background:map-get($bpguide,label);
+        background: map-get($bpguide,label);
         text-shadow: 0 1px 0 fade-out(black,.8);
         color:white;
         text-transform: uppercase;
@@ -54,7 +49,6 @@ $bpguide:(
     &-value{
         font-weight: bold;
     }
-    $counter: 0;
     @each $key,$value in $breakpoints{
         $counter: $counter + 1;
         @include breakpoint($key){

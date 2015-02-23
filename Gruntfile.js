@@ -124,7 +124,7 @@ module.exports = function (grunt) {
                     '<%= eggbox.customIcons %>/*.svg'],
                 dest: '<%= assets.fonts %>/eggbox',
                 htmlDemo: true,
-                destCss: '<%= assets.stylesheets %>/sass/mixins/',
+                destCss: '<%= assets.stylesheets %>/sass/utils/',
                 options: {
                     hashes: false,
                     font: 'eggbox',

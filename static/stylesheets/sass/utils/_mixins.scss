@@ -1,5 +1,8 @@
-/// Predefined mixins
-/// A set of SASS mixins to make common css tasks that little bit easier
+////
+//// Mixins
+//// @author Various at Hatchd Digital
+////
+
 
 /// Automagically set an element's width/height
 /// @author Jack Armley
@@ -44,27 +47,6 @@
     @if length($dir) > 1{
       border-width:$size/1.25;
     }
-}
-
-/// Convert desired triangle mixin direction argument
-/// into the correct css border value
-/// @author Jack Armley
-/// @param {List | String} $dir - One or two direction keyword(s): top right
-/// bottom left
-@function triangle-getdir($dir){
-  $dirs:(
-    top: bottom,
-    right: left,
-    bottom: top,
-    left: right
-  );
-  @if length($dir) == 1{
-    $dir: map-get($dirs,$dir);
-  }
-  @else{
-    $dir: $dir;
-  }
-  @return $dir;
 }
 
 
@@ -170,16 +152,113 @@
     }
 }
 
-/// Convert image ratio to a percentage
+/// Construct simple or complex media queries
 /// @author Jack Armley
-/// @link http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
-/// @param {List} $ratio - width and height
-@function ratiotopercent($ratio){
-    $ratio-converted: '';
-    // Get width and height
-    $ratio-w: nth($ratio,1);
-    $ratio-h: nth($ratio,2);
-    // Convert ratio to a percentage
-    $ratio-converted: ($ratio-h / $ratio-w) * 100 + '%';
-    @return unquote($ratio-converted);
+/// @group media queries
+/// @param {List|String} $points - Breakpoint keyword(s) to process.
+/// A single breakpoint value can be used, or multiple values can
+/// be combined to create more complex media queries.
+/// @require {Variable} $breakpoints
+/// @example
+///   p{
+///     // A simple media query, that calls
+///     //one value from the $breakpoints map
+///     @include breakpoint(pebble){
+///       color: red;
+///     }
+///     // A more complex query, 
+///     // using operator variables
+///     @include breakpoint(pebble AND portrait OR rock AND landscape){
+///       color: blue;
+///     }
+///   }  
+@mixin breakpoint($points){
+  // Find length of the breakpoint
+  $pointlength: length($points);
+  
+  // Get point type
+  $pointtype: type-of($points);
+  
+  @if ($mqsupport == true){
+    // If media queries are supported,
+    // output a media query
+    @media #{pointstring($points)}{
+      @content
+    }
+  }
+  @else{
+    // If media queries aren't supported,
+    // **and** only one query type has been included,
+    // **and** it has been allowed to be used on browsers
+    // that don't support media queries
+    // **or** if it is a manually entered query
+    // that has been allowed to be used on browsers
+    // that don't support media queries, then
+    // output styles outside of a media query block
+    @if (usenomq($points) == true) {
+      @if $pointtype != 'map' and $pointlength == 1{
+        @content
+      }
+      @else{
+        @content
+      }
+    }
+  }
+}
+
+/// Return font property/value pairs
+/// @author Jack Armley, Douglas Linder
+/// @group fonts
+/// @param {String|List} $sizes - Size (@require `$font-sizes`) and/or line-height
+/// @param {String} $family [false] - Font-family @require `$font-famillies`
+/// @param {String|List} $extras [false] - Additional font values @require `$font-extras`
+/// @require {Variable} $font-sizes
+/// @require {Variable} $font-famillies
+/// @require {Variable} $font-extras
+@mixin font($sizes,$family:false,$extras:false){
+  
+  // Set size and line-height
+  @if ($sizes != false){
+    @each $arg in $sizes{
+      $i: index($sizes,$arg);
+      @if ($i == 1 and $arg != false){
+        font-size: get($font-sizes,$arg,false,false);
+      }@else if ($i == 2){
+        line-height: $arg;
+      }
+    }
+  }
+  
+  // Set font family
+  @if ($family != false){
+    font-family: get($font-famillies,$family,false,false);
+  }
+  
+  // Set any extra values
+  @each $arg in $extras{
+    @if (font-returnextra($arg) != null){
+      #{font-returnextra($arg,property)}: #{font-returnextra($arg,value)};
+    }
+  }
+  
+}
+
+/// Make consistent @font-face declarations
+/// @author Jack Armley
+/// @group fonts
+/// @param {String} $familyname Font family name
+/// @param {String} $svgfamilyname [false] SVG family name
+/// @param {String} $filename [false] Font file name
+/// @param {String} $location [false] Font file location
+/// @param {String|List} $filetypes [eot woff ttf svg] Font filetypes
+/// @require {Function} fontsrc
+@mixin fontface($familyname, $svgfamilyname: false, $filename: false, $location: false, $filetypes: eot woff ttf svg){
+  $eot: contains($filetypes,eot);
+  @font-face{
+    font-family: $familyname;
+    @if ($eot != false){
+      src: fontsrc($svgfamilyname,$filename,$location,eot);
+    }
+    src: fontsrc($svgfamilyname,$filename,$location,$filetypes);
+  }
 }

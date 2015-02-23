@@ -24,4 +24,5 @@
 /// @alias mqsupport
 $mqsupport: true;
 
-@import 'config/manifest';
+/// Import all site files
+@import '_manifest';

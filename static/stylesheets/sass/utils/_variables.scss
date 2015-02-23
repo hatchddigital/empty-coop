@@ -1,10 +1,23 @@
-// Global settings
-// Use this file to set custom colours, and to set
-// the base text size / line height value
-// More settings can be added here, the sky is the limit!
+////
+//// Variables
+//// @author Various at Hatchd Digital
+////
 
-// Import helper functions first
-@import '../mixins/settings-mixins';
+///
+/// Media queries
+///
+
+/// Set media query support to true
+/// as default. This is restated at the head of
+/// all master sass files that call manifest.scss
+/// @group media queries
+/// @type Variable
+$mqsupport: true !default;
+
+/// Breakpoint map helpers
+/// @type Variable
+/// @group media queries
+$point-helpers: nomq media;
 
 /// Media query breakpoints. Each key/value pair will be parsed
 /// as an *and* seperated value in the media query. 
@@ -46,16 +59,30 @@ $breakpoints:(
 /// @require {Map} $breakpoints
 $eagleeyes: eagleeyes OR -webkit-eagleeyes;
 
-// Eggbox:
-// Fallback settings
+
+///
+/// Eggbox webfont icon set
+/// fallback settings
+///
+
 $eggbox-size:"16x16";
 $eggbox-imagepath:"../images/eggbox";
-//Colours
 $eggbox-col--default:"000000";
 $eggbox-col--white:"ffffff";
 
+///
+/// Fonts
+/// 
 
-// Font sizes
+/// Additional font properties
+/// @author Jack Armley, Douglas Linder
+/// @group fonts
+$font-extras:(
+  style: style-normal italic oblique,
+  variant: variant-normal small-caps initial inherit,
+  weight: weight-normal bold bolder lighter 100 200 300 400 500 600 700 800 900,
+  stretch: stretch-normal ultra-condensed extra-condensed condensed semi-condensed semi-expanded expanded extra-expanded ultra-expanded
+);
     
 /// Base font size
 /// @group fonts
@@ -72,8 +99,6 @@ $font-sizes: (
     default: 1em,
     small: 75em
 );
-
-// Font famillies
 
 /// Basic sans-serif font family
 /// @group fonts
@@ -104,7 +129,9 @@ $font-famillies: (
     smallprint: $sans
 );
 
-// Colours
+///
+/// Colours
+/// 
 
 /// White
 /// @group colors

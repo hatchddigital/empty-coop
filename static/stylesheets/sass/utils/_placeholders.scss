@@ -1,8 +1,12 @@
-// Helpers
+////
+//// Placeholders
+//// @author Various at Hatchd Digital
+////
 
-// Clearfix
-// @author CSS Tricks
-// @link http://css-tricks.com/snippets/css/clear-fix
+
+/// Clearfix
+/// @author CSS Tricks
+/// @link http://css-tricks.com/snippets/css/clear-fix
 %clearfix{
     &:after{
         display:block;
@@ -18,8 +22,8 @@
     }
 }
 
-// Hide a text element but ensure 
-// it is still readable via assistive technology
+/// Hide a text element but ensure 
+/// it is still readable via assistive technology
 %visual-hide{
     position:absolute;
     text-indent:100%;
@@ -28,13 +32,13 @@
     overflow:hidden;
 }
 
-// Completely hide an element
+/// Completely hide an element
 %hide,
 %state-hide{
     display:none;
 }
 
-// Set an element to clear the element above it
+/// Set an element to clear the element above it
 %clear{
     clear:both;
     display:block;
