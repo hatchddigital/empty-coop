@@ -53,3 +53,7 @@ grunt
 This will allow you to run builds which will build all static requirements
 (app-min.js and style.css). We will remove these files from the repository
 in upcoming versions.
+
+## Changelog (major changes)
+
+- **0.12.0** Removed support for IE7 (requires eggbox 0.6.0 or higher)

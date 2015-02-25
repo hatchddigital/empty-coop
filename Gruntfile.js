@@ -6,11 +6,11 @@
  * standard `development` tasks will lint and compile (no minification) while
  * `production` tasks should compile and minify (no linting).
  *
- * @author jimmyhillis <jimmy@hatchd.com.au>
- * @author neilf <neil@hatchd.com.au>
- * @author janeyee <jane@hatchd.com.au>
  * @author jackarmley <jack@hatchd.com.au>
  * @author douglinder <doug@hatchd.com.au>
+ * @author janeyee <jane@hatchd.com.au>
+ * @author neilf <neil@hatchd.com.au>
+ * @author danmurray <dan@hatchd.com.au>
  */
 
 var ext = require('./.gruntExt');
@@ -35,19 +35,9 @@ module.exports = function (grunt) {
             scripts: root + '/scripts',
             fonts: root + '/fonts',
             images: root + '/images',
-            templates: root + '/html',
-            email_source: root + '/../emails',
-            email_public: root + '/email'
+            templates: root + '/html'
         },
         eggbox: {
-            colors: {
-                black: '000000',
-                white: 'ffffff'
-            },
-            sizes: {
-                default: '16x16'
-            },
-            fallbacks: root + '/images/eggbox',
             root: root + '/libs/eggbox',
             icons: root + '/libs/eggbox/src',
             iconTmp: root + '/libs/eggbox/tmp',
@@ -96,13 +86,6 @@ module.exports = function (grunt) {
                 ],
                 spawn: true
             }
-            // email: {
-            //     files: '<%= assets.email_source %>/**/*',
-            //     tasks: [
-            //         'shell:build_email'
-            //     ],
-            //     spawn: true
-            // },
         },
         clean: {
             dist: {
@@ -140,30 +123,6 @@ module.exports = function (grunt) {
                         mixinPrefix: 'eggbox-'
                     }
                 }
-            }
-        },
-        shell: {
-            build_icons: {
-                options: {
-                    stdout: true,
-                    stderr: true
-                },
-                command: [
-                    'mkdir -p <%= eggbox.fallbacks %>',
-                    'python <%= eggbox.root %>/svg2png.py -c <%= eggbox.colors.white %> -o <%= eggbox.fallbacks %> -s <%= eggbox.sizes.default %> <%= eggbox.icons %>'
-                ].join(' && ')
-            },
-            build_email: {
-                options: {
-                    stdout: true,
-                    stderr: true
-                },
-                command: [
-                    'mkdir -p <%= assets.email_public %>',
-                    'grunt --gruntfile <%= assets.email_source %>/Gruntfile.js',
-                    'cp -Rf <%= assets.email_source %>/images/ <%= assets.email_public %>/images/',
-                    'cp <%= assets.email_source %>/stylesheets/styles.css <%= assets.email_public %>/styles.css'
-                ].join(' && ')
             }
         }
     });
@@ -229,7 +188,7 @@ module.exports = function (grunt) {
         },
         autoprefixer: {
             options: {
-                browsers: ['last 3 versions', '> 1%', 'ie 8', 'ie 7']
+                browsers: ['last 3 versions', '> 1%', 'ie 8']
             },
             dist: {
                 files: [
@@ -341,8 +300,7 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: '<%= assets.images %>',
                         src: [
-                            '**/*.{png,jpg,gif}',
-                            '!eggbox/*'
+                            '**/*.{png,jpg,gif}'
                         ],
                         dest: '<%= assets.images %>'
                     }
@@ -382,15 +340,12 @@ module.exports = function (grunt) {
 
     // build icon set
     ext.registerTask('eggbox', [
-        'webfont',
-        'shell:build_icons'
+        'webfont'
     ]);
 
     // Build for development purposes with linting
     ext.registerTask('default', [
         'clean',
-        'shell:build_icons',
-        //'shell:build_email',
         'webfont',
         'sass:development',
         'jade:dist',
@@ -405,8 +360,6 @@ module.exports = function (grunt) {
     // Server build
     ext.registerTask('server', [
         'clean',
-        'shell:build_icons',
-        //'shell:build_email',
         'webfont',
         'sass:production',
         'jade:dist',

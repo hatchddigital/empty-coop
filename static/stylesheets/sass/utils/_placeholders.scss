@@ -16,10 +16,6 @@
         height:0;
         font-size:0;
     }
-    // IE7
-    *:first-child+html &{
-        zoom:1;
-    }
 }
 
 /// Hide a text element but ensure 
