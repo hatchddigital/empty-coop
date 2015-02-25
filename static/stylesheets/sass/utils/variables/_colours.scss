@@ -27,7 +27,7 @@ $colors: (
     black: $black,
     white: $white,
     muted: lighten($black,50%),
-    highlight:$yellow,
-    link:$red,
+    highlight: $yellow,
+    link: $red,
     linkactive:lighten($red,10%)
 );

@@ -6,7 +6,7 @@
 
 /// Base font size
 /// @type Variable
-$fontsize-base:14;
+$fontsize-base: 14;
 
 /// Font-sizes
 /// @type Map
@@ -21,17 +21,17 @@ $font-sizes: (
 /// Basic sans-serif font family
 /// @type Variable
 /// @require {Map} $font-famillies
-$sans:sans-serif;
+$sans: sans-serif;
 
 /// Basic serif font family
 /// @type Variable
 /// @require {Map} $font-famillies
-$serif:serif;
+$serif: serif;
 
 /// Basic monospace font family
 /// @type Variable
 /// @require {Map} $font-famillies
-$monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+$monospace: "Courier New", Courier, "Lucida Sans Typewriter",
 "Lucida Typewriter", monospace;
 
 
