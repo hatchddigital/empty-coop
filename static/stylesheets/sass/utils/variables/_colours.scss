@@ -1,0 +1,33 @@
+////
+//// Colour variables
+//// @author Hatchd Digital
+//// @group Colors
+////
+
+/// White
+/// @type Variable
+$white: #fff;
+
+/// Black
+/// @type Variable
+$black: #000;
+
+/// Yellow
+/// @type Variable
+$yellow: #FFFB88;
+
+/// Red
+/// @type Variable
+$red: #aa3025;
+
+/// Colors map tying usage to variable names
+/// @type Map
+$colors: (
+    default: $black,
+    black: $black,
+    white: $white,
+    muted: lighten($black,50%),
+    highlight:$yellow,
+    link:$red,
+    linkactive:lighten($red,10%)
+);

@@ -7,7 +7,9 @@
 /// Define variables, mixins, placeholders and functions
 /// to be used throughout the project
 @import 
-    'utils/_variables', 
+    'utils/variables/_fonts', 
+    'utils/variables/_colours', 
+    'utils/variables/_breakpoints', 
     'utils/_placeholders',
     'utils/_functions',
     'utils/_mixins',

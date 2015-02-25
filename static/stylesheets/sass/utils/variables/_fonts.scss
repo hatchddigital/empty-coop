@@ -1,0 +1,55 @@
+////
+//// Font variables
+//// @author Hatchd Digital
+//// @group Fonts
+////
+
+/// Base font size
+/// @type Variable
+$fontsize-base:14;
+
+/// Font-sizes
+/// @type Map
+$font-sizes: (
+    jumbo: 3em,
+    large: 2em,
+    emphasized: 1.5em,
+    default: 1em,
+    small: .75em
+);
+
+/// Basic sans-serif font family
+/// @type Variable
+/// @require {Map} $font-famillies
+$sans:sans-serif;
+
+/// Basic serif font family
+/// @type Variable
+/// @require {Map} $font-famillies
+$serif:serif;
+
+/// Basic monospace font family
+/// @type Variable
+/// @require {Map} $font-famillies
+$monospace:"Courier New", Courier, "Lucida Sans Typewriter",
+"Lucida Typewriter", monospace;
+
+
+/// Font-famillies map tieing usage to variable names
+/// @type Map
+$font-famillies: (
+    default: $sans,
+    pageheading: $sans,
+    smallprint: $sans
+);
+
+/// Additional font properties
+/// @author Jack Armley, Douglas Linder
+/// @access private
+/// @require font
+$font-extras:(
+  style: style-normal italic oblique,
+  variant: variant-normal small-caps initial inherit,
+  weight: weight-normal bold bolder lighter 100 200 300 400 500 600 700 800 900,
+  stretch: stretch-normal ultra-condensed extra-condensed condensed semi-condensed semi-expanded expanded extra-expanded ultra-expanded
+);

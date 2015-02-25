@@ -1,0 +1,54 @@
+////
+//// Breakpoint variables
+//// @author Hatchd Digital
+//// @group media queries
+////
+
+
+/// Set media query support to true
+/// as default. This is restated at the head of
+/// all master sass files that call manifest.scss
+/// @type Variable
+$mqsupport: true !default;
+
+/// Breakpoint map helpers
+/// @type Variable
+$point-helpers: nomq media;
+
+/// Media query breakpoints. Each key/value pair will be parsed
+/// as an *and* seperated value in the media query.
+/// #### Options
+/// - Include the key/value `nomq: true` if the query should be included in the
+/// no-media query fallback for older browsers.
+/// - Include the key `media` with a value for a
+/// valid [media type](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_types)
+/// to specify an explicit media type for the query.
+/// @type Map
+$breakpoints:(
+  grain:(
+    min-width: 200px,
+    nomq: true,
+    media: screen
+  ),
+  pebble:(
+    min-width: 300px,
+    nomq: true
+  ),
+  mountain:(
+    min-width: 800px,
+    nomq: true
+  ),
+  eagleeyes:(
+    min-device-pixel-ratio: 2,
+    min-resolution: 192dpi
+  ),
+  -webkit-eagleeyes:(
+    -webkit-min-device-pixel-ratio: 2,
+    -webkit-min-resolution: 192dpi
+  )
+);
+
+/// Eagle eyes combination breakpoint
+/// @type Variable
+/// @require {Map} $breakpoints
+$eagleeyes: eagleeyes OR -webkit-eagleeyes;

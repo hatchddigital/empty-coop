@@ -67,6 +67,12 @@ form{
         {
             #{$prefix}placeholder{
                 color: color(link);
+                // Ensure color is consistent on Firefox,
+                // as placeholder is given an opacity value of
+                // .54 on Firefox by default
+                @if $prefix == '::-moz-' or $prefix == ':-moz-'{
+                    opacity: 1;
+                }
             }
         }
     }
