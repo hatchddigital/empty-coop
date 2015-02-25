@@ -3,61 +3,61 @@
  */
 
 form{
-	position:relative;
-	margin:0 0 1em 0;
+	position: relative;
+	margin: 0 0 1em 0;
     @at-root{
     	fieldset{
-    		margin:0;
-    		padding:0;
-    		border:none;
+    		margin: 0;
+    		padding: 0;
+    		border: none;
     	}
     	legend{
-    		margin:0 0 0.5em 0;
-    		padding:0;
-    		font-size:1;
+    		margin: 0 0 .5em 0;
+    		padding: 0;
+    		font-size: 1;
     	}
     	label{
-    		display:inline-block;
-    		margin:0 0 0.25em 0;
+    		display: inline-block;
+    		margin: 0 0 .25em 0;
     	}
     	input,
     	textarea,
     	select{
-    		display:block;
-    		box-sizing:border-box;
-    		width:100%;
-    		margin:0;
-    		color:color(default);
+    		display: block;
+    		box-sizing: border-box;
+    		width: 100%;
+    		margin: 0;
+    		color: color(default);
     	}
         input,
         textarea{
-            padding:10px 15px;
-            border:1px solid color(muted);
-            border-radius:0;
+            padding: 10px 15px;
+            border: 1px solid color(muted);
+            border-radius: 0;
         }
         input:not([type="radio"]):not([type="checkbox"]),
         textarea{
-            -webkit-appearance:none;
+            -webkit-appearance: none;
         }
     	input[type="checkbox"],
     	input[type="radio"]{
-    		display:inline-block;
-    		width:auto;
-    		float:left;
-    		border:none;
-    		margin:0.25em 0.5em 0 0;
+    		display: inline-block;
+    		width: auto;
+    		float: left;
+    		border: none;
+    		margin: .25em .5em 0 0;
     	}
         input[type="file"]{
-            padding:0;
-            border:none;
+            padding: 0;
+            border: none;
         }
         input[type="date"]{
-            padding-right:0;
+            padding-right: 0;
         }
     	button,
         input[type="submit"]{
-    		padding:0.5em;
-    		cursor:pointer;
+    		padding: .5em;
+    		cursor: pointer;
     	}
         @each $prefix in (
           '::-webkit-input-',

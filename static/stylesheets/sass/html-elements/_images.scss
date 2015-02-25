@@ -6,11 +6,11 @@
  * Image on its own
  */
     img{
-        display:block;
-        width:auto;
+        display: block;
+        width: auto;
         max-width: 100%;
-        border:0;
-        margin:0 0 1em 0;
+        border: 0;
+        margin: 0 0 1em 0;
         /**
          * Prevent google maps ui elements from being resized
          */
@@ -24,15 +24,15 @@
  */
     figure{
     	display:block;
-    	margin:0 0 1em 0;
-        padding:0;
+    	margin: 0 0 1em 0;
+        padding: 0;
     	img{
-    		margin-bottom:0;
+    		margin-bottom: 0;
     	}
         @at-root{
         	figcaption{
-        		margin-top:0.5em;
-        		font-style:italic;
+        		margin-top: .5em;
+        		font-style: italic;
         	}
         }
     }

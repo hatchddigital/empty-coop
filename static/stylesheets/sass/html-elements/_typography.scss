@@ -7,10 +7,10 @@
  */
 	body{
         @include font(fontbase(14) 1.5em, default, 400);
-        color:color(default);
+        color: color(default);
     }
     p,li,dt,dd,input,textarea,button{
-        line-height:1.5em;
+        line-height: 1.5em;
     }
 
 /**
@@ -26,7 +26,7 @@
     );
     #{map-keys( $headings )}{
         @include font(false 1.3em,default);
-        margin:1em 0 .5em;
+        margin: 1em 0 .5em;
       @at-root{
         @each $headinglevel, $headingsize in ($headings){
           #{$headinglevel}{
@@ -40,14 +40,14 @@
  * Block elements
  */
 	p{
-		margin:0 0 1em 0;
+		margin: 0 0 1em 0;
 	}
 	hr{
-		height:0;
-		margin:0 0 1em 0;
-		padding:0;
-		border:none;
-		border-top:1px solid color(muted);
+		height: 0;
+		margin: 0 0 1em 0;
+		padding: 0;
+		border: none;
+		border-top: 1px solid color(muted);
 	}
 
 /**
@@ -58,23 +58,23 @@
      * Blockquotes
      */
         blockquote{
-            margin:0 0 1em 3em;
+            margin: 0 0 1em 3em;
             > p{
-                font-size:1.4em;
-                margin-bottom:0.60em;
+                margin-bottom: .60em;
+                font-size: 1.4em;
                 &:first-child:before{
-                    content:'\201C';
+                    content: '\201C';
                 }
                 &:first-child:after{
-                    content:'\201D';
+                    content: '\201D';
                 }
             }
             footer p{
-                margin:-0.5em 0 0 0;
-                font-size:0.85em;
-                font-style:italic;
+                margin: -.5em 0 0 0;
+                font-size: .85em;
+                font-style: italic;
                 &:before{
-                    content:"- ";
+                    content: '-';
                 }
             }
         }
@@ -83,8 +83,8 @@
      * Inline quotes
      */
         q{
-            font-style:italic;
             color:inherit;
+            font-style:italic;
         }
         cite{
             font-style:italic;
@@ -98,11 +98,11 @@
      * Globals
      */
         ul,ol,dl{
-            margin:0 0 1em 2em;
-            padding:0;
+            margin: 0 0 1em 2em;
+            padding: 0;
             @at-root{
                 li{
-                    margin:0 0 0.25em 0;
+                    margin: 0 0 .25em 0;
                 }
             }
         }
@@ -113,7 +113,7 @@
         ul{
             list-style:disc outside;
             ul{
-                margin:0.25em 0 0.5em 1em;
+                margin: .25em 0 .5em 1em;
             }
         }
 
@@ -121,10 +121,10 @@
      * Ordered lists
      */
         ol{
-            list-style:decimal outside;
+            list-style: decimal outside;
             ol{
-                margin:0.25em 0 0.5em 1.5em;
-                list-style-type:lower-roman;
+                margin: .25em 0 .5em 1.5em;
+                list-style-type: lower-roman;
             }
         }
 
@@ -132,14 +132,14 @@
      * Definiton lists
      */
         dl{
-            margin-left:0;
+            margin-left: 0;
             @at-root{
                 dt{
-                    font-weight:bold;
-                    margin:0 0 0.5em 0;
+                    margin: 0 0 .5em 0;
+                    font-weight: bold;
                 }
                 dd{
-                    margin:0 0 0.5em 0;
+                    margin: 0 0 .5em 0;
                 }
             }
         }
@@ -154,16 +154,16 @@
      */
     	sup,
         sub{
-    	    font-size: 75%;
-    	    line-height: 0;
     	    position: relative;
     	    vertical-align: baseline;
+            font-size: 75%;
+            line-height: 0;
             @at-root{
             	sup{
-            	   top: -0.5em;
+            	   top: -.5em;
             	}
             	sub{
-            	   bottom: -0.25em;
+            	   bottom: -.25em;
             	}
             }
         }
@@ -172,37 +172,37 @@
      * For marking up content relevency/edits and highlighting content
      */
     	ins{
-    		background-color:color(highlight);
+    		background-color: color(highlight);
     	}
     	del{
-    		text-decoration:line-through;
+    		text-decoration: line-through;
     	}
     	s{
-    		color:color(muted);
-    		text-decoration:line-through;
+    		color: color(muted);
+    		text-decoration: line-through;
     	}
     	mark{
-    		background-color:color(highlight);
-    		color:inherit;
-    		font-weight:normal;
+    		background-color: color(highlight);
+    		color: inherit;
+    		font-weight: normal;
     	}
     /**
      * Small print
      */
     	small{
-    		font-weight:normal;
-    		font-style:normal;
+    		font-weight: normal;
+    		font-style: normal;
     	}
     /**
      * Phrase tags
      */
     	strong,b{
-    		font-weight:bold;
+    		font-weight: bold;
     	}
     	em,i{
-    		font-style:italic;
+    		font-style: italic;
     	}
     	dfn,abbr{
-    		font-style:inherit;
-    		position:relative;
+    		position: relative;
+            font-style: inherit;
     	}

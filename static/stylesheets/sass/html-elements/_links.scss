@@ -6,18 +6,18 @@
  * Link styles
  */
     a{
-        color:color(link);
-        text-decoration:underline;
+        color: color(link);
+        text-decoration: underline;
         &:hover{
-            color:color(linkactive);
-            text-decoration:none;
+            color: color(linkactive);
+            text-decoration: none;
         }
         &[href^="tel"]{
-            color:inherit;
+            color: inherit;
         }
     }
     :focus{
-        outline:none;
+        outline: none;
     }
 
 /**
