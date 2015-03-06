@@ -35,7 +35,8 @@ module.exports = function (grunt) {
             scripts: root + '/scripts',
             fonts: root + '/fonts',
             images: root + '/images',
-            templates: root + '/html'
+            templates: root + '/html',
+            docs: root + '/docs'
         },
         eggbox: {
             root: root + '/libs/eggbox',
@@ -243,7 +244,10 @@ module.exports = function (grunt) {
     ext.configure({
         sassdoc: {
             default: {
-                src: '<%= assets.stylesheets %>/sass/'
+                src: '<%= assets.stylesheets %>/sass/',
+                options: {
+                    dest: '<%= assets.docs %>'
+                },
             }
         }
     });

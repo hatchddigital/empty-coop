@@ -18,12 +18,22 @@
   }
 }
 
-/// Automagically set items evenly in a line
+/// Generate a % width for items intended 
+/// to sit alongside one another. 
+/// Useful for simple grid-style columns
 /// @author Jack Armley
-/// @param {Number} $item-number Number from 0-100
+/// @param {Number} $item-number Number from 1-100
+/// @example
+///   div{
+///     @include dist(2);
+///   }
+///   div{
+///     width: 50%;
+///   }
 @mixin dist($item-number){
-  width: (100 / $item-number)#{'%'};
+  width: percentage(1/$item-number);
 }
+
 
 /// Make pure CSS triangles
 /// @author Jack Armley

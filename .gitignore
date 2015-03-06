@@ -15,7 +15,7 @@ npm-debug.log
 static/libs/*
 
 # sassdocs
-sassdoc/
+static/docs/
 
 # os files
 .DS_Store

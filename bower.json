@@ -1,6 +1,6 @@
 {
   "name": "empty-coop",
-  "version": "0.12.0",
+  "version": "0.12.4",
   "dependencies": {
     "jquery": "components/jquery#1.x.x",
     "requirejs": "~2.1.x",
