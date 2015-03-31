@@ -83,8 +83,8 @@
     $listcontains: false;
     @each $item in $list {
       @if $item == $var {
-        $listcontains: true; 
-      } 
+        $listcontains: true;
+      }
     }
     @return $listcontains;
 }
@@ -127,13 +127,13 @@
   $point: pointtype($point);
   $pointlength: length($point);
   $i: 1;
-  
+
   @each $name, $value in $point{
     @if(contains($point-helpers,$name) == true){
       $pointlength: $pointlength - 1;
     }
   }
-  
+
   @each $name, $value in $point{
     // Only process points that contain valid values
     @if (contains($point-helpers,$name) == false){
@@ -175,7 +175,7 @@
   @return $usage;
 }
 
-/// Function to pass breakpoints to an element for use by JS, 
+/// Function to pass breakpoints to an element for use by JS,
 /// using the css content attr
 /// @author Jack Armley
 /// @group media queries
@@ -207,7 +207,7 @@
     OR : ','
   );
   $i: 1;
-  
+
   @if( $pointtype != 'map'){
     @each $point in $points{
       // If an operator, process and convert accordingly
@@ -236,7 +236,7 @@
 }
 
 
-/// Process a breakpoint 
+/// Process a breakpoint
 /// for the breakpoint guide helper
 /// @author Jack Armley
 /// @group media queries
@@ -263,7 +263,7 @@
   $output: null;
   $inputtype: type-of($input);
   $font-props: map-keys($font-extras);
-  
+
   @if ($inputtype == string){
     // Check if input is dash-seperated
     $inputsplit: str-index($input,'-');
@@ -319,17 +319,17 @@
 /// @param {String} $location Font file location
 /// @param {String|List} $filetypes Font filetypes
 @function fontsrc($svgfamilyname,$filename,$location,$filetypes){
-  
+
   // Make a few starting vars
   $typestring:'';
   $format:'';
   $i: 1;
   $l: length($filetypes);
-  
+
   // Loop through the $filetypes string
   // and make the file urls
   @each $type in $filetypes{
-    
+
     // Generate format vars for each filetype
     @if ($type == 'eot'){
       $format: 'embedded-opentype';
@@ -338,7 +338,7 @@
     }@else{
       $format: $type;
     }
-    
+
     // If multiple filetypes are passed add iefix part to url
     // If only one is passed, assume it is the seperate eot file src
     @if ($l > 1){
@@ -346,7 +346,7 @@
         $type: $type + '?#iefix';
       }
     }
-    
+
     // If svg filetype is passed,
     // Add svg family name to type string
     @if ($type == 'svg'){
@@ -355,24 +355,24 @@
 
     // Generate the url string
     $typestring: $typestring + 'url("#{$location}/#{$filename}.' + $type + '")';
-    
+
     // If multiple filetypes are passed add format to each url
     @if ($l > 1){
       $typestring: $typestring + ' format("' + $format + '")'
     }
-    
+
     // Comma seperate each url
     @if($i < $l){
       $typestring: $typestring + ',';
     }
-    
+
     // add to the iteration variable
     $i: $i + 1;
   }
-  
+
   // Return the string(s)
   @return unquote($typestring);
-  
+
 }
 
 /// Convert desired triangle mixin direction argument
@@ -416,5 +416,5 @@
 /// @param {Variable} $base [$fontsize-base] - base font size
 /// @require {Variable} fontsize-base
 @function pxrem($input,$base:$fontsize-base){
-  @return ($input/$base)
+  @return ($input/$base)+rem
 }
