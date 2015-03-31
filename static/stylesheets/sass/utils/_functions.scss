@@ -396,7 +396,6 @@
   @return $dir;
 }
 
-
 /// Convert image ratio to a percentage
 /// @author Jack Armley
 /// @link http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
@@ -409,4 +408,13 @@
     // Convert ratio to a percentage
     $ratio-converted: ($ratio-h / $ratio-w) * 100 + '%';
     @return unquote($ratio-converted);
+}
+
+/// Convert pixels to rem
+/// @author Jack Armley
+/// @param {Variable} $input - starting px size
+/// @param {Variable} $base [$fontsize-base] - base font size
+/// @require {Variable} fontsize-base
+@function pxrem($input,$base:$fontsize-base){
+  @return ($input/$base)
 }
