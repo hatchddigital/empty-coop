@@ -5,8 +5,11 @@
 /**
  * Set base font size/line-height and declare the px size of an em unit
  */
+    html{
+        font-size: fontbase($remsize-base,16);
+    }
 	body{
-        @include font(fontbase(14) 1.5em, default, 400);
+        @include font(fontbase($fontsize-base) 1.5em, default, 400);
         color: color(default);
     }
     p,li,dt,dd,input,textarea,button{

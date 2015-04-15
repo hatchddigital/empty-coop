@@ -4,6 +4,11 @@
 //// @group Fonts
 ////
 
+/// Base rem size
+/// @type Variable
+/// @access Private
+$remsize-base: 10;
+
 /// Base font size
 /// @type Variable
 $fontsize-base: 14;

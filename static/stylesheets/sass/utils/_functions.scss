@@ -69,9 +69,10 @@
 /// @author Jack Armley
 /// @group fonts
 /// @param {Number} $size - Target font size in px
-@function fontbase($size){
-    $base: (100/16 * $size + '%');
-    @return unquote($base);
+/// @require {Variable} $remsize-base
+@function fontbase($target,$base: $remsize-base){
+    $size: (100/$base * $target + '%');
+    @return unquote($size);
 }
 
 /// Generic list contains function
@@ -410,11 +411,11 @@
     @return unquote($ratio-converted);
 }
 
-/// Convert pixels to rem
+/// Convert px to rems
 /// @author Jack Armley
-/// @param {Variable} $input - starting px size
-/// @param {Variable} $base [$fontsize-base] - base font size
-/// @require {Variable} fontsize-base
-@function pxrem($input,$base:$fontsize-base){
-  @return ($input/$base)
+/// @param {Variable} $target - starting px size
+/// @param {Variable} $base [$remsize-base] - base font size
+/// @require {Variable} $remsize-base
+@function rem($target,$base:$remsize-base){
+  @return unquote(($target/$base)+'rem');
 }
