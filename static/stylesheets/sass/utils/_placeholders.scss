@@ -1,41 +1,41 @@
 ////
 //// Placeholders
-//// @author Various at Hatchd Digital
+//// @author Hatchd Digital
 ////
 
 
-/// Clearfix
+/// Good ol' clearfix, used on a parent
+/// to clear floated child elements
 /// @author CSS Tricks
 /// @link http://css-tricks.com/snippets/css/clear-fix
 %clearfix{
     &:after{
-        display:block;
-        visibility:hidden;
-        clear:both;
-        content:" ";
-        height:0;
-        font-size:0;
+        content:' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+        height: 0;
+        font-size: 0;
     }
 }
 
-/// Hide a text element but ensure 
+/// Hide a text element but ensure
 /// it is still readable via assistive technology
 %visual-hide{
-    position:absolute;
-    text-indent:100%;
-    text-align:left;
-    white-space:nowrap;
-    overflow:hidden;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    text-indent: 100%;
+    text-align: left;
 }
 
 /// Completely hide an element
-%hide,
-%state-hide{
-    display:none;
+%hide{
+    display: none;
 }
 
 /// Set an element to clear the element above it
 %clear{
-    clear:both;
-    display:block;
+    display: block;
+    clear: both;
 }

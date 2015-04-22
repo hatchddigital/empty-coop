@@ -5,34 +5,34 @@
 /**
  * Link styles
  */
-    a{
-        color: color(link);
-        text-decoration: underline;
-        &:hover{
-            color: color(linkactive);
-            text-decoration: none;
-        }
-        &[href^="tel"]{
-            color: inherit;
-        }
+a{
+    color: color(link);
+    text-decoration: underline;
+    &:hover{
+        color: color(linkactive);
+        text-decoration: none;
     }
-    :focus{
-        outline: none;
+    &[href^="tel"]{
+        color: inherit;
     }
+}
+:focus{
+    outline: none;
+}
 
 /**
  * Selection styles
  */
-    @each $prefix in (
-        '::',
-        '::-webkit-',
-        '::-moz-',
-        '::-ms-')
-    {
-        #{$prefix}selection{
-            color: color(white);
-            background: color(link);
-        }
+@each $prefix in (
+    '::',
+    '::-webkit-',
+    '::-moz-',
+    '::-ms-')
+{
+    #{$prefix}selection{
+        color: color(white);
+        background: color(link);
     }
+}
 
 

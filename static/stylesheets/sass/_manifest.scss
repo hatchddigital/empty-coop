@@ -6,14 +6,14 @@
 /// Utils
 /// Define variables, mixins, placeholders and functions
 /// to be used throughout the project
-@import 
-    'utils/variables/_fonts', 
-    'utils/variables/_colours', 
-    'utils/variables/_breakpoints', 
-    'utils/_placeholders',
+@import
+    'utils/variables/_fonts',
+    'utils/variables/_colours',
+    'utils/variables/_breakpoints',
     'utils/_functions',
     'utils/_mixins',
-    'utils/_eggbox';
+    'utils/_eggbox',
+    'utils/_placeholders';
 
 /// Establish any resource using an @rule
 /// Set rules for any CSS resource requiring an @ prefix,
@@ -27,7 +27,7 @@
 
 /// Set base rules that can apply site-wide
 /// These should apply to naked elements, no classes should be defined here
-@import 
+@import
     'html-elements/_typography',
     //'html-elements/_code',
     'html-elements/_links',
@@ -38,22 +38,22 @@
 /// Define modular components
 /// Reusable components, called with a class (or classes)
 /// that can exist anywhere in the site
-@import 
+@import
     'reusable-components/_template';
 
 /// Set static page elements
 /// The scaffolding of the site, defined through elements that occur only
 /// once per page, defined via an aria role or ID
-@import 
-    'page-elements/_page-outer',
-    'page-elements/_page-header',
+@import
+    'page-elements/_site-outer',
+    'page-elements/_site-header',
     'page-elements/_page-content',
-    'page-elements/_page-footer';
+    'page-elements/_site-footer';
 
 /// Set page layout(s)
 /// Rules unique to a specific template or set of templates.
 /// These definitions should be set from a unique class
-@import 
+@import
     'page-layouts/_layout-template';
 
 /// Pull in 'shame' styles
