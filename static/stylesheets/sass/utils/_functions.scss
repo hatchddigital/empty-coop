@@ -413,9 +413,9 @@
 
 /// Convert px to rems
 /// @author Jack Armley
-/// @param {Variable} $input - starting px size
-/// @param {Variable} $base [$fontsize-base] - base font size
-/// @require {Variable} fontsize-base
-@function pxrem($input,$base:$fontsize-base){
-  @return ($input/$base)+rem
+/// @param {Variable} $target - starting px size
+/// @param {Variable} $base [$remsize-base] - base font size
+/// @require {Variable} $remsize-base
+@function rem($target,$base:$remsize-base){
+  @return unquote(($target/$base)+'rem');
 }

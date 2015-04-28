@@ -4,7 +4,7 @@
   "dependencies": {
     "jquery": "components/jquery#1.x.x",
     "requirejs": "~2.1.x",
-    "eggbox": "git://github.com/hatchddigital/eggbox.git#0.6.1"
+    "eggbox": "git://github.com/hatchddigital/eggbox.git#0.6.2"
   },
   "private": true
 }
