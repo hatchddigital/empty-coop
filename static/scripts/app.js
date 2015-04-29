@@ -26,11 +26,17 @@
 
 require.config({
     paths: {
-        jquery: '../libs/jquery/jquery'
+        jquery: '../libs/jquery/jquery',
+        mediaquery: './mediaquery'
     }
 });
 
-require(['jquery','./breakpointguide'], function ($) {
+require(
+    ['jquery',
+    'mediaquery',
+    './breakpointguide'
+    ],
+    function ($,mq) {
     'use strict';
 
     /**
@@ -51,5 +57,13 @@ require(['jquery','./breakpointguide'], function ($) {
 
     // Sitewide specific code
     window.console.log('Lock and loaded');
+
+    /**
+     * Example mediaquery.js usage
+     */
+    var mediaquery =  new mq.MediaQuery();
+    if ( mediaquery.query('pebble') ){
+        window.console.log('Media Query function is being called correctly');
+    }
 
 });
