@@ -415,7 +415,9 @@
 /// from the HTML element, hence the function uses $remsize-base.
 /// @author Jack Armley
 /// @param {Number|List} $target - starting px size
+/// @param {Bool} $supported [$remsupport] - whether or not rems are supported
 /// @param {Number} $base [$remsize-base] - base font size
+/// @require {Bool} $remsupport
 /// @require {Number} $remsize-base
 /// @example
 /// p{
@@ -423,12 +425,16 @@
 ///   margin: rem(10);
 ///   /* Multiple values, passed as a list */
 ///   padding: rem(10 20);
-@function rem($target,$base:$remsize-base){
+@function rem($target,$supported:$remsupport,$base:$remsize-base){
   $remstring:'';
   $i: 0;
   $l: length($target);
   @each $value in $target{
-    $remstring: $remstring + ($value/$base)+'rem';
+    @if $remsupport != true{
+      $remstring: $remstring + $value + 'px';
+    }@else{
+      $remstring: $remstring + ($value/$base)+ 'rem';
+    }
     $i: $i + 1;
     @if ($i < $l){
       $remstring: $remstring + ' ';

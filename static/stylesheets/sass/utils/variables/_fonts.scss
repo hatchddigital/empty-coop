@@ -4,6 +4,10 @@
 //// @group Fonts
 ////
 
+/// Define rem support
+/// @type Bool
+$remsupport: true !default;
+
 /// Base rem size
 /// @type Variable
 /// @access Private

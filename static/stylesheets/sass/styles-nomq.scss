@@ -24,5 +24,9 @@
 /// @alias mqsupport
 $mqsupport: false;
 
+/// Define rem support
+/// @type Variable
+$remsupport: false;
+
 /// Import all site files
 @import '_manifest';
