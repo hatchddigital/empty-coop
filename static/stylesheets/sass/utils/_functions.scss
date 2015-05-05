@@ -442,7 +442,7 @@
       $remstring: $remstring + ($value/$base);
     }
     // Include unit
-    @if $value > 0{
+    @if $value != 0{
       $remstring: $remstring + $unit;
     }
     // Include spaces
