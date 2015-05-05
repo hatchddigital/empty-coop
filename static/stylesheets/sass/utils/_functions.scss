@@ -411,11 +411,28 @@
     @return unquote($ratio-converted);
 }
 
-/// Convert px to rems
+/// Convert px to rems. Note that the base rem size is always taken
+/// from the HTML element, hence the function uses $remsize-base.
 /// @author Jack Armley
-/// @param {Variable} $target - starting px size
-/// @param {Variable} $base [$remsize-base] - base font size
-/// @require {Variable} $remsize-base
+/// @param {Number|List} $target - starting px size
+/// @param {Number} $base [$remsize-base] - base font size
+/// @require {Number} $remsize-base
+/// @example
+/// p{
+///   /* Single value */
+///   margin: rem(10);
+///   /* Multiple values, passed as a list */
+///   padding: rem(10 20);
 @function rem($target,$base:$remsize-base){
-  @return unquote(($target/$base)+'rem');
+  $remstring:'';
+  $i: 0;
+  $l: length($target);
+  @each $value in $target{
+    $remstring: $remstring + ($value/$base)+'rem';
+    $i: $i + 1;
+    @if ($i < $l){
+      $remstring: $remstring + ' ';
+    }
+  }
+  @return unquote($remstring);
 }
