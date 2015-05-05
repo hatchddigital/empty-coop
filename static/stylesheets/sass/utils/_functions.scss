@@ -429,13 +429,23 @@
   $remstring:'';
   $i: 0;
   $l: length($target);
+  $unit: 'rem';
+  @if $remsupport != true{
+    $unit: 'px';
+  }
   @each $value in $target{
-    @if $remsupport != true{
-      $remstring: $remstring + $value + 'px';
-    }@else{
-      $remstring: $remstring + ($value/$base)+ 'rem';
-    }
     $i: $i + 1;
+    // Convert to rems
+    @if $remsupport != true{
+      $remstring: $remstring + $value;
+    }@else{
+      $remstring: $remstring + ($value/$base);
+    }
+    // Include unit
+    @if $value > 0{
+      $remstring: $remstring + $unit;
+    }
+    // Include spaces
     @if ($i < $l){
       $remstring: $remstring + ' ';
     }
