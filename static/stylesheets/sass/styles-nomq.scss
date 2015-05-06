@@ -30,3 +30,6 @@ $remsupport: false;
 
 /// Import all site files
 @import '_manifest';
+
+/// Import ie8-specific fixes
+@import '_ie8-fixes';

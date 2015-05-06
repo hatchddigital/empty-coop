@@ -1,0 +1,31 @@
+/**
+ * IE8-specific layout fixes
+ * @author Jack Armley
+ *
+ * Want to keep them apart from the
+ * other site styles as
+ * they are so hacky
+ */
+
+/**
+ * Show a 'we don't support ie8'
+ * message to users
+ */
+.ie8-message{
+    background-color: color(supportmessage);
+    &-inner{
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        padding: rem(20);
+        > *{
+            color: color(default);
+        }
+    }
+        &-header{
+            margin-top: 0;
+        }
+        p{
+            margin-bottom: 0;
+        }
+}

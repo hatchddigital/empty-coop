@@ -32,9 +32,11 @@ require.config({
 });
 
 require(
-    ['jquery',
-    'mediaquery',
-    './breakpointguide'
+    [
+        'jquery',
+        'mediaquery',
+        './breakpointguide',
+        './ie8message'
     ],
     function ($,mq) {
     'use strict';
