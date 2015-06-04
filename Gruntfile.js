@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     var root = 'static';
 
     // Configuration
-    ext.configure({
+    var config = {
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*! <%= pkg.name %>: version <%= pkg.version %>\n' +
             '* Built on: <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -44,7 +44,8 @@ module.exports = function (grunt) {
             iconTmp: root + '/libs/eggbox/tmp',
             customIcons: root + '/custom-eggbox'
         }
-    });
+    };
+    ext.configure(config);
 
     // Common tasks
     ext.configure({
@@ -133,7 +134,12 @@ module.exports = function (grunt) {
         jade: {
             dist: {
                 options: {
-                    pretty: true
+                    pretty: true,
+                    data: function(dest, src) {
+                        // dot slash at the beginning, as require **ahem** requires
+                        // a dot slash at the beginning of the path.
+                        return require('./' + config.assets.templates + '/jade/locals.json');
+                    }
                 },
                 files: [
                     {

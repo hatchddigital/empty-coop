@@ -1,0 +1,22 @@
+{
+    "sitenavlinks": {
+        "Home" : {
+            "title": "Home",
+            "url" : "/"
+        },
+        "About" : {
+            "Title": "About",
+            "url" : "about.html",
+            "subnav" : {
+                "team" : {
+                    "title" : "The team",
+                    "url" : "team.html"
+                },
+                "studio": {
+                    "title" : "Our studio",
+                    "url" : "studio.html"
+                }
+            }
+        }
+    }
+}

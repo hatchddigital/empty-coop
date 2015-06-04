@@ -1,11 +1,10 @@
 header(role="banner" aria-label="Site header")
-	nav(role="navigation" aria-label="Site navigation")
-		ul
-			-each link in sitenavlinks
-				li: a(href="")= link[0]
-					//- Build submenus where relevent
-					-if(link[1])
-						-var sublink = link[1].split(',')
-						ul
-							-each link in sublink
-								li: a(href="")= link
+    nav(role="navigation" aria-label="Site navigation")
+        ul
+            -each val, index  in locals.sitenavlinks
+                li
+                    a(href=val.url)= val.title
+                    if(val.subnav)
+                        ul
+                            -each subval, index in val.subnav
+                                li: a(href=subval.url)= subval.title
