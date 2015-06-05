@@ -61,7 +61,8 @@ module.exports = function (grunt) {
             js: {
                 files: [
                     '<%= assets.scripts %>/**/*.js',
-                    '!<%= assets.scripts %>/**/*min.js',
+                    '!<%= assets.scripts %>/**/*.min.js',
+                    '!<%= assets.scripts %>/**/*-min.js'
                 ],
                 tasks: [
                     'jshint',
