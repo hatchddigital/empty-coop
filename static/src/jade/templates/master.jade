@@ -19,7 +19,7 @@ head
     <link rel="stylesheet" href="../stylesheets/styles-nomq.css" />
     <![endif]-->
     //- Important early load external scripts
-    script(src='../libs/modernizr/modernizr.min.js')
+    script(src='scripts/modernizr.min.js')
     //- Icons for browsers + mobile devices, bookmarks, etc.
     link(rel='shortcut icon', href='/favicon.ico')
     link(rel='apple-touch-icon-precomposed', href='../images/apple-touch-icon-precomposed.png')
@@ -39,4 +39,4 @@ body(class="#{viewclass}")
     include ../partials/header
     block pagecontent
     //- JavaScript libraries and UX based code
-    script(data-main='../scripts/app', src='../libs/requirejs/require.js')
+    script(data-main='../scripts/bootstrap', src='../libs/requirejs/require.js')

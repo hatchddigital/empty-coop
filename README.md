@@ -3,7 +3,7 @@
 Created and maintained by the team at Hatchd Digital, Perth
 (see static/humans.txt). We use:
 
-- [Grunt](http://gruntjs.com/)
+- [Gulp](http://gulpjs.com/)
 - [SASS](http://sass-lang.com/)
 - [jQuery](http://jquery.com/)
 - [RequireJS](http://requirejs.org/)
@@ -25,35 +25,36 @@ guidelines on using Empty-coop.
 ## Requirements
 
 For development and to get the most out of this boilerplate we recommend
-you install Node & npm, Grunt and Bower. This allows you to manage and
-build your code with simple command-line commands. This removes usage of
-GUI software like CodeKit for any development needs. Basic toolchain setup
-on a Mac looks like:
+you install Node & npm and gulp.
+
+Initial setup on a mac looks like:
 
 ```sh
 brew install node
-npm install -g grunt-cli bower
+npm install --global gulp
 ```
 
-This will install `node` with `npm` + `grunt` and `bower` commenads globally,
-ready for use with this project. For more information see the
-[node](http://nodejs.org/), [npm](http://npmjs.com.au),
-[grunt](http://gruntjs.com/) and [bower](bower.io) projects.
+This will install `node` with `npm` and `gulp` commenads globally,
+ready for use with this project.
 
 ## Usage
 
-We use Grunt to manage our static builds. To start pull the repo then:
+We use gulp to manage our static builds. To start pull the repo then:
 
 ```sh
 cd /path/to/empty-coop
-npm install && bower install
-grunt
+npm run setup
 ```
 
-This will allow you to run builds which will build all static requirements
-(app-min.js and style.css). We will remove these files from the repository
-in upcoming versions.
+This will allow you to run builds which will build all static requirements.
+
+To run a local development server:
+
+```sh
+gulp watch
+```
 
 ## Changelog (major changes)
 
+- **0.13.0** Removed support for grunt and bower, added gulp (requires eggbox 0.6.3 or higher)
 - **0.12.0** Removed support for IE7 (requires eggbox 0.6.0 or higher)
