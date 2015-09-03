@@ -56,7 +56,7 @@ gulp.task('fonts-svg', function(callback) {
 });
 
 // Use svg2ttf to convert an svg font to ttf
-gulp.task('fonts-ttf', function(callback) {
+gulp.task('fonts-ttf', ['fonts-svg'], function(callback) {
   return gulp.src(`${config.fonts}/**/*.svg`, { read: false })
     .pipe(shell([
       'svg2ttf <%= file.path %> <%= f(file.path) %>',
@@ -70,7 +70,7 @@ gulp.task('fonts-ttf', function(callback) {
 });
 
 // Use ttf2woff to convert a ttf font to woff
-gulp.task('fonts-woff', function(callback) {
+gulp.task('fonts-woff', ['fonts-ttf'], function(callback) {
   return gulp.src(`${config.fonts}/**/*.ttf`, { read: false })
     .pipe(shell([
       'ttf2woff <%= file.path %> <%= f(file.path) %>',
@@ -84,7 +84,7 @@ gulp.task('fonts-woff', function(callback) {
 });
 
 // Use ttf2eot to convert a ttf font to eot
-gulp.task('fonts-eot', function(callback) {
+gulp.task('fonts-eot', ['fonts-ttf'], function(callback) {
   return gulp.src(`${config.fonts}/**/*.ttf`, { read: false })
     .pipe(shell([
       'ttf2eot <%= file.path %> <%= f(file.path) %>',
@@ -97,10 +97,11 @@ gulp.task('fonts-eot', function(callback) {
     }));
 });
 
+gulp.task('fonts-all', ['fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot']);
+
 gulp.task('fonts', function(callback) {
-  return config.PRODUCTION ? run('fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot', callback)
-                           : callback();
-});
+  return config.PRODUCTION ? run('fonts-all') : callback();
+})
 
 export function watch() {
   // For compatibility; no actual watch as this is a production only build target

@@ -15,7 +15,7 @@ gulp.task('scripts-es6', function() {
 });
 
 /** Run nodeunit tests */
-gulp.task('scripts-nodeunit', function() {
+gulp.task('scripts-nodeunit', ['scripts-es6'], function() {
   return gulp.src(config.js + '/**/*.tests.js')
     .pipe(nodeunit());
 });
@@ -60,7 +60,7 @@ gulp.task('scripts-lib', function(callback) {
 });
 
 /** Compile scripts into amd modules for requirejs */
-gulp.task('scripts-amd', function() {
+gulp.task('scripts-amd', ['scripts-lib', 'scripts-raw'], function() {
   return gulp.src([config.es6 + '/**/*.js', `!${config.es6}/**/*.raw.js`])
     .pipe(babel({
       modules: 'amd'
@@ -90,16 +90,11 @@ gulp.task('scripts', function(callback) {
 
   // If we're running tests, add the required tasks
   if (config.enable_nodeunit) {
-    tasks.push('scripts-es6');
     tasks.push('scripts-nodeunit');
   }
 
   // Compile modules & static files
   tasks.push('scripts-amd');
-  tasks.push('scripts-raw');
-
-  // Publish node modules
-  tasks.push('scripts-lib');
 
   // In production, add a minify task
   if (config.PRODUCTION) {
