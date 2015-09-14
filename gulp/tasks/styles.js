@@ -12,7 +12,12 @@ import * as config from '../config';
 gulp.task('styles-build', function() {
   var rtn = gulp.src(config.sass + '/*.scss')
     .pipe(plumber())
-    .pipe(sass());
+    .pipe(sass({
+      stream: true,
+      handler: function(err) {
+        console.log(err);
+      }
+    }));
 
   // In production, add cmq
   if (config.PRODUCTION) {
@@ -27,7 +32,7 @@ gulp.task('styles-build', function() {
   }
 
   return rtn
-    .pipe(gulp.dest(config.css))
+    .pipe(gulp.dest(config.css));
     .pipe(browserSync.stream());
 });
 
