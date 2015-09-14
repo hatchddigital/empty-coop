@@ -1,0 +1,10 @@
+// This file is copied unmodified into the build directory.
+// Use it to setup requirejs dependency paths.
+
+require.config({
+    paths: {
+        jquery: '../libs/jquery/dist/jquery',
+    }
+});
+
+require(['app']);

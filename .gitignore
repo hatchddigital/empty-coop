@@ -3,10 +3,15 @@
 *.css.map
 *-min.js
 *.min.js
+static/build/*
 static/fonts/eggbox/*
 .sass-cache/
 static/images/eggbox/*
-static/stylesheets/sass/utils/_eggbox.scss
+static/src/sass/utils/_eggbox.scss
+
+# Temporary annoying files from calling iconfont
+static/fonts/*
+dist
 
 # npm and bower third party libs
 # to be installed win package.json and bower.json
@@ -17,7 +22,11 @@ static/libs/*
 # sassdocs
 static/docs/
 
+# editor files
+.idea
+
 # os files
 .DS_Store
 *.swp
 *.ini~
+sassdoc
