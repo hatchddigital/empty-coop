@@ -56,5 +56,5 @@ gulp watch
 
 ## Changelog (major changes)
 
-- **0.13.0** Removed support for grunt and bower, added gulp (requires eggbox 0.6.3 or higher)
+- **0.14.0** Removed support for grunt and bower, added gulp (requires eggbox 0.6.3 or higher)
 - **0.12.0** Removed support for IE7 (requires eggbox 0.6.0 or higher)
