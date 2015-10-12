@@ -32,7 +32,7 @@ gulp.task('styles-build', function() {
   }
 
   return rtn
-    .pipe(gulp.dest(config.css));
+    .pipe(gulp.dest(config.css))
     .pipe(browserSync.stream());
 });
 
