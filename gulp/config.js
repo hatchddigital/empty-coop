@@ -42,9 +42,9 @@ export var svgmin = path("static/build/svg");
 // Custom webfonts
 export var fontsvg = path("static/src/custom-eggbox");
 export var fonts = path("static/build/fonts");
-export var eggbox_demo = path("static/build/fonts/demo.html");
+export var eggbox_demo = path("static/build/fonts/eggbox/demo.html");
 export var font_name = "eggbox";
-export var font_path = "/fonts"; // Used on frontend
+export var font_path = "../fonts/eggbox"; // Used on frontend
 
 // Eggbox specific config for webfonts
 export var eggbox = path("node_modules/eggbox/src");

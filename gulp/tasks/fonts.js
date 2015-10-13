@@ -23,6 +23,14 @@ gulp.task('fonts-svg', function(callback) {
           }
         });
 
+        // Create folder because it may not async have created yet
+        mkdirp(config.fonts+"/"+config.font_name, function(err) {
+          if (err) {
+            console.log("Failed to create output folder for eggbox fonts");
+            console.log(err);
+          }
+        });
+
         // Build glyph array
         for (var i = 0; i < glyphs.length; ++i) {
           glyphs[i].code = '\\' + glyphs[i].unicode[0].charCodeAt(0).toString(16).toUpperCase();
@@ -31,8 +39,8 @@ gulp.task('fonts-svg', function(callback) {
 
         // Makes a url from a format path pair
         var font = (path, type) => {
-          return type ? `url("${config.fontpath}/${path}") format("${type}")`
-                      : `url("${config.fontpath}/${path}")`; }
+          return type ? `url("${config.font_path}/${path}") format("${type}")`
+                      : `url("${config.font_path}/${path}")`; }
 
         // To understand these options, look at the eggbox template.
         var options = {};
@@ -52,7 +60,7 @@ gulp.task('fonts-svg', function(callback) {
         config.templated(config.eggbox_demo_template, options, config.eggbox_demo);
         config.templated(config.eggbox_mixin_template, options, config.eggbox_mixin);
       })
-      .pipe(gulp.dest(config.fonts));
+      .pipe(gulp.dest(config.fonts+"/"+config.font_name));
 });
 
 // Use svg2ttf to convert an svg font to ttf
