@@ -19,8 +19,7 @@ gulp.task('modernizr', function(callback) {
             'addTest',
             'html5printshiv',
             'testProp',
-            'fnBind',
-            'shiv'
+            'fnBind'
         ],
         parseFiles: true
       }))
