@@ -14,11 +14,14 @@ gulp.task('modernizr', function(callback) {
       .pipe(plumber())
       .pipe(modernizr('modernizr.min.js', {
         devFile: 'remote',
-        extra: {
-            'shiv': true,
-            'load': false,
-            'cssclasses': true
-        },
+        options: [
+            'setClasses',
+            'addTest',
+            'html5printshiv',
+            'testProp',
+            'fnBind',
+            'shiv'
+        ],
         parseFiles: true
       }))
       .pipe(uglify())
