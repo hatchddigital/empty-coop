@@ -10,7 +10,7 @@ import * as config from '../config';
  */
 gulp.task('modernizr', function(callback) {
   if (config.PRODUCTION) {
-    return gulp.src([`${config.js}/**/*.js`, `${config.css}/**/*.css`, '!**/*.min.js'])
+    return gulp.src([`${config.js}/**/*.js`, `${config.css}/**/*.css`])
       .pipe(plumber())
       .pipe(modernizr('modernizr.min.js', {
         devFile: 'remote',
