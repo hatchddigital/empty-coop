@@ -35,6 +35,6 @@ To run a local development server:
 gulp watch
 ```
 
-## Changelog (major changes)
+## Changelog
 
 - **0.0.1** FORKED from empty-coop and removed requirejs.
