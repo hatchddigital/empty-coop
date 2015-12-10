@@ -105,11 +105,19 @@ gulp.task('fonts-eot', ['fonts-ttf'], function(callback) {
     }));
 });
 
-gulp.task('fonts-all', ['fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot']);
+gulp.task('fonts-all', function(callback) {
+  run('fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot', function() {
+    callback();
+  });
+})
 
 gulp.task('fonts', function(callback) {
-  if (config.PRODUCTION) run('fonts-all'); 
-  callback();
+  if (config.PRODUCTION) {
+    run('fonts-all', function() { callback(); });
+  }
+  else {
+    callback();
+  }
 })
 
 export function watch() {
