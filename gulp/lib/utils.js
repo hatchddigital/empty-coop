@@ -7,9 +7,42 @@ export function path(relative_path) {
   return p.resolve(p.join(__dirname, '..', '..', relative_path))
 }
 
-/** Read a file from a relative path */
-export function read(path) {
-  return JSON.parse(fs.readFileSync(path));
+/**
+ * Read a file from a path synchronously
+ * @param target The file to open and parse as json
+ * @param relative If this is a relative path, otherwise use absolute loading
+ * @return A parsed json block or null.
+ */
+export function read(target, relative) {
+  if (relative) { target = path(target); }
+  try {
+    return JSON.parse(fs.readFileSync(target));
+  }
+  catch(err) {
+    return null;
+  }
+}
+
+/**
+ * Write a file to a path synchronously
+ * @param target The file to write
+ * @param value The hash to convert to json and store
+ * @param relative If this is a relative path, otherwise use absolute loading
+ * @return true on success and false on failure
+ */
+export function write(target, value, relative) {
+  if (relative) { target = path(target); }
+  try {
+    value = JSON.stringify(value);
+    fs.writeFileSync(target, value);
+    return true;
+  }
+  catch(err) {
+    console.log('Failed to write to path: ' + target);
+    console.log(err);
+    console.log(err.stack);
+    return false;
+  }
 }
 
 /** Render an ejs template with a data block */

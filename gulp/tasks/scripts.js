@@ -5,12 +5,15 @@ import nodeunit from 'gulp-nodeunit';
 import rename from 'gulp-rename';
 import run from 'run-sequence';
 import browserSync from 'browser-sync';
+import browserify from 'gulp-browserify';
 import * as config from '../config';
 
 /** Convert all scripts from es6 into js (normal) */
 gulp.task('scripts-es6', function() {
-  return gulp.src([config.es6 + '/**/*.js', `!${config.es6}/**/*.raw.js`])
-    .pipe(babel())
+  return gulp.src([config.es6 + '/**/*.js'])
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest(config.js));
 });
 
@@ -20,61 +23,10 @@ gulp.task('scripts-nodeunit', ['scripts-es6'], function() {
     .pipe(nodeunit());
 });
 
-/** Copy any 'raw' files over directly and rename to js */
-gulp.task('scripts-raw', function() {
-
-  // Work around for requirejs not being smart enough to resolve modules
-  // Copy any 'raw' files over without using babel to transpile them first.
-  return gulp.src(`${config.es6}/**/*.raw`)
-    .pipe(rename({
-      extname: '.js'
-    }))
-    .pipe(gulp.dest(config.js));
-});
-
-/** Publish node modules into the libs folder */
-gulp.task('scripts-lib', function(callback) {
-
-  // Hack!
-  // The requirejs build can only run once this is done.
-  // Wait until all copies are done before running scripts-minify
-  var count = 0;
-  var handler = () => {
-    count += 1;
-    // Debug
-    // console.log(`Copy modules: ${count}/${config.requirejs_libs.length}`);
-    if (count == config.requirejs_libs.length) {
-      callback();
-    }
-  };
-
-  // Copy files
-  for (var i = 0; i < config.requirejs_libs.length; ++i) {
-    var id = config.requirejs_libs[i];
-    var source = config.path(`node_modules/${id}/**/*`);
-    var target = `${config.lib}/${id}`;
-    gulp.src(source)
-      .pipe(gulp.dest(target))
-      .on('end', handler);
-  }
-});
-
-/** Compile scripts into amd modules for requirejs */
-gulp.task('scripts-amd', ['scripts-lib', 'scripts-raw'], function() {
-  return gulp.src([config.es6 + '/**/*.js', `!${config.es6}/**/*.raw.js`])
-    .pipe(babel({
-      modules: 'amd'
-    }))
-    .pipe(gulp.dest(config.js));
-});
-
 /** Combine scripts */
 gulp.task('scripts-minify', function() {
   return gulp.src(config.js + '/bootstrap.js')
-    .pipe(rjs({
-       mainConfigFile: config.js + '/bootstrap.js',
-       out: 'app.js'
-    }))
+    .pipe(browserify())
     .pipe(rename({
       extname: '.min.js'
     }))
@@ -93,9 +45,6 @@ gulp.task('scripts', function(callback) {
     tasks.push('scripts-nodeunit');
   }
 
-  // Compile modules & static files
-  tasks.push('scripts-amd');
-
   // In production, add a minify task
   if (config.PRODUCTION) {
     tasks.push('scripts-minify');
@@ -111,5 +60,4 @@ gulp.task('scripts-watch', ['scripts'], browserSync.reload);
 
 export function watch() {
   gulp.watch([config.es6 + '/**/*.js'], ['scripts-watch']);
-  gulp.watch([config.es6 + '/**/*.raw'], ['scripts-watch']);
 }

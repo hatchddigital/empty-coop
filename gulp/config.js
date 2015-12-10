@@ -10,6 +10,7 @@ export var PRODUCTION = false;
 
 export var path = utils.path;
 export var read = utils.read;
+export var write = utils.write;
 export var templated = utils.templated;
 
 
@@ -63,10 +64,3 @@ export var enable_sassdoc = false;
 
 // Enable node unit?
 export var enable_nodeunit = true;
-
-// Node modules to copy out into the libs folder
-// TODO: At some point remove this and use browserify.
-export var requirejs_libs = [
-  'jquery/dist',
-  'requirejs'
-];

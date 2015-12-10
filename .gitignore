@@ -8,6 +8,7 @@ static/fonts/eggbox/*
 .sass-cache/
 static/images/eggbox/*
 static/src/sass/utils/_eggbox.scss
+.build
 
 # Temporary annoying files from calling iconfont
 static/fonts/*
