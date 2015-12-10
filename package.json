@@ -1,8 +1,8 @@
 {
-  "name": "empty-coop",
-  "version": "0.14.3",
-  "author": "Hatchd Digital <hello@hatchd.com.au>",
-  "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, requireJS and Grunt.",
+  "name": "empty-fork",
+  "version": "0.0.1",
+  "author": "",
+  "description": "",
   "contributors": [
     {
       "name": "Jack Armley",
@@ -33,12 +33,10 @@
       "email": "ed@hatchd.com.au"
     }
   ],
-  "homepage": "http://hatchd.com.au",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hatchdditigal/empty-coop.git"
+    "url": "https://github.com/shadowmint/empty-fork.git"
   },
-  "private": true,
   "dependencies": {
     "jquery": "^2.1.4",
     "es6-component-template": "shadowmint/es6-component-template"
