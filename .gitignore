@@ -12,6 +12,7 @@ static/src/sass/utils/_eggbox.scss
 
 # Temporary annoying files from calling iconfont
 static/fonts/*
+static/tmp
 dist
 
 # npm and bower third party libs

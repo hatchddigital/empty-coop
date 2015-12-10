@@ -16,6 +16,9 @@ export var templated = utils.templated;
 
 // ------------------- Input and output settings ------------------------------
 
+// General paths
+export var tmp = path("static/tmp");
+
 // Template paths
 export var templates = path("static/src/jade");
 export var html = path("static/build");

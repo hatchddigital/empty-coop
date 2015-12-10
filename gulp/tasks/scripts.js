@@ -6,31 +6,31 @@ import rename from 'gulp-rename';
 import run from 'run-sequence';
 import browserSync from 'browser-sync';
 import browserify from 'gulp-browserify';
+import uglify from 'gulp-uglify';
 import * as config from '../config';
 
-/** Convert all scripts from es6 into js (normal) */
+/** Convert all scripts from es6 into normal js */
 gulp.task('scripts-es6', function() {
   return gulp.src([config.es6 + '/**/*.js'])
     .pipe(babel({
       presets: ['es2015']
     }))
-    .pipe(gulp.dest(config.js));
+    .pipe(gulp.dest(config.tmp));
 });
 
 /** Run nodeunit tests */
 gulp.task('scripts-nodeunit', ['scripts-es6'], function() {
-  return gulp.src(config.js + '/**/*.tests.js')
+  return gulp.src(config.tmp + '/**/*.tests.js')
     .pipe(nodeunit());
 });
 
 /** Combine scripts */
-gulp.task('scripts-minify', function() {
-  return gulp.src(config.js + '/bootstrap.js')
-    .pipe(browserify())
-    .pipe(rename({
-      extname: '.min.js'
-    }))
-    .pipe(gulp.dest(config.js));
+gulp.task('scripts-combine', function() {
+  var task = gulp.src(config.tmp + '/app.js');
+  task = task.pipe(browserify());
+  task = config.PRODUCTION ? task.pipe(uglify()) : task;
+  task = task.pipe(rename({ extname: '.min.js' }));
+  return task.pipe(gulp.dest(config.js));
 });
 
 /**
@@ -45,13 +45,10 @@ gulp.task('scripts', function(callback) {
     tasks.push('scripts-nodeunit');
   }
 
-  // In production, add a minify task
-  if (config.PRODUCTION) {
-    tasks.push('scripts-minify');
-  }
-
-  // Callback marks the task as completed
+  // Browserify scripts and add callback
+  tasks.push('scripts-combine');
   tasks.push(callback);
+
   return run.apply(this, tasks);
 });
 
