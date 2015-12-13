@@ -7,8 +7,16 @@ import plumber from 'gulp-plumber';
 import browserSync from 'browser-sync';
 import * as config from '../config';
 
+// Components
+import template from 'component-template';
+
 /** Convert all scripts from es6 into js (normal) */
 gulp.task('styles-build', function() {
+
+  // Generate component imports
+  template.styles(`${config.sass}/imports/template.scss`);
+
+  // Build
   var rtn = gulp.src([`${config.sass}/*.scss`, `!${config.sass}/_*.scss`])
     .pipe(plumber())
     .pipe(sass({

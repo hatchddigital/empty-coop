@@ -1,6 +1,5 @@
 import gulp from 'gulp';
-import babel from 'gulp-babel';
-import rjs from 'gulp-requirejs-optimize';
+import babel_ from 'gulp-babel';
 import nodeunit from 'gulp-nodeunit';
 import rename from 'gulp-rename';
 import run from 'run-sequence';
@@ -9,12 +8,19 @@ import browserify from 'gulp-browserify';
 import uglify from 'gulp-uglify';
 import * as config from '../config';
 
+// Components
+import template from 'component-template';
+
+// Common babel config
+var babel = () => { return babel_({ presets: ['es2015'] }); };
+
 /** Convert all scripts from es6 into normal js */
 gulp.task('scripts-es6', function() {
+  gulp.src(template.scripts())
+    .pipe(babel())
+    .pipe(gulp.dest(`${config.tmp}/imports/template`));
   return gulp.src([config.es6 + '/**/*.js'])
-    .pipe(babel({
-      presets: ['es2015']
-    }))
+    .pipe(babel())
     .pipe(gulp.dest(config.tmp));
 });
 

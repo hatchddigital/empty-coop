@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "jquery": "^2.1.4",
-    "es6-component-template": "shadowmint/es6-component-template"
+    "component-template": "shadowmint/component-template"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",

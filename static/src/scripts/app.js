@@ -12,8 +12,8 @@ import breakpointguide from './breakpointguide';
 import ie8message from './ie8message';
 
 // Notice how we use an installed npm package directly
-import foo from 'es6-component-template';
-foo();
+import {thing} from './imports/template';
+thing();
 
 /**
  * Load view-specific requirements for pages
