@@ -9,6 +9,7 @@ import * as scripts from './tasks/scripts';
 import * as styles from './tasks/styles';
 import * as modernizr from './tasks/modernizr';
 import * as images from './tasks/images';
+import * as content from './tasks/content';
 
 gulp.task('watch', ['default'], function() {
 
@@ -22,4 +23,5 @@ gulp.task('watch', ['default'], function() {
   modernizr.watch();
   images.watch();
   fonts.watch();
+  content.watch();
 });

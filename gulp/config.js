@@ -19,6 +19,12 @@ export var templated = utils.templated;
 // General paths
 export var tmp = path("static/tmp");
 
+// Content paths
+export var content = {
+  raw: path('static/src/content'),
+  build: `${tmp/content}`
+};
+
 // Template paths
 export var templates = path("static/src/jade");
 export var html = path("static/build");
