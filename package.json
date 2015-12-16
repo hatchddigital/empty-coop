@@ -54,6 +54,7 @@
     "gulp-data": "^1.2.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-jade": "^1.0.1",
+    "gulp-markdown": "^1.2.0",
     "gulp-modernizr": "^1.0.0-alpha",
     "gulp-nodeunit": "git://github.com/shadowmint/gulp-nodeunit.git#0.0.3",
     "gulp-plumber": "^1.0.1",
