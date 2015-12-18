@@ -1,0 +1,7 @@
+extend {{template}}
+
+block vars
+  - var globals = {{{locals.globals}}}
+  - var metadata = {{{locals.metadata}}}
+  - var content = {{{locals.content}}}
+  - var pages = {{{locals.pages}}}
