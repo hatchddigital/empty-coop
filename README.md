@@ -1,26 +1,7 @@
-# Empty Coop
+# Empty Fork!
 
-Created and maintained by the team at Hatchd Digital, Perth
-(see static/humans.txt). We use:
-
-- [Gulp](http://gulpjs.com/)
-- [SASS](http://sass-lang.com/)
-- [jQuery](http://jquery.com/)
-- [RequireJS](http://requirejs.org/)
-
-Comes bundled with the [eggbox](https://github.com/hatchddigital/eggbox) icon set
-
-## Purpose
-
-Empty-coop is a consistent base for all our projects at
-[Hatchd](http://hatchd.com.au). It doesn't force the author to adjust to a
-specific way of writing (although we have a house style at Hatchd); **It's a
-starting point, not a framework.**
-
-## Guidelines
-
-[Visit our wiki](https://github.com/hatchddigital/empty-coop/wiki/) for
-guidelines on using Empty-coop.
+This is a fork of https://github.com/hatchddigital/empty-coop to experiment
+which various technical possibilities without breaking the original repo.
 
 ## Requirements
 
@@ -34,7 +15,7 @@ brew install node
 npm install --global gulp
 ```
 
-This will install `node` with `npm` and `gulp` commenads globally,
+This will install `node` with `npm` and `gulp` commands globally,
 ready for use with this project.
 
 ## Usage
@@ -54,7 +35,6 @@ To run a local development server:
 gulp watch
 ```
 
-## Changelog (major changes)
+## Changelog
 
-- **0.14.0** Removed support for grunt and bower, added gulp (requires eggbox 0.6.3 or higher)
-- **0.12.0** Removed support for IE7 (requires eggbox 0.6.0 or higher)
+- **0.0.1** FORKED from empty-coop and removed requirejs.

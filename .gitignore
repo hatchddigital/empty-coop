@@ -8,9 +8,14 @@ static/fonts/eggbox/*
 .sass-cache/
 static/images/eggbox/*
 static/src/sass/utils/_eggbox.scss
+.build
+
+# Temporary files
+static/tmp
 
 # Temporary annoying files from calling iconfont
 static/fonts/*
+static/tmp
 dist
 
 # npm and bower third party libs

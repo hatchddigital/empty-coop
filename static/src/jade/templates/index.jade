@@ -1,0 +1,10 @@
+extend master
+
+block pagecontent
+  h1
+    | Contents
+  each val in pages
+    ul
+      li
+        a(href=val.url)
+          = val.title

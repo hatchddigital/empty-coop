@@ -1,0 +1,15 @@
+[sitenavlinks.Home]
+title = "Home"
+url = "/"
+
+[sitenavlinks.About]
+title = "About"
+url = "about.html"
+
+[sitenavlinks.About.subnav.team]
+title = "The team"
+url = "team.html"
+
+[sitenavlinks.About.subnav.studio]
+title = "Our studio"
+url = "studio.html"

@@ -1,6 +1,4 @@
 block vars
-    -var viewclass = 'default';
-
 doctype html
 <!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
 <!--[if IE 8]><html class="lt-ie10 lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
@@ -35,9 +33,9 @@ head
     meta(property='og:image', content='images/facebook.png')
     meta(property='og:site_name', content='')
     meta(property='og:description', content='')
-body(class="#{viewclass} #{template}")
+body(class="#{metadata.viewclass}")
     include ../partials/header
     block pagecontent
     //- JavaScript libraries and UX based code
-    script(data-main='../scripts/bootstrap', src='../libs/requirejs/require.js')
+    script(src='./scripts/app.min.js')
 |</html>

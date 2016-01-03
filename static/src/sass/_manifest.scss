@@ -56,6 +56,10 @@
 @import
     'page-layouts/_layout-template';
 
+/// Components from external packages
+@import
+    'imports/template.scss';
+
 /// Pull in 'shame' styles
 /// A temporary home for styles that need to be written
 /// quickly, by devs not direclty working on the front end

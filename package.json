@@ -1,8 +1,8 @@
 {
-  "name": "empty-coop",
-  "version": "0.14.3",
-  "author": "Hatchd Digital <hello@hatchd.com.au>",
-  "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, requireJS and Grunt.",
+  "name": "empty-fork",
+  "version": "0.0.1",
+  "author": "",
+  "description": "",
   "contributors": [
     {
       "name": "Jack Armley",
@@ -33,37 +33,42 @@
       "email": "ed@hatchd.com.au"
     }
   ],
-  "homepage": "http://hatchd.com.au",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hatchdditigal/empty-coop.git"
+    "url": "https://github.com/shadowmint/empty-fork.git"
   },
-  "private": true,
   "dependencies": {
     "jquery": "^2.1.4",
-    "requirejs": "^2.1.20"
+    "component-template": "shadowmint/component-template"
   },
   "devDependencies": {
-    "babel-core": "^5.8.9",
+    "babel-preset-es2015": "^6.3.13",
     "browser-sync": "^2.8.2",
     "eggbox": "git://github.com/hatchddigital/eggbox.git#0.6.3",
     "ejs": "^2.3.3",
     "express": "^4.13.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
-    "gulp-babel": "^5.2.0",
-    "gulp-combine-media-queries": "^0.2.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-data": "^1.2.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-jade": "^1.0.1",
+    "gulp-magic-template": "git://github.com/shadowmint/gulp-magic-template#0.0.2",
+    "gulp-markdown": "^1.2.0",
     "gulp-modernizr": "^1.0.0-alpha",
-    "gulp-nodeunit": "0.0.5",
+    "gulp-nodeunit": "git://github.com/shadowmint/gulp-nodeunit.git#0.0.4",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-requirejs-optimize": "^0.1.3",
+    "gulp-runtime": "github:shadowmint/gulp-runtime#0.0.2",
     "gulp-sass-native": "git://github.com/shadowmint/gulp-sass-native.git#0.0.4",
+    "gulp-section": "git://github.com/shadowmint/gulp-section#0.0.1",
     "gulp-shell": "^0.4.3",
+    "gulp-summary": "github:shadowmint/gulp-summary#0.0.2",
     "gulp-svgicons2svgfont": "^2.3.1",
+    "gulp-toml": "^0.1.1",
     "gulp-uglify": "^1.4.0",
+    "handlebars": "^4.0.5",
     "mkdirp": "^0.5.1",
     "node-static": "^0.7.7",
     "run-sequence": "^1.1.2",
@@ -71,10 +76,9 @@
     "svg2ttf": "^2.0.2",
     "ttf2eot": "^1.3.0",
     "ttf2woff": "^1.3.0",
-    "yargs": "^3.23.0",
-    "gulp-data": "^1.2.0"
+    "yargs": "^3.23.0"
   },
   "scripts": {
-    "setup": "npm install && gulp --mode=production"
+    "setup": "npm install && gulp"
   }
 }
