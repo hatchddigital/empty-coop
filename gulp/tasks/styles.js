@@ -2,7 +2,6 @@ import gulp from 'gulp';
 import sass from 'gulp-sass-native';
 import run from 'run-sequence';
 import prefix from 'gulp-autoprefixer';
-import cmq from 'gulp-combine-media-queries';
 import sassdoc from 'sassdoc';
 import plumber from 'gulp-plumber';
 import browserSync from 'browser-sync';
@@ -18,11 +17,6 @@ gulp.task('styles-build', function() {
         console.log(err);
       }
     }));
-
-  // In production, add cmq
-  if (config.PRODUCTION) {
-    rtn = rtn.pipe(cmq());
-  }
 
   // In production add autoprefixer
   if (config.PRODUCTION) {
