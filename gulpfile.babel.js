@@ -18,6 +18,7 @@ gulp.task('default', function(callback) {
       'styles',
       'modernizr',
       'images',
+      'css-reset',
       callback);
   }
   catch(err) {

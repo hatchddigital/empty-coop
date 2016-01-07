@@ -1,0 +1,40 @@
+{
+    "viewports": [
+        {
+            "name": "phone",
+            "width": 320,
+            "height": 480
+        },
+        {
+            "name": "desktop",
+            "width": 1366,
+            "height": 768
+        }
+    ],
+    "scenarios": [
+        {
+            "label": "Empty Coup",
+            "url": "../../static/build/index.html",
+            "hideSelectors": [],
+            "removeSelectors": [],
+            "selectors": [
+                "body"
+            ],
+            "readyEvent": null,
+            "delay": 500,
+            "misMatchThreshold": 0.1,
+            "onReadyScript": "onReady.js"
+        }
+    ],
+    "paths": {
+        "bitmaps_reference": "../../backstop_data/bitmaps_reference",
+        "bitmaps_test": "../../backstop_data/bitmaps_test",
+        "compare_data": "../../backstop_data/bitmaps_test/compare.json",
+        "casper_scripts": "../../backstop_data/casper_scripts"
+    },
+    "engine": "slimerjs",
+    "report": ["CLI", "browser"],
+    "cliExitOnFail": false,
+    "casperFlags": [],
+    "debug": false
+}
