@@ -58,7 +58,6 @@
     "gulp-nodeunit": "0.0.5",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-requirejs-optimize": "^0.1.3",
     "gulp-sass-native": "git://github.com/shadowmint/gulp-sass-native.git#0.0.4",
     "gulp-shell": "^0.4.3",
     "gulp-svgicons2svgfont": "^2.3.1",

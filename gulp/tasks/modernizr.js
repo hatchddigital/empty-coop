@@ -13,15 +13,15 @@ gulp.task('modernizr', function(callback) {
     return gulp.src([`${config.js}/**/*.js`, `${config.css}/**/*.css`, '!**/*.min.js'])
       .pipe(plumber())
       .pipe(modernizr('modernizr.min.js', {
-        devFile: 'remote',
         options: [
-            'setClasses',
-            'addTest',
-            'html5printshiv',
-            'testProp',
-            'fnBind'
+            // Custom modernizer helpers go here.
+            // Do not push them into the repo; custom modernizer plugins
+            // should only be used on a per project basis where absolutely
+            // required.
         ],
-        parseFiles: true
+        useBuffers: true,
+        parseFiles: true,
+        uglify: false
       }))
       .pipe(uglify())
       .pipe(gulp.dest(config.modernizr));

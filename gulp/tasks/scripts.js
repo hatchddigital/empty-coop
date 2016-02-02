@@ -1,11 +1,11 @@
 import gulp from 'gulp';
 import babel from 'gulp-babel';
-import rjs from 'gulp-requirejs-optimize';
 import nodeunit from 'gulp-nodeunit';
 import rename from 'gulp-rename';
 import run from 'run-sequence';
 import browserSync from 'browser-sync';
 import * as config from '../config';
+import * as cp from 'child_process';
 
 /** Convert all scripts from es6 into js (normal) */
 gulp.task('scripts-es6', function() {
@@ -69,16 +69,22 @@ gulp.task('scripts-amd', ['scripts-lib', 'scripts-raw'], function() {
 });
 
 /** Combine scripts */
-gulp.task('scripts-minify', function() {
-  return gulp.src(config.js + '/bootstrap.js')
-    .pipe(rjs({
-       mainConfigFile: config.js + '/bootstrap.js',
-       out: 'app.js'
-    }))
-    .pipe(rename({
-      extname: '.min.js'
-    }))
-    .pipe(gulp.dest(config.js));
+gulp.task('scripts-minify', function(callback) {
+
+    // NB. Requirejs breaks everything if you use it here as part of the API
+    // If you fix this, make sure a *full* (including modernizr) production
+    // build runs without any error.
+    var path = config.path('node_modules/.bin/r.js');
+    var output = `${config.js}/app.min.js`;
+    var bootstrap = `${config.js}/bootstrap.js`;
+    var args = ['-o', `mainConfigFile=${bootstrap}`, `out=${output}`, `name=app`];
+    console.log('\nInvoking external requirejs build:');
+    console.log('Exec: ' + path + ' ' + args.join(' '));
+    cp.execFile(path, args, {}, function(error, stdout, stderr) {
+      if (stdout) { console.log(stdout); }
+      if (stderr) { console.log(stderr); }
+      callback();
+    });
 });
 
 /**

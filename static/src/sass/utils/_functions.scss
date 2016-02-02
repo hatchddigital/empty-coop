@@ -96,7 +96,7 @@
 /// @param {Number} $point - Font size in px
 @function pxem($point){
   $unitlesspoint: $point / ($point * 0 + 1);
-  $convpoint: ($unitlesspoint / 16)#{em};
+  $convpoint: unquote("#{$unitlesspoint / 16}em");
   @return $convpoint;
 }
 
