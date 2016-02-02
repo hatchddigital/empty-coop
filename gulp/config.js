@@ -44,6 +44,7 @@ export var svgmin = path(`${base.path}/build/svg`);
 export var fontsvg = path(`${base.path}/src/custom-eggbox`);
 export var fonts = path(`${base.path}/build/fonts`);
 export var eggbox_demo = path(`${base.path}/build/fonts/eggbox/demo.html`);
+export var eggbox_demo_path = path(`${base.path}/build/fonts/eggbox`);
 export var font_name = "eggbox";
 export var font_path = "../fonts/eggbox"; // Used on frontend
 

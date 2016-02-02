@@ -55,10 +55,20 @@ gulp.task('fonts-svg', function(callback) {
         options.fontSrc2 = [
           font(`${config.font_name}.eot?#iefix`, `embedded-opentype`),
           font(`${config.font_name}.woff`, `woff`),
-          font(`${config.font_name}.ttf`, `truetype`)].join(', ');
+          font(`${config.font_name}.ttf`, `truetype`)
+        ].join(', ');
 
-        config.templated(config.eggbox_demo_template, options, config.eggbox_demo);
-        config.templated(config.eggbox_mixin_template, options, config.eggbox_mixin);
+        // Prevent async errors by forcing folder to exist before writing to it.
+        mkdirp(config.eggbox_demo_path, (err) => {
+          if (err) {
+            console.log("Failed to create demo output folder for eggbox fonts");
+            console.log(err);
+          }
+          else {
+            config.templated(config.eggbox_demo_template, options, config.eggbox_demo);
+            config.templated(config.eggbox_mixin_template, options, config.eggbox_mixin);
+          }
+        });
       })
       .pipe(gulp.dest(config.fonts+"/"+config.font_name));
 });
