@@ -40,18 +40,20 @@ export var imgmin = path(`${base.path}/build/images`);
 export var svg = path(`${base.path}/src/svg`);
 export var svgmin = path(`${base.path}/build/svg`);
 
-// Custom webfonts
+// Eggbox specific config for webfonts
 export var fontsvg = path(`${base.path}/src/custom-eggbox`);
 export var fonts = path(`${base.path}/build/fonts`);
 export var eggbox_demo = path(`${base.path}/build/fonts/eggbox/demo.html`);
 export var eggbox_demo_path = path(`${base.path}/build/fonts/eggbox`);
 export var font_name = "eggbox";
 export var font_path = "../fonts/eggbox"; // Used on frontend
-
-// Eggbox specific config for webfonts
 export var eggbox = path(`node_modules/eggbox/src`);
 export var eggbox_mixin_template = path(`node_modules/eggbox/templates/eggbox.gulp.css`);
 export var eggbox_demo_template = path(`node_modules/eggbox/templates/eggbox.gulp.html`);
+
+//Webfonts
+export var webfontsrc   = path(`${base.path}/src/fonts`);
+export var webfontdest  = path(`${base.path}/build/fonts`);
 
 // Server config
 export var server_folder = path(`${base.path}/build`);

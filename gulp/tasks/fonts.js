@@ -6,6 +6,16 @@ import shell from 'gulp-shell';
 import mkdirp from 'mkdirp';
 import * as config from '../config';
 
+// Copy all the webfonts to the build folder
+gulp.task('webfonts', function(callback) {
+    return gulp.src([
+        `${config.webfontsrc}/**/*.ttf`,
+        `${config.webfontsrc}/**/*.eot`,
+        `${config.webfontsrc}/**/*.svg`,
+        `${config.webfontsrc}/**/*.woff`
+    ]).pipe(gulp.dest(config.webfontdest));
+});
+
 // Generate an svg font from a set of svg icons
 gulp.task('fonts-svg', function(callback) {
     return gulp.src(`${config.eggbox}/**/*.svg`)
@@ -115,7 +125,7 @@ gulp.task('fonts-eot', ['fonts-ttf'], function(callback) {
     }));
 });
 
-gulp.task('fonts-all', ['fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot']);
+gulp.task('fonts-all', ['fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot', 'webfonts']);
 
 gulp.task('fonts', function(callback) {
   if (config.PRODUCTION) run('fonts-all', callback);
