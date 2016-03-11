@@ -8,7 +8,7 @@ import * as config from '../config';
  */
 gulp.task('image-img', function(callback) {
   if (config.PRODUCTION) {
-    return gulp.src([`${config.img}/**/*.png`, `${config.img}/**/*.jp*`])
+    return gulp.src([`${config.img}/**/*.png`, `${config.img}/**/*.jp*`, `${config.img}/**/*.gif`])
       .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
