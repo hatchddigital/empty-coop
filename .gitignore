@@ -30,3 +30,6 @@ static/docs/
 *.swp
 *.ini~
 sassdoc
+
+# temporary files from gulp
+.build
