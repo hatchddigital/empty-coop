@@ -16,9 +16,9 @@ gulp.task('webfonts', function(callback) {
     ]).pipe(gulp.dest(config.webfontdest));
 });
 
-// Generate an svg font from a set of svg icons
+// Generate an svg font from a custom set of svg icons
 gulp.task('fonts-svg', function(callback) {
-    return gulp.src(`${config.eggbox}/**/*.svg`)
+    return gulp.src(`${config.fontsvg}/**/*.svg`)
       .pipe(svgfont({
         fontName: config.font_name,
         ignoreExt: true
@@ -125,6 +125,7 @@ gulp.task('fonts-eot', ['fonts-ttf'], function(callback) {
     }));
 });
 
+gulp.task('eggbox', ['fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot']);
 gulp.task('fonts-all', ['fonts-svg', 'fonts-ttf', 'fonts-woff', 'fonts-eot', 'webfonts']);
 
 gulp.task('fonts', function(callback) {

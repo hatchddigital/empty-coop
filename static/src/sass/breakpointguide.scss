@@ -5,13 +5,13 @@
  */
 
 /// Import dependancies
-@import 
-    'utils/variables/_fonts', 
-    'utils/variables/_colours', 
-    'utils/variables/_breakpoints', 
-    'utils/_placeholders',
+@import
+    'utils/variables/_fonts',
+    'utils/variables/_colours',
+    'utils/variables/_breakpoints',
     'utils/_functions',
-    'utils/_mixins';
+    'utils/_mixins',
+    'utils/_placeholders',
 
 /// Define media query support
 /// @type Variable
