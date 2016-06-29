@@ -1,0 +1,18 @@
+{
+    "sitenav": {
+        "Home" : {
+            "title": "Home",
+            "url" : "/"
+        },
+        "About" : {
+            "title": "About",
+            "url" : "/about",
+            "subnav" : {
+                "team" : {
+                    "title" : "The team",
+                    "url" : "/about/team"
+                }
+            }
+        }
+    }
+}
