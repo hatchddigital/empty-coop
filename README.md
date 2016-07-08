@@ -1,7 +1,6 @@
 # Empty Coop
 
-Created and maintained by the team at Hatchd Digital, Perth
-(see static/humans.txt). We use:
+Created and maintained by the team at Hatchd Digital, Perth. We use:
 
 - [Gulp](http://gulpjs.com/)
 - [SASS](http://sass-lang.com/)
