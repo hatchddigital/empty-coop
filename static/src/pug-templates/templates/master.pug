@@ -1,3 +1,8 @@
+include ../mixins/mixins
+
+block variables
+    -var title = title || "Page title here";
+
 doctype html
 <!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 no-js" id="ie7" lang="en-au"><![endif]-->
 <!--[if IE 8]><html class="lt-ie10 lt-ie9 no-js" id="ie8" lang="en-au"><![endif]-->
@@ -8,13 +13,8 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='viewport', content='width=device-width,initial-scale=1.0,user-scalable=no')
-    title Empty Coop
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="#{basePath}/styles/production.min.css" />
-    <!--<![endif]-->
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" href="#{basePath}/styles/production.min.css" />
-    <![endif]-->
+    title=title
+    link(rel="stylesheet",href=basePath+"/styles/styles.css")
     //- Important early load external scripts
     script(src=basePath+'/scripts/modernizr.min.js')
     //- Icons for browsers + mobile devices, bookmarks, etc.
@@ -32,10 +32,14 @@ head
     meta(property='og:image', content=basePath+'/images/facebook.png')
     meta(property='og:site_name', content='')
     meta(property='og:description', content='')
-body(class="#{viewclass} #{template}")
+body(class="#{section} #{template}")
     include ../partials/header
-    #{basePath}
+    include ../partials/page-details
+    h1=title
     block pagecontent
+    //- The svg sprite sheet
+    #svg-spritesheet
+        include ../../../build/svgs/spritesheet.svg
     //- JavaScript libraries and UX based code
-    script(data-main=basePath+'/scripts/app', src=basePath+'/node_modules/requirejs/require.js')
+    script(src=basePath+'/scripts/app.js')
 |</html>

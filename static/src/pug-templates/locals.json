@@ -13,6 +13,10 @@
                     "url" : "/about/team"
                 }
             }
+        },
+        "Samples" : {
+            "title": "Samples",
+            "url" : "/samples"
         }
     }
 }

@@ -2,20 +2,22 @@
 // GULP USAGE
 // ----------------------------------------------------------------------------
 
+//@TODO: way to load css and images from npm modules
+
 /*
 
 gulp watch
 ----------------------
 the one to use for development. This will minify images, compile sass and js and
-launch a browsersync server on port :3000 uing the given proxy dev url set in
-the config below. For browsersync to work you will need to update this url to
-point to your dev site.
+launch a browsersync server on port specified using the given proxy dev url set in
+the config below. For browsersync to work with  ploneyou will need to update this
+url to point to your dev site.
 
 gulp build
 ----------------------
 the one to use for staging and live builds. this does the same as watch but it
 also runs a clean task to delete any old css, js and images. it also wont
-attempt to launch a browsersync server.
+attempt to launch a browsersync server and will minify all js and css.
 
 */
 
@@ -24,11 +26,10 @@ attempt to launch a browsersync server.
 // ----------------------------------------------------------------------------
 
 var config = {
-    //the url of the site on your machine (only use if proxying a current server)
-    proxyurl : false,
-    src      : "static/src",
-    build    : "static/build",
-    port     : 1982,
+    proxyurl : false, //the url of the site on your machine (only use if proxying a current server)
+    src             : "static/src",
+    build           : "static/build",
+    port            : 1982,
     //the paths to the relevant files
     paths   : {
         //styles
@@ -44,8 +45,11 @@ var config = {
         get pug_templates(){return config.src+"/pug-templates"},
         get html_templates(){return config.build+"/"},
         //fonts
-        get dev_fonts(){return config.build+"/fonts"},
-        get prod_fonts(){return config.src+"/fonts"},
+        get dev_fonts(){return config.src+"/fonts"},
+        get prod_fonts(){return config.build+"/fonts"},
+        //svgs
+        get dev_svgs(){return config.src+"/svgs"},
+        get prod_svgs(){return config.build+"/svgs"},
         //where to look for the plone template files
         plone_templates : "./"
     }
@@ -65,18 +69,23 @@ var gulp            = require("gulp"),
     data            = require("gulp-data"),
     path            = require("path"),
     //css plugins
-    sass            = require("gulp-ruby-sass"),
+    sass            = require("gulp-sass"),
+    sourcemaps      = require("gulp-sourcemaps"),
     autoprefixer    = require("gulp-autoprefixer"),
     minifycss       = require("gulp-minify-css"),
     //images
     imagemin        = require("gulp-imagemin"),
     cache           = require("gulp-cache"),
+    svgmin          = require("gulp-svgmin"),
+    svgstore        = require("gulp-svgstore"),
+    rsp             = require("remove-svg-properties").stream,
     //js plugins
-    jshint          = require("gulp-jshint"),
-    babel           = require("gulp-babel"),
+    browserify      = require("browserify"),
+    source          = require("vinyl-source-stream"),
+    buffer          = require("vinyl-buffer"),
+    babelify        = require("babelify"),
     uglify          = require("gulp-uglify"),
     modernizr       = require("gulp-modernizr"),
-    amdOptimize     = require("amd-optimize"),
     //html plugins
     pug             = require("gulp-pug"),
     //live reload stuff
@@ -125,61 +134,61 @@ gulp.task("browser-sync",function(){
 });
 
 // ----------------------------------------------------------------------------
-// THE STYLES TASK
+// THE STYLES TASKS
 // ----------------------------------------------------------------------------
 
-gulp.task("styles", function() {
-    return sass(config.paths.scss+"**/*.scss",{style:"expanded"})
+gulp.task("styles-dev", function() {
+    return gulp.src(config.paths.scss+"**/*.scss")
         .pipe(plumber(plumberErrorHandler))
-        .pipe(autoprefixer({browsers:["last 3 versions","> 1%","ie 8"]}))
-        .pipe(concat("production.css"))
+        .pipe(sourcemaps.init())
+        .pipe(sass({errLogToConsole:true}))
+        .pipe(sourcemaps.write())
+        .pipe(rename({dirname:""}))
         .pipe(gulp.dest(config.paths.css))
-        .pipe(rename({suffix: ".min"}))
+        .pipe(reload({stream:true}))
+        .pipe(notify({ message: "Styles dev task complete" }));
+});
+
+gulp.task("styles-build", function() {
+    return gulp.src(config.paths.scss+"**/*.scss")
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(sass({errLogToConsole:true}))
+        .pipe(autoprefixer({browsers:["last 3 versions","> 1%","ie 8"]}))
+        .pipe(concat("styles.css"))
+        .pipe(gulp.dest(config.paths.css))
         .pipe(minifycss())
         .pipe(gulp.dest(config.paths.css))
         .pipe(reload({stream:true}))
-        .pipe(notify({ message: "Styles task complete" }));
+        .pipe(notify({ message: "Styles build task complete" }));
 });
 
 // ----------------------------------------------------------------------------
 // THE SCRIPTS TASK
 // ----------------------------------------------------------------------------
 
-gulp.task("scripts", function() {
-    return gulp.src(config.paths.js_dev+"/**/*.js")
+gulp.task("scripts-dev", function() {
+    return browserify(config.paths.js_dev+"/app.js",{debug:true})
+        .transform("babelify",{presets:["es2015"]})
+        .bundle().on("error",plumberErrorHandler.errorHandler)
         .pipe(plumber(plumberErrorHandler))
-        //.pipe(jshint(".jshintrc"))
-        //.pipe(jshint.reporter("default"))
-        .pipe(babel({
-            presets:["es2015"]
-        }))
-        //.pipe(amdOptimize("app"))
-        .pipe(concat("app.js"))
+        .pipe(source("app.js"))
+        .pipe(buffer())
         .pipe(gulp.dest(config.paths.js_prod))
-        .pipe(rename({suffix:".min"}))
+        .pipe(reload({stream:true}))
+        .pipe(notify({ message: "Scripts task complete" }));
+});
+
+gulp.task("scripts-build", function() {
+    return browserify(config.paths.js_dev+"/app.js",{debug:false})
+        .transform("babelify",{presets:["es2015"]})
+        .bundle().on("error",plumberErrorHandler.errorHandler)
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(source("app.js"))
+        .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest(config.paths.js_prod))
         .pipe(reload({stream:true}))
         .pipe(notify({ message: "Scripts task complete" }));
-
-    //@NOTE: Below is the browserify solution. Much better than require js
-    //please dont delete as hopefully we will switch to this in the future.
-    // ------------------------------------------------------------------------
-    /*return browserify(config.paths.jsdev+"/init.js",{debug:true})
-        .bundle().on("error",plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(source("production.js"))
-        .pipe(buffer())
-        //.pipe(jshint(".jshintrc"))
-        //.pipe(jshint.reporter("default"))
-        .pipe(gulp.dest(config.paths.jsprod))
-        .pipe(rename({suffix:".min"}))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.jsprod))
-        .pipe(reload({stream:true}))
-        .pipe(notify({ message: "Scripts task complete" }));*/
-    // ------------------------------------------------------------------------
-
 });
 
 // ----------------------------------------------------------------------------
@@ -203,10 +212,8 @@ gulp.task("templates", function() {
     //get the options
     var locals = require("./"+config.paths.pug_templates+"/locals.json");
 
-    reload({stream:true})
-
     //loop the pug templates
-    return gulp.src(config.paths.pug_templates+"/**/*.pug")
+    return gulp.src(config.paths.pug_templates+"/templates/**/*.pug")
         .pipe(plumber(plumberErrorHandler))
         .pipe(data(function(file){
 
@@ -215,47 +222,35 @@ gulp.task("templates", function() {
 
             //grab the file details
             var fileName = path.basename(file.path).replace(".pug","");
-            var template = path.basename(file.path).replace(".pug","-template");
-            var dirName  = path.dirname(file.path).split("/").pop().replace("pug-templates","");
 
-            //dont process certain dirs
-            var ignoredirs = ["partials","templates","samples"];
-            for(var i=0; i<=ignoredirs.length; i++){
-                if(dirName == ignoredirs[i]){
-                    return;
-                }
-            }
 
-            //set the uri
-            if(dirName == ""){
-                dirName = "toplevel";
-                var uri = "/"+fileName+"/";
-            }else{
-                var uri = "/"+dirName+"/"+fileName+"/";
-            }
+            if(fileName !== "master"){
+            var dirName  = path.dirname(file.path).split("/").pop().replace("pug-templates/templates","");
+            var uri      = path.dirname(file.path).replace(config.paths.pug_templates+"/templates","").replace(process.cwd(),"").replace("//","/");
+            var section  = uri.split("/")[1];
 
             //set the destination to be a dir with the same name as the file
+            var dest = file.path
+                .replace(config.paths.pug_templates+"/templates",config.build)
+                .replace("/"+fileName+".pug","")
+            ;
+
+            //if homepage
             if(fileName == "index"){
-                var dest = config.paths.html_templates;
-            }else{
-                var dest = file.path
-                    .replace(config.paths.pug_templates,config.build)
-                    .replace("/"+fileName+".pug","")
-                ;
+                dest        = config.paths.html_templates;
+                section     = "index";
+                dirName     = "";
             }
 
-            //get the port browser sync is running on
-            //config.port = browserSync.getOption("port");
-
             //pass the vars to the template
-            info.template = template;
-            info.fileName = fileName;
+            info.template = fileName+"-template";
+            info.fileName = fileName+".html";
             info.dirName  = dirName;
-            info.section  = dirName+"-section";
+            info.section  = section+"-section";
             info.uri      = uri;
             info.basePath = "http://localhost:"+config.port;
 
-            //convert to html from jade
+            //convert to html from pug
             return gulp.src(file.path)
                 .pipe(plumber(plumberErrorHandler))
                 .pipe(pug({
@@ -264,18 +259,34 @@ gulp.task("templates", function() {
                 }))
                 .pipe(rename("index.html"))
                 .pipe(gulp.dest(dest))
-                .pipe(notify({ message: "Templates task complete" }));
+                .pipe(reload({stream:true}));
 
-        }));
+            }
+
+        }))
+        .pipe(notify({ message: "Templates task complete" }));
 
 });
 
 // ----------------------------------------------------------------------------
-// THE ICONS TASK
+// THE SVG TASK
 // ----------------------------------------------------------------------------
 
-gulp.task("icons", function() {
-    //@TODO: eggbox setup
+gulp.task("svgs", function() {
+    return gulp.src(config.paths.dev_svgs+"/**/*.svg")
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(rsp.remove({
+            properties : [rsp.PROPS_FILL,rsp.PROPS_STROKE]
+        }))
+        .pipe(svgmin())
+        .pipe(svgstore({
+            cleanObjects : true,
+            cleanDefs    : true
+        }))
+        .pipe(rename("spritesheet.svg"))
+        .pipe(gulp.dest(config.paths.prod_svgs))
+        .pipe(reload({stream:true}))
+        .pipe(notify({ message: "SVG task complete" }));
 });
 
 // ----------------------------------------------------------------------------
@@ -283,15 +294,11 @@ gulp.task("icons", function() {
 // ----------------------------------------------------------------------------
 
 gulp.task("fonts", function() {
-    //@TODO: copy webfonts from src to build
-});
-
-// ----------------------------------------------------------------------------
-// THE LIBS TASK
-// ----------------------------------------------------------------------------
-
-gulp.task("libs", function() {
-    //@TODO: move libs like reqire from node_modules to libs folder
+    return gulp.src(config.paths.dev_fonts+"/**/*")
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(gulp.dest(config.paths.prod_fonts))
+        .pipe(reload({stream:true}))
+        .pipe(notify({ message: "Fonts task complete" }));
 });
 
 // ----------------------------------------------------------------------------
@@ -329,7 +336,7 @@ gulp.task("clean",function(cb){
 // THE DEFAULT TASK
 // ----------------------------------------------------------------------------
 
-gulp.task("default", ["templates","styles","scripts","modernizr"], function() {
+gulp.task("default", ["templates","styles-dev","scripts-dev","modernizr","fonts","svgs"], function() {
     notify({ message: "Default task complete" });
 });
 
@@ -338,7 +345,7 @@ gulp.task("default", ["templates","styles","scripts","modernizr"], function() {
 // ----------------------------------------------------------------------------
 
 gulp.task("build", ["clean"], function() {
-    gulp.start("styles", "scripts", "images", "modernizr");
+    gulp.start("styles-build", "scripts-build", "images", "modernizr","fonts","svgs");
 });
 
 // ----------------------------------------------------------------------------
@@ -349,15 +356,19 @@ gulp.task("watch",function() {
     //run default to start
     gulp.start("default");
     //watch .scss files
-    gulp.watch(config.paths.scss+"/**/*.scss", ["styles"]);
+    gulp.watch(config.paths.scss+"/**/*.scss", ["styles-dev"]);
     //watch .js files
-    gulp.watch(config.paths.js_dev+"/**/*.js", ["scripts"]);
+    gulp.watch(config.paths.js_dev+"/**/*.js", ["scripts-dev"]);
     //watch image files
     gulp.watch(config.paths.images_orig+"/**/*", ["images"]);
     //watch template files
     gulp.watch(config.paths.pug_templates+"/**/*.pug", ["templates"]);
     //watch for modernizr changes
     gulp.watch([config.paths.js_dev+"/**/*.js", config.paths.css+"**/*.css"], ["modernizr"]);
+    //watch for font changes
+    gulp.watch([config.paths.dev_fonts+"/**/*"], ["fonts"]);
+    //watch for icon changes
+    gulp.watch([config.paths.dev_svgs+"/**/*"], ["svgs"]);
     //start browsersync
     gulp.start("browser-sync");
 });
