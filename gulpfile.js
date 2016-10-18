@@ -345,7 +345,7 @@ gulp.task("default", ["templates","styles-dev","scripts-dev","modernizr","fonts"
 // ----------------------------------------------------------------------------
 
 gulp.task("build", ["clean"], function() {
-    gulp.start("styles-build", "scripts-build", "images", "modernizr","fonts","svgs");
+    gulp.start("templates", "styles-build", "scripts-build", "images", "modernizr","fonts","svgs");
 });
 
 // ----------------------------------------------------------------------------

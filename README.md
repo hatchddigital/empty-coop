@@ -51,7 +51,7 @@ To run a local development server:
 gulp watch
 ```
 
-To do a production build
+To do a production build:
 
 ```sh
 gulp build
