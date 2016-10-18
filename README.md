@@ -5,9 +5,7 @@ Created and maintained by the team at Hatchd Digital, Perth. We use:
 - [Gulp](http://gulpjs.com/)
 - [SASS](http://sass-lang.com/)
 - [jQuery](http://jquery.com/)
-- [RequireJS](http://requirejs.org/)
-
-Comes bundled with the [eggbox](https://github.com/hatchddigital/eggbox) icon set
+- [browserify](http://browserify.org/)
 
 ## Purpose
 
@@ -53,7 +51,14 @@ To run a local development server:
 gulp watch
 ```
 
+To do a production build
+
+```sh
+gulp build
+```
+
 ## Changelog (major changes)
 
+- **0.15.0** Swapped out eggbox for svgstore and require for browserify and reworked the gulp file to make it much simpler
 - **0.14.0** Removed support for grunt and bower, added gulp (requires eggbox 0.6.3 or higher)
 - **0.12.0** Removed support for IE7 (requires eggbox 0.6.0 or higher)

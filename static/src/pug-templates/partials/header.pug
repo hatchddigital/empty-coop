@@ -1,0 +1,10 @@
+header(role="banner" aria-label="Site header")
+    nav(role="navigation" aria-label="Site navigation")
+        ul
+            each val, index  in sitenav
+                li
+                    a(href=val.url)= val.title
+                    if(val.subnav)
+                        ul
+                            each subval, index in val.subnav
+                                li: a(href=subval.url)= subval.title

@@ -1,0 +1,21 @@
+/**
+ * svg styles
+ */
+
+#svg-spritesheet {
+    width:0px;
+    height:0px;
+    overflow:hidden;
+    position:absolute;
+    left:-9999px;
+}
+
+//test color svg coloring
+[data-svg="facebook"] * {
+    fill:red;
+    stroke:red;
+}
+[data-svg="facebook-fill"] * {
+    fill:blue;
+    stroke:blue;
+}
