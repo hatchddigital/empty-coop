@@ -336,8 +336,8 @@ gulp.task("clean",function(cb){
 // THE DEFAULT TASK
 // ----------------------------------------------------------------------------
 
-gulp.task("default", ["templates","styles-dev","scripts-dev","modernizr","fonts","svgs"], function() {
-    notify({ message: "Default task complete" });
+gulp.task("default", ["styles-dev", "scripts-dev", "modernizr", "fonts", "svgs"], function() {
+    gulp.start("templates");
 });
 
 // ----------------------------------------------------------------------------
@@ -345,7 +345,9 @@ gulp.task("default", ["templates","styles-dev","scripts-dev","modernizr","fonts"
 // ----------------------------------------------------------------------------
 
 gulp.task("build", ["clean"], function() {
-    gulp.start("templates", "styles-build", "scripts-build", "images", "modernizr","fonts","svgs");
+    gulp.start("styles-build", "scripts-build", "images", "modernizr","fonts","svgs",function(){
+        gulp.start("templates");
+    });
 });
 
 // ----------------------------------------------------------------------------
