@@ -68,6 +68,7 @@ var gulp            = require("gulp"),
     del             = require("del"),
     data            = require("gulp-data"),
     path            = require("path"),
+    count           = require("gulp-count"),
     //css plugins
     sass            = require("gulp-sass"),
     sourcemaps      = require("gulp-sourcemaps"),
@@ -212,9 +213,18 @@ gulp.task("templates", function() {
     //get the options
     var locals = require("./"+config.paths.pug_templates+"/locals.json");
 
+    //log the files to process and the files processed
+    var fileNo = -1; //-1 due to count() logging again once finished and increasing the count by 1
+    var filesProcessed = 0;
+
     //loop the pug templates
     return gulp.src(config.paths.pug_templates+"/templates/**/*.pug")
         .pipe(plumber(plumberErrorHandler))
+        .pipe(count({
+            logFiles    : true,
+            logEmpty    : false,
+            logger      : function(msg){fileNo++}
+        }))
         .pipe(data(function(file){
 
             //grab the locals and clone
@@ -223,48 +233,60 @@ gulp.task("templates", function() {
             //grab the file details
             var fileName = path.basename(file.path).replace(".pug","");
 
-
+            //dont process master
             if(fileName !== "master"){
-            var dirName  = path.dirname(file.path).split("/").pop().replace("pug-templates/templates","");
-            var uri      = path.dirname(file.path).replace(config.paths.pug_templates+"/templates","").replace(process.cwd(),"").replace("//","/");
-            var section  = uri.split("/")[1];
 
-            //set the destination to be a dir with the same name as the file
-            var dest = file.path
-                .replace(config.paths.pug_templates+"/templates",config.build)
-                .replace("/"+fileName+".pug","")
-            ;
+                var dirName  = path.dirname(file.path).split("/").pop().replace("pug-templates/templates","");
+                var uri      = path.dirname(file.path).replace(config.paths.pug_templates+"/templates","").replace(process.cwd(),"").replace("//","/");
+                var section  = uri.split("/")[1];
 
-            //if homepage
-            if(fileName == "index"){
-                dest        = config.paths.html_templates;
-                section     = "index";
-                dirName     = "";
+                //set the destination to be a dir with the same name as the file
+                var dest = file.path
+                    .replace(config.paths.pug_templates+"/templates",config.build)
+                    .replace("/"+fileName+".pug","")
+                ;
+
+                //if homepage
+                if(fileName == "index"){
+                    dest        = config.paths.html_templates;
+                    section     = "index";
+                    dirName     = "";
+                }
+
+                //pass the vars to the template
+                info.template = fileName+"-template";
+                info.fileName = fileName+".html";
+                info.dirName  = dirName;
+                info.section  = section+"-section";
+                info.uri      = uri;
+                info.basePath = "http://localhost:"+config.port;
+
+                //convert to html from pug
+                var stream = gulp.src(file.path)
+                    .pipe(plumber(plumberErrorHandler))
+                    .pipe(pug({
+                        locals : info,
+                        pretty : true
+                    }))
+                    .pipe(rename("index.html"))
+                    .pipe(gulp.dest(dest));
+
+                //on completion of processing file
+                stream.on("finish",function(){
+                    filesProcessed++;
+                    if(fileNo == filesProcessed){
+                        gulp.src(dest)
+                            .pipe(reload({stream:true}))
+                            .pipe(notify({ message: "Templates task complete" }));
+
+                    }
+                });
+
+            }else{
+                filesProcessed++;
             }
 
-            //pass the vars to the template
-            info.template = fileName+"-template";
-            info.fileName = fileName+".html";
-            info.dirName  = dirName;
-            info.section  = section+"-section";
-            info.uri      = uri;
-            info.basePath = "http://localhost:"+config.port;
-
-            //convert to html from pug
-            return gulp.src(file.path)
-                .pipe(plumber(plumberErrorHandler))
-                .pipe(pug({
-                    locals : info,
-                    pretty : true
-                }))
-                .pipe(rename("index.html"))
-                .pipe(gulp.dest(dest))
-                .pipe(reload({stream:true}));
-
-            }
-
-        }))
-        .pipe(notify({ message: "Templates task complete" }));
+        }));
 
 });
 
