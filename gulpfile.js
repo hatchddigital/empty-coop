@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------------------
 
 //@TODO: way to load css and images from npm modules
+//@TODO: svg stacks using https://github.com/jkphl/gulp-svg-sprite in place of svg store
 
 /*
 
@@ -77,9 +78,8 @@ var gulp            = require("gulp"),
     //images
     imagemin        = require("gulp-imagemin"),
     cache           = require("gulp-cache"),
-    svgmin          = require("gulp-svgmin"),
-    svgstore        = require("gulp-svgstore"),
     rsp             = require("remove-svg-properties").stream,
+    svgsprite       = require("gulp-svg-sprite"),
     //js plugins
     browserify      = require("browserify"),
     source          = require("vinyl-source-stream"),
@@ -297,15 +297,13 @@ gulp.task("templates", function() {
 gulp.task("svgs", function() {
     return gulp.src(config.paths.dev_svgs+"/**/*.svg")
         .pipe(plumber(plumberErrorHandler))
+        .pipe(svgsprite({
+            mode : {stack : true}
+        }))
+        .pipe(rename("spritesheet.svg"))
         .pipe(rsp.remove({
             properties : [rsp.PROPS_FILL,rsp.PROPS_STROKE]
         }))
-        .pipe(svgmin())
-        .pipe(svgstore({
-            cleanObjects : true,
-            cleanDefs    : true
-        }))
-        .pipe(rename("spritesheet.svg"))
         .pipe(gulp.dest(config.paths.prod_svgs))
         .pipe(reload({stream:true}))
         .pipe(notify({ message: "SVG task complete" }));

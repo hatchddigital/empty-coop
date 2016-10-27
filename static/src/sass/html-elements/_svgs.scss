@@ -19,3 +19,12 @@
     fill:blue;
     stroke:blue;
 }
+
+//test svg bg
+.svg-background {
+    width:200px;
+    height:200px;
+    border:1px solid red;
+    background:no-repeat center;
+    background:url(../svgs/spritesheet.svg#arrow-full-up);
+}
