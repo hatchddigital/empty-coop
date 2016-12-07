@@ -2,9 +2,6 @@
 // GULP USAGE
 // ----------------------------------------------------------------------------
 
-//@TODO: way to load css and images from npm modules
-//@TODO: svg stacks using https://github.com/jkphl/gulp-svg-sprite in place of svg store
-
 /*
 
 gulp watch
@@ -21,6 +18,12 @@ also runs a clean task to delete any old css, js and images. it also wont
 attempt to launch a browsersync server and will minify all js and css.
 
 */
+
+// ----------------------------------------------------------------------------
+// TODOS AND NOTES
+// ----------------------------------------------------------------------------
+
+//@TODO: way to load css and images from npm modules
 
 // ----------------------------------------------------------------------------
 // THE GULP CONFIG
@@ -326,7 +329,7 @@ gulp.task("fonts", function() {
 // ----------------------------------------------------------------------------
 
 gulp.task("modernizr", function() {
-    return gulp.src([config.paths.js_prod+"/app.min.js", config.paths.css+"/production.min.css"])
+    return gulp.src([config.paths.js_prod+"/app.js", config.paths.css+"/styles.css"])
         .pipe(plumber(plumberErrorHandler))
         .pipe(modernizr("modernizr.min.js",{
             options: [
