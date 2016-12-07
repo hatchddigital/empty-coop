@@ -73,6 +73,7 @@ var gulp            = require("gulp"),
     data            = require("gulp-data"),
     path            = require("path"),
     count           = require("gulp-count"),
+    os              = require("os"),
     //css plugins
     sass            = require("gulp-sass"),
     sourcemaps      = require("gulp-sourcemaps"),
@@ -216,6 +217,19 @@ gulp.task("templates", function() {
     //get the options
     var locals = require("./"+config.paths.pug_templates+"/locals.json");
 
+    //get the ip address (see here -> http://stackoverflow.com/questions/3653065/get-local-ip-address-in-node-js)
+    var ifaces = os.networkInterfaces();
+    var ip = "0.0.0.0";
+    Object.keys(ifaces).forEach(function(ifname){
+        ifaces[ifname].forEach(function (iface) {
+            if("IPv4" !== iface.family || iface.internal !== false){
+                //skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+                return;
+            }
+            ip = iface.address;
+        });
+    });
+
     //log the files to process and the files processed
     var fileNo = -1; //-1 due to count() logging again once finished and increasing the count by 1
     var filesProcessed = 0;
@@ -262,7 +276,7 @@ gulp.task("templates", function() {
                 info.dirName  = dirName;
                 info.section  = section+"-section";
                 info.uri      = uri;
-                info.basePath = "http://localhost:"+config.port;
+                info.basePath = "http://"+ip+":"+config.port;
 
                 //convert to html from pug
                 var stream = gulp.src(file.path)
