@@ -30,7 +30,7 @@ attempt to launch a browsersync server and will minify all js and css.
 // ----------------------------------------------------------------------------
 
 var config = {
-    proxyurl : false, //the url of the site on your machine (only use if proxying a current server)
+    proxyurl        : false, //the url of the site on your machine (only use if proxying a current server)
     src             : "static/src",
     build           : "static/build",
     port            : 1982,
@@ -52,11 +52,11 @@ var config = {
         get pug_templates(){return config.src+"/pug-templates"},
         get html_templates(){return config.build+"/"},
         //fonts
-        get dev_fonts(){return config.src+"/fonts"},
-        get prod_fonts(){return config.build+"/fonts"},
+        get fonts_dev(){return config.src+"/fonts"},
+        get fonts_prod(){return config.build+"/fonts"},
         //svgs
-        get dev_svgs(){return config.src+"/svgs"},
-        get prod_svgs(){return config.build+"/svgs"},
+        get svgs_dev(){return config.src+"/svgs"},
+        get svgs_prod(){return config.build+"/svgs"},
         //where to look for the plone template files
         plone_templates : "./"
     }
@@ -337,17 +337,17 @@ gulp.task("templates", function() {
 // ----------------------------------------------------------------------------
 
 gulp.task("svgs", function() {
-    return gulp.src(config.paths.dev_svgs+"/icons/**/*.svg")
+    return gulp.src(config.paths.svgs_dev+"/icons/**/*.svg")
         .pipe(plumber(plumberErrorHandler))
         .pipe(rsp.remove({
             properties : [rsp.PROPS_FILL,rsp.PROPS_STROKE]
         }))
-        .pipe(addsrc(config.paths.dev_svgs+"/*.svg"))
+        .pipe(addsrc(config.paths.svgs_dev+"/*.svg"))
         .pipe(svgsprite({
             mode : {stack : true}
         }))
         .pipe(rename("spritesheet.svg"))
-        .pipe(gulp.dest(config.paths.prod_svgs))
+        .pipe(gulp.dest(config.paths.svgs_prod))
         .pipe(reload({stream:true}))
         .pipe(notify({ message: "SVG task complete" }));
 });
@@ -357,9 +357,9 @@ gulp.task("svgs", function() {
 // ----------------------------------------------------------------------------
 
 gulp.task("fonts", function() {
-    return gulp.src(config.paths.dev_fonts+"/**/*")
+    return gulp.src(config.paths.fonts_dev+"/**/*")
         .pipe(plumber(plumberErrorHandler))
-        .pipe(gulp.dest(config.paths.prod_fonts))
+        .pipe(gulp.dest(config.paths.fonts_prod))
         .pipe(reload({stream:true}))
         .pipe(notify({ message: "Fonts task complete" }));
 });
@@ -429,9 +429,9 @@ gulp.task("watch",function() {
     //watch for modernizr changes
     gulp.watch([config.paths.js_dev+"/**/*.js", config.paths.css+"**/*.css"], ["modernizr"]);
     //watch for font changes
-    gulp.watch([config.paths.dev_fonts+"/**/*"], ["fonts"]);
+    gulp.watch([config.paths.fonts_dev+"/**/*"], ["fonts"]);
     //watch for icon changes
-    gulp.watch([config.paths.dev_svgs+"/**/*"], ["svgs"]);
+    gulp.watch([config.paths.svgs_dev+"/**/*"], ["svgs"]);
     //start browsersync
     gulp.start("browser-sync");
 });
