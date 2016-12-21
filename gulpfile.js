@@ -45,6 +45,9 @@ var config = {
         //scripts
         get js_dev(){return config.src+"/scripts"},
         get js_prod(){return config.build+"/scripts"},
+        //external libs
+        get libs_dev(){return config.src+"/external-libs"},
+        get libs_prod(){return config.build+"/external-libs"},
         //html templates
         get pug_templates(){return config.src+"/pug-templates"},
         get html_templates(){return config.build+"/"},
@@ -194,6 +197,27 @@ gulp.task("scripts-build", function() {
         .pipe(gulp.dest(config.paths.js_prod))
         .pipe(reload({stream:true}))
         .pipe(notify({ message: "Scripts task complete" }));
+});
+
+// ----------------------------------------------------------------------------
+// THE LIBS TASK
+// ----------------------------------------------------------------------------
+
+gulp.task("libs-dev", function() {
+    return gulp.src(config.paths.libs_dev+"/**/*")
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(gulp.dest(config.paths.libs_prod))
+        .pipe(reload({stream:true}))
+        .pipe(notify({ message: "Libs task complete" }));
+});
+
+gulp.task("libs-build", function() {
+    return gulp.src(config.paths.libs_dev+"/**/*")
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(uglify())
+        .pipe(gulp.dest(config.paths.libs_prod))
+        .pipe(reload({stream:true}))
+        .pipe(notify({ message: "Libs task complete" }));
 });
 
 // ----------------------------------------------------------------------------
@@ -373,7 +397,7 @@ gulp.task("clean",function(cb){
 // THE DEFAULT TASK
 // ----------------------------------------------------------------------------
 
-gulp.task("default", ["styles-dev", "scripts-dev", "modernizr", "fonts", "svgs"], function() {
+gulp.task("default", ["styles-dev", "scripts-dev", "libs-dev", "modernizr", "fonts", "svgs"], function() {
     gulp.start("templates");
 });
 
@@ -382,7 +406,7 @@ gulp.task("default", ["styles-dev", "scripts-dev", "modernizr", "fonts", "svgs"]
 // ----------------------------------------------------------------------------
 
 gulp.task("build", ["clean"], function() {
-    gulp.start("styles-build", "scripts-build", "images", "modernizr","fonts","svgs");
+    gulp.start("styles-build", "scripts-build", "libs-build", "images", "modernizr","fonts","svgs");
 });
 
 // ----------------------------------------------------------------------------
