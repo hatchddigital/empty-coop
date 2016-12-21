@@ -51,6 +51,7 @@
     "browserify": "^13.1.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
+    "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-cache": "^0.3.0",
     "gulp-concat": "^2.6.0",

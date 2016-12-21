@@ -77,6 +77,7 @@ var gulp            = require("gulp"),
     path            = require("path"),
     count           = require("gulp-count"),
     os              = require("os"),
+    addsrc          = require("gulp-add-src"),
     //css plugins
     sass            = require("gulp-sass"),
     sourcemaps      = require("gulp-sourcemaps"),
@@ -336,15 +337,16 @@ gulp.task("templates", function() {
 // ----------------------------------------------------------------------------
 
 gulp.task("svgs", function() {
-    return gulp.src(config.paths.dev_svgs+"/**/*.svg")
+    return gulp.src(config.paths.dev_svgs+"/icons/**/*.svg")
         .pipe(plumber(plumberErrorHandler))
+        .pipe(rsp.remove({
+            properties : [rsp.PROPS_FILL,rsp.PROPS_STROKE]
+        }))
+        .pipe(addsrc(config.paths.dev_svgs+"/*.svg"))
         .pipe(svgsprite({
             mode : {stack : true}
         }))
         .pipe(rename("spritesheet.svg"))
-        .pipe(rsp.remove({
-            properties : [rsp.PROPS_FILL,rsp.PROPS_STROKE]
-        }))
         .pipe(gulp.dest(config.paths.prod_svgs))
         .pipe(reload({stream:true}))
         .pipe(notify({ message: "SVG task complete" }));
@@ -406,7 +408,7 @@ gulp.task("default", ["styles-dev", "scripts-dev", "libs-dev", "modernizr", "fon
 // ----------------------------------------------------------------------------
 
 gulp.task("build", ["clean"], function() {
-    gulp.start("styles-build", "scripts-build", "libs-build", "images", "modernizr","fonts","svgs");
+    gulp.start("styles-build", "scripts-build", "libs-build", "images", "modernizr","fonts", "svgs");
 });
 
 // ----------------------------------------------------------------------------
