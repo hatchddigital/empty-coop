@@ -177,9 +177,9 @@ gulp.task("styles-build", function() {
 
 gulp.task("scripts-dev", function() {
     return browserify(config.paths.js_dev+"/app.js",{debug:true})
+        .pipe(plumber(plumberErrorHandler))
         .transform("babelify",{presets:["es2015"]})
         .bundle().on("error",plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
         .pipe(source("app.js"))
         .pipe(buffer())
         .pipe(gulp.dest(config.paths.js_prod))
@@ -189,9 +189,9 @@ gulp.task("scripts-dev", function() {
 
 gulp.task("scripts-build", function() {
     return browserify(config.paths.js_dev+"/app.js",{debug:false})
+        .pipe(plumber(plumberErrorHandler))
         .transform("babelify",{presets:["es2015"]})
         .bundle().on("error",plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
         .pipe(source("app.js"))
         .pipe(buffer())
         .pipe(uglify())
