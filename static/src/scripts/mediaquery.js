@@ -3,46 +3,82 @@
  * to pass to Javascript
  * @usage:
  * // Create a new instance of the MediaQuery class
- * var mediaquery =  new mq.MediaQuery();
+ * var mediaquery =  new MediaQuery();
  * // Check against a specific breakpoint
  *  if ( mediaquery.query('pebble') ){
  *      // Do something
  *  }
  */
+
+//
+// ─── IMPORT THE FILES WE NEED ───────────────────────────────────────────────────
+//
+
 import $ from 'jquery';
 
-export default function mediaQuery() {
+//
+// ─── THE MEDIA QUERY CLASS ──────────────────────────────────────────────────────
+//
 
-    var self = this;
+export default class MediaQuery {
 
-    /** Construct a new instance */
-    self.constructor = function () {
-        self.queries = {};
-        try {
-            // Parse the queries which are stored in the content of the body.
-            var content = $('head').css('font-family');
-            //console.log(content);
-            content = content.trim().substring(1, content.length - 1).split(",");
-            var jsonstring = [];
-            $.each(content, function (i, query) {
-                query = query.split("|");
-                jsonstring.push('"' + query[0] + '":"' + query[1] + '"');
-            });
-            jsonstring = "{" + jsonstring.join(",") + "}";
-            self.queries = $.parseJSON(jsonstring);
-            //console.log(self.queries);
-        } catch (e) {}
-    }();
+    constructor(debug = false) {
+        // add the parser to the page
+        this.parser = $('#mq-parser');
+        if (!this.parser.length) {
+            this.parser = $("<div id='mq-parser' style='display:none;'></div>");
+            $('body').append(this.parser);
+        }
+        if (debug) {
+            this.parser.addClass('mq-parser--debug');
+        }
+        // grab the breakpoints
+        this.points = this.getPoints();
+        // add all the breakpoint elements
+        this.addElements();
+        // set the curret query
+        this.currentQuery = this.getQuery();
+        // update on resize
+        const self = this;
+        $(window).on('resize', () => {
+            self.currentQuery = self.getQuery();
+        });
+    }
 
-    /**
-     * Does a check against the given query name and returns if it passes or not.
-     *
-     * @param string name
-     * @return bool
-     */
-    self.query = function (name) {
-        if (typeof (self.queries[name]) != 'undefined') {
-            return window.matchMedia(self.queries[name]).matches;
+    // get all the breakpoints
+    getPoints() {
+        return window.getComputedStyle(this.parser.get(0), ':after').getPropertyValue('content').replace(/"/g, '').split(',');
+    }
+
+    // add the breakpoint elements
+    addElements() {
+        this.parser.html('');
+        this.breakpoints = [];
+        $.each(this.points, (i, point) => {
+            const bp = $(`<div class='${point}'>${point}</div>`);
+            this.parser.append(bp);
+            this.breakpoints.push(bp);
+        });
+    }
+
+    // get the current queries
+    getQuery() {
+        const bps = [];
+        $.each(this.breakpoints, function () {
+            const bp = $(this);
+            if (bp.is(':visible')) {
+                bps.push(bp.text());
+            }
+        });
+        return bps;
+    }
+
+    // query the breakpoints
+    query(point) {
+        const bps = this.getQuery();
+        this.currentQuery = bps;
+        if ($.inArray(point, bps) !== -1) {
+            return true;
         }
         return false;
     }

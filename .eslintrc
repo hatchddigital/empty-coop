@@ -10,8 +10,8 @@
          "jquery": true
      },
      //"extends": "eslint:recommended",
+     "extends": "airbnb",
      "rules": {
-         "no-console": 1,
          "indent": [
              2,
              4

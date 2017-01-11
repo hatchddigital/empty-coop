@@ -1,0 +1,39 @@
+#mq-parser {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    z-index: 999;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0px;
+    &.mq-parser--debug {
+        display: block !important;
+    }
+    * {
+        display: none;
+        width: 100%;
+        padding: 5px 0;
+        font-size: 13px;
+    }
+    $pointstring:"";
+    @each $bp, $break in $breakpoints {
+        @debug $bp;
+        .#{$bp} {
+            @include breakpoint($bp) {
+                display: block;
+                @if($pointstring=="") {
+                    $pointstring: $bp;
+                }
+                @else {
+                    $pointstring: $pointstring + "," + $bp;
+                }
+            }
+        }
+    }
+    &:after {
+        content:"#{$pointstring}";
+        display:none;
+    }
+}
