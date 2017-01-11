@@ -25,26 +25,25 @@ $point-helpers: nomq media;
 /// to specify an explicit media type for the query.
 /// @type Map
 $breakpoints:(
-  grain:(
-    min-width: 200px,
+  small:(
+    min-width: 300px,
     nomq: true,
     media: screen
   ),
-  pebble:(
-    min-width: 300px,
-    nomq: true
+  medium:(
+    min-width: 700px,
+    nomq: true,
+    media: screen
   ),
-  mountain:(
-    min-width: 800px,
-    nomq: true
+  large:(
+    min-width: 1000px,
+    nomq: true,
+    media: screen
   ),
-  eagleeyes:(
-    min-device-pixel-ratio: 2,
-    min-resolution: 192dpi
-  ),
-  -webkit-eagleeyes:(
-    -webkit-min-device-pixel-ratio: 2,
-    -webkit-min-resolution: 192dpi
+  x-large:(
+    min-width: 1200px,
+    nomq: true,
+    media: screen
   )
 );
 

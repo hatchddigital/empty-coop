@@ -247,7 +247,7 @@
   $point: map-get($map,$point);
   $querystr: '';
   @each $name, $value in $point{
-    @if $name != nomq{
+    @if $name != nomq and $name != media{
       $querystr: $querystr + $name + ': ' + $value;
     }
   }

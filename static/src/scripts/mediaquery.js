@@ -11,20 +11,28 @@
  */
 import $ from 'jquery';
 
-export class MediaQuery {
+export default function mediaQuery() {
+
+    var self = this;
 
     /** Construct a new instance */
-    constructor() {
-      this.queries = {};
-      try {
-          // Parse the queries which are stored in the content of the body.
-          var content = $('head').css('font-family');
-          content = content.replace(/""/g, '"');
-          this.queries = $.parseJSON(content.substr(1, content.length - 2));
-      }
-      catch(e) {
-      }
-    }
+    self.constructor = function () {
+        self.queries = {};
+        try {
+            // Parse the queries which are stored in the content of the body.
+            var content = $('head').css('font-family');
+            //console.log(content);
+            content = content.trim().substring(1, content.length - 1).split(",");
+            var jsonstring = [];
+            $.each(content, function (i, query) {
+                query = query.split("|");
+                jsonstring.push('"' + query[0] + '":"' + query[1] + '"');
+            });
+            jsonstring = "{" + jsonstring.join(",") + "}";
+            self.queries = $.parseJSON(jsonstring);
+            //console.log(self.queries);
+        } catch (e) {}
+    }();
 
     /**
      * Does a check against the given query name and returns if it passes or not.
@@ -32,10 +40,11 @@ export class MediaQuery {
      * @param string name
      * @return bool
      */
-    query(name) {
-        if (typeof(this.queries[name]) != 'undefined') {
-            return Modernizr.mq(this.queries[name]);
+    self.query = function (name) {
+        if (typeof (self.queries[name]) != 'undefined') {
+            return window.matchMedia(self.queries[name]).matches;
         }
         return false;
     }
+
 }
