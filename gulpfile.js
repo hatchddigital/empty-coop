@@ -95,6 +95,7 @@ var gulp            = require("gulp"),
     babelify        = require("babelify"),
     uglify          = require("gulp-uglify"),
     modernizr       = require("gulp-modernizr"),
+    eslint          = require("gulp-eslint"),
     //html plugins
     pug             = require("gulp-pug"),
     //live reload stuff
@@ -175,10 +176,20 @@ gulp.task("styles-build", function() {
 // THE SCRIPTS TASK
 // ----------------------------------------------------------------------------
 
-gulp.task("scripts-dev", function() {
+//config for linter can be found in the .eslintrc file
+gulp.task("scripts-lint", function() {
+    return gulp.src(config.paths.js_dev+"/**/*")
+        .pipe(plumber(plumberErrorHandler))
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError())
+});
+
+gulp.task("scripts-dev", ["scripts-lint"], function() {
     return browserify(config.paths.js_dev+"/app.js",{debug:true})
         .transform("babelify",{presets:["es2015"]})
-        .bundle().on("error",plumberErrorHandler.errorHandler)
+        .bundle()
+        .on("error",plumberErrorHandler.errorHandler)
         .pipe(plumber(plumberErrorHandler))
         .pipe(source("app.js"))
         .pipe(buffer())
@@ -190,7 +201,8 @@ gulp.task("scripts-dev", function() {
 gulp.task("scripts-build", function() {
     return browserify(config.paths.js_dev+"/app.js",{debug:false})
         .transform("babelify",{presets:["es2015"]})
-        .bundle().on("error",plumberErrorHandler.errorHandler)
+        .bundle()
+        .on("error",plumberErrorHandler.errorHandler)
         .pipe(plumber(plumberErrorHandler))
         .pipe(source("app.js"))
         .pipe(buffer())

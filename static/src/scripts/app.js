@@ -56,7 +56,7 @@ let test = new testClass("foo",undefined);
 // this will print out the string "foo" defined above
 test.printVar1();
 // this will print out the default for the var2 variable defined in the constructor of the class
-test.printVar2();
+test.printVar2(); 
 // this will print out the result of an external function in es6.function.js imported from within the class
 test.printExternalFunctionVar();
 //import the same function used in the test class
@@ -73,7 +73,7 @@ console.log("-------------------------------------------------------------------
 //
 
 let MQ = new MediaQuery();
-console.log("TODO: fix media queries");
+console.log("TODO: fix media queries"); 
 (function resize(){
     //console.log(MQ);
     if(MQ.query("medium")){
