@@ -347,7 +347,7 @@ gulp.task('templates', () => {
                             .pipe(notify({ message: 'Templates task complete' }));
                     }
                 });
-            } else {
+            } else {    
                 filesProcessed++;
             }
         }));
@@ -432,13 +432,13 @@ gulp.task('watch', () => {
     // run default to start
     gulp.start('default');
     // watch .scss files
-    gulp.watch(`${config.paths.scss}/**/*.scss`, ['styles-dev']);
+    gulp.watch([`${config.paths.scss}/**/*.scss`], ['styles-dev']);
     // watch .js files
-    gulp.watch(`${config.paths.js_dev}/**/*.js`, ['scripts-dev']);
+    gulp.watch([`${config.paths.js_dev}/**/*.js`], ['scripts-dev']);
     // watch image files
-    gulp.watch(`${config.paths.images_orig}/**/*`, ['images']);
+    gulp.watch([`${config.paths.images_orig}/**/*`], ['images']);
     // watch template files
-    gulp.watch(`${config.paths.pug_templates}/**/*.pug`, ['templates']);
+    gulp.watch([`${config.paths.pug_templates}/**/*.pug`,`${config.paths.pug_templates}/**/*.json`], ['templates']);
     // watch for modernizr changes
     gulp.watch([`${config.paths.js_dev}/**/*.js`, `${config.paths.css}**/*.css`], ['modernizr']);
     // watch for font changes
