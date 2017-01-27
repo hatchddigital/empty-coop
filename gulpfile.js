@@ -115,6 +115,8 @@ let gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
+    postcss = require('gulp-postcss'),
+    contrast = require('postcss-high-contrast'),
     // images
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
@@ -185,6 +187,7 @@ gulp.task('styles-dev', () => gulp.src(`${config.paths.scss}**/*.scss`)
         .pipe(sass({ errLogToConsole: true }))
         .pipe(sourcemaps.write())
         .pipe(rename({ dirname: '' }))
+        .pipe(postcss([contrast]))
         .pipe(gulp.dest(config.paths.css))
         .pipe(reload({ stream: true }))
         .pipe(notify({ message: 'Styles dev task complete' })));
@@ -196,7 +199,6 @@ gulp.task('styles-build', () => gulp.src(`${config.paths.scss}**/*.scss`)
         .pipe(concat('styles.css'))
         .pipe(gulp.dest(config.paths.css))
         .pipe(minifycss())
-        .pipe(postcss())
         .pipe(gulp.dest(config.paths.css))
         .pipe(reload({ stream: true }))
         .pipe(notify({ message: 'Styles build task complete' })));
