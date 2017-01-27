@@ -19,7 +19,7 @@
     }
     $pointstring:"";
     @each $bp, $break in $breakpoints {
-        @debug $bp;
+        //@debug $bp;
         .#{$bp} {
             @include breakpoint($bp) {
                 display:block;
