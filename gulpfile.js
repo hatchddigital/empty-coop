@@ -69,26 +69,54 @@ const config = {
     // the paths to the relevant files
     paths: {
         // styles
-        get scss() { return `${config.src}/sass`; },
-        get css() { return `${config.build}/styles`; },
+        get scss() {
+            return `${config.src}/sass`;
+        },
+        get css() {
+            return `${config.build}/styles`;
+        },
         // images
-        get images_orig() { return `${config.src}/images`; },
-        get images_min() { return `${config.build}/images`; },
+        get images_orig() {
+            return `${config.src}/images`;
+        },
+        get images_min() {
+            return `${config.build}/images`;
+        },
         // scripts
-        get js_dev() { return `${config.src}/scripts`; },
-        get js_prod() { return `${config.build}/scripts`; },
+        get js_dev() {
+            return `${config.src}/scripts`;
+        },
+        get js_prod() {
+            return `${config.build}/scripts`;
+        },
         // external libs
-        get libs_dev() { return `${config.src}/external-libs`; },
-        get libs_prod() { return `${config.build}/external-libs`; },
+        get libs_dev() {
+            return `${config.src}/external-libs`;
+        },
+        get libs_prod() {
+            return `${config.build}/external-libs`;
+        },
         // html templates
-        get pug_templates() { return `${config.src}/pug-templates`; },
-        get html_templates() { return `${config.build}/`; },
+        get pug_templates() {
+            return `${config.src}/pug-templates`;
+        },
+        get html_templates() {
+            return `${config.build}/`;
+        },
         // fonts
-        get fonts_dev() { return `${config.src}/fonts`; },
-        get fonts_prod() { return `${config.build}/fonts`; },
+        get fonts_dev() {
+            return `${config.src}/fonts`;
+        },
+        get fonts_prod() {
+            return `${config.build}/fonts`;
+        },
         // svgs
-        get svgs_dev() { return `${config.src}/svgs`; },
-        get svgs_prod() { return `${config.build}/svgs`; },
+        get svgs_dev() {
+            return `${config.src}/svgs`;
+        },
+        get svgs_prod() {
+            return `${config.build}/svgs`;
+        },
         // where to look for the plone template files
         plone_templates: './',
     },
@@ -180,25 +208,41 @@ gulp.task('browser-sync', () => {
 // ----------------------------------------------------------------------------
 
 gulp.task('styles-dev', () => gulp.src(`${config.paths.scss}**/*.scss`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(sourcemaps.init())
-        .pipe(sass({ errLogToConsole: true }))
-        .pipe(sourcemaps.write())
-        .pipe(rename({ dirname: '' }))
-        .pipe(gulp.dest(config.paths.css))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Styles dev task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+        errLogToConsole: true
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(rename({
+        dirname: ''
+    }))
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Styles dev task complete'
+    })));
 
 gulp.task('styles-build', () => gulp.src(`${config.paths.scss}**/*.scss`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(sass({ errLogToConsole: true }))
-        .pipe(autoprefixer({ browsers: ['last 3 versions', '> 1%', 'ie 8'] }))
-        .pipe(concat('styles.css'))
-        .pipe(gulp.dest(config.paths.css))
-        .pipe(minifycss())
-        .pipe(gulp.dest(config.paths.css))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Styles build task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(sass({
+        errLogToConsole: true
+    }))
+    .pipe(autoprefixer({
+        browsers: ['last 3 versions', '> 1%', 'ie 8']
+    }))
+    .pipe(concat('styles.css'))
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(minifycss())
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Styles build task complete'
+    })));
 
 // ----------------------------------------------------------------------------
 // THE SCRIPTS TASK
@@ -206,60 +250,90 @@ gulp.task('styles-build', () => gulp.src(`${config.paths.scss}**/*.scss`)
 
 // config for linter can be found in the .eslintrc file
 gulp.task('scripts-lint', () => gulp.src(`${config.paths.js_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failOnError()));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError()));
 
-gulp.task('scripts-dev', ['scripts-lint'], () => browserify(`${config.paths.js_dev}/app.js`, { debug: true })
-        .transform('babelify', { presets: ['es2015'] })
-        .bundle()
-        .on('error', plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(gulp.dest(config.paths.js_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Scripts task complete' })));
+gulp.task('scripts-dev', ['scripts-lint'], () => browserify(`${config.paths.js_dev}/app.js`, {
+        debug: true
+    })
+    .transform('babelify', {
+        presets: ['es2015']
+    })
+    .bundle()
+    .on('error', plumberErrorHandler.errorHandler)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest(config.paths.js_prod))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Scripts task complete'
+    })));
 
-gulp.task('scripts-build', () => browserify(`${config.paths.js_dev}/app.js`, { debug: false })
-        .transform('babelify', { presets: ['es2015'] })
-        .bundle()
-        .on('error', plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.js_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Scripts task complete' })));
+gulp.task('scripts-build', () => browserify(`${config.paths.js_dev}/app.js`, {
+        debug: false
+    })
+    .transform('babelify', {
+        presets: ['es2015']
+    })
+    .bundle()
+    .on('error', plumberErrorHandler.errorHandler)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.js_prod))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Scripts task complete'
+    })));
 
 // ----------------------------------------------------------------------------
 // THE LIBS TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('libs-dev', () => gulp.src(`${config.paths.libs_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(gulp.dest(config.paths.libs_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Libs task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(gulp.dest(config.paths.libs_prod))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Libs task complete'
+    })));
 
 gulp.task('libs-build', () => gulp.src(`${config.paths.libs_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.libs_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Libs task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.libs_prod))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Libs task complete'
+    })));
 
 // ----------------------------------------------------------------------------
 // THE IMAGES TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('images', () => gulp.src(`${config.paths.images_orig}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-        .pipe(gulp.dest(config.paths.images_min))
-        .pipe(notify({ message: 'Images task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(cache(imagemin({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    })))
+    .pipe(gulp.dest(config.paths.images_min))
+    .pipe(notify({
+        message: 'Images task complete'
+    })));
 
 // ----------------------------------------------------------------------------
 // THE TEMPLATES TASK
@@ -292,7 +366,9 @@ gulp.task('templates', () => {
         .pipe(count({
             logFiles: true,
             logEmpty: false,
-            logger(msg) { fileNo++; },
+            logger(msg) {
+                fileNo++;
+            },
         }))
         .pipe(data((file) => {
             // grab the locals and clone
@@ -310,8 +386,7 @@ gulp.task('templates', () => {
                 // set the destination to be a dir with the same name as the file
                 let dest = file.path
                     .replace(`${config.paths.pug_templates}/templates`, config.build)
-                    .replace(`/${fileName}.pug`, '')
-                ;
+                    .replace(`/${fileName}.pug`, '');
 
                 // if homepage
                 if (fileName == 'index') {
@@ -343,11 +418,15 @@ gulp.task('templates', () => {
                     filesProcessed++;
                     if (fileNo == filesProcessed) {
                         gulp.src(dest)
-                            .pipe(reload({ stream: true }))
-                            .pipe(notify({ message: 'Templates task complete' }));
+                            .pipe(reload({
+                                stream: true
+                            }))
+                            .pipe(notify({
+                                message: 'Templates task complete'
+                            }));
                     }
                 });
-            } else {    
+            } else {
                 filesProcessed++;
             }
         }));
@@ -358,49 +437,59 @@ gulp.task('templates', () => {
 // ----------------------------------------------------------------------------
 
 gulp.task('svgs', () => gulp.src(`${config.paths.svgs_dev}/icons/**/*.svg`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(rsp.remove({
-            properties: [rsp.PROPS_FILL, rsp.PROPS_STROKE],
-        }))
-        .pipe(addsrc(`${config.paths.svgs_dev}/*.svg`))
-        .pipe(svgsprite({
-            mode: { stack: true },
-        }))
-        .pipe(rename('spritesheet.svg'))
-        .pipe(gulp.dest(config.paths.svgs_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'SVG task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(rsp.remove({
+        properties: [rsp.PROPS_FILL, rsp.PROPS_STROKE],
+    }))
+    .pipe(addsrc(`${config.paths.svgs_dev}/*.svg`))
+    .pipe(svgsprite({
+        mode: {
+            stack: true
+        },
+    }))
+    .pipe(rename('spritesheet.svg'))
+    .pipe(gulp.dest(config.paths.svgs_prod))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'SVG task complete'
+    })));
 
 // ----------------------------------------------------------------------------
 // THE FONTS TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('fonts', () => gulp.src(`${config.paths.fonts_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(gulp.dest(config.paths.fonts_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Fonts task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(gulp.dest(config.paths.fonts_prod))
+    .pipe(reload({
+        stream: true
+    }))
+    .pipe(notify({
+        message: 'Fonts task complete'
+    })));
 
 // ----------------------------------------------------------------------------
 // THE MODERNIZR TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('modernizr', () => gulp.src([`${config.paths.js_prod}/app.js`, `${config.paths.css}/styles.css`])
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(modernizr('modernizr.min.js', {
-            options: [
-                'setClasses',
-                'addTest',
-                'html5printshiv',
-                'testProp',
-                'fnBind',
-            ],
-            useBuffers: true,
-            parseFiles: true,
-            uglify: true,
-        }))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.js_prod)));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(modernizr('modernizr.min.js', {
+        options: [
+            'setClasses',
+            'addTest',
+            'html5printshiv',
+            'testProp',
+            'fnBind',
+        ],
+        useBuffers: true,
+        parseFiles: true,
+        uglify: true,
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.js_prod)));
 
 // ----------------------------------------------------------------------------
 // THE CLEAN UP TASK
@@ -438,7 +527,7 @@ gulp.task('watch', () => {
     // watch image files
     gulp.watch([`${config.paths.images_orig}/**/*`], ['images']);
     // watch template files
-    gulp.watch([`${config.paths.pug_templates}/**/*.pug`,`${config.paths.pug_templates}/**/*.json`], ['templates']);
+    gulp.watch([`${config.paths.pug_templates}/**/*.pug`, `${config.paths.pug_templates}/**/*.json`], ['templates']);
     // watch for modernizr changes
     gulp.watch([`${config.paths.js_dev}/**/*.js`, `${config.paths.css}**/*.css`], ['modernizr']);
     // watch for font changes
