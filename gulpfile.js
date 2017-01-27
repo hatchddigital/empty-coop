@@ -55,7 +55,7 @@ and past in the following option...
 // USE STRICT MODE
 // ----------------------------------------------------------------------------
 
-'use strict';
+'use strict'; // eslint-disable-line
 
 // ----------------------------------------------------------------------------
 // THE GULP config
@@ -64,6 +64,7 @@ and past in the following option...
 const config = {
     proxyurl: false, // the url of the site on your machine (only use if proxying a current server)
     src: 'static/src',
+    woop: 'wdd',
     build: 'static/build',
     port: 1982,
     // the paths to the relevant files
