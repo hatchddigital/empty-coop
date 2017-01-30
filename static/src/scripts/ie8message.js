@@ -8,7 +8,7 @@ var
     messageheading = 'Hey there! We notice you\'re using Internet Explorer 8',
     messagetext =
         [
-            'We don\'t support this browser, so you may see some visual anomolies whilst using our site. ',
+            'We don\'t support this browser, so you may see some visual anomalies whilst using our site. ',
             'For a more optimal experience, we\'d recommend a newer version of Internet Explorer' +
             'or an alternative, free browser like Chrome or Firefox'
         ]
