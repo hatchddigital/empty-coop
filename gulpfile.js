@@ -55,7 +55,7 @@ and past in the following option...
 // USE STRICT MODE
 // ----------------------------------------------------------------------------
 
-'use strict';
+'use strict'; // eslint-disable-line
 
 // ----------------------------------------------------------------------------
 // THE GULP config
@@ -181,27 +181,34 @@ gulp.task('browser-sync', () => {
 // THE STYLES TASKS
 // ----------------------------------------------------------------------------
 
-gulp.task('styles-dev', () => gulp.src(`${config.paths.scss}**/*.scss`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(sourcemaps.init())
-        .pipe(sass({ errLogToConsole: true }))
-        .pipe(sourcemaps.write())
-        .pipe(rename({ dirname: '' }))
-        .pipe(postcss([contrast]))
-        .pipe(gulp.dest(config.paths.css))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Styles dev task complete' })));
+gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(postcss([contrast]))
+    .pipe(concat('styles-highcontrast.css'))
+    .pipe(minifycss())
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(notify({ message: 'Styles high contrast task complete' })));
 
-gulp.task('styles-build', () => gulp.src(`${config.paths.scss}**/*.scss`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(sass({ errLogToConsole: true }))
-        .pipe(autoprefixer({ browsers: ['last 3 versions', '> 1%', 'ie 8'] }))
-        .pipe(concat('styles.css'))
-        .pipe(gulp.dest(config.paths.css))
-        .pipe(minifycss())
-        .pipe(gulp.dest(config.paths.css))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Styles build task complete' })));
+gulp.task('styles-dev', () => gulp.src(`${config.paths.scss}/**/*.scss`)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(sourcemaps.init())
+    .pipe(sass({ errLogToConsole: true }))
+    .pipe(sourcemaps.write())
+    .pipe(rename({ dirname: '' }))
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Styles dev task complete' })));
+
+gulp.task('styles-build', () => gulp.src(`${config.paths.scss}/**/*.scss`)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(sass({ errLogToConsole: true }))
+    .pipe(autoprefixer({ browsers: ['last 3 versions', '> 1%', 'ie 8'] }))
+    .pipe(concat('styles.css'))
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(minifycss())
+    .pipe(gulp.dest(config.paths.css))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Styles build task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE SCRIPTS TASK
@@ -209,60 +216,60 @@ gulp.task('styles-build', () => gulp.src(`${config.paths.scss}**/*.scss`)
 
 // config for linter can be found in the .eslintrc file
 gulp.task('scripts-lint', () => gulp.src(`${config.paths.js_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failOnError()));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError()));
 
 gulp.task('scripts-dev', ['scripts-lint'], () => browserify(`${config.paths.js_dev}/app.js`, { debug: true })
-        .transform('babelify', { presets: ['es2015'] })
-        .bundle()
-        .on('error', plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(gulp.dest(config.paths.js_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Scripts task complete' })));
+    .transform('babelify', { presets: ['es2015'] })
+    .bundle()
+    .on('error', plumberErrorHandler.errorHandler)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest(config.paths.js_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Scripts task complete' })));
 
 gulp.task('scripts-build', () => browserify(`${config.paths.js_dev}/app.js`, { debug: false })
-        .transform('babelify', { presets: ['es2015'] })
-        .bundle()
-        .on('error', plumberErrorHandler.errorHandler)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.js_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Scripts task complete' })));
+    .transform('babelify', { presets: ['es2015'] })
+    .bundle()
+    .on('error', plumberErrorHandler.errorHandler)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.js_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Scripts task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE LIBS TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('libs-dev', () => gulp.src(`${config.paths.libs_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(gulp.dest(config.paths.libs_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Libs task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(gulp.dest(config.paths.libs_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Libs task complete' })));
 
 gulp.task('libs-build', () => gulp.src(`${config.paths.libs_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.libs_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Libs task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.libs_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Libs task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE IMAGES TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('images', () => gulp.src(`${config.paths.images_orig}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-        .pipe(gulp.dest(config.paths.images_min))
-        .pipe(notify({ message: 'Images task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+    .pipe(gulp.dest(config.paths.images_min))
+    .pipe(notify({ message: 'Images task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE TEMPLATES TASK
@@ -361,49 +368,49 @@ gulp.task('templates', () => {
 // ----------------------------------------------------------------------------
 
 gulp.task('svgs', () => gulp.src(`${config.paths.svgs_dev}/icons/**/*.svg`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(rsp.remove({
-            properties: [rsp.PROPS_FILL, rsp.PROPS_STROKE],
-        }))
-        .pipe(addsrc(`${config.paths.svgs_dev}/*.svg`))
-        .pipe(svgsprite({
-            mode: { stack: true },
-        }))
-        .pipe(rename('spritesheet.svg'))
-        .pipe(gulp.dest(config.paths.svgs_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'SVG task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(rsp.remove({
+        properties: [rsp.PROPS_FILL, rsp.PROPS_STROKE],
+    }))
+    .pipe(addsrc(`${config.paths.svgs_dev}/*.svg`))
+    .pipe(svgsprite({
+        mode: { stack: true },
+    }))
+    .pipe(rename('spritesheet.svg'))
+    .pipe(gulp.dest(config.paths.svgs_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'SVG task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE FONTS TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('fonts', () => gulp.src(`${config.paths.fonts_dev}/**/*`)
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(gulp.dest(config.paths.fonts_prod))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'Fonts task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(gulp.dest(config.paths.fonts_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Fonts task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE MODERNIZR TASK
 // ----------------------------------------------------------------------------
 
 gulp.task('modernizr', () => gulp.src([`${config.paths.js_prod}/app.js`, `${config.paths.css}/styles.css`])
-        .pipe(plumber(plumberErrorHandler))
-        .pipe(modernizr('modernizr.min.js', {
-            options: [
-                'setClasses',
-                'addTest',
-                'html5printshiv',
-                'testProp',
-                'fnBind',
-            ],
-            useBuffers: true,
-            parseFiles: true,
-            uglify: true,
-        }))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.js_prod)));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(modernizr('modernizr.min.js', {
+        options: [
+            'setClasses',
+            'addTest',
+            'html5printshiv',
+            'testProp',
+            'fnBind',
+        ],
+        useBuffers: true,
+        parseFiles: true,
+        uglify: true,
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.js_prod)));
 
 // ----------------------------------------------------------------------------
 // THE CLEAN UP TASK
@@ -415,7 +422,7 @@ gulp.task('clean', cb => del([config.build], cb));
 // THE DEFAULT TASK
 // ----------------------------------------------------------------------------
 
-gulp.task('default', ['styles-dev', 'scripts-dev', 'libs-dev', 'modernizr', 'fonts', 'svgs'], () => {
+gulp.task('default', ['styles-dev', 'styles-highcontrast', 'scripts-dev', 'libs-dev', 'modernizr', 'fonts', 'svgs'], () => {
     gulp.start('templates');
 });
 
@@ -424,7 +431,7 @@ gulp.task('default', ['styles-dev', 'scripts-dev', 'libs-dev', 'modernizr', 'fon
 // ----------------------------------------------------------------------------
 
 gulp.task('build', ['clean'], () => {
-    gulp.start('styles-build', 'scripts-build', 'libs-build', 'images', 'modernizr', 'fonts', 'svgs');
+    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr', 'fonts', 'svgs');
 });
 
 // ----------------------------------------------------------------------------
@@ -435,7 +442,9 @@ gulp.task('watch', () => {
     // run default to start
     gulp.start('default');
     // watch .scss files
-    gulp.watch([`${config.paths.scss}/**/*.scss`], ['styles-dev']);
+    gulp.watch([`${config.paths.scss}/**/*.scss`], ['styles-dev', 'styles-highcontrast']);
+    // watch .css files
+    gulp.watch([`${config.paths.css}/**/*.css`], ['styles-highcontrast']);
     // watch .js files
     gulp.watch([`${config.paths.js_dev}/**/*.js`], ['scripts-dev']);
     // watch image files

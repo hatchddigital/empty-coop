@@ -16,6 +16,7 @@ import Slick from 'slick-carousel-browserify';
 import Lightbox from 'lightbox2';
 import MediaQuery from './mediaquery';
 import breakpointguide from './breakpointguide';
+import HighContrast from './highcontrastmode';
 import TestClass from './es6.class';
 import aFunction from './es6.function';
 
@@ -97,6 +98,13 @@ console.log('-------------------------------------------------------------------
 //
 
 breakpointguide();
+
+//
+// ─── ENABLE HIGH CONTRAST CSS ───────────────────────────────────────────────────
+//
+
+const HC = new HighContrast('.toggle-highcontrast');
+HC.test();
 
 //
 // ─── HANDLE ADDING THE USE ELEMENT TO DATA SVG ELEMENTS ─────────────────────────
