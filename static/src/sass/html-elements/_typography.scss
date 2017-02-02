@@ -8,6 +8,7 @@
 html{
     font-size: fontbase($remsize-base,16);
 }
+
 body{
     @include font(fontbase($fontsize-base) 1.5em, default);
     color: color(default);
@@ -15,6 +16,7 @@ body{
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
 }
+
 p,li,dt,dd,input,textarea,button{
     line-height: 1.5em;
 }

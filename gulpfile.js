@@ -183,10 +183,40 @@ gulp.task('browser-sync', () => {
 
 gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`)
     .pipe(plumber(plumberErrorHandler))
-    .pipe(postcss([contrast]))
+    .pipe(postcss([contrast({
+        // elements to change
+        aggressiveHC: true,
+        aggressiveHCDefaultSelectorList: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'th', 'td'],
+        aggressiveHCCustomSelectorList: ['div', 'span', 'a', 'button'],
+        // background and text
+        backgroundColor: '#fff',
+        textColor: '#000',
+        // links
+        linkColor: '#204DCB',
+        linkHoverColor: '#153489',
+        linkHoverBgColor: '#fff',
+        // buttons
+        buttonSelector: ['button', '.button', '.btn', 'input[type=submit]'],
+        buttonColor: '#fff',
+        buttonBackgroundColor: '#000',
+        buttonBorderColor: '#000',
+        // images
+        // imageFilter: 'invert(100%) grayscale(100%) contrast(200%)',
+        imageFilter: 'grayscale(100%) contrast(200%)',
+        imageSelectors: ['img', 'svg'],
+        // other settings
+        borderColor: '#000',
+        disableShadow: true,
+        removeCSSProps: false,
+        CSSPropsWhiteList: ['background', 'background-color', 'color', 'border', 'border-top', 'border-bottom',
+            'border-left', 'border-right', 'border-color', 'border-top-color', 'border-right-color',
+            'border-bottom-color', 'border-left-color', 'box-shadow', 'filter', 'text-shadow'],
+    })]))
+    .pipe(addsrc(`${config.paths.css}/highcontrast-custom.css`))
     .pipe(concat('styles-highcontrast.css'))
     .pipe(minifycss())
     .pipe(gulp.dest(config.paths.css))
+    .pipe(reload({ stream: true }))
     .pipe(notify({ message: 'Styles high contrast task complete' })));
 
 gulp.task('styles-dev', () => gulp.src(`${config.paths.scss}/**/*.scss`)
@@ -442,7 +472,7 @@ gulp.task('watch', () => {
     // run default to start
     gulp.start('default');
     // watch .scss files
-    gulp.watch([`${config.paths.scss}/**/*.scss`], ['styles-dev', 'styles-highcontrast']);
+    gulp.watch([`${config.paths.scss}/**/*.scss`], ['styles-dev']);
     // watch .css files
     gulp.watch([`${config.paths.css}/**/*.css`], ['styles-highcontrast']);
     // watch .js files

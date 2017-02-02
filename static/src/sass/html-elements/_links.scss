@@ -6,7 +6,7 @@
  * Link styles
  */
 a{
-    color: color(link);
+    color:color(link);
     text-decoration: underline;
     &:hover{
         color: color(linkactive);

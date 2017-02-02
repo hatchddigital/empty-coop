@@ -103,8 +103,7 @@ breakpointguide();
 // ─── ENABLE HIGH CONTRAST CSS ───────────────────────────────────────────────────
 //
 
-const HC = new HighContrast('.toggle-highcontrast');
-HC.test();
+HighContrast('.toggle-highcontrast');
 
 //
 // ─── HANDLE ADDING THE USE ELEMENT TO DATA SVG ELEMENTS ─────────────────────────
