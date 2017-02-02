@@ -20,7 +20,7 @@ attempt to launch a browsersync server and will minify all js and css.
 */
 
 // ----------------------------------------------------------------------------
-// LINTING
+// LINTING JS
 // ----------------------------------------------------------------------------
 
 /*
@@ -42,6 +42,30 @@ install this plugin -> https://github.com/TheSavior/ESLint-Formatter
 go to "sublime text" -> "prefrences" -> "package settings" -> "eslint formatter" -> "user settings"
 and past in the following option...
 {"format_on_save": true}
+
+*/
+
+// ----------------------------------------------------------------------------
+// LINTING SASS
+// ----------------------------------------------------------------------------
+
+/*
+
+Here are some plugins that will make it easier to pass the sass linting.
+they help with the linting but they cannot fix every error.
+NOTE: you may need to install sass-lint globally using npm install -g sass-lint
+----------------------
+
+VSCODE
+----------------------
+install this plugin -> https://marketplace.visualstudio.com/items?itemName=glen-84.sass-lint
+go to "code" -> "prefrences" -> "user settings" then chnge the option
+"eslint.autoFixOnSave" (under the heading ESLint) to true
+
+SUBLIME
+----------------------
+install this plugin -> https://github.com/skovhus/SublimeLinter-contrib-sass-lint
+You will need SublimeLinter to be installed first.
 
 */
 
@@ -118,6 +142,7 @@ let gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     postcss = require('gulp-postcss'),
     contrast = require('postcss-high-contrast'),
+    sasslint = require('gulp-sass-lint'),
     // images
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
@@ -181,6 +206,13 @@ gulp.task('browser-sync', () => {
 // ----------------------------------------------------------------------------
 // THE STYLES TASKS
 // ----------------------------------------------------------------------------
+
+// config for linter can be found in the .sass-lint.yml file
+gulp.task('styles-lint', () => gulp.src(`${config.paths.scss}/**/*.scss`)
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(sasslint())
+    .pipe(sasslint.format())
+    .pipe(sasslint.failOnError()));
 
 gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`)
     .pipe(plumber(plumberErrorHandler))
