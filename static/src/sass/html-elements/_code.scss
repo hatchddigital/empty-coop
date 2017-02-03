@@ -3,31 +3,37 @@
  *
  */
 
+
 /**
 * Preformatted text
 */
-pre{
-    box-sizing: border-box;
+
+pre {
+    width: 100%;
+    margin: 0 0 1em;
+    white-space: pre;
     overflow: auto;
-	white-space: pre;
-	width: 100%;
-	margin: 0 0 1em 0;
+    box-sizing: border-box;
 }
+
 
 /**
 * Code, samp, kbd
 */
+
 code,
 samp,
-kbd{
-	display: inline-block;
-	padding: 0 .5em;
+kbd {
+    display: inline-block;
+    padding: 0 .5em;
 }
+
 
 /**
 * Var
 */
-var{
-	font-style: italic;
-	font-weight: bold;
+
+var {
+    font-style: italic;
+    font-weight: bold;
 }

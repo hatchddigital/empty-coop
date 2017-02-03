@@ -4,7 +4,7 @@
 import $ from 'jquery';
 
 export default function breakpoints() {
-    var bpgmarkup = `
+    const bpgmarkup = `
         <div class="breakpointguide">
             <link rel="stylesheet" href="../styles/breakpointguide.css" />
             <span class="breakpointguide-label"></span>
@@ -12,3 +12,4 @@ export default function breakpoints() {
         </div>`;
     $('body').append(bpgmarkup);
 }
+

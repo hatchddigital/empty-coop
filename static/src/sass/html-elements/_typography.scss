@@ -2,215 +2,262 @@
  * Base type styles
  */
 
+
 /**
  * Set base font size/line-height and declare the px size of an em unit
  */
-html{
-    font-size: fontbase($remsize-base,16);
+
+html {
+    font-size: fontbase($remsize-base, 16);
 }
-body{
+
+body {
     @include font(fontbase($fontsize-base) 1.5em, default);
     color: color(default);
     // Make font render less bold in Mac
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-p,li,dt,dd,input,textarea,button{
+
+p,
+li,
+dt,
+dd,
+input,
+textarea,
+button {
     line-height: 1.5em;
 }
 
 /**
  * Headings
  */
-$headings:(
-  h1: fontsize(jumbo),
-  h2: fontsize(large),
-  h3: fontsize(emphasized),
-  h4: fontsize(default),
-  h5: fontsize(default),
-  h6: fontsize(default)
-);
-#{map-keys( $headings )}{
-    @include font(false 1.3em,default);
+
+$headings: (
+    h1: fontsize(jumbo),
+    h2: fontsize(large),
+    h3: fontsize(emphasized),
+    h4: fontsize(default),
+    h5: fontsize(default),
+    h6: fontsize(default))
+;
+
+#{map-keys($headings)} {
+    @include font(false 1.3em, default);
     margin: 1em 0 .5em;
-    @at-root{
-        @each $headinglevel, $headingsize in ($headings){
-            #{$headinglevel}{
+    @at-root {
+        @each $headinglevel, $headingsize in ($headings) {
+            #{$headinglevel} {
                 @include font($headingsize);
             }
         }
     }
 }
 
+
 /**
  * Block elements
  */
-p{
-	margin: 0 0 1em 0;
+
+p {
+    margin: 0 0 1em;
 }
-hr{
-	height: 0;
-	margin: 0 0 1em 0;
-	padding: 0;
-	border: none;
-	border-top: 1px solid color(muted);
+
+hr {
+    height: 0;
+    margin: 0 0 1em;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid color(muted);
 }
 
 /**
- * Quotes
- */
+* Blockquotes
+*/
 
-    /**
-     * Blockquotes
-     */
-    blockquote{
-        margin: 0 0 1em 3em;
-        > p{
-            margin-bottom: .60em;
-            font-size: 1.4em;
-            &:first-child:before{
-                content: '\201C';
-            }
-            &:first-child:after{
-                content: '\201D';
-            }
+blockquote {
+    margin: 0 0 1em 3em;
+
+    > p {
+        margin-bottom: .6em;
+        font-size: 1.4em;
+
+        &::before {
+            content: '\201C';
         }
-        footer p{
-            margin: -.5em 0 0 0;
-            font-size: .85em;
-            font-style: italic;
-            &:before{
-                content: '-';
-            }
+
+        &::after {
+            content: '\201D';
         }
+
     }
 
-    /**
-     * Inline quotes
-     */
-    q{
-        color:inherit;
-        font-style:italic;
+    cite {
+        margin: -.5em 0 0;
+        font-size: .85em;
+        font-style: italic;
+
+        &::before {
+            content: '-';
+        }
     }
-    cite{
-        font-style:italic;
-    }
+
+}
+
+
+/**
+* Inline quotes
+*/
+
+q {
+    color: inherit;
+    font-style: italic;
+}
+
+cite {
+    font-style: italic;
+}
 
 /**
  * Lists
  */
 
-    /**
-     * Globals
-     */
-    ul,ol,dl{
-        margin: 0 0 1em 2em;
-        padding: 0;
-        @at-root{
-            li{
-                margin: 0 0 .25em 0;
-            }
+/**
+* Globals
+*/
+
+ul,
+ol,
+dl {
+    margin: 0 0 1em 2em;
+    padding: 0;
+    @at-root {
+        li {
+            margin: 0 0 .25em;
         }
     }
+}
 
-    /**
-     * Unordered lists
-     */
-    ul{
-        list-style:disc outside;
-        ul{
-            margin: .25em 0 .5em 1em;
-        }
+/**
+* Unordered lists
+*/
+
+ul {
+    list-style: disc outside;
+
+    ul {
+        margin: .25em 0 .5em 1em;
     }
 
-    /**
-     * Ordered lists
-     */
-    ol{
-        list-style: decimal outside;
-        ol{
-            margin: .25em 0 .5em 1.5em;
-            list-style-type: lower-roman;
-        }
+}
+
+/**
+* Ordered lists
+*/
+
+ol {
+    list-style: decimal outside;
+
+    ol {
+        margin: .25em 0 .5em 1.5em;
+        list-style-type: lower-roman;
     }
 
-    /**
-     * Definiton lists
-     */
-    dl{
-        margin-left: 0;
-        @at-root{
-            dt{
-                margin: 0 0 .5em 0;
-                font-weight: bold;
-            }
-            dd{
-                margin: 0 0 .5em 0;
-            }
-        }
-    }
+}
 
+/**
+* Definiton lists
+*/
+
+dl {
+    margin-left: 0;
+    @at-root {
+        dt {
+            margin: 0 0 .5em;
+            font-weight: bold;
+        }
+
+        dd {
+            margin: 0 0 .5em;
+        }
+
+    }
+}
 
 /**
  * Inline elements
  */
 
-    /**
-     * Superscript/subscript
-     */
-	sup,
-    sub{
-	    position: relative;
-	    vertical-align: baseline;
-        font-size: 75%;
-        line-height: 0;
-        @at-root{
-        	sup{
-        	   top: -.5em;
-        	}
-        	sub{
-        	   bottom: -.25em;
-        	}
+
+/**
+* Superscript/subscript
+*/
+
+sup,
+sub {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+    @at-root {
+        sup {
+            top: -.5em;
+        }
+
+        sub {
+            bottom: -.25em;
         }
     }
+}
 
-    /**
-     * For marking up content relevency/edits and highlighting content
-     */
-	ins{
-		background-color: color(highlight);
-	}
-	del{
-		text-decoration: line-through;
-	}
-	s{
-		color: color(muted);
-		text-decoration: line-through;
-	}
-	mark{
-		background-color: color(highlight);
-		color: inherit;
-		font-weight: normal;
-	}
+/**
+* For marking up content relevency/edits and highlighting content
+*/
 
-    /**
-     * Small print
-     */
-	small{
-		font-weight: normal;
-		font-style: normal;
-	}
+ins {
+    background-color: color(highlight);
+}
 
-    /**
-     * Phrase tags
-     */
-	strong,b{
-		font-weight: bold;
-	}
-	em,i{
-		font-style: italic;
-	}
-	dfn,abbr{
-		position: relative;
-        font-style: inherit;
-	}
+del {
+    text-decoration: line-through;
+}
+
+s {
+    color: color(muted);
+    text-decoration: line-through;
+}
+
+mark {
+    background-color: color(highlight);
+    color: inherit;
+    font-weight: normal;
+}
+
+/**
+* Small print
+*/
+
+small {
+    font-style: normal;
+    font-weight: normal;
+}
+
+/**
+* Phrase tags
+*/
+
+strong,
+b {
+    font-weight: bold;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+dfn,
+abbr {
+    position: relative;
+    font-style: inherit;
+}

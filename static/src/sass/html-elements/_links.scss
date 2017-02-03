@@ -5,33 +5,31 @@
 /**
  * Link styles
  */
-a{
+a {
     color: color(link);
     text-decoration: underline;
-    &:hover{
+
+    &:hover {
         color: color(linkactive);
         text-decoration: none;
     }
-    &[href^="tel"]{
+
+    &[href^='tel'] {
         color: inherit;
     }
 }
-:focus{
+
+:focus {
     outline: none;
 }
 
 /**
  * Selection styles
  */
-@each $prefix in (
-    '::',
-    '::-webkit-',
-    '::-moz-',
-    '::-ms-')
-{
-    #{$prefix}selection{
-        color: color(white);
+@each $prefix in ('::', '::-webkit-', '::-moz-', '::-ms-') {
+    #{$prefix}selection {
         background: color(link);
+        color: color(white);
     }
 }
 

@@ -7,35 +7,108 @@
  * @see http://hatchd.com.au/
  */
 
-window.$ = window.jQuery = require("jquery");
-import {MediaQuery} from './mediaquery';
+//
+// ─── IMPORT THE FILES WE NEED ───────────────────────────────────────────────────
+//
+
+import $ from 'jquery';
+import Slick from 'slick-carousel-browserify';
+import Lightbox from 'lightbox2';
+import MediaQuery from './mediaquery';
 import breakpointguide from './breakpointguide';
-import ie8message from './ie8message';
+import HighContrast from './highcontrastmode';
+import TestClass from './es6.class';
+import aFunction from './es6.function';
+import './svgs';
 
-//examples of using browserify on frontend to load npm module
-var slick = require("slick-carousel-browserify");
-console.log(slick);
+//
+// ─── EXAMPLES OF USING BROWSERIFY ON FRONTEND TO LOAD NPM MODULE ────────────────
+//
 
-var lightbox = require("lightbox2");
-console.log(lightbox);
-//end examples
+// Used the same way as in the gulp file
+// EXAMPLE...
+//-------------------------------------------------
+// NPM install --save slick-carousel-browserify
+// var slick = require("slick-carousel-browserify");
+//-------------------------------------------------
+// no more is needed
 
-// Example usage of media queries
-var mediaquery =  new MediaQuery();
-if (mediaquery.query('pebble')){
-    window.console.log('Media Query function is being called correctly');
-}
+console.log('-------------------------------------------------------------------');
+console.log('TESTING BROWSERIFY');
+console.log('-------------------------------------------------------------------');
 
-// Enable breakpoint guide
-breakpointguide();
+// slick slider module loaded from NPM via import above
+console.log('SLICK NPM MODULE =>', Slick);
 
-//svg icons
-$("[data-svg]").each(function(){
-    var svg = $(this);
-    var id = svg.attr("data-svg");
-    var content = "<svg class='svg-"+id+"' 'xmlns=http://www.w3.org/2000/svg role='img'><use xlink:href='#"+id+"'></use></svg>";
-    svg.html(content);
+// lightbox module loaded from NPM via import above
+console.log('LIGHTBOX NPM MODULE =>', Lightbox);
+
+console.log('-------------------------------------------------------------------');
+console.log('END TESTING BROWSERIFY');
+console.log('-------------------------------------------------------------------');
+
+//
+// ─── EXMAPLE OF IMPORTING AND USING ES6 CLASS ───────────────────────────────────
+//
+
+console.log('-------------------------------------------------------------------');
+console.log('TESTING ES6 CLASSES');
+console.log('-------------------------------------------------------------------');
+
+// create new instance of the class and send in 2 variables
+const test = new TestClass('foo', undefined);
+// this will print out the string "foo" defined above
+test.printVar1();
+// this will print out the default for the var2 variable defined in the constructor of the class
+test.printVar2();
+// this will print out the result of an external function in es6.function.js
+// imported from within the class
+test.printExternalFunctionVar();
+// import the same function used in the test class
+const foo = aFunction('bar');
+console.log(`The value returned from the imported es6 function is ${foo}`);
+
+console.log('-------------------------------------------------------------------');
+console.log('END TESTING ES6 CLASSES');
+console.log('-------------------------------------------------------------------');
+
+//
+// ─── EXAMPLE USAGE OF MEDIA QUERIES ─────────────────────────────────────────────
+//
+
+console.log('-------------------------------------------------------------------');
+console.log('TESTING MEDIAQUERY.JS');
+console.log('-------------------------------------------------------------------');
+
+// create new media query instance, remove true param to turn off debug
+// this returns any matching breakpoints defined in _breakpoints.scss
+const mq = new MediaQuery(true);
+console.log('current matching breakpoints', mq.currentQuery);
+$(window).on('resize', () => {
+    if (mq.query('medium')) {
+        console.log('MediaQuery reporting in medium breakpoint');
+    }
 });
 
-// Sitewide specific code
-window.console.log('Lock and loaded');
+console.log('-------------------------------------------------------------------');
+console.log('END TESTING MEDIAQUERY.JS');
+console.log('-------------------------------------------------------------------');
+
+//
+// ─── ENABLE BREAKPOINT GUIDE ────────────────────────────────────────────────────
+//
+
+breakpointguide();
+
+//
+// ─── ENABLE HIGH CONTRAST CSS ───────────────────────────────────────────────────
+//
+
+HighContrast('.toggle-highcontrast');
+
+//
+// ─── AND WE ARE GOOD TO GO ──────────────────────────────────────────────────────
+//
+
+// sitewide specific code
+console.log('GO GO GADGET WEBSITE');

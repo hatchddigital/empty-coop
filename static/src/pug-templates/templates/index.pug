@@ -1,11 +1,21 @@
 extend ./master
 
 block variables
-	-var title = "Home";
-	
+    -var title = "Home";
+
 block pagecontent
-	h3 Example SVG Sprite Icon
-	span(data-svg="facebook")
-	h3 Example SVG Sprite Background
-	.svg-background
- 
+    h3 Example fields
+    select
+        option Option 1
+        option Option 2
+    textarea Im a textarea
+    input(type="text")
+    h3 Example image
+    img(src="images/owl.jpg")
+    h3 Example button
+    button Click me
+    h3 Example SVG Sprite Icon
+    span(data-svg="facebook")
+    h3 Example SVG Sprite Background
+    .svg-background
+

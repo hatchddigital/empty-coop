@@ -40,8 +40,8 @@ $serif: serif;
 /// Basic monospace font family
 /// @type Variable
 /// @require {Map} $font-famillies
-$monospace: "Courier New", Courier, "Lucida Sans Typewriter",
-"Lucida Typewriter", monospace;
+$monospace: 'Courier New', Courier, 'Lucida Sans Typewriter',
+'Lucida Typewriter', monospace;
 
 
 /// Font-famillies map tieing usage to variable names
@@ -56,9 +56,9 @@ $font-famillies: (
 /// @author Jack Armley, Douglas Linder
 /// @access private
 /// @require font
-$font-extras:(
-  style: style-normal italic oblique,
-  variant: variant-normal small-caps initial inherit,
-  weight: weight-normal bold bolder lighter 100 200 300 400 500 600 700 800 900,
-  stretch: stretch-normal ultra-condensed extra-condensed condensed semi-condensed semi-expanded expanded extra-expanded ultra-expanded
+$font-extras: (
+    style: style-normal italic oblique,
+    variant: variant-normal small-caps initial inherit,
+    weight: weight-normal bold bolder lighter 100 200 300 400 500 600 700 800 900,
+    stretch: stretch-normal ultra-condensed extra-condensed condensed semi-condensed semi-expanded expanded extra-expanded ultra-expanded
 );

@@ -2,13 +2,16 @@
 * Example component name
 * Example component description
 */
-.post{
+.post {
     padding: 30px;
     background: color(muted);
-    &-title{
+
+    &-title {
         font-size: 2em;
     }
-    &-desc{
+
+    &-desc {
         font-size: 1em;
     }
+
 }

@@ -5,13 +5,12 @@
  */
 
 /// Import dependancies
-@import
-    'utils/variables/_fonts',
-    'utils/variables/_colours',
-    'utils/variables/_breakpoints',
-    'utils/_functions',
-    'utils/_mixins',
-    'utils/_placeholders';
+@import 'utils/variables/fonts';
+@import 'utils/variables/colours';
+@import 'utils/variables/breakpoints';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/placeholders';
 
 /// Define media query support
 /// @type Variable
@@ -20,49 +19,56 @@ $mqsupport: true;
 
 /// Properties for the breakpoint guide
 /// @type Map
-$bpguide:(
+$bpguide: (
     'bg': #fff,
     'text': #333,
-    'label': #EF4034
+    'label': #ef4034
 );
 
 /**
  * Set styles for the
  * breakpoint helper
  */
-.breakpointguide{
+
+.breakpointguide {
     $counter: 0;
-    @include pos(fixed,b0 r0);
-    overflow:hidden;
-    background: map-get($bpguide,bg);
-    color: map-get($bpguide,text);
+    @include pos(fixed, b0 r0);
+    background: map-get($bpguide, bg);
+    color: map-get($bpguide, text);
     font: normal normal 12px/1.5em sans-serif;
+    overflow: hidden;
+
     &-label,
-    &-value{
+    &-value {
         display: block;
         padding: .5em 1em;
     }
-    &-label{
-        background: map-get($bpguide,label);
-        text-shadow: 0 1px 0 fade-out(black,.8);
-        color:white;
+
+    &-label {
+        background: map-get($bpguide, label);
+        color: white;
+        text-shadow: 0 1px 0 fade-out(black, .8);
         text-transform: uppercase;
     }
-    &-value{
+
+    &-value {
         font-weight: bold;
     }
-    @each $key,$value in $breakpoints{
+
+    @each $key, $value in $breakpoints {
         $counter: $counter + 1;
-        @include breakpoint($key){
-            &-label{
-                background:adjust-hue(map-get($bpguide,label), 0deg + (50 *$counter) );
-                &:before{
-                    content:'#{$key}';
+        @include breakpoint($key) {
+            &-label {
+                background: adjust-hue(map-get($bpguide, label), 0deg + (50 *$counter));
+
+                &::before {
+                    content: '#{$key}';
                 }
             }
-            &-value{
-                &:before{
-                    content:'#{processforguide($key)}';
+
+            &-value {
+                &::before {
+                    content: '#{processforguide($key)}';
                 }
             }
         }

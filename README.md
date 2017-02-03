@@ -59,6 +59,7 @@ gulp build
 
 ## Changelog (major changes)
 
+- **0.16.0** Implemented js linting based on the air b'n'b styleguide and sass linting using sass-lint
 - **0.15.0** Swapped out eggbox for svgstore and require for browserify and reworked the gulp file to make it much simpler
 - **0.14.0** Removed support for grunt and bower, added gulp (requires eggbox 0.6.3 or higher)
 - **0.12.0** Removed support for IE7 (requires eggbox 0.6.0 or higher)

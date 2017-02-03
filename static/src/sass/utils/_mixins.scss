@@ -2,24 +2,22 @@
 //// Mixins
 //// @author Various at Hatchd Digital
 ////
-
-
 /// Automagically set an element's width/height
 /// @author Jack Armley
 /// @param {List | Number} $args Width and/or height
 @mixin setsize($args) {
-  $arglen: length($args);
-  @if($arglen > 1){
-    width: nth($args,1);
-    height: nth($args,2);
-  }@else{
-    width: $args;
-    height: $args;
-  }
+    $arglen: length($args);
+    @if($arglen > 1) {
+        width: nth($args, 1);
+        height: nth($args, 2);
+    } @else {
+        width: $args;
+        height: $args;
+    }
 }
 
-/// Generate a % width for items intended 
-/// to sit alongside one another. 
+/// Generate a % width for items intended
+/// to sit alongside one another.
 /// Useful for simple grid-style columns
 /// @author Jack Armley
 /// @param {Number} $item-number Number from 1-100
@@ -30,10 +28,9 @@
 ///   div{
 ///     width: 50%;
 ///   }
-@mixin dist($item-number){
-  width: percentage(1/$item-number);
+@mixin dist($item-number) {
+    width: percentage(1/$item-number);
 }
-
 
 /// Make pure CSS triangles
 /// @author Jack Armley
@@ -41,24 +38,23 @@
 /// @param {String} $color [black] - Triangle color. Can be a raw color value or
 /// called using color(color)
 /// @param {Number} $size [1em] - Triangle size.
-@mixin triangle($dir, $color:black, $size:1em){
+@mixin triangle($dir, $color: black, $size: 1em) {
     $dir: triangle-getdir($dir);
-    content:' ';
-    display:block;
-    width:0;
-    height:0;
-    border:$size solid transparent;
+    display: block;
+    width: 0;
+    height: 0;
+    border: $size solid transparent;
+    content: ' ';
     // Set borders
-    @each $prop in $dir{
-      border-#{$prop}-color: $color;
+    @each $prop in $dir {
+        border-#{$prop}-color: $color;
     }
     // If 2 borders are set (eg: top right)
     // make triangle smaller
-    @if length($dir) > 1{
-      border-width:$size/1.25;
+    @if length($dir) > 1 {
+        border-width: $size / 1.25;
     }
 }
-
 
 /// Quickly Set position values
 /// @author Jack Armley
@@ -82,57 +78,40 @@
 ///         left: 50%;
 ///         z-index: auto;
 ///     }
-
-@mixin pos($value,$coords:false){
-
+@mixin pos($value, $coords: false) {
     // Tie shorthand position properties
     // to valid ones using a map.
     // 'sticky' and 'static' have no shortcut,
     // as they share the same first letter
-    $fullpos:(
-      r: relative,
-      a: absolute,
-      f: fixed,
-      i: inherit
-    );
-
+    $fullpos: ( r: relative, a: absolute, f: fixed, i: inherit);
     // Tie shorthand coordinate properties
     // to valid css ones using a map
-    $fullprops:(
-        t: top,
-        r: right,
-        b: bottom,
-        l: left
-    );
-
+    $fullprops: ( t: top, r: right, b: bottom, l: left);
     // Set position value
-    @if (map-has-key($fullpos,$value)){
-      $value: map-get($fullpos,$value);
+    @if (map-has-key($fullpos, $value)) {
+        $value: map-get($fullpos, $value);
     }
     position: $value;
-
     // Set position coordinates
-    @if ($coords != false){
-        @each $group in $coords{
+    @if ($coords != false) {
+        @each $group in $coords {
             // If value is string or not 'auto', set as position prop/value pair
-            @if(type-of($group) != number and $group != 'auto'){
-              // Grab the raw property
-              $rawprop: str-slice($group,0,1);
-              // tie it to it's valid css counterpart
-              $prop: map-get($fullprops,$rawprop);
-              // Grab the value
-              $value: str-slice($group,2);
-              // Set these to make a regular ol'
-              // property-value pair
-              #{$prop}: unquote($value);
-            }
-            // If value is number or 'auto', set as z-index prop/value pair
-            @else{
-              z-index: $group;
+            @if(type-of($group) != number and $group != 'auto') {
+                // Grab the raw property
+                $rawprop: str-slice($group, 0, 1);
+                // tie it to it's valid css counterpart
+                $prop: map-get($fullprops, $rawprop);
+                // Grab the value
+                $value: str-slice($group, 2);
+                // Set these to make a regular ol'
+                // property-value pair
+                #{$prop}: unquote($value);
+            } @else {
+                // If value is number or 'auto', set as z-index prop/value pair
+                z-index: $group;
             }
         }
     }
-
 }
 
 /// Make responsive proportionally resizing elements
@@ -140,19 +119,20 @@
 /// @link http://www.wmyl.se/en/blog/proportional-scaling-responsive-boxes-using-just-css
 /// @param {String} $child - Child element. Ensure string is quoted if using `&`
 /// @param {List} $ratio - width and height
-@mixin propelem($child,$ratio){
+@mixin propelem($child, $ratio) {
     $child-pseudo: false;
-    @if ($child == '&:before') or ($child == '&:after'){
+    @if ($child == '&:before') or ($child == '&:after') {
         $child-pseudo: true;
     }
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: ratiotopercent($ratio);
-    #{$child}{
-        @if $child-pseudo == true{
-            content:' ';
+
+    #{$child} {
+        @if $child-pseudo == true {
             display: block;
+            content: ' ';
         }
         position: absolute;
         top: 0;
@@ -160,6 +140,7 @@
         width: 100%;
         height: 100%;
     }
+
 }
 
 /// Construct simple or complex media queries
@@ -176,44 +157,40 @@
 ///     @include breakpoint(pebble){
 ///       color: red;
 ///     }
-///     // A more complex query, 
+///     // A more complex query,
 ///     // using operator variables
 ///     @include breakpoint(pebble AND portrait OR rock AND landscape){
 ///       color: blue;
 ///     }
-///   }  
-@mixin breakpoint($points){
-  // Find length of the breakpoint
-  $pointlength: length($points);
-  
-  // Get point type
-  $pointtype: type-of($points);
-  
-  @if ($mqsupport == true){
-    // If media queries are supported,
-    // output a media query
-    @media #{pointstring($points)}{
-      @content
+///   }
+@mixin breakpoint($points) {
+    // Find length of the breakpoint
+    $pointlength: length($points);
+    // Get point type
+    $pointtype: type-of($points);
+    @if ($mqsupport == true) {
+        // If media queries are supported,
+        // output a media query
+        @media #{pointstring($points)} {
+            @content;
+        }
+    } @else {
+        // If media queries aren't supported,
+        // **and** only one query type has been included,
+        // **and** it has been allowed to be used on browsers
+        // that don't support media queries
+        // **or** if it is a manually entered query
+        // that has been allowed to be used on browsers
+        // that don't support media queries, then
+        // output styles outside of a media query block
+        @if (usenomq($points) == true) {
+            @if $pointtype != 'map' and $pointlength == 1 {
+                @content;
+            } @else {
+                @content;
+            }
+        }
     }
-  }
-  @else{
-    // If media queries aren't supported,
-    // **and** only one query type has been included,
-    // **and** it has been allowed to be used on browsers
-    // that don't support media queries
-    // **or** if it is a manually entered query
-    // that has been allowed to be used on browsers
-    // that don't support media queries, then
-    // output styles outside of a media query block
-    @if (usenomq($points) == true) {
-      @if $pointtype != 'map' and $pointlength == 1{
-        @content
-      }
-      @else{
-        @content
-      }
-    }
-  }
 }
 
 /// Return font property/value pairs
@@ -225,32 +202,28 @@
 /// @require {Variable} $font-sizes
 /// @require {Variable} $font-famillies
 /// @require {Variable} $font-extras
-@mixin font($sizes,$family:false,$extras:false){
-  
-  // Set size and line-height
-  @if ($sizes != false){
-    @each $arg in $sizes{
-      $i: index($sizes,$arg);
-      @if ($i == 1 and $arg != false){
-        font-size: get($font-sizes,$arg,false,false);
-      }@else if ($i == 2){
-        line-height: $arg;
-      }
+@mixin font($sizes, $family: false, $extras: false) {
+    // Set size and line-height
+    @if ($sizes != false) {
+        @each $arg in $sizes {
+            $i: index($sizes, $arg);
+            @if ($i == 1 and $arg != false) {
+                font-size: get($font-sizes, $arg, false, false);
+            } @else if ($i == 2) {
+                line-height: $arg;
+            }
+        }
     }
-  }
-  
-  // Set font family
-  @if ($family != false){
-    font-family: get($font-famillies,$family,false,false);
-  }
-  
-  // Set any extra values
-  @each $arg in $extras{
-    @if (font-returnextra($arg) != null){
-      #{font-returnextra($arg,property)}: #{font-returnextra($arg,value)};
+    // Set font family
+    @if ($family != false) {
+        font-family: get($font-famillies, $family, false, false);
     }
-  }
-  
+    // Set any extra values
+    @each $arg in $extras {
+        @if (font-returnextra($arg) != null) {
+            #{font-returnextra($arg, property)}: #{font-returnextra($arg, value)};
+        }
+    }
 }
 
 /// Make consistent @font-face declarations
@@ -262,13 +235,13 @@
 /// @param {String} $location [false] Font file location
 /// @param {String|List} $filetypes [eot woff ttf svg] Font filetypes
 /// @require {Function} fontsrc
-@mixin fontface($familyname, $svgfamilyname: false, $filename: false, $location: false, $filetypes: eot woff ttf svg){
-  $eot: contains($filetypes,eot);
-  @font-face{
-    font-family: $familyname;
-    @if ($eot != false){
-      src: fontsrc($svgfamilyname,$filename,$location,eot);
+@mixin fontface($familyname, $svgfamilyname: false, $filename: false, $location: false, $filetypes: eot woff ttf svg) {
+    $eot: contains($filetypes, eot);
+    @font-face {
+        font-family: $familyname;
+        @if ($eot != false) {
+            src: fontsrc($svgfamilyname, $filename, $location, eot);
+        }
+        src: fontsrc($svgfamilyname, $filename, $location, $filetypes);
     }
-    src: fontsrc($svgfamilyname,$filename,$location,$filetypes);
-  }
 }

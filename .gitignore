@@ -24,6 +24,7 @@ static/docs/
 
 # editor files
 .idea
+.vscode
 
 # os files
 .DS_Store

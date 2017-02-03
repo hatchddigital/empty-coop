@@ -1,0 +1,11 @@
+
+/**
+ * CUSTOM HIGHCONTRAST STYLES
+ * Styles that are added on top of the styles-highcontrast.css file created by postcss gulp plugin
+ */
+
+select,
+textarea,
+input {
+    border: 1px solid color(black) !important;
+}
