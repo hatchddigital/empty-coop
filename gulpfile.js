@@ -252,7 +252,7 @@ gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`
     .pipe(reload({ stream: true }))
     .pipe(notify({ message: 'Styles high contrast task complete' })));
 
-gulp.task('styles-dev', () => gulp.src(`${config.paths.scss}/**/*.scss`)
+gulp.task('styles-dev', ['styles-lint'], () => gulp.src(`${config.paths.scss}/**/*.scss`)
     .pipe(plumber(plumberErrorHandler))
     .pipe(sourcemaps.init())
     .pipe(sass({ errLogToConsole: true }))
@@ -365,7 +365,7 @@ gulp.task('templates', () => {
         .pipe(count({
             logFiles: true,
             logEmpty: false,
-            logger(msg) { fileNo++; },
+            logger() { fileNo += 1; },
         }))
         .pipe(data((file) => {
             // grab the locals and clone
@@ -387,7 +387,7 @@ gulp.task('templates', () => {
                 ;
 
                 // if homepage
-                if (fileName == 'index') {
+                if (fileName === 'index') {
                     dest = config.paths.html_templates;
                     section = 'index';
                     dirName = '';
@@ -413,15 +413,15 @@ gulp.task('templates', () => {
 
                 // on completion of processing file
                 stream.on('finish', () => {
-                    filesProcessed++;
-                    if (fileNo == filesProcessed) {
+                    filesProcessed += 1;
+                    if (fileNo === filesProcessed) {
                         gulp.src(dest)
                             .pipe(reload({ stream: true }))
                             .pipe(notify({ message: 'Templates task complete' }));
                     }
                 });
             } else {
-                filesProcessed++;
+                filesProcessed += 1;
             }
         }));
 });

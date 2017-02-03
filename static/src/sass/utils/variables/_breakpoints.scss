@@ -24,30 +24,25 @@ $point-helpers: nomq media;
 /// valid [media type](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_types)
 /// to specify an explicit media type for the query.
 /// @type Map
-$breakpoints:(
-  small:(
-    min-width: 300px,
-    nomq: true,
-    media: screen
-  ),
-  medium:(
-    min-width: 700px,
-    nomq: true,
-    media: screen
-  ),
-  large:(
-    min-width: 1000px,
-    nomq: true,
-    media: screen
-  ),
-  x-large:(
-    min-width: 1200px,
-    nomq: true,
-    media: screen
-  )
+$breakpoints: (
+    small: (
+        min-width: 300px,
+        nomq: true,
+        media: screen
+    ),
+    medium: (
+        min-width: 700px,
+        nomq: true,
+        media: screen
+    ),
+    large: (
+        min-width: 1000px,
+        nomq: true,
+        media: screen
+    ),
+    x-large: (
+        min-width: 1200px,
+        nomq: true,
+        media: screen
+    )
 );
-
-/// Eagle eyes combination breakpoint
-/// @type Variable
-/// @require {Map} $breakpoints
-$eagleeyes: eagleeyes OR -webkit-eagleeyes;

@@ -29,7 +29,7 @@ $mqsupport: false;
 $remsupport: false;
 
 /// Import all site files
-@import '_manifest';
+@import 'manifest';
 
 /// Import ie8-specific fixes
-@import '_ie8-fixes';
+@import 'ie8-fixes';

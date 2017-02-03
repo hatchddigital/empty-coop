@@ -2,49 +2,43 @@
 //// Functions
 //// @author Various at Hatchd Digital
 ////
-
 /// Getter/setter for maps
 /// @author Jack Armley
 /// @param {Variable} $map - Map to get value from
 /// @param {Variable} $key - Key to get within map
 /// @param {Number} $index [false] - If map is multi-dimensional, state index
 /// @param {String} $strict [true] - Return the key if it idn't within the stated map
-@function get($map, $key, $index:false, $strict: true){
-    $output:'';
-    @if (map_has_key($map,$key)){
+@function get($map, $key, $index: false, $strict: true) {
+    $output: '';
+    @if (map-has-key($map, $key)) {
         // If map has multi-value objects
-        @if ($index){
-            $output: nth(map-get($map,$key),$index);
-        }
-        // If map is simple
-        @else{
-            $output: map-get($map,$key);
+        @if ($index) {
+            $output: nth(map-get($map, $key), $index);
+        } @else {
+            // If map is simple
+            $output: map-get($map, $key);
         }
         @return $output;
-    }
-    @else if ($key == false){
+    }@else if ($key == false) {
         @return $key;
-    }
-    @else{
-        @if $strict{
-            @warn '#{$key} is not a valid value';
+    } @else {
+        @if $strict {
+            //@warn '#{$key} is not a valid value';
             @return false;
-        }
-        @else{
+        } @else {
             @return $key;
         }
     }
 }
 
 /// Aliases for common map calls
-
 /// Font-size getter
 /// @author Jack Armley
 /// @group fonts
 /// @param {String} $key from `$font-sizes`
 /// @require {Variable} $font-sizes
-@function fontsize($key){
-    @return get($font-sizes,$key);
+@function fontsize($key) {
+    @return get($font-sizes, $key);
 }
 
 /// Font-family getter
@@ -52,8 +46,8 @@
 /// @group fonts
 /// @param {String} $key from `$font-famillies`
 /// @require {Variable} $font-famillies
-@function fontfamily($key){
-    @return get($font-famillies,$key)
+@function fontfamily($key) {
+    @return get($font-famillies, $key);
 }
 
 /// Color getter
@@ -61,8 +55,8 @@
 /// @group colors
 /// @param {String} $key from `$colors`
 /// @require {Variable} $colors
-@function color($key){
-    @return get($colors,$key,1);
+@function color($key) {
+    @return get($colors, $key, 1);
 }
 
 /// Generate a percentage font size
@@ -70,8 +64,8 @@
 /// @group fonts
 /// @param {Number} $size - Target font size in px
 /// @require {Variable} $remsize-base
-@function fontbase($target,$base: $remsize-base){
-    $size: (100/$base * $target + '%');
+@function fontbase($target, $base: $remsize-base) {
+    $size: (100 / $base * $target + '%');
     @return unquote($size);
 }
 
@@ -80,12 +74,12 @@
 /// @link https://github.com/sass/sass/issues/543
 /// @param {String} $list - List to check
 /// @param {String|Number|Variable} $var - Item in list
-@function contains($list,$var) {
+@function contains($list, $var) {
     $listcontains: false;
     @each $item in $list {
-      @if $item == $var {
-        $listcontains: true;
-      }
+        @if $item == $var {
+            $listcontains: true;
+        }
     }
     @return $listcontains;
 }
@@ -94,10 +88,10 @@
 /// @author Jack Armley
 /// @group media queries
 /// @param {Number} $point - Font size in px
-@function pxem($point){
-  $unitlesspoint: $point / ($point * 0 + 1);
-  $convpoint: unquote("#{$unitlesspoint / 16}em");
-  @return $convpoint;
+@function pxem($point) {
+    $unitlesspoint: $point / ($point * 0 + 1);
+    $convpoint: unquote('#{$unitlesspoint / 16}em');
+    @return $convpoint;
 }
 
 /// Determine whether the $point argument
@@ -107,14 +101,14 @@
 /// @group media queries
 /// @param {String} $point - Breakpoint keyword to process
 /// @param {Variable} $map [$breakpoints] - Breakpoint map to use
-@function pointtype($point,$map:$breakpoints){
-  $type: type-of($point);
-  @if ($type != 'map'){
-    $point: map-get($map,$point);
-  }@else{
-    $point: $point;
-  }
-  @return $point;
+@function pointtype($point, $map: $breakpoints) {
+    $type: type-of($point);
+    @if ($type != 'map') {
+        $point: map-get($map, $point);
+    } @else {
+        $point: $point;
+    }
+    @return $point;
 }
 
 /// Process a breakpoint to return a  valid media query
@@ -123,57 +117,54 @@
 /// @param {String} $point - Breakpoint keyword to process
 /// @param {Bool} $mediaprefix [false] - Whether or not to include media type prefix (eg: `screen`)
 /// @param {Bool} $convertem [true] - Whether or not to convert px values to em
-@function process($point, $mediaprefix:false, $convertem:true){
-  $querystr: '';
-  $point: pointtype($point);
-  $pointlength: length($point);
-  $i: 1;
-
-  @each $name, $value in $point{
-    @if(contains($point-helpers,$name) == true){
-      $pointlength: $pointlength - 1;
-    }
-  }
-
-  @each $name, $value in $point{
-    // Only process points that contain valid values
-    @if (contains($point-helpers,$name) == false){
-      @if (unit($value) == 'px'){
-        @if ($convertem != false){
-          $value: pxem($value);
+@function process($point, $mediaprefix: false, $convertem: true) {
+    $querystr: '';
+    $point: pointtype($point);
+    $pointlength: length($point);
+    $i: 1;
+    @each $name, $value in $point {
+        @if(contains($point-helpers, $name) == true) {
+            $pointlength: $pointlength - 1;
         }
-      }
-      $querystr: $querystr + '(' + $name + ':' + $value + ')';
-      @if ($i < $pointlength){
-        $querystr: $querystr + ' and ';
-      }
-      $i: $i + 1;
     }
-    // Add media prefix
-    @if $mediaprefix != false{
-      @if $name == media{
-        $querystr: $value + ' and ' + $querystr;
-      }
+    @each $name, $value in $point {
+        // Only process points that contain valid values
+        @if (contains($point-helpers, $name) == false) {
+            @if (unit($value) == 'px') {
+                @if ($convertem != false) {
+                    $value: pxem($value);
+                }
+            }
+            $querystr: $querystr + '(' + $name + ':' + $value + ')';
+            @if ($i < $pointlength) {
+                $querystr: $querystr + ' and ';
+            }
+            $i: $i + 1;
+        }
+        // Add media prefix
+        @if $mediaprefix != false {
+            @if $name == media {
+                $querystr: $value + ' and ' + $querystr;
+            }
+        }
     }
-  }
-  @return $querystr;
+    @return $querystr;
 }
-
 
 /// Check if breakpoint has been given the ok to be used for
 /// browsers that don't support media queries
 /// @author Jack Armley
 /// @group media queries
 /// @param {String} $point - Breakpoint keyword to process
-@function usenomq($point){
-  $usage: '';
-  $point: pointtype($point);
-  @each $name, $value in $point{
-    @if ($name == nomq){
-        $usage: $value;
+@function usenomq($point) {
+    $usage: '';
+    $point: pointtype($point);
+    @each $name, $value in $point {
+        @if ($name == nomq) {
+            $usage: $value;
+        }
     }
-  }
-  @return $usage;
+    @return $usage;
 }
 
 /// Function to pass breakpoints to an element for use by JS,
@@ -181,61 +172,54 @@
 /// @author Jack Armley
 /// @group media queries
 /// @param {Map} $map [$breakpoints] - Breakpoint map to use
-@function pointlist($map:$breakpoints){
-  $newpoint:'';
-  $i: 1;
-  @each $point, $value in $map{
-    // We use double quotes here in the key name because cssmin strips one
-    $newpoint: $newpoint + '""' + $point + '"": ' + '"' + process($point) + '"';
-    @if $i < length($map){
-      $newpoint: $newpoint + ',';
+@function pointlist($map: $breakpoints) {
+    $newpoint: '';
+    $i: 1;
+    @each $point, $value in $map {
+        // We use double quotes here in the key name because cssmin strips one
+        $newpoint: $newpoint + '""' + $point + '"": ' + '"' + process($point) + '"';
+        @if $i < length($map) {
+            $newpoint: $newpoint + ',';
+        }
+        $i: $i + 1;
     }
-    $i: $i + 1;
-  }
-  @return '{' + $newpoint + '}';
+    @return '{' + $newpoint + '}';
 }
 
 /// Construct the full media query string
 /// @author Jack Armley
 /// @group media queries
 /// @param {List|String} $points - Breakpoint keyword(s) to process
-@function pointstring($points){
-  $pointstring: '';
-  $pointtype: type-of($points);
-  $mediaprefix: '';
-  $operators:(
-    AND : 'and',
-    OR : ','
-  );
-  $i: 1;
-
-  @if( $pointtype != 'map'){
-    @each $point in $points{
-      // If an operator, process and convert accordingly
-      @if( map-has-key($operators,$point) == true ){
-        $point: map-get($operators,$point);
-      }
-      // If a regular point, process and convert accordingly
-      @else{
-        // Figure out whether a prefix should be added
-        // Should be if the queey is first in the string,
-        // or if the query is preceeded by an 'OR' operator
-        $mediaprefix: false;
-        @if($i == 1) or ((nth($points,($i - 1))) == OR){
-          $mediaprefix: true;
+@function pointstring($points) {
+    $pointstring: '';
+    $pointtype: type-of($points);
+    $mediaprefix: '';
+    $operators: ( AND: 'and', OR: ',');
+    $i: 1;
+    @if( $pointtype != 'map') {
+        @each $point in $points {
+            // If an operator, process and convert accordingly
+            @if( map-has-key($operators, $point) == true) {
+                $point: map-get($operators, $point);
+            }@else {
+                // If a regular point, process and convert accordingly
+                // Figure out whether a prefix should be added
+                // Should be if the queey is first in the string,
+                // or if the query is preceeded by an 'OR' operator
+                $mediaprefix: false;
+                @if($i == 1) or ((nth($points, ($i - 1))) == OR) {
+                    $mediaprefix: true;
+                }
+                $point: process($point, $mediaprefix);
+            }
+            $pointstring: $pointstring + $point + ' ';
+            $i: $i + 1;
         }
-        $point: process($point, $mediaprefix);
-      }
-      $pointstring: $pointstring + $point + ' ';
-      $i: $i + 1;
+    } @else {
+        $pointstring: process($points, $mediaprefix);
     }
-  }
-  @else{
-    $pointstring: process($points,$mediaprefix);
-  }
-  @return $pointstring;
+    @return $pointstring;
 }
-
 
 /// Process a breakpoint
 /// for the breakpoint guide helper
@@ -243,15 +227,15 @@
 /// @group media queries
 /// @param {String} $point - Breakpoint keyword to process
 /// @param {Variable} $map [$breakpoints] - Breakpoint map to use
-@function processforguide($point, $map:$breakpoints){
-  $point: map-get($map,$point);
-  $querystr: '';
-  @each $name, $value in $point{
-    @if $name != nomq and $name != media{
-      $querystr: $querystr + $name + ': ' + $value;
+@function processforguide($point, $map: $breakpoints) {
+    $point: map-get($map, $point);
+    $querystr: '';
+    @each $name, $value in $point {
+        @if $name != nomq and $name != media {
+            $querystr: $querystr + $name + ': ' + $value;
+        }
     }
-  }
-  @return $querystr;
+    @return $querystr;
 }
 
 /// Process additional font properties
@@ -260,34 +244,33 @@
 /// @param {String|List} $input - additional font value
 /// @param {String} $part [property] - whether to return a property or a value
 /// @require {Mixin} font
-@function font-returnextra($input,$part:property){
-  $output: null;
-  $inputtype: type-of($input);
-  $font-props: map-keys($font-extras);
-
-  @if ($inputtype == string){
-    // Check if input is dash-seperated
-    $inputsplit: str-index($input,'-');
-    @if ( $inputsplit == null ) {
-      @return font-matchextra($input,$part);
-    }@else{
-      $inputprefix: str-slice($input,0,($inputsplit - 1) );
-      // If the input is prefixed by the property name
-      @if ( contains($font-props,$inputprefix) ){
-          @if ($part == property){
-            $output: 'font-' + str-slice($input,0,($inputsplit - 1));
-          }@else if ($part == value){
-            $output: str-slice($input,($inputsplit + 1));
-          }
-      // If the input has no prefix
-      }@else{
-        $output: font-matchextra($input,$part);
-      }
+@function font-returnextra($input, $part: property) {
+    $output: null;
+    $inputtype: type-of($input);
+    $font-props: map-keys($font-extras);
+    @if ($inputtype == string) {
+        // Check if input is dash-seperated
+        $inputsplit: str-index($input, '-');
+        @if ( $inputsplit == null) {
+            @return font-matchextra($input, $part);
+        } @else {
+            $inputprefix: str-slice($input, 0, ($inputsplit - 1));
+            // If the input is prefixed by the property name
+            @if ( contains($font-props, $inputprefix)) {
+                @if ($part == property) {
+                    $output: 'font-' + str-slice($input, 0, ($inputsplit - 1));
+                } @else if ($part == value) {
+                    $output: str-slice($input, ($inputsplit + 1));
+                }
+                // If the input has no prefix
+            } @else {
+                $output: font-matchextra($input, $part);
+            }
+        }
+    } @else {
+        $output: font-matchextra($input, $part);
     }
-  }@else{
-     $output: font-matchextra($input,$part);
-  }
-  @return $output;
+    @return $output;
 }
 
 /// If font extra keyword exists in the $font-extras map,
@@ -297,19 +280,18 @@
 /// @param {String} $input - Property to match
 /// @param {String} $part [property] - whether to return a property or a value
 /// @require {Mixin} font
-@function font-matchextra($input,$part:property){
-  $output: null;
-  @if ($part == property){
-    @each $property, $value in $font-extras{
-      @if contains($value,$input) {
-        $output: 'font-' + $property;
-      }
+@function font-matchextra($input, $part: property) {
+    $output: null;
+    @if ($part == property) {
+        @each $property, $value in $font-extras {
+            @if contains($value, $input) {
+                $output: 'font-' + $property;
+            }
+        }
+    } @else if ($part == value) {
+        $output: $input;
     }
-  }
-  @else if ($part == value){
-    $output: $input;
-  }
-  @return $output;
+    @return $output;
 }
 
 /// Parse font information for the fontface mixin
@@ -319,61 +301,50 @@
 /// @param {String} $filename Font file name
 /// @param {String} $location Font file location
 /// @param {String|List} $filetypes Font filetypes
-@function fontsrc($svgfamilyname,$filename,$location,$filetypes){
-
-  // Make a few starting vars
-  $typestring:'';
-  $format:'';
-  $i: 1;
-  $l: length($filetypes);
-
-  // Loop through the $filetypes string
-  // and make the file urls
-  @each $type in $filetypes{
-
-    // Generate format vars for each filetype
-    @if ($type == 'eot'){
-      $format: 'embedded-opentype';
-    }@else if($type == 'ttf'){
-      $format: 'truetype';
-    }@else{
-      $format: $type;
+@function fontsrc($svgfamilyname, $filename, $location, $filetypes) {
+    // Make a few starting vars
+    $typestring: '';
+    $format: '';
+    $i: 1;
+    $l: length($filetypes);
+    // Loop through the $filetypes string
+    // and make the file urls
+    @each $type in $filetypes {
+        // Generate format vars for each filetype
+        @if ($type == 'eot') {
+            $format: 'embedded-opentype';
+        } @else if($type == 'ttf') {
+            $format: 'truetype';
+        } @else {
+            $format: $type;
+        }
+        // If multiple filetypes are passed add iefix part to url
+        // If only one is passed, assume it is the seperate eot file src
+        @if ($l > 1) {
+            @if ($type == 'eot') {
+                $type: $type + '?#iefix';
+            }
+        }
+        // If svg filetype is passed,
+        // Add svg family name to type string
+        @if ($type == 'svg') {
+            $type: $type + '#' + $svgfamilyname;
+        }
+        // Generate the url string
+        $typestring: $typestring + 'url("#{$location}/#{$filename}.' + $type + '")';
+        // If multiple filetypes are passed add format to each url
+        @if ($l > 1) {
+            $typestring: $typestring + ' format("' + $format + '")';
+        }
+        // Comma seperate each url
+        @if($i < $l) {
+            $typestring: $typestring + ',';
+        }
+        // add to the iteration variable
+        $i: $i + 1;
     }
-
-    // If multiple filetypes are passed add iefix part to url
-    // If only one is passed, assume it is the seperate eot file src
-    @if ($l > 1){
-      @if ($type == 'eot'){
-        $type: $type + '?#iefix';
-      }
-    }
-
-    // If svg filetype is passed,
-    // Add svg family name to type string
-    @if ($type == 'svg'){
-      $type: $type + '#' + $svgfamilyname;
-    }
-
-    // Generate the url string
-    $typestring: $typestring + 'url("#{$location}/#{$filename}.' + $type + '")';
-
-    // If multiple filetypes are passed add format to each url
-    @if ($l > 1){
-      $typestring: $typestring + ' format("' + $format + '")'
-    }
-
-    // Comma seperate each url
-    @if($i < $l){
-      $typestring: $typestring + ',';
-    }
-
-    // add to the iteration variable
-    $i: $i + 1;
-  }
-
-  // Return the string(s)
-  @return unquote($typestring);
-
+    // Return the string(s)
+    @return unquote($typestring);
 }
 
 /// Convert desired triangle mixin direction argument
@@ -381,31 +352,25 @@
 /// @author Jack Armley
 /// @param {List | String} $dir - One or two direction keyword(s): top right
 /// bottom left
-@function triangle-getdir($dir){
-  $dirs:(
-    top: bottom,
-    right: left,
-    bottom: top,
-    left: right
-  );
-  @if length($dir) == 1{
-    $dir: map-get($dirs,$dir);
-  }
-  @else{
-    $dir: $dir;
-  }
-  @return $dir;
+@function triangle-getdir($dir) {
+    $dirs: ( top: bottom, right: left, bottom: top, left: right);
+    @if length($dir) == 1 {
+        $dir: map-get($dirs, $dir);
+    }@else {
+        $dir: $dir;
+    }
+    @return $dir;
 }
 
 /// Convert image ratio to a percentage
 /// @author Jack Armley
 /// @link http://www.goldenapplewebdesign.com/responsive-aspect-ratios-with-pure-css/
 /// @param {List} $ratio - width and height
-@function ratiotopercent($ratio){
+@function ratiotopercent($ratio) {
     $ratio-converted: '';
     // Get width and height
-    $ratio-w: nth($ratio,1);
-    $ratio-h: nth($ratio,2);
+    $ratio-w: nth($ratio, 1);
+    $ratio-h: nth($ratio, 2);
     // Convert ratio to a percentage
     $ratio-converted: ($ratio-h / $ratio-w) * 100 + '%';
     @return unquote($ratio-converted);
@@ -425,30 +390,29 @@
 ///   margin: rem(10);
 ///   /* Multiple values, passed as a list */
 ///   padding: rem(10 20);
-@function rem($target,$supported:$remsupport,$base:$remsize-base){
-  $remstring:'';
-  $i: 0;
-  $l: length($target);
-  $unit: 'rem';
-  @if $remsupport != true{
-    $unit: 'px';
-  }
-  @each $value in $target{
-    $i: $i + 1;
-    // Convert to rems
-    @if $remsupport != true{
-      $remstring: $remstring + $value;
-    }@else{
-      $remstring: $remstring + ($value/$base);
+@function rem($target, $supported: $remsupport, $base: $remsize-base) {
+    $remstring: '';
+    $i: 0;
+    $l: length($target);
+    $unit: 'rem';
+    @if $remsupport != true {
+        $unit: 'px';
+    } @each $value in $target {
+        $i: $i + 1;
+        // Convert to rems
+        @if $remsupport != true {
+            $remstring: $remstring + $value;
+        } @else {
+            $remstring: $remstring + ($value / $base);
+        }
+        // Include unit
+        @if $value != 0 {
+            $remstring: $remstring + $unit;
+        }
+        // Include spaces
+        @if ($i < $l) {
+            $remstring: $remstring + ' ';
+        }
     }
-    // Include unit
-    @if $value != 0{
-      $remstring: $remstring + $unit;
-    }
-    // Include spaces
-    @if ($i < $l){
-      $remstring: $remstring + ' ';
-    }
-  }
-  @return unquote($remstring);
+    @return unquote($remstring);
 }

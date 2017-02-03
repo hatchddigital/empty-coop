@@ -14,7 +14,7 @@ $black: #000;
 
 /// Yellow
 /// @type Variable
-$yellow: #FFFB88;
+$yellow: #fffb88;
 
 /// Red
 /// @type Variable
@@ -24,7 +24,7 @@ $red: #aa3025;
 // explicitly for the ie8
 // support message
 // @type Color
-$supportmessage: #FFE04E;
+$supportmessage: #ffe04e;
 
 /// Colors map tying usage to variable names
 /// @type Map
@@ -32,9 +32,9 @@ $colors: (
     default: $black,
     black: $black,
     white: $white,
-    muted: lighten($black,50%),
+    muted: lighten($black, 50%),
     highlight: $yellow,
     link: $red,
-    linkactive:lighten($red,10%),
+    linkactive: lighten($red, 10%),
     supportmessage: $supportmessage
 );

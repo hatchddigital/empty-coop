@@ -26,7 +26,7 @@ export default class MediaQuery {
         // add the parser to the page
         this.parser = $('#mq-parser');
         if (!this.parser.length) {
-            this.parser = $("<div id='mq-parser' style='display:none;'></div>");
+            this.parser = $("<div class='mq-parser'></div>");
             $('body').append(this.parser);
         }
         if (debug) {

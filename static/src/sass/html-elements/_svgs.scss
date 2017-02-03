@@ -2,29 +2,33 @@
  * svg styles
  */
 
-#svg-spritesheet {
-    width:0px;
-    height:0px;
-    overflow:hidden;
-    position:absolute;
-    left:-9999px;
+.svg-spritesheet {
+    position: absolute;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 //test color svg coloring
-[data-svg="facebook"] * {
-    fill:red;
-    stroke:red;
+[data-svg='facebook'] {
+    * {
+        fill: red;
+        stroke: red;
+    }
 }
-[data-svg="facebook-fill"] * {
-    fill:blue;
-    stroke:blue;
+
+[data-svg='facebook-fill'] {
+    * {
+        fill: blue;
+        stroke: blue;
+    }
 }
 
 //test svg bg
 .svg-background {
-    width:200px;
-    height:200px;
-    border:1px solid red;
-    background:no-repeat center;
-    background:url(../svgs/spritesheet.svg#arrow-full-up);
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+    background: url('../svgs/spritesheet.svg#arrow-full-up') no-repeat center;
 }

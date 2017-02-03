@@ -2,31 +2,34 @@
  * Base table styles
  */
 
-table{
-	width: 100%;
-	margin: 0 0 1em 0;
-	border: 1px solid color(default);
-    @at-root{
-    	table,
-    	th,
-    	td{
-    		border-collapse: collapse;
-    	}
-    	th,
-    	td{
-    		padding: .5em;
-    		border: 1px dotted color(default);
-    		border-top: none;
-    		border-right: none;
-    		text-align: left;
-    	}
-    	thead th{
-    		border-bottom: 2px solid color(default);
-    	}
-    	tfoot td{
-    		border-bottom: none;
-    		font-size: .85em;
-    		font-style: italic;
-    	}
+table {
+    width: 100%;
+    margin: 0 0 1em;
+    border: 1px solid color(default);
+    @at-root {
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: .5em;
+            border: 1px dotted color(default);
+            border-top: 0;
+            border-right: 0;
+            text-align: left;
+
+            thead & {
+                border-bottom: 2px solid color(default);
+            }
+
+            tfoot & {
+                border-bottom: 0;
+                font-size: .85em;
+                font-style: italic;
+            }
+        }
     }
 }

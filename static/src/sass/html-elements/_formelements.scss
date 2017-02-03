@@ -2,75 +2,83 @@
  * Form elements
  */
 
-form{
-	position: relative;
-	margin: 0 0 1em 0;
-    @at-root{
-    	fieldset{
-    		margin: 0;
-    		padding: 0;
-    		border: none;
-    	}
-    	legend{
-    		margin: 0 0 .5em 0;
-    		padding: 0;
-    		font-size: 1;
-    	}
-    	label{
-    		display: inline-block;
-    		margin: 0 0 .25em 0;
-    	}
-    	input,
-    	textarea,
-    	select{
-    		display: block;
-    		box-sizing: border-box;
-    		width: 100%;
-    		margin: 0;
-    		color: color(default);
-    	}
+form {
+    position: relative;
+    margin: 0 0 1em;
+    @at-root {
+        fieldset {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        legend {
+            margin: 0 0 .5em;
+            padding: 0;
+            font-size: 1;
+        }
+
+        label {
+            display: inline-block;
+            margin: 0 0 .25em;
+        }
+
         input,
-        textarea{
+        textarea,
+        select {
+            display: block;
+            width: 100%;
+            margin: 0;
+            color: color(default);
+            box-sizing: border-box;
+        }
+
+        input,
+        textarea {
             padding: 10px 15px;
             border: 1px solid color(muted);
             border-radius: 0;
         }
-        input:not([type="radio"]):not([type="checkbox"]),
-        textarea{
-            -webkit-appearance: none;
+
+        input,
+        textarea {
+            &:not([type='radio']) {
+                &:not([type='checkbox']) {
+                    -webkit-appearance: none;
+                }
+            }
         }
-    	input[type="checkbox"],
-    	input[type="radio"]{
-    		display: inline-block;
-    		width: auto;
-    		float: left;
-    		border: none;
-    		margin: .25em .5em 0 0;
-    	}
-        input[type="file"]{
+
+        input[type='checkbox'],
+        input[type='radio'] {
+            display: inline-block;
+            width: auto;
+            margin: .25em .5em 0 0;
+            border: 0;
+        }
+
+        input[type='file'] {
             padding: 0;
-            border: none;
+            border: 0;
         }
-        input[type="date"]{
+
+        input[type='date'] {
             padding-right: 0;
         }
-    	button,
-        input[type="submit"]{
-    		padding: .5em;
-    		cursor: pointer;
-    	}
-        @each $prefix in (
-          '::-webkit-input-',
-          ':-moz-',
-          '::-moz-',
-          ':-ms-input-')
-        {
-            #{$prefix}placeholder{
+
+        button,
+        input[type='submit'] {
+            padding: .5em;
+            cursor: pointer;
+        }
+
+        @each $prefix in ( '::-webkit-input-', ':-moz-', '::-moz-', ':-ms-input-') {
+            #{$prefix}placeholder {
                 color: color(link);
                 // Ensure color is consistent on Firefox,
                 // as placeholder is given an opacity value of
                 // .54 on Firefox by default
-                @if $prefix == '::-moz-' or $prefix == ':-moz-'{
+                @if $prefix == '::-moz-' or $prefix == ':-moz-' {
                     opacity: 1;
                 }
             }
