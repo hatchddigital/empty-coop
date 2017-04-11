@@ -15,7 +15,6 @@ import $ from 'jquery';
 import Slick from 'slick-carousel-browserify';
 import Lightbox from 'lightbox2';
 import MediaQuery from './mediaquery';
-import breakpointguide from './breakpointguide';
 import HighContrast from './highcontrastmode';
 import TestClass from './es6.class';
 import aFunction from './es6.function';
@@ -93,12 +92,6 @@ $(window).on('resize', () => {
 console.log('-------------------------------------------------------------------');
 console.log('END TESTING MEDIAQUERY.JS');
 console.log('-------------------------------------------------------------------');
-
-//
-// ─── ENABLE BREAKPOINT GUIDE ────────────────────────────────────────────────────
-//
-
-breakpointguide();
 
 //
 // ─── ENABLE HIGH CONTRAST CSS ───────────────────────────────────────────────────
