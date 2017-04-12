@@ -21,3 +21,12 @@ $font-size-medium: 1.777rem;
 $font-size-emphasized: 1.333rem;
 $font-size-default: 1rem;
 $font-size-small: .75rem;
+
+// Breakpoints
+// ==========================================================================
+$breakpoints: (
+    small: 300px,
+    medium: 600px,
+    large: 1000px,
+    x-large: 1200px
+);
