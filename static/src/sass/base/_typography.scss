@@ -8,33 +8,44 @@
 // Global
 // ==========================================================================
 html {
-    color: color(default);
-    font-family: fontfamily(default);
-    font-size: 1em;
-    line-height: 1.4;
+    color: $color-default;
+    font-family: $font-family-sans;
+    font-size: $font-size-default;
+    line-height: 1.6;
 }
 
 // Headings
 // ==========================================================================
+h1 {
+    font-size: $font-size-x-large;
+}
 
-// Paragraphs, lists etc
-// ==========================================================================
+h2 {
+    font-size: $font-size-large;
+}
 
-// Quotes
-// ==========================================================================
+h3 {
+    font-size: $font-size-medium;
+}
+
+h4 {
+    font-size: $font-size-emphasized;
+}
+
+h5 {
+    font-size: $font-size-emphasized;
+}
+
+h6 {
+    font-size: $font-size-emphasized;
+}
 
 // Links
 // ==========================================================================
+a {
+    color: $color-link;
 
-// Selection styles
-// ==========================================================================
-@each $prefix in (
-'::',
-'::-webkit-',
-'::-moz-',
-'::-ms-') {
-    #{$prefix}selection {
-        background: color(link);
-        color: color(white);
+    &:hover {
+        color: $color-link-hover;
     }
 }

@@ -2,36 +2,22 @@
 // Variables
 // ==========================================================================
 
-// Base color variables
+// Colors
 // ==========================================================================
-$white: #fff;
-$black: #000;
+$color-default: #272727;
+$color-light: #fff;
+$color-link: #ef4236;
+$color-link-hover: lighten($color-link, 10%);
 
-// Colors map tying usage to variable names
+// Font Families
 // ==========================================================================
-$colors: (
-    default: $black,
-    black: $black,
-    white: $white,
-);
+$font-family-sans: sans-serif;
 
-// Base font family variables
+// Font Sizes
 // ==========================================================================
-$sans: sans-serif;
-
-// Font families map tying usage to variable names
-// ==========================================================================
-$font-families: (
-    default: $sans,
-);
-
-// Font sizes map
-// ==========================================================================
-$font-sizes: (
-    x-large: 3.157rem,
-    large: 2.369rem,
-    medium: 1.777rem,
-    emphasized: 1.333rem,
-    default: 1rem,
-    small: .75rem
-);
+$font-size-x-large: 3.157rem;
+$font-size-large: 2.369rem;
+$font-size-medium: 1.777rem;
+$font-size-emphasized: 1.333rem;
+$font-size-default: 1rem;
+$font-size-small: .75rem;

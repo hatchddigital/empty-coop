@@ -46,3 +46,16 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+// Selection styles
+// ==========================================================================
+@each $prefix in (
+'::',
+'::-webkit-',
+'::-moz-',
+'::-ms-') {
+    #{$prefix}selection {
+        background: $color-link;
+        color: $color-light;
+    }
+}
