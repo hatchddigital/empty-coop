@@ -10,7 +10,7 @@
 html {
     color: $color-default;
     font-family: $font-family-sans;
-    font-size: $font-size-default;
+    font-size: $font-size-base; // Base font size must be $font-size-base and be in px for fluidfont mixin to work
     line-height: 1.6;
 }
 
@@ -18,6 +18,7 @@ html {
 // ==========================================================================
 h1 {
     font-size: $font-size-x-large;
+    @include fluidfont(2rem, 4rem);
 }
 
 h2 {

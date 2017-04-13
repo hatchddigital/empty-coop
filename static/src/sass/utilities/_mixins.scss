@@ -12,3 +12,27 @@
         @content;
     }
 }
+
+// Fluid fonts sizes
+// ==========================================================================
+@mixin fluidfont($font-min: 13px, $font-max: 18px, $screen-min: 400px, $screen-max: 1000px) {
+    font-size: $font-min;
+    $fontunit: unit($font-min);
+    $screenunit: unit($screen-min);
+    @if($screenunit != 'px') {
+        @warn('fluidfont: $screen-min and $screen-max must be in px');
+    }
+    @if($fontunit != 'px' or $fontunit == 'rem' ) {
+        @warn('fluidfont: $font-min and $font-max must be in px, or rem');
+    }
+    @if($fontunit != 'px') {
+        $screen-max: strip-unit($screen-max) / strip-unit($font-size-base) * (1 + $fontunit);
+        $screen-min: strip-unit($screen-min) / strip-unit($font-size-base) * (1 + $fontunit);
+    }
+    @media (min-width: $screen-min) {
+        font-size: calc(#{$font-min} + (#{strip-unit($font-max)} - #{strip-unit($font-min)}) * (100vw - #{$screen-min}) / (#{strip-unit($screen-max)} - #{strip-unit($screen-min)}));
+    }
+    @media (min-width: $screen-max) {
+        font-size: $font-max;
+    }
+}

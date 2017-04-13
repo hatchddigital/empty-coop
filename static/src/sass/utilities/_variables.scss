@@ -15,6 +15,7 @@ $font-family-sans: sans-serif;
 
 // Font Sizes
 // ==========================================================================
+$font-size-base: 16px; // Base font size must be in px for fluidfont mixin to work
 $font-size-x-large: 3.157rem;
 $font-size-large: 2.369rem;
 $font-size-medium: 1.777rem;
