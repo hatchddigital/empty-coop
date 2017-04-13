@@ -4,6 +4,9 @@ block variables
     -var title = "Home";
 
 block pagecontent
+    //- Headings
+    for heading in ['h1','h2','h3','h4','h5','h6']
+        #{heading} A level #{heading} heading
     h3 Example fields
     select
         option Option 1
