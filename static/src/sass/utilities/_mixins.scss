@@ -55,3 +55,28 @@
         }
     }
 }
+
+// Grid layout with optional column/row spacing
+// ==========================================================================
+@mixin grid($grid-item, $columns, $col-gap: 0, $row-gap: $col-gap) {
+    // Grid layout for supported browsers
+    @supports(display: grid) {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-column-gap: $col-gap;
+        grid-row-gap: $row-gap;
+    }
+    // Fallback for browsers that don't support grid
+    @supports not(display: grid) {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -$row-gap;
+        margin-left: -$col-gap;
+
+        #{$grid-item} {
+            width: calc((100% - #{$col-gap} * #{$columns}) / #{$columns});
+            margin-top: $row-gap;
+            margin-left: $col-gap;
+        }
+    }
+}
