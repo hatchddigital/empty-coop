@@ -47,17 +47,12 @@
 
 // Fluid heading sizes with eye pleasing ratios
 // ==========================================================================
-@mixin fluidheadings($font-min: 1rem, $font-max: .5rem, $multiplier-min: 1.067rem, $multiplier-max: 1.333rem, $screen-min: 400px, $screen-max: 1000px) {
+@mixin fluidheadings($font-min: 1rem, $font-max: .5rem, $multiplier-min: 1.067, $multiplier-max: 1.333, $screen-min: 400px, $screen-max: 1000px) {
     $font-min-unit: unit($font-min);
     $font-max-unit: unit($font-max);
-    $multiplier-max-unit: unit($multiplier-max);
-    $multiplier-min-unit: unit($multiplier-min);
-    @if($font-min-unit != $multiplier-min-unit or $font-max-unit != $multiplier-max-unit) {
-        @warn('heading-sizes: font units and multiplier units must be the same');
-    }
     @for $i from 1 through 6 {
-        $font-max: strip-unit($font-max) * strip-unit($multiplier-max);
-        $font-min: strip-unit($font-min) * strip-unit($multiplier-min);
+        $font-max: strip-unit($font-max) * $multiplier-max;
+        $font-min: strip-unit($font-min) * $multiplier-min;
         h#{7 - $i} {
             @include fluidfont($font-min * (1 + $font-min-unit), $font-max * (1 + $font-max-unit), $screen-min, $screen-max);
         }
