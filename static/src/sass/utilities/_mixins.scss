@@ -3,6 +3,10 @@
 // ==========================================================================
 
 // Breakpoint
+// A simple mixin for generating @media queries
+// $point - The map key from the $breakpoints map that references
+// a certain width/height value
+// $type - Defaults to min-width, can be set to any desired type
 // ==========================================================================
 @mixin breakpoint($point, $type: min-width) {
     // The breakpoint value
@@ -14,6 +18,10 @@
 }
 
 // Fluid fonts sizes
+// $font-min - The minimum font size shown
+// $font-max - The maximum font size shown
+// $screen-min - The breakpoint where fluid fonts start scaling
+// $screen-max - The breakpoint where fluid fonts stop scaling
 // ==========================================================================
 @mixin fluidfont($font-min: 13px, $font-max: 18px, $screen-min: 400px, $screen-max: 1000px) {
     font-size: $font-min;
@@ -57,8 +65,10 @@
 }
 
 // Grid layout with optional column/row spacing
-// ==========================================================================
-// Grid layout with optional column/row spacing
+// $grid-item - The selector for the items inside the parent grid container
+// $columns - How many columns the grid consists of
+// $col-gap - The spacing between each grid column
+// $row-gap - The spacing between each grid row
 // ==========================================================================
 @mixin grid($grid-item, $columns, $col-gap: 0, $row-gap: $col-gap) {
     // Fallback for browsers that don't support grid
