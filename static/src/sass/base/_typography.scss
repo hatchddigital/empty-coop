@@ -22,9 +22,8 @@ h3,
 h4,
 h5,
 h6 {
-    @include modtype(1.333, $font-size-small);
-    margin: 1rem 0;
-    line-height: 1.2;
+    // Fluid Modular Type Scale
+    @include modtype-fluid($font-size-default, $font-size-small, '1.067', '1.333', map-get($breakpoints, small), map-get($breakpoints, large));
 }
 
 // Links
