@@ -17,16 +17,17 @@
     }
 }
 
-// Fluid fonts sizes
+// Fluid typography
+// Scales font size based on viewport width up/down to fixed min and max sizes
 // $font-min - The minimum font size shown
 // $font-max - The maximum font size shown
 // $screen-min - The breakpoint where fluid fonts start scaling
 // $screen-max - The breakpoint where fluid fonts stop scaling
 // ==========================================================================
-@mixin fluidfont($font-min: 13px, $font-max: 18px, $screen-min: 400px, $screen-max: 1000px) {
+@mixin fluidtype($font-min: 13px, $font-max: 18px, $screen-min: 400px, $screen-max: 1000px) {
     font-size: $font-min;
-    $fontunit: unit($font-min);
-    $screenunit: unit($screen-min);
+    $fontunit: unquote(unit($font-min));
+    $screenunit: unquote(unit($screen-min));
     @if($screenunit != 'px') {
         @warn('fluidfont: $screen-min and $screen-max must be in px');
     }
@@ -45,21 +46,21 @@
     }
 }
 
-// Modular Type Scale
-// Loops through $els and sets the font size of each using the scale provided
+// Modular Type Scale with eye pleasing ratios
+// Loops through parent selectors and sets the font size of each using the scale provided
 // $scale - The scale / muliplier to use
-// $els - A list of the elements in the scale i.e. h1, h2, h3...
 // $start-size - The base font size / size of the smallest element
 // ==========================================================================
-@mixin typescale($scale, $els, $start-size: 1rem) {
+@mixin modtype($scale: 1.333, $start-size: 1rem) {
     // Initial scale value
     $scale-val: strip-unit($start-size);
     $unit: unquote(unit($start-size));
-    @for $i from length($els) through 1 {
-        $el: nth($els, $i);
+
+    @for $i from length(&) through 1 {
+        $el: nth(&, $i);
         $size: $scale-val;
 
-        #{$el} {
+        @at-root #{$el} {
             font-size: $size + $unit;
         }
 
@@ -69,7 +70,8 @@
     }
 }
 
-// Fluid heading sizes with eye pleasing ratios
+// Modular Type Scale with eye pleasing ratios and fluidity!
+// Loops through parent selectors and sets the font size of each using the scale provided
 // $font-min - The size of the smallest element @ the $screen-min breakpoint
 // $font-max - The size of the smallest element @ the $screen-max breakpoint
 // $scale-min - The scale / multiplier @ the $screen-min breakpoint
@@ -77,14 +79,15 @@
 // $screen-min - The breakpoint where fluid fonts start scaling
 // $screen-max - The breakpoint where fluid fonts stop scaling
 // ==========================================================================
-@mixin fluidheadings($font-min: 1rem, $font-max: .5rem, $scale-min: 1.067, $scale-max: 1.333, $screen-min: 400px, $screen-max: 1000px) {
-    $font-min-unit: unit($font-min);
-    $font-max-unit: unit($font-max);
+@mixin modtype-fluid($font-min: 1rem, $font-max: .5rem, $scale-min: 1.067, $scale-max: 1.333, $screen-min: 400px, $screen-max: 1000px) {
+    $font-min-unit: unquote(unit($font-min));
+    $font-max-unit: unquote(unit($font-max));
     $font-max: strip-unit($font-max);
     $font-min: strip-unit($font-min);
-    @for $i from 1 through 6 {
-        h#{7 - $i} {
-            @include fluidfont($font-min * (1 + $font-min-unit), $font-max * (1 + $font-max-unit), $screen-min, $screen-max);
+    @for $i from length(&) through 1 {
+        $el: nth(&, $i);
+        @at-root #{$el} {
+            @include fluidtype($font-min * (1 + $font-min-unit), $font-max * (1 + $font-max-unit), $screen-min, $screen-max);
         }
         $font-max: $font-max * $scale-max;
         $font-min: $font-min * $scale-min;
