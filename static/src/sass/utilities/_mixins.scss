@@ -1,0 +1,133 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// Breakpoint
+// A simple mixin for generating @media queries
+// $point - The map key from the $breakpoints map that references
+// a certain width/height value
+// $type - Defaults to min-width, can be set to any desired type
+// ==========================================================================
+@mixin breakpoint($point, $type: min-width) {
+    // The breakpoint value
+    $value: map-get($breakpoints , $point);
+
+    @media ($type: $value) {
+        @content;
+    }
+}
+
+// Fluid typography
+// Scales font size based on viewport width up/down to fixed min and max sizes
+// $font-min - The minimum font size shown
+// $font-max - The maximum font size shown
+// $screen-min - The breakpoint where fluid fonts start scaling
+// $screen-max - The breakpoint where fluid fonts stop scaling
+// ==========================================================================
+@mixin fluidtype($font-min: 13px, $font-max: 18px, $screen-min: 400px, $screen-max: 1000px) {
+    font-size: $font-min;
+    $fontunit: unquote(unit($font-min));
+    $screenunit: unquote(unit($screen-min));
+    @if($screenunit != 'px') {
+        @warn('fluidfont: $screen-min and $screen-max must be in px');
+    }
+    @if($fontunit != 'px' and $fontunit != 'rem' ) {
+        @warn('fluidfont: $font-min and $font-max must be in px, or rem');
+    }
+    @if($fontunit != 'px') {
+        $screen-max: strip-unit($screen-max) / strip-unit($font-size-base) * (1 + $fontunit);
+        $screen-min: strip-unit($screen-min) / strip-unit($font-size-base) * (1 + $fontunit);
+    }
+    @media (min-width: $screen-min) {
+        font-size: calc(#{$font-min} + (#{strip-unit($font-max)} - #{strip-unit($font-min)}) * (100vw - #{$screen-min}) / (#{strip-unit($screen-max)} - #{strip-unit($screen-min)}));
+    }
+    @media (min-width: $screen-max) {
+        font-size: $font-max;
+    }
+}
+
+// Modular Type Scale with eye pleasing ratios
+// Loops through parent selectors and sets the font size of each using the scale provided
+// $scale - The scale / muliplier to use
+// $start-size - The base font size / size of the smallest element
+// ==========================================================================
+@mixin modtype($scale: 1.333, $start-size: 1rem) {
+    // Initial scale value
+    $scale-val: strip-unit($start-size);
+    $unit: unquote(unit($start-size));
+
+    @for $i from length(&) through 1 {
+        $el: nth(&, $i);
+        $size: $scale-val;
+
+        @at-root #{$el} {
+            font-size: $size + $unit;
+        }
+
+        // Calculate new scale value by multiplying
+        // the previous value by the scale factor
+        $scale-val: $scale-val * $scale;
+    }
+}
+
+// Modular Type Scale with eye pleasing ratios and fluidity!
+// Loops through parent selectors and sets the font size of each using the scale provided
+// $font-min - The size of the smallest element @ the $screen-min breakpoint
+// $font-max - The size of the smallest element @ the $screen-max breakpoint
+// $scale-min - The scale / multiplier @ the $screen-min breakpoint
+// $scale-max - The scale / multiplier @ the $screen-max breakpoint
+// $screen-min - The breakpoint where fluid fonts start scaling
+// $screen-max - The breakpoint where fluid fonts stop scaling
+// ==========================================================================
+@mixin modtype-fluid($font-min: 1rem, $font-max: .5rem, $scale-min: 1.067, $scale-max: 1.333, $screen-min: 400px, $screen-max: 1000px) {
+    $font-min-unit: unquote(unit($font-min));
+    $font-max-unit: unquote(unit($font-max));
+    $font-max: strip-unit($font-max);
+    $font-min: strip-unit($font-min);
+    @for $i from length(&) through 1 {
+        $el: nth(&, $i);
+        @at-root #{$el} {
+            @include fluidtype($font-min * (1 + $font-min-unit), $font-max * (1 + $font-max-unit), $screen-min, $screen-max);
+        }
+        $font-max: $font-max * $scale-max;
+        $font-min: $font-min * $scale-min;
+    }
+}
+
+// Grid layout with optional column/row spacing
+// $columns - How many columns the grid consists of
+// $col-gap - The spacing between each grid column
+// $row-gap - The spacing between each grid row
+// ==========================================================================
+@mixin grid($columns, $col-gap: 0, $row-gap: $col-gap) {
+    // Fallback for browsers that don't support grid
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -$row-gap;
+    margin-left: -$col-gap;
+
+    > * {
+        width: (100% / #{$columns});
+        @if ($col-gap > 0) {
+            width: calc((100% - #{$col-gap} * #{$columns}) / #{$columns});
+        }
+        margin-top: $row-gap;
+        margin-left: $col-gap;
+    }
+
+    // Grid layout for supported browsers
+    @supports(display: grid) {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-column-gap: $col-gap;
+        grid-row-gap: $row-gap;
+        margin-top: initial;
+        margin-left: initial;
+
+        > * {
+            width: auto;
+            margin-top: initial;
+            margin-left: initial;
+        }
+    }
+}

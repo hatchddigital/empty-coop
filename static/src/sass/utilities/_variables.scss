@@ -1,0 +1,33 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+
+// Colors
+// ==========================================================================
+$color-default: #272727;
+$color-light: #fff;
+$color-link: #ef4236;
+$color-link-hover: lighten($color-link, 10%);
+
+// Font Families
+// ==========================================================================
+$font-family-sans: sans-serif;
+
+// Font Sizes
+// ==========================================================================
+$font-size-base: 16px; // Base font size must be in px for fluidfont mixin to work
+$font-size-x-large: 3.157rem;
+$font-size-large: 2.369rem;
+$font-size-medium: 1.777rem;
+$font-size-emphasized: 1.333rem;
+$font-size-default: 1rem;
+$font-size-small: .75rem;
+
+// Breakpoints
+// ==========================================================================
+$breakpoints: (
+    small: 300px,
+    medium: 600px,
+    large: 1000px,
+    x-large: 1200px
+);

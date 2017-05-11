@@ -1,0 +1,37 @@
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+// @font-face rules
+// ==========================================================================
+
+// Global
+// ==========================================================================
+html {
+    color: $color-default;
+    font-family: $font-family-sans;
+    font-size: $font-size-base; // Base font size must be $font-size-base and be in px for fluidfont mixin to work
+    line-height: 1.6;
+}
+
+// Headings
+// ==========================================================================
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    // Fluid Modular Type Scale
+    @include modtype-fluid($font-size-default, $font-size-small, '1.067', '1.333', map-get($breakpoints, small), map-get($breakpoints, large));
+}
+
+// Links
+// ==========================================================================
+a {
+    color: $color-link;
+
+    &:hover {
+        color: $color-link-hover;
+    }
+}
