@@ -1,20 +1,20 @@
 .mq-parser {
-    width:0;
-    height:0;
-    overflow:hidden;
     position: fixed;
     bottom: 0;
     left: 0;
+    width: 0;
+    height: 0;
     background: #000;
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 80%;
     font-weight: bold;
+    overflow: hidden;
     z-index: 999;
 
     &.mq-parser--debug {
-        width:auto;
-        height:auto;
+        width: auto;
+        height: auto;
     }
 
     * {
@@ -26,7 +26,7 @@
 
     $pointstring: '';
     @each $bp, $break in $breakpoints {
-        //@debug $bp;
+        // @debug $bp;
         .#{$bp} {
             @include breakpoint($bp) {
                 display: block;
