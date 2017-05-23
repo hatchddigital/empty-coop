@@ -40,7 +40,7 @@ We use gulp to manage our static builds. To start pull the repo then:
 
 ```sh
 cd /path/to/empty-coop
-npm run setup
+npm install
 ```
 
 This will allow you to run builds which will build all static requirements.
