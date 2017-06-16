@@ -138,7 +138,7 @@ let gulp = require('gulp'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
+    cleancss = require('gulp-clean-css'),
     postcss = require('gulp-postcss'),
     contrast = require('postcss-high-contrast'),
     sasslint = require('gulp-sass-lint'),
@@ -246,7 +246,7 @@ gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`
     })]))
     .pipe(addsrc(`${config.paths.css}/highcontrast-custom.css`))
     .pipe(concat('styles-highcontrast.css'))
-    .pipe(minifycss())
+    .pipe(cleancss())
     .pipe(gulp.dest(config.paths.css))
     .pipe(reload({ stream: true }))
     .pipe(notify({ message: 'Styles high contrast task complete' })));
@@ -264,10 +264,10 @@ gulp.task('styles-dev', ['styles-lint'], () => gulp.src(`${config.paths.scss}/**
 gulp.task('styles-build', () => gulp.src(`${config.paths.scss}/**/*.scss`)
     .pipe(plumber(plumberErrorHandler))
     .pipe(sass({ errLogToConsole: true }))
-    .pipe(autoprefixer({ browsers: ['last 3 versions', '> 1%', 'ie 8'] }))
+    .pipe(autoprefixer({ browsers: ['last 3 versions', '> 1%'], grid: true }))
     .pipe(concat('styles.css'))
     .pipe(gulp.dest(config.paths.css))
-    .pipe(minifycss())
+    .pipe(cleancss())
     .pipe(gulp.dest(config.paths.css))
     .pipe(reload({ stream: true }))
     .pipe(notify({ message: 'Styles build task complete' })));
@@ -474,6 +474,23 @@ gulp.task('modernizr', () => gulp.src([`${config.paths.js_prod}/app.js`, `${conf
     .pipe(uglify())
     .pipe(gulp.dest(config.paths.js_prod)));
 
+gulp.task('modernizr-build', ['styles-build', 'scripts-build'], () => gulp.src([`${config.paths.js_prod}/app.js`, `${config.paths.css}/styles.css`])
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(modernizr('modernizr.min.js', {
+        options: [
+            'setClasses',
+            'addTest',
+            'html5printshiv',
+            'testProp',
+            'fnBind',
+        ],
+        useBuffers: true,
+        parseFiles: true,
+        uglify: true,
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.paths.js_prod)));
+
 // ----------------------------------------------------------------------------
 // THE CLEAN UP TASK
 // ----------------------------------------------------------------------------
@@ -493,7 +510,7 @@ gulp.task('default', ['styles-dev', 'styles-highcontrast', 'scripts-dev', 'libs-
 // ----------------------------------------------------------------------------
 
 gulp.task('build', ['clean'], () => {
-    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr', 'fonts', 'svgs');
+    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr-build', 'fonts', 'svgs');
 });
 
 // ----------------------------------------------------------------------------
