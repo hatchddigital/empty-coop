@@ -23,7 +23,7 @@ h4,
 h5,
 h6 {
     // Fluid Modular Type Scale
-    @include modtype-fluid($font-size-default, $font-size-small, '1.067', '1.333', map-get($breakpoints, small), map-get($breakpoints, large));
+    // @include modtype-fluid($font-size-default, $font-size-small, '1.067', '1.333', map-get($breakpoints, small), map-get($breakpoints, large));
 }
 
 // Links

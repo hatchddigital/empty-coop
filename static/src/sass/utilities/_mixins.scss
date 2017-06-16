@@ -29,10 +29,10 @@
     $fontunit: unquote(unit($font-min));
     $screenunit: unquote(unit($screen-min));
     @if($screenunit != 'px') {
-        @warn('fluidfont: $screen-min and $screen-max must be in px');
+        @error('fluidfont: $screen-min and $screen-max must be in px');
     }
     @if($fontunit != 'px' and $fontunit != 'rem' ) {
-        @warn('fluidfont: $font-min and $font-max must be in px, or rem');
+        @error('fluidfont: $font-min and $font-max must be in px, or rem');
     }
     @if($fontunit != 'px') {
         $screen-max: strip-unit($screen-max) / strip-unit($font-size-base) * (1 + $fontunit);
@@ -118,11 +118,11 @@
     // Grid layout for supported browsers
     @supports(display: grid) {
         display: grid;
+        margin-top: initial;
+        margin-left: initial;
         grid-template-columns: repeat($columns, 1fr);
         grid-column-gap: $col-gap;
         grid-row-gap: $row-gap;
-        margin-top: initial;
-        margin-left: initial;
 
         > * {
             width: auto;
