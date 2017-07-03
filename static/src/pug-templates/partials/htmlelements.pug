@@ -3,8 +3,8 @@
 //-
 
 //- Text samples
-- var lipsum = 'Lorem ipsum Proident est Excepteur deserunt fugiat Excepteur est non aliquip. Lorem ipsum Ullamco anim minim in ex fugiat Duis velit'
-- var list = ['beans','eggs','potatoes','omlettes']
+- var lipsum = "Lorem ipsum Proident est Excepteur deserunt fugiat Excepteur est non aliquip. Lorem ipsum Ullamco anim minim in ex fugiat Duis velit"
+- var list = ["beans", "eggs", "potatoes", "omlettes"]
 
 //- Mixin for setting a section
 mixin elementcat(title)
@@ -22,20 +22,20 @@ mixin formgroup(label)
 //- Markup
 //-
 
-+elementcat('SVG Icons')
++elementcat("SVG Icons")
     span(data-svg="facebook")
     span(data-svg="facebook-fill")
 
 //- Headings
-+elementcat('Headings')
-    for heading in ['h2','h3','h4','h5','h6']
++elementcat("Headings")
+    for heading in ["h2", "h3", "h4", "h5", "h6"]
         #{heading} A level #{heading} heading
 
-+elementcat('Paragraphs and links')
++elementcat("Paragraphs and links")
     p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
     p Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu. <a href="http://www.google.com">An external link</a> sit tempor <a href="http://jack.local:3000/html">An internal link.</a> <a href="http://192.168.15.117">Another internal link</a> Lorem ipsum Ut esse cillum sed quis occaecat sunt dolor Ut in pariatur sit.
 
-+elementcat('Lists')
++elementcat("Lists")
     h3 Definition list
     dl
         for items in list
@@ -50,7 +50,7 @@ mixin formgroup(label)
         for items in list
             li= items
 
-+elementcat('Images')
++elementcat("Images")
     p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud
     img.set-center(src="http://www.abc.net.au/catalyst/stories/img/CheatingChickens_large.jpg")
     p Ut esse adipisicing Duis sit tempor incididunt mollit sed. Lorem ipsum Ut esse cillum sed quis occaecat sunt dolor Ut in pariatur sit.
@@ -65,7 +65,7 @@ mixin formgroup(label)
     p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
     p Lorem ipsum Qui sunt dolor labore veniam cillum cillum. Lorem ipsum Duis irure veniam dolore dolor dolor nostrud ex ut in reprehenderit cillum ad. Lorem ipsum Anim dolor magna non eiusmod laborum eu eiusmod pariatur pariatur et incididunt. Lorem ipsum Culpa do consectetur aute do nisi aliquip. Lorem ipsum Dolore et velit dolore ut minim mollit consectetur do magna. Lorem ipsum Sed minim id deserunt ut sunt eu.
 
-+elementcat('Quotes')
++elementcat("Quotes")
     h3 A short quote
     blockquote
         p Shoving feathers up your butt does not make you a chicken?
