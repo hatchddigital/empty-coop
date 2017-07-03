@@ -141,7 +141,7 @@ let gulp = require('gulp'),
     cleancss = require('gulp-clean-css'),
     postcss = require('gulp-postcss'),
     contrast = require('postcss-high-contrast'),
-    sasslint = require('gulp-sass-lint'),
+    stylelint = require('gulp-stylelint'),
     // images
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
@@ -209,9 +209,11 @@ gulp.task('browser-sync', () => {
 // config for linter can be found in the .sass-lint.yml file
 gulp.task('styles-lint', () => gulp.src(`${config.paths.scss}/**/*.scss`)
     .pipe(plumber(plumberErrorHandler))
-    .pipe(sasslint())
-    .pipe(sasslint.format())
-    .pipe(sasslint.failOnError()));
+    .pipe(stylelint({
+        reporters: [
+            { formatter: 'string', console: true },
+        ],
+    })));
 
 gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`)
     .pipe(plumber(plumberErrorHandler))

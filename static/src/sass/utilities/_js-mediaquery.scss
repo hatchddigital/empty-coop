@@ -30,7 +30,7 @@
         .#{$bp} {
             @include breakpoint($bp) {
                 display: block;
-                @if($pointstring == '') {
+                @if ($pointstring == '') {
                     $pointstring: $bp;
                 } @else {
                     $pointstring: $pointstring + ',' + $bp;

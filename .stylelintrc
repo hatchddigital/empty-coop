@@ -1,0 +1,65 @@
+{
+    # "extends": "stylelint-config-standard",
+    "extends": "stylelint-config-property-sort-order-smacss",
+	"plugins": [
+		"stylelint-order"
+	],
+    "rules": {
+        "indentation": 4,
+        "string-quotes": "single",
+        "no-duplicate-selectors": true,
+        "color-hex-case": "lower",
+        "color-named": "never",
+        "selector-no-qualifying-type": true,
+        "selector-combinator-space-after": "always",
+        "selector-attribute-quotes": "always",
+        "declaration-block-trailing-semicolon": "always",
+        "declaration-no-important": true,
+        "declaration-colon-space-before": "never",
+        "declaration-colon-space-after": "always",
+        "declaration-empty-line-before": [
+            "never", {
+                "ignore": [
+                    "after-comment"
+                ]
+            }
+        ],
+        "value-no-vendor-prefix": true,
+        "number-leading-zero": "never",
+        "function-url-quotes": "always",
+        "font-family-name-quotes": "always-where-recommended",
+        "selector-pseudo-element-colon-notation": "double",
+        "selector-pseudo-class-parentheses-space-inside": "never",
+        "media-feature-range-operator-space-before": "always",
+        "media-feature-range-operator-space-after": "always",
+        "media-feature-parentheses-space-inside": "never",
+        "media-feature-colon-space-before": "never",
+        "media-feature-colon-space-after": "always",
+        "rule-empty-line-before": [
+            "always-multi-line", {
+                "except": [
+                    "after-single-line-comment",
+                    "first-nested"
+                ],
+                "severity": "warning"
+            }
+        ],
+        "at-rule-empty-line-before": [
+            "always", {
+                "except": [
+                    "after-same-name"
+                ],
+                "ignore": [
+                    "inside-block",
+                    "after-comment",
+                ],
+                "severity": "warning"
+            }
+        ],
+        "block-closing-brace-newline-after": [
+            "always", {
+                "ignoreAtRules": ["if", "else"]
+            }
+        ]
+    }
+}
