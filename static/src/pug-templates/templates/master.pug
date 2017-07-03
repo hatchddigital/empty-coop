@@ -29,10 +29,13 @@ html(class="no-js", lang="en-au")
         meta(property="og:site_name", content="")
         meta(property="og:description", content="")
     body(class=`${section} ${template}`)
+        a(href="#main", class="skip-to-content", tabindex=0) Skip to main content
         include ../partials/header
-        include ../partials/page-details
-        h1=title
-        block pagecontent
+        //- The main content area
+        main(id="main", role="main")
+            include ../partials/page-details
+            h1=title
+            block pagecontent
         //- The svg sprite sheet
         .svg-spritesheet
             include ../../../build/svgs/spritesheet.svg

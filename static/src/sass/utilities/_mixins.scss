@@ -131,3 +131,27 @@
         }
     }
 }
+
+// Visual hide
+// Hides the element visually but not to a screen reader
+// $show-on-focus - Show the element when it comes into focus,
+// useful for nav skip links
+// ==========================================================================
+@mixin visual-hide($show-on-focus: false) {
+    $extra-state: '';
+
+    @if ($show-on-focus == true) {
+        $extra-state: ':not(:focus)';
+    }
+
+    &#{$extra-state} {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+}
