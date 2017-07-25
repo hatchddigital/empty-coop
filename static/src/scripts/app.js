@@ -14,6 +14,7 @@
 import $ from 'jquery';
 import Slick from 'slick-carousel-browserify';
 import Lightbox from 'lightbox2';
+import Navigation from './navigation';
 import MediaQuery from './mediaquery';
 import HighContrast from './highcontrastmode';
 import TestClass from './es6.class';
@@ -98,6 +99,12 @@ console.log('-------------------------------------------------------------------
 //
 
 HighContrast('.toggle-highcontrast');
+
+//
+// ─── ENABLE NAV FUNCTIONALITY ───────────────────────────────────────────────────
+//
+
+Navigation();
 
 //
 // ─── AND WE ARE GOOD TO GO ──────────────────────────────────────────────────────
