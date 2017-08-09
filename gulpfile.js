@@ -496,6 +496,7 @@ gulp.task('modernizr-build', ['styles-build', 'scripts-build'], () => gulp.src([
 // ----------------------------------------------------------------------------
 
 gulp.task('clean', cb => del([config.build], cb));
+gulp.task('clear-cache', done => cache.clearAll(done));
 
 // ----------------------------------------------------------------------------
 // THE DEFAULT TASK
@@ -509,7 +510,7 @@ gulp.task('default', ['styles-dev', 'styles-highcontrast', 'scripts-dev', 'libs-
 // THE BUILD TASK
 // ----------------------------------------------------------------------------
 
-gulp.task('build', ['clean'], () => {
+gulp.task('build', ['clean', 'clear-cache'], () => {
     gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr-build', 'fonts', 'svgs');
 });
 
