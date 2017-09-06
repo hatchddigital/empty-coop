@@ -1,11 +1,14 @@
 header(role="banner", aria-label="Site header")
     button.toggle-highcontrast(title="High contrast mode", data-activetext="high contrast on") high contrast off
-    nav(role="navigation", aria-label="Site navigation")
-        ul
+    nav(class="nav-primary", role="navigation", aria-label="Site navigation")
+        ul(class="nav-list", role="menubar", aria-hidden="false")
             each val, index  in sitenav
-                li
-                    a(href=val.url)= val.title
-                    if(val.subnav)
-                        ul
+                if(val.subnav)
+                    li(class="nav-list-item has-subnav", role="menuitem", aria-haspopup="true")
+                        a(class="nav-list-title", href=val.url)= val.title
+                        ul(class="nav-list-sub", aria-hidden="true", role="menu")
                             each subval, index in val.subnav
-                                li: a(href=subval.url)= subval.title
+                                li(class="nav-list-item", role="menuitem"): a(class="nav-list-title", href=subval.url, tabindex="-1")= subval.title
+                else
+                    li(class="nav-list-item", role="menuitem")
+                        a(class="nav-list-title", href=val.url)= val.title

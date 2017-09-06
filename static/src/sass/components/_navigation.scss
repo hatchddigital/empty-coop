@@ -1,0 +1,38 @@
+// ==========================================================================
+// Navigation
+// ==========================================================================
+
+.nav-list,
+.nav-list-sub {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list-item {
+    position: relative;
+    list-style: none;
+}
+
+.nav-list-title {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.nav-list-sub {
+    position: absolute;
+    top: 40px;
+    left: -9999px;
+    opacity: 0;
+    min-width: 150px;
+
+    .has-subnav:hover &,
+    &.nav-list-sub--visible {
+        left: 0;
+        opacity: 1;
+    }
+}
