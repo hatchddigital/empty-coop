@@ -110,6 +110,9 @@ const config = {
         // fonts
         get fonts_dev() { return `${config.src}/fonts`; },
         get fonts_prod() { return `${config.build}/fonts`; },
+        // meta data / icons
+        get meta_dev() { return `${config.src}/meta`; },
+        get meta_prod() { return `${config.build}/meta`; },
         // svgs
         get svgs_dev() { return `${config.src}/svgs`; },
         get svgs_prod() { return `${config.build}/svgs`; },
@@ -333,6 +336,16 @@ gulp.task('images', () => gulp.src(`${config.paths.images_orig}/**/*`)
     .pipe(gulp.dest(config.paths.images_min))
     .pipe(notify({ message: 'Images task complete' })));
 
+
+// ----------------------------------------------------------------------------
+// THE META TASK
+// ----------------------------------------------------------------------------
+
+gulp.task('meta', () => gulp.src(`${config.paths.meta_dev}/**/*`)
+.pipe(plumber(plumberErrorHandler))
+.pipe(gulp.dest(config.paths.meta_prod))
+.pipe(notify({ message: 'Meta task complete' })));
+
 // ----------------------------------------------------------------------------
 // THE TEMPLATES TASK
 // ----------------------------------------------------------------------------
@@ -511,7 +524,7 @@ gulp.task('default', ['styles-dev', 'styles-highcontrast', 'scripts-dev', 'libs-
 // ----------------------------------------------------------------------------
 
 gulp.task('build', ['clean', 'clear-cache'], () => {
-    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr-build', 'fonts', 'svgs');
+    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr-build', 'fonts', 'svgs', 'meta');
 });
 
 // ----------------------------------------------------------------------------
