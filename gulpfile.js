@@ -160,6 +160,8 @@ let gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     // html plugins
     pug = require('gulp-pug'),
+    // workbox for offline caching
+    wbBuild = require('workbox-build'),
     // live reload stuff
     browserSync = require('browser-sync').create('server'),
     reload = browserSync.reload;
@@ -505,6 +507,31 @@ gulp.task('modernizr-build', ['styles-build', 'scripts-build'], () => gulp.src([
     .pipe(gulp.dest(config.paths.js_prod)));
 
 // ----------------------------------------------------------------------------
+// THE SERVICE WORKER TASK
+// ----------------------------------------------------------------------------
+gulp.task('copy-workbox', () => gulp.src(require.resolve('workbox-sw'))
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(rename('workbox-sw.prod.js'))
+    .pipe(gulp.dest(config.paths.js_prod))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'Copy Workbox task complete' })));
+
+gulp.task('bundle-sw', ['styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'modernizr-build', 'copy-workbox'], () => wbBuild.injectManifest({
+    globDirectory: `${config.build}`,
+    swSrc: `${config.paths.js_dev}/sw.js`,
+    swDest: `${config.paths.js_prod}/sw.js`,
+    modifyUrlPrefix: { '': '../' },
+    globPatterns: ['**/*.{js,css}'],
+    globIgnores: ['**/workbox-sw.prod.js'],
+})
+    .then(() => {
+        console.log('Service worker generated.');
+    })
+    .catch((err) => {
+        console.log(`[ERROR] This happened: ${err}`);
+    }));
+
+// ----------------------------------------------------------------------------
 // THE CLEAN UP TASK
 // ----------------------------------------------------------------------------
 
@@ -524,7 +551,7 @@ gulp.task('default', ['styles-dev', 'styles-highcontrast', 'scripts-dev', 'libs-
 // ----------------------------------------------------------------------------
 
 gulp.task('build', ['clean', 'clear-cache'], () => {
-    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr-build', 'fonts', 'svgs', 'meta');
+    gulp.start('styles-build', 'styles-highcontrast', 'scripts-build', 'libs-build', 'images', 'modernizr-build', 'fonts', 'svgs', 'meta', 'bundle-sw');
 });
 
 // ----------------------------------------------------------------------------

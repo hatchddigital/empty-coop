@@ -22,6 +22,13 @@ import aFunction from './es6.function';
 import './svgs';
 
 //
+// ─── REGISTER SERVICE WORKER ───────────────────────────────────────────────────
+//
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/scripts/sw.js');
+}
+
+//
 // ─── EXAMPLES OF USING BROWSERIFY ON FRONTEND TO LOAD NPM MODULE ────────────────
 //
 
