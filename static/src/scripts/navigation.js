@@ -19,9 +19,11 @@ export default function Navigation() {
 
         subNav.addClass('nav-list-sub--visible').attr('aria-hidden', 'false');
         item.attr('tabindex', '0');
-        lastItem.keydown((e) => {
+        lastItem.keydown(e => {
             if (e.keyCode === 9) {
-                subNav.removeClass('nav-list-sub--visible').attr('aria-hidden', 'true');
+                subNav
+                    .removeClass('nav-list-sub--visible')
+                    .attr('aria-hidden', 'true');
             }
         });
     });

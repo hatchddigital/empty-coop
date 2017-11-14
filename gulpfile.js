@@ -140,11 +140,11 @@ let gulp = require('gulp'),
     // css plugins
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cleancss = require('gulp-clean-css'),
+    autoprefixer = require('autoprefixer'),
+    cssnano = require('cssnano'),
     postcss = require('gulp-postcss'),
     contrast = require('postcss-high-contrast'),
-    sasslint = require('gulp-sass-lint'),
+    stylelint = require('gulp-stylelint'),
     // images
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
@@ -214,9 +214,15 @@ gulp.task('browser-sync', () => {
 // config for linter can be found in the .sass-lint.yml file
 gulp.task('styles-lint', () => gulp.src(`${config.paths.scss}/**/*.scss`)
     .pipe(plumber(plumberErrorHandler))
-    .pipe(sasslint())
-    .pipe(sasslint.format())
-    .pipe(sasslint.failOnError()));
+    .pipe(stylelint({
+        reporters: [
+            {
+                formatter: 'string',
+                console: true,
+                // failAfterError: false,
+            },
+        ],
+    })));
 
 gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`)
     .pipe(plumber(plumberErrorHandler))
@@ -251,7 +257,9 @@ gulp.task('styles-highcontrast', () => gulp.src(`${config.paths.css}/styles.css`
     })]))
     .pipe(addsrc(`${config.paths.css}/highcontrast-custom.css`))
     .pipe(concat('styles-highcontrast.css'))
-    .pipe(cleancss())
+    .pipe(postcss([
+        cssnano(),
+    ]))
     .pipe(gulp.dest(config.paths.css))
     .pipe(reload({ stream: true }))
     .pipe(notify({ message: 'Styles high contrast task complete' })));
@@ -260,6 +268,9 @@ gulp.task('styles-dev', ['styles-lint'], () => gulp.src(`${config.paths.scss}/**
     .pipe(plumber(plumberErrorHandler))
     .pipe(sourcemaps.init())
     .pipe(sass({ errLogToConsole: true }))
+    .pipe(postcss([
+        autoprefixer(),
+    ]))
     .pipe(sourcemaps.write())
     .pipe(rename({ dirname: '' }))
     .pipe(gulp.dest(config.paths.css))
@@ -269,10 +280,11 @@ gulp.task('styles-dev', ['styles-lint'], () => gulp.src(`${config.paths.scss}/**
 gulp.task('styles-build', () => gulp.src(`${config.paths.scss}/**/*.scss`)
     .pipe(plumber(plumberErrorHandler))
     .pipe(sass({ errLogToConsole: true }))
-    .pipe(autoprefixer({ browsers: ['last 3 versions', '> 1%'], grid: true }))
+    .pipe(postcss([
+        autoprefixer(),
+        cssnano(),
+    ]))
     .pipe(concat('styles.css'))
-    .pipe(gulp.dest(config.paths.css))
-    .pipe(cleancss())
     .pipe(gulp.dest(config.paths.css))
     .pipe(reload({ stream: true }))
     .pipe(notify({ message: 'Styles build task complete' })));
@@ -289,7 +301,7 @@ gulp.task('scripts-lint', () => gulp.src(`${config.paths.js_dev}/**/*`)
     .pipe(eslint.failOnError()));
 
 gulp.task('scripts-dev', ['scripts-lint'], () => browserify(`${config.paths.js_dev}/app.js`, { debug: true })
-    .transform('babelify', { presets: ['es2015'] })
+    .transform('babelify', { presets: ['env'] })
     .bundle()
     .on('error', plumberErrorHandler.errorHandler)
     .pipe(plumber(plumberErrorHandler))
@@ -300,7 +312,7 @@ gulp.task('scripts-dev', ['scripts-lint'], () => browserify(`${config.paths.js_d
     .pipe(notify({ message: 'Scripts task complete' })));
 
 gulp.task('scripts-build', () => browserify(`${config.paths.js_dev}/app.js`, { debug: false })
-    .transform('babelify', { presets: ['es2015'] })
+    .transform('babelify', { presets: ['env'] })
     .bundle()
     .on('error', plumberErrorHandler.errorHandler)
     .pipe(plumber(plumberErrorHandler))
@@ -344,9 +356,9 @@ gulp.task('images', () => gulp.src(`${config.paths.images_orig}/**/*`)
 // ----------------------------------------------------------------------------
 
 gulp.task('meta', () => gulp.src(`${config.paths.meta_dev}/**/*`)
-.pipe(plumber(plumberErrorHandler))
-.pipe(gulp.dest(config.paths.meta_prod))
-.pipe(notify({ message: 'Meta task complete' })));
+    .pipe(plumber(plumberErrorHandler))
+    .pipe(gulp.dest(config.paths.meta_prod))
+    .pipe(notify({ message: 'Meta task complete' })));
 
 // ----------------------------------------------------------------------------
 // THE TEMPLATES TASK
@@ -451,7 +463,11 @@ gulp.task('svgs', () => gulp.src(`${config.paths.svgs_dev}/icons/**/*.svg`)
     }))
     .pipe(addsrc(`${config.paths.svgs_dev}/*.svg`))
     .pipe(svgsprite({
-        mode: { stack: true },
+        mode: {
+            symbol: {
+                inline: true,
+            },
+        },
     }))
     .pipe(rename('spritesheet.svg'))
     .pipe(gulp.dest(config.paths.svgs_prod))

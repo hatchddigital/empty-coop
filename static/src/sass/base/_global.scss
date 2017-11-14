@@ -56,10 +56,10 @@ img {
 // Selection styles
 // ==========================================================================
 @each $prefix in (
-'::',
-'::-webkit-',
-'::-moz-',
-'::-ms-') {
+    '::',
+    '::-webkit-',
+    '::-moz-',
+    '::-ms-') {
     #{$prefix}selection {
         background: $color-link;
         color: $color-light;

@@ -1,4 +1,3 @@
-
 //
 // ─── IMPORT THE FILES WE NEED ───────────────────────────────────────────────────
 //
@@ -10,9 +9,13 @@ import $ from 'jquery';
 //
 
 // example usage... <span data-svg='name-of-svg-file'></span>
-$('[data-svg]').each(function () {
+$('[data-svg]').each(function() {
     const svg = $(this);
     const id = svg.attr('data-svg');
-    const content = `<svg class='svg-${id}' 'xmlns=http://www.w3.org/2000/svg role='img'><use xlink:href='#${id}'></use></svg>`;
+    const content = `<svg class='svg-${
+        id
+    }' 'xmlns=http://www.w3.org/2000/svg role='img'><use xlink:href='#${
+        id
+    }'></use></svg>`;
     svg.html(content);
 });

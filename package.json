@@ -1,86 +1,96 @@
 {
-  "name": "empty-coop",
-  "version": "0.15.0",
-  "author": "Hatchd Digital <hello@hatchd.com.au>",
-  "description": "A starting point for all web-based projects at Hatchd. Leverages SASS, browserify and Gulp.",
-  "contributors": [
-    {
-      "name": "Jack Armley",
-      "email": "jack@hatchd.com.au"
+    "name": "empty-coop",
+    "version": "0.15.0",
+    "author": "Hatchd Digital <hello@hatchd.com.au>",
+    "description":
+        "A starting point for all web-based projects at Hatchd. Leverages SASS, browserify and Gulp.",
+    "contributors": [
+        {
+            "name": "Jack Armley",
+            "email": "jack@hatchd.com.au"
+        },
+        {
+            "name": "Doug Linder",
+            "email": "doug@hatchd.com.au"
+        },
+        {
+            "name": "Jane Yeap",
+            "email": "jane@hatchd.com.au"
+        },
+        {
+            "name": "Neil Ferreira",
+            "email": "neil@hatchd.com.au"
+        },
+        {
+            "name": "Shaun Norman",
+            "email": "shaun@hatchd.com.au"
+        },
+        {
+            "name": "Daniel Murray",
+            "email": "daniel@hatchd.com.au"
+        },
+        {
+            "name": "Ed Fryer",
+            "email": "ed@hatchd.com.au"
+        },
+        {
+            "name": "Leigh Kendell",
+            "email": "leigh@hatchd.com.au"
+        }
+    ],
+    "homepage": "http://hatchd.com.au",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hatchdditigal/empty-coop.git"
     },
-    {
-      "name": "Doug Linder",
-      "email": "doug@hatchd.com.au"
+    "private": true,
+    "scripts": {
+        "dev": "gulp watch",
+        "build": "gulp build"
     },
-    {
-      "name": "Jane Yeap",
-      "email": "jane@hatchd.com.au"
+    "dependencies": {
+        "jquery": "^2.1.4",
+        "lightbox2": "^2.8.2",
+        "slick-carousel-browserify": "^1.6.12",
+        "workbox-sw": "^2.0.1"
     },
-    {
-      "name": "Neil Ferreira",
-      "email": "neil@hatchd.com.au"
-    },
-    {
-      "name": "Shaun Norman",
-      "email": "shaun@hatchd.com.au"
-    },
-    {
-      "name": "Daniel Murray",
-      "email": "daniel@hatchd.com.au"
-    },
-    {
-      "name": "Ed Fryer",
-      "email": "ed@hatchd.com.au"
+    "devDependencies": {
+        "autoprefixer": "^7.1.6",
+        "babel-preset-env": "^1.6.1",
+        "babelify": "^7.3.0",
+        "browser-sync": "^2.18.12",
+        "browserify": "^14.4.0",
+        "cssnano": "^3.10.0",
+        "del": "^3.0.0",
+        "eslint": "^4.11.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-config-prettier": "^2.7.0",
+        "eslint-plugin-import": "^2.8.0",
+        "gulp": "^3.9.1",
+        "gulp-add-src": "^0.2.0",
+        "gulp-cache": "^0.4.6",
+        "gulp-concat": "^2.6.1",
+        "gulp-count": "^0.3.0",
+        "gulp-data": "^1.2.1",
+        "gulp-eslint": "^4.0.0",
+        "gulp-imagemin": "^3.3.0",
+        "gulp-modernizr": "0.0.0",
+        "gulp-notify": "^3.0.0",
+        "gulp-plumber": "^1.1.0",
+        "gulp-postcss": "^7.0.0",
+        "gulp-pug": "^3.3.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^3.1.0",
+        "gulp-sourcemaps": "^2.6.0",
+        "gulp-stylelint": "^5.0.0",
+        "gulp-svg-sprite": "^1.3.7",
+        "gulp-uglify": "^3.0.0",
+        "postcss-high-contrast": "^1.5.1",
+        "prettier": "^1.8.2",
+        "remove-svg-properties": "^0.3.3",
+        "stylelint-config-property-sort-order-smacss": "^2.0.0",
+        "vinyl-buffer": "^1.0.0",
+        "vinyl-source-stream": "^1.1.0",
+        "workbox-build": "^2.0.0"
     }
-  ],
-  "homepage": "http://hatchd.com.au",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hatchdditigal/empty-coop.git"
-  },
-  "private": true,
-  "dependencies": {
-    "jquery": "^2.1.4",
-    "lightbox2": "^2.8.2",
-    "slick-carousel-browserify": "^1.6.12",
-    "workbox-sw": "^2.0.1"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.18.12",
-    "browserify": "^14.4.0",
-    "del": "^3.0.0",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-react": "^7.1.0",
-    "gulp": "^3.9.1",
-    "gulp-add-src": "^0.2.0",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-cache": "^0.4.6",
-    "gulp-clean-css": "^3.4.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-count": "^0.3.0",
-    "gulp-data": "^1.2.1",
-    "gulp-eslint": "^3.0.1",
-    "gulp-imagemin": "^3.3.0",
-    "gulp-modernizr": "0.0.0",
-    "gulp-notify": "^3.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-pug": "^3.3.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sass-lint": "^1.3.2",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-svg-sprite": "^1.3.7",
-    "gulp-uglify": "^3.0.0",
-    "postcss-high-contrast": "^1.5.1",
-    "remove-svg-properties": "^0.3.3",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "workbox-build": "^2.0.0"
-  }
 }

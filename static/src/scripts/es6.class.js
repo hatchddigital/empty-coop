@@ -10,7 +10,6 @@ import aFunction from './es6.function';
 
 // define a class and export it
 export default class TestClass {
-
     // define its defaults
     constructor(var1 = 'default for var 1', var2 = 'default for var 2') {
         this.var1 = var1;
@@ -32,5 +31,4 @@ export default class TestClass {
         this.var3 = aFunction('hello world');
         console.log(`The value returned from es6.function.js is ${this.var3}`);
     }
-
 }

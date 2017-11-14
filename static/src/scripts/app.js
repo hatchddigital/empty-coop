@@ -40,9 +40,13 @@ if ('serviceWorker' in navigator) {
 //-------------------------------------------------
 // no more is needed
 
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 console.log('TESTING BROWSERIFY');
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 
 // slick slider module loaded from NPM via import above
 console.log('SLICK NPM MODULE =>', Slick);
@@ -50,17 +54,25 @@ console.log('SLICK NPM MODULE =>', Slick);
 // lightbox module loaded from NPM via import above
 console.log('LIGHTBOX NPM MODULE =>', Lightbox);
 
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 console.log('END TESTING BROWSERIFY');
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 
 //
 // ─── EXMAPLE OF IMPORTING AND USING ES6 CLASS ───────────────────────────────────
 //
 
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 console.log('TESTING ES6 CLASSES');
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 
 // create new instance of the class and send in 2 variables
 const test = new TestClass('foo', undefined);
@@ -75,17 +87,25 @@ test.printExternalFunctionVar();
 const foo = aFunction('bar');
 console.log(`The value returned from the imported es6 function is ${foo}`);
 
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 console.log('END TESTING ES6 CLASSES');
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 
 //
 // ─── EXAMPLE USAGE OF MEDIA QUERIES ─────────────────────────────────────────────
 //
 
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 console.log('TESTING MEDIAQUERY.JS');
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 
 // create new media query instance, remove true param to turn off debug
 // this returns any matching breakpoints defined in _breakpoints.scss
@@ -97,9 +117,13 @@ $(window).on('resize', () => {
     }
 });
 
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 console.log('END TESTING MEDIAQUERY.JS');
-console.log('-------------------------------------------------------------------');
+console.log(
+    '-------------------------------------------------------------------',
+);
 
 //
 // ─── ENABLE HIGH CONTRAST CSS ───────────────────────────────────────────────────

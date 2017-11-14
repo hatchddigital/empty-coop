@@ -30,7 +30,9 @@ export default function HighContrast(btn = false) {
     // grab the link el
     const link = $('head link[data-highcontrast]');
     if (!link.length) {
-        console.error('Please include a link element with a data-highcontrast attribute pointing to your high contrast css');
+        console.error(
+            'Please include a link element with a data-highcontrast attribute pointing to your high contrast css',
+        );
         return false;
     }
 
@@ -46,14 +48,14 @@ export default function HighContrast(btn = false) {
     const contrastStyle = link.attr('data-highcontrast');
 
     // on click of the button
-    button.on('click', (e) => {
+    button.on('click', e => {
         e.preventDefault();
         // if in high contrast mode revert to original
         if (highContrast) {
             link.attr('href', originalStyle);
             highContrast = false;
             button.text(origText);
-        // else load up the high contrast style sheet
+            // else load up the high contrast style sheet
         } else {
             link.attr('href', `${contrastStyle}?r=${Math.random()}`);
             highContrast = true;

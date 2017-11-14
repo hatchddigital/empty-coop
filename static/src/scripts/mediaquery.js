@@ -21,7 +21,6 @@ import $ from 'jquery';
 //
 
 export default class MediaQuery {
-
     constructor(debug = false) {
         // add the parser to the page
         this.parser = $('#mq-parser');
@@ -47,7 +46,11 @@ export default class MediaQuery {
 
     // get all the breakpoints
     getPoints() {
-        return window.getComputedStyle(this.parser.get(0), ':after').getPropertyValue('content').replace(/"/g, '').split(',');
+        return window
+            .getComputedStyle(this.parser.get(0), ':after')
+            .getPropertyValue('content')
+            .replace(/"/g, '')
+            .split(',');
     }
 
     // add the breakpoint elements
@@ -64,7 +67,7 @@ export default class MediaQuery {
     // get the current queries
     getQuery() {
         const bps = [];
-        $.each(this.breakpoints, function () {
+        $.each(this.breakpoints, function() {
             const bp = $(this);
             if (bp.is(':visible')) {
                 bps.push(bp.text());
@@ -82,5 +85,4 @@ export default class MediaQuery {
         }
         return false;
     }
-
 }
