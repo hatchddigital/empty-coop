@@ -363,7 +363,7 @@ babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@^6.0.14, babel-core@^6.26.0:
+babel-core@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
   dependencies:
@@ -809,12 +809,9 @@ babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26.0:
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
-babelify@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/babelify/-/babelify-7.3.0.tgz#aa56aede7067fd7bd549666ee16dc285087e88e5"
-  dependencies:
-    babel-core "^6.0.14"
-    object-assign "^4.0.0"
+babelify@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/babelify/-/babelify-8.0.0.tgz#6f60f5f062bfe7695754ef2403b842014a580ed3"
 
 babylon@^6.18.0:
   version "6.18.0"
@@ -934,10 +931,6 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.5:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
-
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -1017,7 +1010,7 @@ browser-sync-ui@0.6.3:
     stream-throttle "^0.1.3"
     weinre "^2.0.0-pre-I0Z7U9OV"
 
-browser-sync@^2.18.12:
+browser-sync@^2.18.13:
   version "2.18.13"
   resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.18.13.tgz#c28dc3eb3be67c97a907082b772a37f915c14d7d"
   dependencies:
@@ -1100,7 +1093,7 @@ browserify-zlib@~0.2.0:
   dependencies:
     pako "~1.0.5"
 
-browserify@^14.4.0:
+browserify@^14.5.0:
   version "14.5.0"
   resolved "https://registry.yarnpkg.com/browserify/-/browserify-14.5.0.tgz#0bbbce521acd6e4d1d54d8e9365008efb85a9cc5"
   dependencies:
@@ -1865,9 +1858,9 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-"customizr@https://github.com/doctyper/customizr/tarball/develop":
+customizr@^1.0.0-alpha:
   version "1.0.0-alpha"
-  resolved "https://github.com/doctyper/customizr/tarball/develop#75b0a85e5de99918bb6219227b283002f87546f1"
+  resolved "https://registry.yarnpkg.com/customizr/-/customizr-1.0.0-alpha.tgz#7ee5871f4e0aeef38d2a3fb03c804bae61bc21ee"
   dependencies:
     colors "~0.6.2"
     deep-equal "~0.1.2"
@@ -3319,19 +3312,16 @@ gulp-add-src@^0.2.0:
     through2 "~0.4.1"
     vinyl-fs "~0.3.11"
 
-gulp-cache@^0.4.6:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/gulp-cache/-/gulp-cache-0.4.6.tgz#2d03b52db4f6a553ae1d5bef01e483e907e9f796"
+gulp-cache@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-cache/-/gulp-cache-1.0.1.tgz#611c914e70dad936ec429a9172316c355895fa53"
   dependencies:
-    bluebird "^3.0.5"
+    babel-runtime "^6.26.0"
     cache-swap "^0.3.0"
-    gulp-util "^3.0.7"
-    object-assign "^4.0.1"
-    object.omit "^2.0.0"
-    object.pick "^1.1.1"
-    readable-stream "^2.0.4"
-    try-json-parse "^0.1.1"
-    vinyl "^1.1.0"
+    gulp-util "^3.0.8"
+    object.pick "^1.3.0"
+    through2 "^2.0.3"
+    vinyl "^2.1.0"
 
 gulp-concat@^2.6.1:
   version "2.6.1"
@@ -3373,7 +3363,7 @@ gulp-eslint@^4.0.0:
     eslint "^4.0.0"
     gulp-util "^3.0.8"
 
-gulp-imagemin@^3.3.0:
+gulp-imagemin@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/gulp-imagemin/-/gulp-imagemin-3.4.0.tgz#23a8d4c5133f50a2a708aca87ca4b2d6eb7c4403"
   dependencies:
@@ -3389,11 +3379,11 @@ gulp-imagemin@^3.3.0:
     imagemin-optipng "^5.2.1"
     imagemin-svgo "^5.2.2"
 
-gulp-modernizr@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-modernizr/-/gulp-modernizr-0.0.0.tgz#a5521464556e3202b45c112818dce234df6e1447"
+gulp-modernizr@1.0.0-alpha:
+  version "1.0.0-alpha"
+  resolved "https://registry.yarnpkg.com/gulp-modernizr/-/gulp-modernizr-1.0.0-alpha.tgz#0b4cff208458f521c069929dfbb14085f00f6b07"
   dependencies:
-    customizr "https://github.com/doctyper/customizr/tarball/develop"
+    customizr "^1.0.0-alpha"
     grunt-legacy-log "~0.1.1"
     gulp-util "~2.2.10"
     through2 "~0.4.0"
@@ -3457,7 +3447,7 @@ gulp-sourcemaps@1.6.0:
     through2 "^2.0.0"
     vinyl "^1.0.0"
 
-gulp-sourcemaps@^2.6.0:
+gulp-sourcemaps@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/gulp-sourcemaps/-/gulp-sourcemaps-2.6.1.tgz#833a4e28f0b8f4661075032cd782417f7cd8fb0b"
   dependencies:
@@ -4267,13 +4257,9 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
-jquery@>=1.7.2:
+jquery@>=1.7.2, jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
-
-jquery@^2.1.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.3.2"
@@ -4484,7 +4470,7 @@ liftoff@^2.1.0:
     rechoir "^0.6.2"
     resolve "^1.1.7"
 
-lightbox2@^2.8.2:
+lightbox2@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/lightbox2/-/lightbox2-2.9.0.tgz#f9a2fdb41ab3ca94bf0f769210b59bb14a5d5f62"
 
@@ -5435,7 +5421,7 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
-object.pick@^1.1.1, object.pick@^1.2.0:
+object.pick@^1.2.0, object.pick@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/object.pick/-/object.pick-1.3.0.tgz#87a10ac4c1694bd2e1cbf53591a66141fb5dd747"
   dependencies:
@@ -7271,10 +7257,6 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-stylelint-config-prettier@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-prettier/-/stylelint-config-prettier-2.0.0.tgz#0f671435294ebe4a215971855e1e576f5f227a21"
-
 stylelint-config-property-sort-order-smacss@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-property-sort-order-smacss/-/stylelint-config-property-sort-order-smacss-2.0.0.tgz#6ad73d59fc60f45faf8e499e808f70dbdd0bce97"
@@ -7442,8 +7424,8 @@ tar-pack@^3.4.0:
     uid-number "^0.0.6"
 
 tar-stream@^1.1.1:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/tar-stream/-/tar-stream-1.5.4.tgz#36549cf04ed1aee9b2a30c0143252238daf94016"
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/tar-stream/-/tar-stream-1.5.5.tgz#5cad84779f45c83b1f2508d96b09d88c7218af55"
   dependencies:
     bl "^1.0.0"
     end-of-stream "^1.0.0"
@@ -7614,10 +7596,6 @@ trim-repeated@^1.0.0:
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
-
-try-json-parse@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/try-json-parse/-/try-json-parse-0.1.1.tgz#8db01622e877e51b83140caee7c80864ad390c82"
 
 tryit@^1.0.1:
   version "1.0.3"
@@ -7903,7 +7881,7 @@ vinyl-sourcemaps-apply@^0.2.0, vinyl-sourcemaps-apply@^0.2.1:
   dependencies:
     source-map "^0.5.1"
 
-vinyl@1.X, vinyl@^1.0.0, vinyl@^1.1.0:
+vinyl@1.X, vinyl@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-1.2.0.tgz#5c88036cf565e5df05558bfc911f8656df218884"
   dependencies:
@@ -7932,7 +7910,7 @@ vinyl@^0.5.0:
     clone-stats "^0.0.1"
     replace-ext "0.0.1"
 
-vinyl@^2.0.0, vinyl@^2.0.2:
+vinyl@^2.0.0, vinyl@^2.0.2, vinyl@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-2.1.0.tgz#021f9c2cf951d6b939943c89eb5ee5add4fd924c"
   dependencies:
@@ -8050,7 +8028,7 @@ wordwrap@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
 
-workbox-build@^2.0.0:
+workbox-build@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-2.1.1.tgz#9d92bca4a760e44799346fac1efb41ddb2f7f4b1"
   dependencies:
@@ -8061,7 +8039,7 @@ workbox-build@^2.0.0:
     mkdirp "^0.5.1"
     workbox-sw "^2.1.1"
 
-workbox-sw@^2.0.1, workbox-sw@^2.1.1:
+workbox-sw@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-2.1.1.tgz#26482d97f70fd4e70fce8c6cd520b4395df98bf8"
 
