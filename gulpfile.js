@@ -85,7 +85,7 @@ You will need SublimeLinter to be installed first.
 // THE GULP config
 // ----------------------------------------------------------------------------
 
-const config = {
+const defaultConfig = {
     proxyurl: false, // the url of the site on your machine (only use if proxying a current server)
     src: 'static/src',
     build: 'static/build',
@@ -120,6 +120,11 @@ const config = {
         plone_templates: './',
     },
 };
+
+// Override with values from config.json
+const overrideConfig = require('./config.json');
+const config = Object.assign(defaultConfig, overrideConfig)
+
 
 // ----------------------------------------------------------------------------
 // LOAD UP ALL THE PLUGINS
